@@ -16,8 +16,8 @@ body {
   font-family: 'Open Sans', system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.65;
-  color: var(--ink);
-  background: var(--bg);
+  color: var(--text-main);
+  background: var(--bg-light);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -36,7 +36,15 @@ em { font-style: italic; }
   --blue-light:  #007AD6;
   --green:       #56B200;
   --green-light: #00CC00;
-  --amber:       #FF6B00;
+  --amber:       #007AD6;   /* ex-naranja → azul de marca (sin naranjas/rojos) */
+
+  /* Identidad oficial SEMSA — variables exactas */
+  --semsa-green:      #56B200;
+  --semsa-blue:       #0066B3;
+  --semsa-blue-dark:  #00468B;
+  --semsa-blue-light: #007AD6;
+  --text-main:        #2D3748;
+  --bg-light:         #F7FAFC;
 
   --dark:        #222222;
   --white:       #FFFFFF;
@@ -44,10 +52,10 @@ em { font-style: italic; }
 
   /* Superficies oscuro industrial premium */
   --bg:           #001528;   /* navy más profundo — fondo global */
-  --surface-1:    #001F3D;   /* navy profundo (secciones oscuras) */
-  --surface-2:    #052C50;   /* navy con retícula blueprint */
-  --surface-mid:  #00305A;   /* navy medio */
-  --surface-light:#F4F6F8;   /* sección clara de contraste */
+  --surface-1:    #00468B;   /* secciones oscuras → azul oscuro de marca */
+  --surface-2:    #003A73;   /* blueprint sobre azul */
+  --surface-mid:  #00468B;   /* secciones medias → azul oscuro de marca */
+  --surface-light:#F7FAFC;   /* sección clara de contraste */
   --surface-light-2:#FFFFFF;
 
   /* Tinta / texto */
@@ -106,7 +114,7 @@ body::before {
   display: block;
   position: relative;
   z-index: 300;
-  background: var(--amber);
+  background: var(--semsa-blue-dark);
   color: var(--white);
   font-family: var(--font-h);
   font-size: 0.72rem;
@@ -228,7 +236,7 @@ body::before {
   align-items: center;
   gap: 12px;
   padding: 13px 16px 13px 24px;
-  border-radius: var(--r-pill);
+  border-radius: 6px;
   font-family: var(--font-h);
   font-weight: 600;
   font-size: 0.84rem;
@@ -257,14 +265,15 @@ body::before {
 
 /* Primario verde */
 .btn--primary {
-  background: var(--green);
-  color: #0A1A2B;
-  box-shadow: var(--bezel-hi), 0 8px 24px -10px rgba(86,178,0,.6);
+  background: var(--semsa-green);
+  color: #fff;
+  box-shadow: var(--bezel-hi), 0 8px 24px -10px rgba(86,178,0,.45);
 }
-.btn--primary .btn__icon { background: rgba(0,0,0,.14); }
+.btn--primary .btn__icon { background: rgba(0,0,0,.18); }
 .btn--primary:hover {
-  background: #4CA000;
-  box-shadow: var(--bezel-hi), var(--glow-green), 0 14px 30px -12px rgba(86,178,0,.55);
+  background: var(--semsa-blue);
+  color: #fff;
+  box-shadow: var(--bezel-hi), var(--glow-blue), 0 14px 30px -12px rgba(0,102,179,.5);
 }
 .btn--primary:hover .btn__icon { background: rgba(0,0,0,.22); transform: translate(3px,-3px); }
 .btn--primary:hover .btn__icon svg { transform: translate(1px,-1px); }
@@ -333,21 +342,24 @@ body::before {
 }
 .badge--authorized { background: var(--grad-green); color: #0A1A2B; } /* AA sobre verde */
 .badge--atex {
-  background: var(--amber);
-  color: #0A1A2B;
-  box-shadow: var(--bezel-hi), 0 0 0 1px rgba(255,107,0,.25);
+  background: var(--semsa-blue);
+  color: #fff;
+  box-shadow: var(--bezel-hi), 0 0 0 1px rgba(0,102,179,.3);
 }
 .badge--sm { font-size: 0.58rem; padding: 3px 9px; }
 
 /* ─── SECTION SHELLS + ALTERNANCIA DE PESO ───────────────────── */
 .section { position: relative; padding: var(--rhythm-md) 0; }
-.section--dark   { background: var(--surface-1); color: var(--ink); }
-.section--mid    { background: var(--surface-mid); color: var(--ink); }
-.section--brand-blue { background: var(--blue-dark); color: var(--ink); padding: var(--rhythm-lg) 0; overflow: hidden; }
-.section--light  { background: var(--surface-light); color: var(--ink-dark); }
+.section--dark   { background: var(--surface-1); color: #fff; }
+.section--mid    { background: var(--surface-mid); color: #fff; }
+.section--brand-blue { background: var(--semsa-blue-dark); color: #fff; padding: var(--rhythm-lg) 0; overflow: hidden; }
+.section--light  { background: var(--bg-light); color: var(--text-main); }
 .section--light .eyebrow { color: var(--ink-dark-soft); }
+.section--light :is(h1, h2, h3, h4) { color: var(--semsa-blue-dark); }
 /* Contraste AA — section--mid es superficie navy: encabezados en texto claro */
-.section--mid .section-head__title { color: #fff; }
+.section--mid .section-head__title,
+.section--dark .section-head__title,
+.section--brand-blue .section-head__title { color: #fff; }
 .section--mid .section-head__sub   { color: var(--ink-soft); }
 .section--mid .eyebrow             { color: var(--ink-soft); }
 .section--mid .section-num         { color: var(--ink-soft); }
@@ -504,12 +516,12 @@ body::before {
   font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 0.02em;
-  color: #ffd9b3;
+  color: var(--semsa-blue-dark);
   text-align: center;
-  background: rgba(255,107,0,.14);
+  background: rgba(0,102,179,.10);
   padding: 5px 12px;
   border-radius: 5px;
-  border: 1px dashed rgba(255,107,0,.5);
+  border: 1px dashed rgba(0,102,179,.4);
   max-width: 85%;
 }
 
@@ -712,7 +724,7 @@ a:hover > .photo-frame .photo-frame__img,
   font-family: var(--font-h);
   font-size: 0.83rem;
   font-weight: 600;
-  color: var(--ink-dark);
+  color: var(--semsa-blue-dark);
   padding: 9px 14px;
   border-radius: var(--r-pill);
   transition: color .25s var(--ease-out), background-color .25s var(--ease-out);
@@ -769,7 +781,7 @@ a:hover > .photo-frame .photo-frame__img,
   font-family: var(--font-h);
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--ink-dark);
+  color: var(--semsa-blue-dark);
   padding: 10px 12px;
   border-radius: 9px;
   transition: background-color .2s var(--ease-out), color .2s var(--ease-out);
@@ -1784,8 +1796,8 @@ a:hover > .photo-frame .photo-frame__img,
 .cta-final__desc { font-size: 1.05rem; color: var(--ink-dark-soft); line-height: 1.7; margin-bottom: 14px; }
 .cta-final__wa { font-size: 1rem; color: var(--ink-dark-soft); margin-bottom: 28px; }
 .cta-final__wa strong { color: var(--ink-dark); }
-.cta-final__wa-link { color: var(--blue); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
-.cta-final__wa-link:hover { color: var(--green); }
+.cta-final__wa-link { color: var(--semsa-blue-light); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.cta-final__wa-link:hover { color: var(--semsa-green); }
 .cta-final__assurances { display: flex; flex-direction: column; gap: 11px; }
 .cta-final__assurances li { display: flex; align-items: center; gap: 11px; font-size: 0.92rem; color: var(--ink-dark); font-weight: 500; }
 .cta-final__proof {
@@ -1946,7 +1958,7 @@ a:hover > .photo-frame .photo-frame__img,
 /* ─── FOOTER ──────────────────────────────────────────────────── */
 .footer {
   position: relative;
-  background: var(--bg);
+  background: var(--semsa-blue-dark);
   padding: clamp(56px, 8vw, 80px) 0 0;
   border-top: 1px solid var(--hair);
   overflow: hidden;
@@ -2169,8 +2181,8 @@ a:hover > .photo-frame .photo-frame__img,
 .post-card__body { display: flex; flex-direction: column; gap: 10px; padding: 18px 20px 20px; }
 .post-card__title { font-family: var(--font-h); font-weight: 700; font-size: 1.02rem; line-height: 1.35; color: var(--ink-dark); }
 .post-card__meta { display: flex; gap: 10px; align-items: center; font-size: .78rem; color: var(--ink-dark-soft); }
-.post-card__link { margin-top: auto; font-family: var(--font-h); font-weight: 700; font-size: .85rem; color: var(--blue); }
-.post-card__link:hover { text-decoration: underline; }
+.post-card__link { margin-top: auto; font-family: var(--font-h); font-weight: 700; font-size: .85rem; color: var(--semsa-blue-light); }
+.post-card__link:hover { color: var(--semsa-green); text-decoration: underline; }
 
 /* Reclutamiento */
 .job-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
@@ -2197,7 +2209,7 @@ a:hover > .photo-frame .photo-frame__img,
 }
 
 /* Footer compacto de páginas interiores */
-.footer-lite { background: #001528; padding: 24px 0; border-top: 1px solid rgba(255,255,255,.06); }
+.footer-lite { background: var(--semsa-blue-dark); padding: 24px 0; border-top: 1px solid rgba(255,255,255,.06); }
 
 /* Datos de contacto reales */
 .contact__item-note { display: block; font-size: .82rem; color: var(--ink-soft); margin-top: 4px; }
@@ -2220,8 +2232,8 @@ a:hover > .photo-frame .photo-frame__img,
 .legal-content p strong { color: var(--ink-dark); }
 .legal-content ul { margin: 0 0 14px 18px; list-style: disc; color: var(--ink-dark-soft); font-size: .95rem; }
 .legal-content li { margin-bottom: 6px; }
-.legal-content a { color: var(--blue); font-weight: 600; }
-.legal-content a:hover { text-decoration: underline; }
+.legal-content a { color: var(--semsa-blue-light); font-weight: 600; }
+.legal-content a:hover { color: var(--semsa-green); text-decoration: underline; }
 .legal-content .mono-tag { vertical-align: middle; }
 .footer__copy a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 .footer__copy a:hover { color: var(--green-light); }
