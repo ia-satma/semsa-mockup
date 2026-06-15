@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260615223000">
+  <link rel="stylesheet" href="styles.css?v=20260615230000">
   <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
 </head>
 <body>
@@ -89,6 +89,13 @@
       </video>
       <div class="hero__overlay" aria-hidden="true"></div>
       <div class="hero__grid" aria-hidden="true"></div>
+      <svg class="hero-s-def" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+        <defs>
+          <clipPath id="semsa-s" clipPathUnits="objectBoundingBox">
+            <path d="M0.05,0 L0.95,0 L0.95,0.2 L0.25,0.2 L0.25,0.4 L0.95,0.4 L0.95,1 L0.05,1 L0.05,0.8 L0.75,0.8 L0.75,0.6 L0.05,0.6 Z"/>
+          </clipPath>
+        </defs>
+      </svg>
 
       <div class="container hero__content">
         <div class="hero__text" data-reveal>
@@ -116,16 +123,9 @@
               </span>
             </a>
           </div>
-          <div class="hero__specs" aria-hidden="true">
-            <span class="mono-tag">ATEX · ZONA 1/21</span>
-            <span class="mono-tag">IECEx / NEMA</span>
-            <span class="mono-tag">IR · CSA</span>
-          </div>
         </div>
-
+        <div class="hero-brand-graphic" aria-hidden="true"></div>
       </div>
-
-      <span class="hero__fig" aria-hidden="true">FIG.01 — POLIPASTO EN OPERACIÓN · LOOP</span>
 
       <div class="hero__seal" aria-label="Centro de Servicio Autorizado Ingersoll Rand desde 1993">
         <span class="hero__seal-ico" aria-hidden="true">
@@ -1028,6 +1028,6 @@
     </svg>
   </a>
 
-  <script src="script.js?v=20260615223000"></script>
+  <script src="script.js?v=20260615230000"></script>
 </body>
 </html>
