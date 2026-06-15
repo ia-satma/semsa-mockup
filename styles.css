@@ -355,6 +355,39 @@ body::before {
 .section--brand-blue { background: var(--semsa-blue-dark); color: #fff; padding: var(--rhythm-lg) 0; overflow: hidden; }
 .section--light  { background: var(--bg-light); color: var(--text-main); }
 .section--light .eyebrow { color: var(--ink-dark-soft); }
+
+/* ════════ ZEBRA STRIPING — legibilidad al alternar fondos ════════ */
+.section--light .atex__desc,
+.section--light .about__desc,
+.section--light .about__mission,
+.section--light .checklist li,
+.section--light .contact__item { color: var(--text-main); }
+.section--light .about__mission em,
+.section--light .about__mission strong,
+.section--light .about__facility-text strong { color: var(--semsa-blue-dark); }
+.section--light .about__values-label,
+.section--light .about__facility-text,
+.section--light .contact__item-note { color: var(--ink-dark-soft); }
+.section--light .about__values li { color: var(--text-main); border-color: rgba(0,70,139,.22); background: rgba(0,70,139,.04); }
+.section--light .about__values li:hover { border-color: rgba(86,178,0,.55); background: rgba(86,178,0,.10); }
+.section--light .contact__social-link { color: var(--text-main); border-color: rgba(13,40,70,.2); }
+.section--light .contact__wa-link { color: var(--semsa-blue-dark); }
+.section--light .brand-wall__link:hover { color: var(--semsa-blue-dark); }
+.section--light .btn--outline { color: var(--semsa-blue-dark); border-color: rgba(0,70,139,.3); background: rgba(0,70,139,.03); }
+.section--light .btn--outline:hover { background: rgba(0,70,139,.07); border-color: rgba(0,70,139,.5); }
+.section--light .btn--outline .btn__icon { background: rgba(0,70,139,.12); }
+.section--light .about__timeline-wrap { background: var(--semsa-blue-dark); border-color: rgba(255,255,255,.14); }
+.section--dark .section-head__sub, .section--dark .eyebrow { color: var(--ink-soft); }
+.section--dark .cta-final__heading { color: #fff; }
+.section--dark .cta-final__desc, .section--dark .cta-final__wa, .section--dark .cta-final__assurances li { color: var(--ink-soft); }
+.section--dark .cta-final__wa strong, .section--dark .cta-final__proof-text strong { color: #fff; }
+.section--dark .cta-final__proof-text span { color: var(--ink-soft); }
+/* Marcas/ATEX sobre fondo claro: chips, contadores y links legibles */
+.section--light .brand-wall__count { color: var(--ink-dark-soft); }
+.section--light .brand-wall__link { color: var(--semsa-blue-dark); }
+.section--light .brand-chip { background: #fff; border-color: rgba(13,40,70,.12); box-shadow: var(--sh-light-card); }
+.section--light .btn--ghost-on-dark { color: var(--semsa-blue-dark); }
+.section--light .btn--ghost-on-dark:hover { color: var(--semsa-green); }
 .section--light :is(h1, h2, h3, h4) { color: var(--semsa-blue-dark); }
 /* Contraste AA — section--mid es superficie navy: encabezados en texto claro */
 .section--mid .section-head__title,
@@ -906,29 +939,6 @@ a:hover > .photo-frame .photo-frame__img,
   align-items: center;
 }
 .hero__text { max-width: 760px; align-self: center; }
-/* Hero brand graphic — MACRO-CROPPING de la "S" (máscara vectorial SVG, sin pixelado) */
-.hero-brand-graphic {
-  position: relative;
-  width: 100%;
-  height: 60vh;
-  min-height: 400px;
-  align-self: center;
-  background-color: rgba(0, 102, 179, 0.25);   /* cristal azul abstracto */
-  -webkit-backdrop-filter: blur(15px);
-          backdrop-filter: blur(15px);
-  /* Isotipo SEMSA vectorizado (Data URI) — escala masiva: sólo se percibe el corte diagonal */
-  -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='xMidYMid meet'><path fill='%23fff' d='M0.6167 0.2604 A0.4 0.4 0 0 0 0.1927 0.9389 Z M0.8073 0.0611 A0.4 0.4 0 0 1 0.3833 0.7396 Z'/></svg>");
-          mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='xMidYMid meet'><path fill='%23fff' d='M0.6167 0.2604 A0.4 0.4 0 0 0 0.1927 0.9389 Z M0.8073 0.0611 A0.4 0.4 0 0 1 0.3833 0.7396 Z'/></svg>");
-  -webkit-mask-size: 350%;
-          mask-size: 350%;
-  -webkit-mask-position: center center;
-          mask-position: center center;
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  animation: heroBrandFade 1.2s var(--ease-out) .3s both;
-}
-@keyframes heroBrandFade {
-  from { opacity: 0; }
   to   { opacity: 1; }
 }
 .hero__heading {
@@ -2094,7 +2104,6 @@ a:hover > .photo-frame .photo-frame__img,
   .nav__burger { display: flex; }
   .hero__content { grid-template-columns: 1fr; gap: 32px; }
   .hero__text { max-width: none; }
-  .hero-brand-graphic { display: none; }
   .atex__inner { grid-template-columns: 1fr; gap: 56px; }
   .auth__inner { grid-template-columns: 1fr; gap: 48px; }
   .auth__visual { order: -1; max-width: 520px; }
@@ -2154,7 +2163,6 @@ a:hover > .photo-frame .photo-frame__img,
   }
   [data-reveal] { opacity: 1; transform: none; filter: none; }
   .hero__scroll-line, .whatsapp-float { animation: none; }
-  .hero-brand-graphic { animation: none; opacity: 1; }
 }
 
 /* ─── PRINT ───────────────────────────────────────────────────── */
