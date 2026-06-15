@@ -40,7 +40,6 @@ em { font-style: italic; }
 
   /* Identidad oficial SEMSA — variables exactas */
   --semsa-green:      #56B200;
-  --semsa-green-cta:  #2F7A00;   /* verde profundo para CTA → blanco AA 5.4:1 */
   --semsa-blue:       #0066B3;
   --semsa-blue-dark:  #00468B;
   --semsa-blue-light: #007AD6;
@@ -266,9 +265,9 @@ body::before {
 
 /* Primario verde */
 .btn--primary {
-  background: var(--semsa-green-cta);
-  color: #fff;
-  box-shadow: var(--bezel-hi), 0 8px 24px -10px rgba(47,122,0,.5);
+  background: var(--semsa-green);
+  color: #0A1A2B;
+  box-shadow: var(--bezel-hi), 0 8px 24px -10px rgba(86,178,0,.5);
 }
 .btn--primary .btn__icon { background: rgba(0,0,0,.18); }
 .btn--primary:hover {
