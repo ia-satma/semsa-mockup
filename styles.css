@@ -1667,6 +1667,32 @@ a:hover > .photo-frame .photo-frame__img,
   color: var(--ink);
 }
 .about__mission em { color: #fff; font-weight: 500; }
+.about__mission strong { color: var(--ink); font-family: var(--font-h); font-weight: 700; }
+/* Valores corporativos — pills mono sobre oscuro */
+.about__values-block { margin: 24px 0 6px; }
+.about__values-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+}
+.about__values { display: flex; flex-wrap: wrap; gap: 9px; }
+.about__values li {
+  font-family: var(--font-h);
+  font-weight: 600;
+  font-size: 0.84rem;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  padding: 8px 15px;
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  background: rgba(255,255,255,.04);
+  transition: border-color .3s var(--ease-out), background .3s var(--ease-out);
+}
+.about__values li:hover { border-color: rgba(86,178,0,.5); background: rgba(86,178,0,.08); }
 .about__facilities {
   display: flex;
   flex-direction: column;
