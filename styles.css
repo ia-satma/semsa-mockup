@@ -266,7 +266,7 @@ body::before {
 /* Primario verde */
 .btn--primary {
   background: var(--semsa-green);
-  color: #0A1A2B;
+  color: #fff;
   box-shadow: var(--bezel-hi), 0 8px 24px -10px rgba(86,178,0,.5);
 }
 .btn--primary .btn__icon { background: rgba(0,0,0,.18); }
@@ -927,13 +927,13 @@ a:hover > .photo-frame .photo-frame__img,
   opacity: 0;
 }
 .hero-brand-half--top {
-  -webkit-mask-image: url(assets/semsa-s-top.png);
-          mask-image: url(assets/semsa-s-top.png);
+  -webkit-mask-image: url(assets/semsa-s-top.png?v=2);
+          mask-image: url(assets/semsa-s-top.png?v=2);
   animation: heroSTop 1.05s var(--ease-out) .3s both;
 }
 .hero-brand-half--bottom {
-  -webkit-mask-image: url(assets/semsa-s-bottom.png);
-          mask-image: url(assets/semsa-s-bottom.png);
+  -webkit-mask-image: url(assets/semsa-s-bottom.png?v=2);
+          mask-image: url(assets/semsa-s-bottom.png?v=2);
   animation: heroSBottom 1.05s var(--ease-out) .3s both;
 }
 /* Destello de cristal que barre el isotipo (recortado por la máscara) */
