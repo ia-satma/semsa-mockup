@@ -9,7 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260615120000">
+  <link rel="stylesheet" href="styles.css?v=20260615190000">
+  <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
 </head>
 <body>
 
@@ -81,10 +82,13 @@
          HERO
     ============================================================ -->
     <section class="hero" id="hero" aria-labelledby="hero-heading">
+      <video class="hero__video" muted loop playsinline preload="metadata"
+             poster="assets/video/hero-loop-poster.jpg" width="1280" height="720"
+             aria-hidden="true" tabindex="-1" disablepictureinpicture disableremoteplayback data-hero-video>
+        <source src="assets/video/hero-loop.mp4" type="video/mp4">
+      </video>
+      <div class="hero__overlay" aria-hidden="true"></div>
       <div class="hero__grid" aria-hidden="true"></div>
-      <div class="hero__angle" aria-hidden="true"></div>
-      <div class="hero__glow hero__glow--blue" aria-hidden="true"></div>
-      <div class="hero__glow hero__glow--green" aria-hidden="true"></div>
 
       <div class="container hero__content">
         <div class="hero__text" data-reveal>
@@ -119,27 +123,18 @@
           </div>
         </div>
 
-        <div class="hero__visual" data-reveal data-reveal-delay="2">
-          <figure class="photo-frame photo-frame--zoom hero__photo">
-            <div class="photo-frame__media photo-frame__media--tall">
-              <img src="assets/img/semsa-banner-section-01.jpg" alt="Operario industrial usando herramienta neumática en línea de ensamble" class="photo-frame__img" width="540" height="500" loading="eager" decoding="async">
-              <div class="tech-frame__corner tech-frame__corner--tl" aria-hidden="true"></div>
-              <div class="tech-frame__corner tech-frame__corner--br" aria-hidden="true"></div>
-              <span class="photo-frame__tag" aria-hidden="true">FIG.01 — HERRAMIENTA EN LÍNEA</span>
-              <!-- Sello / credencial industrial ancla (dentro de la foto: nunca pisa el caption) -->
-              <div class="photo-seal photo-seal--bl hero__seal" aria-label="Centro de Servicio Autorizado Ingersoll Rand desde 1993">
-                <div class="photo-seal__mark" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
-                </div>
-                <div class="photo-seal__text">
-                  <strong>Autorizado Ingersoll Rand</strong>
-                  <span>Centro de Servicio · desde 1993</span>
-                </div>
-              </div>
-            </div>
-            <figcaption class="photo-caption"><span class="photo-caption__dot" aria-hidden="true"></span>Equipo Ingersoll Rand en operación · planta cliente</figcaption>
-          </figure>
-        </div>
+      </div>
+
+      <span class="hero__fig" aria-hidden="true">FIG.01 — POLIPASTO EN OPERACIÓN · LOOP</span>
+
+      <div class="hero__seal" aria-label="Centro de Servicio Autorizado Ingersoll Rand desde 1993">
+        <span class="hero__seal-ico" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
+        </span>
+        <span class="hero__seal-text">
+          <strong>Autorizado Ingersoll Rand</strong>
+          <span>Centro de Servicio · desde 1993</span>
+        </span>
       </div>
 
       <div class="hero__scroll" aria-hidden="true">
@@ -1033,6 +1028,6 @@
     </svg>
   </a>
 
-  <script src="script.js?v=20260615120000"></script>
+  <script src="script.js?v=20260615190000"></script>
 </body>
 </html>

@@ -287,3 +287,45 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   }, { passive: true });
   update();
 })();
+
+// ── HERO VIDEO: reproduce con gates + pausa fuera de viewport ──
+(function initHeroVideo() {
+  const video = document.querySelector('[data-hero-video]');
+  if (!video) return;
+  const hero = video.closest('.hero');
+  const conn = navigator.connection || navigator.webkitConnection || navigator.mozConnection;
+  const saveData = !!(conn && (conn.saveData || /(^|[^a-z])2g$/.test(conn.effectiveType || '')));
+
+  // Gates: reduced-motion o ahorro de datos → no se reproduce; queda el póster.
+  if (REDUCED.matches || saveData) {
+    if (hero) hero.classList.add('hero--static');
+    return;
+  }
+
+  function tryPlay() {
+    const p = video.play();
+    if (p && typeof p.catch === 'function') {
+      p.catch(function () { if (hero) hero.classList.add('hero--static'); });
+    }
+  }
+  function pause() { try { video.pause(); } catch (e) {} }
+
+  // Reproduce sólo cuando el hero está a la vista (ahorra CPU/batería).
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) tryPlay(); else pause();
+      });
+    }, { threshold: 0.2 });
+    io.observe(video);
+  } else {
+    tryPlay();
+  }
+
+  // Pausa al ocultar la pestaña; reanuda si el hero sigue a la vista.
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) { pause(); return; }
+    const r = video.getBoundingClientRect();
+    if (r.bottom > 0 && r.top < (window.innerHeight || 0)) tryPlay();
+  });
+})();
