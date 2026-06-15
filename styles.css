@@ -906,46 +906,30 @@ a:hover > .photo-frame .photo-frame__img,
   align-items: center;
 }
 .hero__text { max-width: 760px; align-self: center; }
+/* Hero brand graphic — MACRO-CROPPING de la "S" (máscara vectorial SVG, sin pixelado) */
 .hero-brand-graphic {
   position: relative;
-  width: min(100%, 60vh);
-  aspect-ratio: 1;                 /* caja cuadrada → el clip-path SVG no se deforma */
-  margin: 0 auto;
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
   align-self: center;
-  animation: heroBrandFloat 7s ease-in-out 2.5s infinite;
-}
-/* Cada lóbulo del isotipo = panel de cristal esmerilado recortado por su path SVG */
-.hero-brand-half {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 122, 214, 0.22);   /* azul de marca sutil con transparencia */
+  background-color: rgba(0, 102, 179, 0.25);   /* cristal azul abstracto */
   -webkit-backdrop-filter: blur(15px);
           backdrop-filter: blur(15px);
-  opacity: 0;
-  will-change: transform, opacity;
+  /* Isotipo SEMSA vectorizado (Data URI) — escala masiva: sólo se percibe el corte diagonal */
+  -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='xMidYMid meet'><path fill='%23fff' d='M0.6167 0.2604 A0.4 0.4 0 0 0 0.1927 0.9389 Z M0.8073 0.0611 A0.4 0.4 0 0 1 0.3833 0.7396 Z'/></svg>");
+          mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='xMidYMid meet'><path fill='%23fff' d='M0.6167 0.2604 A0.4 0.4 0 0 0 0.1927 0.9389 Z M0.8073 0.0611 A0.4 0.4 0 0 1 0.3833 0.7396 Z'/></svg>");
+  -webkit-mask-size: 350%;
+          mask-size: 350%;
+  -webkit-mask-position: center center;
+          mask-position: center center;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  animation: heroBrandFade 1.2s var(--ease-out) .3s both;
 }
-.hero-brand-half--top {
-  -webkit-clip-path: url(#semsa-s-top);
-          clip-path: url(#semsa-s-top);
-  animation: heroAssembleTop 1.7s cubic-bezier(0.22, 1, 0.36, 1) .35s both;
-}
-.hero-brand-half--bottom {
-  -webkit-clip-path: url(#semsa-s-bot);
-          clip-path: url(#semsa-s-bot);
-  animation: heroAssembleBot 1.7s cubic-bezier(0.22, 1, 0.36, 1) .35s both;
-}
-/* Ensamble: las dos mitades llegan de lados opuestos y forman la S */
-@keyframes heroAssembleTop {
-  0%   { opacity: 0; transform: translate(-42%, -52%); }
-  100% { opacity: 1; transform: translate(0, 0); }
-}
-@keyframes heroAssembleBot {
-  0%   { opacity: 0; transform: translate(42%, 52%); }
-  100% { opacity: 1; transform: translate(0, 0); }
-}
-@keyframes heroBrandFloat {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50%      { transform: translateY(-12px) scale(1.012); }
+@keyframes heroBrandFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 .hero__heading {
   font-family: var(--font-h);
@@ -2170,9 +2154,7 @@ a:hover > .photo-frame .photo-frame__img,
   }
   [data-reveal] { opacity: 1; transform: none; filter: none; }
   .hero__scroll-line, .whatsapp-float { animation: none; }
-  .hero-brand-graphic { animation: none; transform: none; }
-  .hero-brand-half { animation: none; opacity: 1; transform: none; }
-  .hero-brand-half::before { display: none; }
+  .hero-brand-graphic { animation: none; opacity: 1; }
 }
 
 /* ─── PRINT ───────────────────────────────────────────────────── */
