@@ -385,7 +385,6 @@ body::before {
 /* Marcas/ATEX sobre fondo claro: chips, contadores y links legibles */
 .section--light .brand-wall__count { color: var(--ink-dark-soft); }
 .section--light .brand-wall__link { color: var(--semsa-blue-dark); }
-.section--light .brand-chip { background: #fff; border-color: rgba(13,40,70,.12); box-shadow: var(--sh-light-card); }
 .section--light .btn--ghost-on-dark { color: var(--semsa-blue-dark); }
 .section--light .btn--ghost-on-dark:hover { color: var(--semsa-green); }
 .section--light :is(h1, h2, h3, h4) { color: var(--semsa-blue-dark); }
@@ -1496,8 +1495,26 @@ a:hover > .photo-frame .photo-frame__img,
 .brand-wall__grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 14px;
+  gap: 3.5rem;
+  align-items: stretch;
 }
+/* Logo-wall SIN tarjetas: logos/wordmarks sueltos sobre el fondo */
+.brand-wall__grid .brand-chip {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 10px;
+  min-height: 78px;
+  overflow: visible;
+  transition: transform .3s ease;
+}
+.brand-wall__grid .brand-chip:hover { transform: scale(1.04); box-shadow: none; }
+.brand-wall__grid .brand-chip__img,
+.brand-wall__grid .brand-chip--wm .wm { opacity: 0.65; transition: opacity .3s ease; }
+.brand-wall__grid .brand-chip:hover .brand-chip__img,
+.brand-wall__grid .brand-chip:hover .wm { opacity: 1; }
+.brand-wall__grid .brand-chip--wm .wm { color: #5a6675; }
+.brand-wall__grid .brand-chip__caption { color: #8a93a0; }
 .brand-wall__foot {
   display: flex;
   align-items: center;
