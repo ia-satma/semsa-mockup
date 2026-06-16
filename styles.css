@@ -423,6 +423,8 @@ body::before {
 
 /* ─── SECTION HEAD ────────────────────────────────────────────── */
 .section-head { max-width: 680px; margin-bottom: clamp(48px, 6vw, 72px); }
+/* Marcas: título largo en 2 renglones limpios (línea 1 necesita ~756px) */
+.brands .section-head { max-width: 820px; }
 .section-head__title {
   font-family: var(--font-h);
   font-weight: 800;
