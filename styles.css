@@ -1609,6 +1609,31 @@ a:hover > .photo-frame .photo-frame__img,
 /* ─── WHY SECTION ─────────────────────────────────────────────── */
 .why { color: var(--ink); }
 .why__container { position: relative; z-index: 1; }
+/* Subtítulo como statement: barra de acento verde + frase clave en blanco */
+.why__statement {
+  position: relative;
+  padding-left: 22px;
+  max-width: 440px;
+  font-size: clamp(1.12rem, 1.4vw, 1.34rem);
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, .78);
+}
+.why__statement::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 5px; bottom: 5px;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--grad-green);
+}
+.why__statement strong {
+  display: block;
+  margin-top: 5px;
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
 .why__grid-bg {
   position: absolute;
   inset: 0;
