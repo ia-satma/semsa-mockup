@@ -938,8 +938,6 @@ a:hover > .photo-frame .photo-frame__img,
   align-items: center;
 }
 .hero__text { max-width: 760px; align-self: center; }
-  to   { opacity: 1; }
-}
 .hero__heading {
   font-family: var(--font-h);
   font-weight: 800;
