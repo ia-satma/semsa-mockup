@@ -1503,11 +1503,41 @@ a:hover > .photo-frame .photo-frame__img,
   color: var(--ink-dark-soft);
 }
 .brand-chip__tag--auth {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   color: #276700; /* AA sobre chip claro con fondo verde tenue */
   background: rgba(86,178,0,.12);
   border: 1px solid rgba(86,178,0,.28);
-  padding: 3px 10px;
+  padding: 4px 11px;
   border-radius: var(--r-pill);
+  letter-spacing: 0.08em;
+}
+.brand-chip__tag--auth svg { flex-shrink: 0; }
+
+/* Descriptor del rol bajo cada logo autorizado */
+.brand-chip__role {
+  font-family: var(--font-b);
+  font-size: 0.72rem;
+  line-height: 1.3;
+  color: var(--ink-dark-soft);
+  text-align: center;
+  max-width: 22ch;
+}
+
+/* Tarjeta de marca con respaldo de fábrica: acento verde + ritmo vertical */
+.brand-chip--auth {
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 26px;
+  border-color: rgba(86,178,0,.30);
+}
+.brand-chip--auth::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--grad-green);
 }
 
 /* ── BLOQUE 2 · Portafolio multimarca (logo wall) ── */
