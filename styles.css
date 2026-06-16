@@ -1144,12 +1144,14 @@ a:hover > .photo-frame .photo-frame__img,
 /* ─── BENTO ASIMÉTRICO ───────────────────────────────────────── */
 .bento {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  grid-auto-rows: 1fr;
   margin-bottom: clamp(48px, 6vw, 64px);
 }
 .bento__cell { display: flex; }
-.bento__cell--feature { grid-column: span 2; grid-row: span 2; }
+/* Patrón asimétrico (zig-zag): 01 ancho · 02 · | 03 · 04 ancho | 05 06 07 */
+.bento__cell--feature { grid-column: span 2; }
 .bento__cell--wide { grid-column: span 2; }
 
 /* Círculo de flecha anidado (firma de interacción, usado por card-photo) */
@@ -1172,17 +1174,18 @@ a:hover > .photo-frame .photo-frame__img,
   flex-direction: column;
   width: 100%;
   height: 100%;
-  border-radius: var(--r-shell);
+  border-radius: 20px;
   overflow: hidden;
-  background: linear-gradient(180deg, #fff, #fbfcfe);
-  border: 1px solid var(--hair-light);
-  box-shadow: var(--sh-light-card), var(--bezel-hi-light);
-  transition: transform .5s var(--ease-out), box-shadow .5s var(--ease-out);
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform .4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow .4s cubic-bezier(0.165, 0.84, 0.44, 1);
   will-change: transform;
 }
 .card-photo:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 32px 60px -28px rgba(13,40,70,.42), var(--glow-blue), var(--bezel-hi-light);
+  transform: translateY(-10px);
+  /* Resplandor (glow) con el verde corporativo SEMSA (#56B200 = rgb(86,178,0)) */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12), 0 8px 24px rgba(86,178,0,0.25);
 }
 .card-photo__media {
   position: relative;
@@ -1202,7 +1205,7 @@ a:hover > .photo-frame .photo-frame__img,
   object-fit: cover;
   /* Duotono azul de marca — unifica las fotos heterogéneas */
   filter: saturate(.8) contrast(1.05) brightness(.95);
-  transition: transform .8s var(--ease-out), filter .6s var(--ease-out);
+  transition: transform .6s ease, filter .6s var(--ease-out);
   will-change: transform;
 }
 .card-photo__media::before {
@@ -1225,7 +1228,7 @@ a:hover > .photo-frame .photo-frame__img,
   mix-blend-mode: soft-light;
 }
 .card-photo:hover .card-photo__img {
-  transform: scale(1.06);
+  transform: scale(1.05);
   filter: saturate(1) contrast(1.03) brightness(1);
 }
 .card-photo__num {
@@ -1300,6 +1303,42 @@ a:hover > .photo-frame .photo-frame__img,
   flex-shrink: 0;
 }
 .card-photo--row .card-photo__body { justify-content: center; }
+
+/* ─── BENTO — títulos marca + tech-badges glassmorphism ──────── */
+.bento .card-photo__title { color: var(--semsa-blue-dark); font-weight: 800; }
+.bento .card-photo__num {
+  top: 14px; left: 14px;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--semsa-blue-dark);
+  background: rgba(255,255,255,0.85);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 20px;
+  padding: 0.3rem 0.8rem;
+  text-shadow: none;
+  box-shadow: 0 2px 10px rgba(0,12,28,.12);
+}
+.bento .badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  color: var(--semsa-blue-dark);
+  background: rgba(255,255,255,0.85);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: 0 2px 10px rgba(0,12,28,.12);
+}
+.bento .badge--atex,
+.bento .badge--authorized { color: var(--semsa-blue-dark); }
 
 .categories__cta-row { display: flex; justify-content: center; }
 
@@ -2134,14 +2173,18 @@ a:hover > .photo-frame .photo-frame__img,
   .section-head--split .section-head__sub { padding-bottom: 0; }
 }
 
-@media (max-width: 680px) {
-  :root { --r-shell: 22px; --r-core: 15px; }
+/* Bento → 1 columna en móvil (anula los spans del zig-zag) */
+@media (max-width: 768px) {
   .bento { grid-template-columns: 1fr; }
   .bento__cell--feature,
-  .bento__cell--wide { grid-column: span 1; }
-  .card--row { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .bento__cell--wide { grid-column: span 1; grid-row: auto; }
   .card-photo--row { flex-direction: column; }
   .card-photo--row .card-photo__media--side { width: 100%; aspect-ratio: 16 / 10; min-height: 0; }
+}
+
+@media (max-width: 680px) {
+  :root { --r-shell: 22px; --r-core: 15px; }
+  .card--row { flex-direction: column; align-items: flex-start; gap: 16px; }
   .why__grid { grid-template-columns: 1fr; }
   .brand-wall__grid { grid-template-columns: 1fr 1fr; }
   .auth-brands__marks { flex-direction: column; align-items: stretch; gap: 14px; }
