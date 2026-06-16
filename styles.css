@@ -132,7 +132,7 @@ body::before {
   top: -60px;
   z-index: 400;
   background: var(--green);
-  color: #0A1A2B;
+  color: #fff;
   font-family: var(--font-h);
   font-weight: 700;
   font-size: 0.8rem;
@@ -340,7 +340,7 @@ body::before {
   white-space: nowrap;
   box-shadow: var(--bezel-hi);
 }
-.badge--authorized { background: var(--grad-green); color: #0A1A2B; } /* AA sobre verde */
+.badge--authorized { background: var(--grad-green); color: #fff; } /* regla de marca: blanco sobre verde */
 .badge--atex {
   background: var(--semsa-blue);
   color: #fff;
@@ -1131,7 +1131,7 @@ a:hover > .photo-frame .photo-frame__img,
   font-size: 0.6rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #0A1A2B;
+  color: #fff;
   background: var(--grad-green);
   padding: 4px 11px;
   border-radius: var(--r-pill);
@@ -1416,7 +1416,7 @@ a:hover > .photo-frame .photo-frame__img,
   padding: 8px 16px 8px 13px;
   border-radius: var(--r-pill);
   background: var(--grad-green);
-  color: #0A1A2B; /* AA sobre gradiente verde (igual que botones primarios) */
+  color: #fff; /* regla de marca: blanco sobre verde */
   font-family: var(--font-h);
   font-weight: 700;
   font-size: 0.72rem;
