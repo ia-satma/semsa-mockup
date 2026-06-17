@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260616250000">
+  <link rel="stylesheet" href="styles.css?v=20260616260000">
   <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
 </head>
 <body>
@@ -598,12 +598,31 @@
             Desde 1993, SEMSA es el Centro de Servicio Autorizado de Ingersoll Rand y ARO en México. Eso significa técnicos certificados directamente por el fabricante, acceso a refacciones originales y la garantía oficial que protege su inversión.
           </p>
           <ul class="auth__services">
-            <li>Mantenimiento preventivo y correctivo</li>
-            <li>Diagnóstico técnico especializado</li>
-            <li>Reparación con refacciones originales</li>
-            <li>Calibración y certificación de equipo</li>
-            <li>Capacitación técnica al personal</li>
-            <li>[FALTA: lista completa de servicios de SEMSA]</li>
+            <li>
+              <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              <span class="svc-label">Mantenimiento preventivo y correctivo</span>
+            </li>
+            <li>
+              <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              <span class="svc-label">Diagnóstico técnico especializado</span>
+            </li>
+            <li>
+              <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/></svg>
+              <span class="svc-label">Reparación con refacciones originales</span>
+            </li>
+            <li>
+              <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
+              <span class="svc-label">Calibración y certificación de equipo</span>
+            </li>
+            <li>
+              <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              <span class="svc-label">Capacitación técnica al personal</span>
+            </li>
+            <!-- [FALTA: lista completa de servicios de SEMSA] — placeholder mostrado como chip "ver más" -->
+            <li class="svc--more">
+              <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+              <span class="svc-label">Ver catálogo completo de servicios</span>
+            </li>
           </ul>
           <div class="auth__ctas">
             <a href="#cotizar" class="btn btn--primary btn--icon">
@@ -1003,6 +1022,6 @@
     </svg>
   </a>
 
-  <script src="script.js?v=20260616250000"></script>
+  <script src="script.js?v=20260616260000"></script>
 </body>
 </html>

@@ -1757,26 +1757,53 @@ a:hover > .photo-frame .photo-frame__img,
 .auth__services {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 12px;
   margin: 28px 0 32px;
+  list-style: none;
+  padding: 0;
 }
 .auth__services li {
   position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
   font-size: 0.9rem;
+  font-weight: 500;
   color: var(--ink-dark);
-  padding: 12px 14px 12px 16px;
+  padding: 14px 16px;
   background: #fff;
   border: 1px solid var(--hair-light);
+  border-top: 2px solid var(--semsa-green);   /* acento superior verde (no barra lateral idéntica) */
   border-radius: var(--r-sm);
   box-shadow: var(--bezel-hi-light);
-  overflow: hidden;
+  transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out), border-color .25s var(--ease-out);
 }
-.auth__services li::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--grad-blue);
+.auth__services li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px -14px rgba(0, 70, 139, .30);
+  border-top-color: var(--semsa-blue);
+}
+.svc-icon {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  color: var(--semsa-green);   /* verde = certificado/servicio SEMSA */
+  margin-top: 1px;
+}
+.svc-label { line-height: 1.34; }
+/* Chip fantasma "ver más": borde discontinuo azul, distinto a los servicios reales */
+.auth__services li.svc--more {
+  background: transparent;
+  border: 1.5px dashed rgba(0, 122, 214, .6);
+  color: var(--semsa-blue-dark);
+  box-shadow: none;
+  cursor: pointer;
+}
+.auth__services li.svc--more .svc-icon { color: var(--semsa-blue-dark); }
+.auth__services li.svc--more:hover {
+  background: rgba(0, 122, 214, .05);
+  border-color: var(--semsa-blue-dark);
+  transform: translateY(-3px);
+  box-shadow: none;
 }
 .auth__ctas { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
 
