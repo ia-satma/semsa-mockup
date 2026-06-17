@@ -1835,15 +1835,40 @@ a:hover > .photo-frame .photo-frame__img,
 }
 .industries__item:nth-child(3n) { border-right: none; }
 .industries__item:nth-last-child(-n+3) { border-bottom: none; }
-.industries__item:hover { background: rgba(0,122,214,.12); }
+/* Acento verde lateral que "enciende" al hover (patrón del sitio) */
+.industries__item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 22%;
+  height: 56%; width: 2px;
+  background: var(--green);
+  border-radius: 2px;
+  opacity: 0;
+  transform: scaleY(.4);
+  transition: opacity .28s var(--ease-out), transform .28s var(--ease-out);
+}
+.industries__item:hover { background: rgba(0,204,0,.06); }
+.industries__item:hover::before { opacity: 1; transform: scaleY(1); }
+/* Industrias en zona clasificada (ATEX) — realce sutil de fila */
+.industries__item:has(.industries__tag) { background: rgba(0,122,214,.10); }
+.industries__item:has(.industries__tag):hover { background: rgba(0,204,0,.06); }
 .industries__idx {
   font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: 0.72rem;
+  font-weight: 400;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
   color: var(--green-light);
-  opacity: .9;
+  opacity: .55;
   flex-shrink: 0;
 }
+.industries__icon {
+  flex-shrink: 0;
+  width: 18px; height: 18px;
+  color: var(--semsa-green);
+  opacity: .8;
+  transition: opacity .28s var(--ease-out);
+}
+.industries__item:hover .industries__icon { opacity: 1; }
 .industries__tag {
   font-family: var(--font-mono);
   font-size: 0.58rem;
@@ -1854,6 +1879,64 @@ a:hover > .photo-frame .photo-frame__img,
   padding: 3px 8px;
   border-radius: 4px;
   margin-left: auto;
+}
+
+/* ─── PRUEBA SOCIAL (datos verificados — sustituye al testimonial) ─── */
+.social-proof {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--hair);
+  border-radius: var(--r-shell);
+  overflow: hidden;
+  background: linear-gradient(160deg, rgba(0,102,179,.20), rgba(0,70,139,.06));
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  box-shadow: var(--sh-ambient-sm), inset 0 1px 0 rgba(255,255,255,.10);
+}
+.social-proof__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: clamp(28px, 4vw, 40px) 22px;
+  text-align: center;
+  border-right: 1px solid var(--hair);
+}
+.social-proof__item:last-child { border-right: none; }
+.social-proof__num {
+  font-family: var(--font-h);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 3.8vw, 3.1rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--green-light);
+}
+.social-proof__label {
+  font-family: var(--font-b);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.35;
+}
+.social-proof__label em {
+  display: block;
+  margin-top: 3px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+}
+@media (max-width: 760px) {
+  .social-proof { grid-template-columns: 1fr 1fr; }
+  .social-proof__item:nth-child(2) { border-right: none; }
+  .social-proof__item:nth-child(-n+2) { border-bottom: 1px solid var(--hair); }
+}
+@media (max-width: 460px) {
+  .social-proof { grid-template-columns: 1fr; }
+  .social-proof__item { border-right: none; border-bottom: 1px solid var(--hair); }
+  .social-proof__item:last-child { border-bottom: none; }
 }
 
 /* ─── TESTIMONIAL (sobrio, editorial) ────────────────────────── */
