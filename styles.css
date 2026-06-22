@@ -2018,7 +2018,8 @@ a:hover > .photo-frame .photo-frame__img,
   color: #fff;                 /* regla de marca: blanco sobre verde */
   background: var(--semsa-green);
 }
-.coverage__tag--us { background: var(--semsa-blue); }   /* azul para EE.UU. */
+.coverage__tag--office { background: var(--semsa-blue); }       /* oficina corporativa */
+.coverage__tag--us { background: var(--semsa-blue-dark); }      /* EE.UU. */
 .coverage__stats {
   display: flex;
   flex-wrap: wrap;
