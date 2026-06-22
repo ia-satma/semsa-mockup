@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260617130000">
+  <link rel="stylesheet" href="styles.css?v=20260617150000">
   <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
 </head>
 <body>
@@ -430,7 +430,7 @@
 
             <div class="auth-brands__marks">
               <figure class="brand-chip brand-chip--lg brand-chip--auth">
-                <img src="assets/img/semsa-optimizacion-marcas-logo-1.png" alt="Ingersoll Rand" class="brand-chip__img" width="170" height="76" loading="lazy" decoding="async">
+                <img src="assets/img/brands/ingersoll-rand.webp" alt="Ingersoll Rand" class="brand-chip__img" width="170" height="76" loading="lazy" decoding="async">
                 <span class="brand-chip__role">Polipastos · herramienta neumática</span>
                 <figcaption class="brand-chip__tag brand-chip__tag--auth">
                   <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>
@@ -453,17 +453,26 @@
         <div class="brand-wall" data-reveal data-reveal-delay="1">
           <div class="brand-wall__head">
             <span class="mono-tag">Portafolio multimarca</span>
-            <span class="brand-wall__count">16+ marcas representadas</span>
+            <span class="brand-wall__count">Marcas líderes que distribuimos</span>
           </div>
           <ul class="brand-wall__grid">
             <li class="brand-chip" data-reveal="scale" data-reveal-delay="1">
-              <img src="assets/img/semsa-optimizacion-marcas-logo-2.png" alt="Cleco" class="brand-chip__img" width="150" height="67" loading="lazy" decoding="async">
+              <img src="assets/img/brands/cleco.webp" alt="Cleco" class="brand-chip__img" width="150" height="67" loading="lazy" decoding="async">
             </li>
             <li class="brand-chip" data-reveal="scale" data-reveal-delay="2">
-              <img src="assets/img/semsa-optimizacion-marcas-logo-3.png" alt="Makita" class="brand-chip__img" width="150" height="67" loading="lazy" decoding="async">
+              <img src="assets/img/brands/makita.webp" alt="Makita" class="brand-chip__img" width="150" height="67" loading="lazy" decoding="async">
             </li>
             <li class="brand-chip" data-reveal="scale" data-reveal-delay="3">
-              <img src="assets/img/semsa-optimizacion-marcas-logo-4.png" alt="Rivit" class="brand-chip__img" width="150" height="67" loading="lazy" decoding="async">
+              <img src="assets/img/brands/rivit.webp" alt="Rivit" class="brand-chip__img" width="150" height="67" loading="lazy" decoding="async">
+            </li>
+            <li class="brand-chip" data-reveal="scale" data-reveal-delay="1">
+              <img src="assets/img/brands/lubbering.webp" alt="Lübbering" class="brand-chip__img" width="150" height="67" loading="lazy" decoding="async">
+            </li>
+            <li class="brand-chip" data-reveal="scale" data-reveal-delay="2">
+              <img src="assets/img/brands/durofix.webp" alt="Durofix" class="brand-chip__img" width="150" height="67" loading="lazy" decoding="async">
+            </li>
+            <li class="brand-chip" data-reveal="scale" data-reveal-delay="3">
+              <img src="assets/img/brands/estic.webp" alt="Estic" class="brand-chip__img" width="150" height="67" loading="lazy" decoding="async">
             </li>
             <li class="brand-chip brand-chip--wm" data-reveal="scale" data-reveal-delay="1"><span class="wm wm--graco">Graco</span></li>
             <li class="brand-chip brand-chip--wm" data-reveal="scale" data-reveal-delay="2"><span class="wm wm--hitachi">Hitachi</span></li>
@@ -473,14 +482,6 @@
             </li>
             <li class="brand-chip brand-chip--wm" data-reveal="scale" data-reveal-delay="1"><span class="wm wm--apex">Apex</span></li>
             <li class="brand-chip brand-chip--wm" data-reveal="scale" data-reveal-delay="2"><span class="wm wm--aeromotive">Aeromotive</span></li>
-            <li class="brand-chip brand-chip--wm" data-reveal="scale" data-reveal-delay="3"><span class="wm wm--lubbering">Lubbering</span></li>
-            <li class="brand-chip brand-chip--wm" data-reveal="scale" data-reveal-delay="1"><span class="wm">Estic</span></li>
-            <li class="brand-chip brand-chip--wm" data-reveal="scale" data-reveal-delay="2"><span class="wm">Desoutter</span></li>
-            <li class="brand-chip brand-chip--wm" data-reveal="scale" data-reveal-delay="3"><span class="wm">Durofix</span></li>
-            <li class="brand-chip brand-chip--wm" data-reveal="scale" data-reveal-delay="1"><span class="wm">Egamaster</span></li>
-            <li class="brand-chip brand-chip--wm" data-reveal="scale" data-reveal-delay="2"><span class="wm">J.D. Neuhaus</span></li>
-            <li class="brand-chip brand-chip--wm" data-reveal="scale" data-reveal-delay="3"><span class="wm">Zimmerman</span></li>
-            <li class="brand-chip brand-chip--wm" data-reveal="scale" data-reveal-delay="1"><span class="wm">Kolver</span></li>
           </ul>
           <div class="brand-wall__foot">
             <span class="mono-tag" title="Convención del mockup: los logotipos oficiales de las marcas restantes se insertan en producción.">Wordmarks · logotipos oficiales en producción</span>
@@ -952,7 +953,8 @@
          CONTACTO
     ============================================================ -->
     <section class="section section--light contact" id="contacto" aria-labelledby="contact-heading">
-      <div class="container contact__inner">
+      <div class="container">
+        <div class="contact__inner">
         <div class="contact__info" data-reveal="left">
           <div class="section-head__meta">
             <span class="eyebrow">
@@ -970,7 +972,7 @@
                 </svg>
               </span>
               <!-- Dirección oficial según semsamty.com/contacto (CP 64720; LinkedIn dice 64270 — confirmar con SEMSA) -->
-              <span>Moctezuma 1117, Col. Independencia, C.P. 64720, Monterrey, N.L.<span class="contact__item-note">15 ubicaciones en México y EE.UU. — Matriz: Monterrey · Oficinas: Saltillo, CDMX, Querétaro · Representantes: Hermosillo, San Luis Potosí, Ciudad Juárez, Texas, Toluca, Puebla, Guadalajara, Veracruz, Tijuana, Estado de México, California</span></span>
+              <span>Moctezuma 1117, Col. Independencia, C.P. 64720, Monterrey, N.L.<span class="contact__item-note">Oficina matriz · 15 ubicaciones en México y EE.UU. (ver sucursales abajo)</span></span>
             </li>
             <li class="contact__item">
               <span class="contact__ico" aria-hidden="true">
@@ -1022,6 +1024,33 @@
             Cómo llegar en Google Maps
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
           </a>
+        </div>
+        </div><!-- /contact__inner -->
+
+        <div class="contact__branches" data-reveal>
+          <h3 class="contact__branches-title">Sucursales · México y Estados Unidos</h3>
+          <ul class="contact__branches-grid" aria-label="Sucursales de SEMSA">
+            <li class="contact__branch contact__branch--hq">
+              <span class="contact__branch-city">Monterrey <em>Matriz</em></span>
+              <a href="mailto:monterrey@semsamty.com" class="contact__branch-mail">monterrey@semsamty.com</a>
+              <a href="tel:+528183421551" class="contact__branch-tel">81 8342-1551</a>
+            </li>
+            <li class="contact__branch"><span class="contact__branch-city">Saltillo <em>Oficina</em></span><a href="mailto:saltillo@semsamty.com" class="contact__branch-mail">saltillo@semsamty.com</a></li>
+            <li class="contact__branch"><span class="contact__branch-city">CDMX <em>Oficina</em></span><a href="mailto:mexico@semsamty.com" class="contact__branch-mail">mexico@semsamty.com</a></li>
+            <li class="contact__branch"><span class="contact__branch-city">Querétaro <em>Oficina</em></span><a href="mailto:queretaro@semsamty.com" class="contact__branch-mail">queretaro@semsamty.com</a></li>
+            <li class="contact__branch"><span class="contact__branch-city">Guadalajara</span><a href="mailto:guadalajara@semsamty.com" class="contact__branch-mail">guadalajara@semsamty.com</a></li>
+            <li class="contact__branch"><span class="contact__branch-city">San Luis Potosí</span><a href="mailto:sanluis@semsamty.com" class="contact__branch-mail">sanluis@semsamty.com</a></li>
+            <li class="contact__branch"><span class="contact__branch-city">Ciudad Juárez</span><a href="mailto:cdjuarez@semsamty.com" class="contact__branch-mail">cdjuarez@semsamty.com</a></li>
+            <li class="contact__branch"><span class="contact__branch-city">Toluca</span><a href="mailto:toluca@semsamty.com" class="contact__branch-mail">toluca@semsamty.com</a></li>
+            <li class="contact__branch"><span class="contact__branch-city">Puebla</span><a href="mailto:puebla@semsamty.com" class="contact__branch-mail">puebla@semsamty.com</a></li>
+            <li class="contact__branch"><span class="contact__branch-city">Hermosillo</span><a href="mailto:hermosillo@semsamty.com" class="contact__branch-mail">hermosillo@semsamty.com</a></li>
+            <li class="contact__branch"><span class="contact__branch-city">Tijuana</span><a href="mailto:tijuana@semsamty.com" class="contact__branch-mail">tijuana@semsamty.com</a></li>
+            <li class="contact__branch"><span class="contact__branch-city">Estado de México</span><a href="mailto:edomexico@semsamty.com" class="contact__branch-mail">edomexico@semsamty.com</a></li>
+            <li class="contact__branch"><span class="contact__branch-city">Veracruz</span><a href="mailto:veracruz@semsamty.com" class="contact__branch-mail">veracruz@semsamty.com</a></li>
+            <li class="contact__branch"><span class="contact__branch-city">Texas <em>EE.UU.</em></span><a href="mailto:laredo@semsamty.com" class="contact__branch-mail">laredo@semsamty.com</a></li>
+            <li class="contact__branch"><span class="contact__branch-city">California <em>EE.UU.</em></span><a href="mailto:california@semsamty.com" class="contact__branch-mail">california@semsamty.com</a></li>
+          </ul>
+          <p class="contact__branches-note"><span class="mono-tag">Correos por oficina extraídos de semsamty.com · [FALTA: dirección y teléfono directo por sucursal]</span></p>
         </div>
       </div>
     </section>
@@ -1096,6 +1125,6 @@
     </svg>
   </a>
 
-  <script src="script.js?v=20260617130000"></script>
+  <script src="script.js?v=20260617150000"></script>
 </body>
 </html>

@@ -1578,9 +1578,13 @@ a:hover > .photo-frame .photo-frame__img,
   transition: transform .3s ease;
 }
 .brand-wall__grid .brand-chip:hover { transform: scale(1.04); box-shadow: none; }
-.brand-wall__grid .brand-chip__img,
+.brand-wall__grid .brand-chip__img {
+  max-width: 100%; max-height: 54px; width: auto; height: auto; object-fit: contain;
+  opacity: 0.6; filter: grayscale(1);          /* muro monocromo premium */
+  transition: opacity .3s ease, filter .3s ease;
+}
 .brand-wall__grid .brand-chip--wm .wm { opacity: 0.65; transition: opacity .3s ease; }
-.brand-wall__grid .brand-chip:hover .brand-chip__img,
+.brand-wall__grid .brand-chip:hover .brand-chip__img { opacity: 1; filter: grayscale(0); }  /* color en hover */
 .brand-wall__grid .brand-chip:hover .wm { opacity: 1; }
 .brand-wall__grid .brand-chip--wm .wm { color: #5a6675; }
 .brand-wall__grid .brand-chip__caption { color: #8a93a0; }
@@ -2482,6 +2486,41 @@ a:hover > .photo-frame .photo-frame__img,
   align-items: start;
 }
 .contact__list { display: flex; flex-direction: column; gap: 14px; margin: 28px 0; }
+/* ─── SUCURSALES (contacto) ─────────────────────────────────── */
+.contact__branches { margin-top: clamp(40px, 5vw, 60px); }
+.contact__branches-title {
+  font-family: var(--font-h); font-weight: 800;
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  color: var(--semsa-blue-dark); margin-bottom: 20px;
+}
+.contact__branches-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); gap: 12px;
+}
+.contact__branch {
+  display: flex; flex-direction: column; gap: 3px;
+  padding: 14px 16px; background: #fff;
+  border: 1px solid var(--hair-light); border-radius: var(--r-sm);
+  border-left: 3px solid var(--semsa-blue);
+  box-shadow: var(--bezel-hi-light);
+  transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out);
+}
+.contact__branch:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -14px rgba(0,70,139,.28); }
+.contact__branch--hq { border-left-color: var(--semsa-green); }
+.contact__branch-city {
+  font-family: var(--font-h); font-weight: 700; font-size: .95rem; color: var(--ink-dark);
+  display: flex; align-items: center; gap: 8px;
+}
+.contact__branch-city em {
+  font-style: normal; font-family: var(--font-mono); font-size: .58rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase; color: #fff;
+  background: var(--semsa-blue); padding: 2px 7px; border-radius: var(--r-pill);
+}
+.contact__branch--hq .contact__branch-city em { background: var(--semsa-green); }  /* blanco sobre verde */
+.contact__branch-mail { font-size: .82rem; color: var(--semsa-blue-dark); word-break: break-all; }
+.contact__branch-mail:hover { color: var(--semsa-green); text-decoration: underline; text-underline-offset: 2px; }
+.contact__branch-tel { font-size: .82rem; color: var(--ink-dark-soft); }
+.contact__branches-note { margin-top: 16px; }
 .contact__item {
   display: flex;
   align-items: flex-start;
