@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260616300000">
+  <link rel="stylesheet" href="styles.css?v=20260617090000">
   <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
 </head>
 <body>
@@ -29,6 +29,7 @@
       </a>
       <nav class="nav__links" aria-label="Navegación principal">
         <a href="#productos" class="nav__link">Productos</a>
+        <a href="catalogo.html" class="nav__link">Catálogo</a>
         <a href="#marcas" class="nav__link">Marcas</a>
         <a href="#servicio-autorizado" class="nav__link">Servicio Autorizado</a>
         <div class="nav__item nav__item--has-sub">
@@ -60,12 +61,13 @@
   <div class="mobile-menu" data-mobile-menu aria-hidden="true">
     <nav class="mobile-menu__nav" aria-label="Navegación móvil">
       <a href="#productos" class="mobile-menu__link"><span class="mobile-menu__idx">01</span>Productos</a>
-      <a href="#marcas" class="mobile-menu__link"><span class="mobile-menu__idx">02</span>Marcas</a>
-      <a href="#servicio-autorizado" class="mobile-menu__link"><span class="mobile-menu__idx">03</span>Servicio Autorizado</a>
-      <a href="#nosotros" class="mobile-menu__link"><span class="mobile-menu__idx">04</span>Nosotros</a>
-      <a href="blog.html" class="mobile-menu__link"><span class="mobile-menu__idx">05</span>Blog</a>
-      <a href="reclutamiento.html" class="mobile-menu__link"><span class="mobile-menu__idx">06</span>Bolsa de trabajo</a>
-      <a href="#contacto" class="mobile-menu__link"><span class="mobile-menu__idx">07</span>Contacto</a>
+      <a href="catalogo.html" class="mobile-menu__link"><span class="mobile-menu__idx">02</span>Catálogo</a>
+      <a href="#marcas" class="mobile-menu__link"><span class="mobile-menu__idx">03</span>Marcas</a>
+      <a href="#servicio-autorizado" class="mobile-menu__link"><span class="mobile-menu__idx">04</span>Servicio Autorizado</a>
+      <a href="#nosotros" class="mobile-menu__link"><span class="mobile-menu__idx">05</span>Nosotros</a>
+      <a href="blog.html" class="mobile-menu__link"><span class="mobile-menu__idx">06</span>Blog</a>
+      <a href="reclutamiento.html" class="mobile-menu__link"><span class="mobile-menu__idx">07</span>Bolsa de trabajo</a>
+      <a href="#contacto" class="mobile-menu__link"><span class="mobile-menu__idx">08</span>Contacto</a>
     </nav>
     <a href="#cotizar" class="btn btn--primary btn--icon btn--lg mobile-menu__cta">
       <span>Solicitar cotización</span>
@@ -93,13 +95,13 @@
         <div class="hero__text" data-reveal>
           <span class="eyebrow eyebrow--on-dark">
             <span class="eyebrow__dot" aria-hidden="true"></span>
-            Monterrey, N.L. · Desde 1986
+            Presencia nacional · Desde 1986
           </span>
           <h1 id="hero-heading" class="hero__heading">
-            <span class="hero__heading-accent">40 años</span> equipando a la industria del noreste de México
+            <span class="hero__heading-accent">40 años</span> equipando a la industria de México
           </h1>
           <p class="hero__subheading">
-            Polipastos neumáticos, equipo ATEX y herramienta industrial — con servicio técnico certificado, desde 1986.
+            Polipastos neumáticos, equipo ATEX y herramienta industrial — con servicio técnico certificado y 14 oficinas en México y EE.UU., desde 1986.
           </p>
           <div class="hero__ctas">
             <a href="#cotizar" class="btn btn--primary btn--icon btn--lg">
@@ -553,7 +555,7 @@
               </svg>
             </div>
             <h3 class="why__title">Presencia Nacional</h3>
-            <p class="why__desc">14 oficinas en México —de Monterrey a Tijuana— más presencia en Texas y California. Cubrimos donde está su industria.</p>
+            <p class="why__desc">14 oficinas en México y EE.UU. —de Monterrey a Tijuana, más Texas y California. Cubrimos donde está su industria.</p>
           </div>
         </div>
       </div>
@@ -652,7 +654,7 @@
             </span>
           </div>
           <h2 id="cases-heading" class="section-head__title">Industrias que confían en SEMSA</h2>
-          <p class="section-head__sub">De la línea de ensamble automotriz a la planta química con zonas clasificadas — equipamos procesos críticos en todo el noreste.</p>
+          <p class="section-head__sub">De la línea de ensamble automotriz a la planta química con zonas clasificadas — equipamos procesos críticos en todo México.</p>
         </header>
 
         <!-- Strip tipográfico de industrias (sin cards repetidas) -->
@@ -676,16 +678,58 @@
           </div>
           <div class="social-proof__item">
             <span class="social-proof__num">+9,000</span>
-            <span class="social-proof__label">clientes atendidos<em>Noreste de México</em></span>
+            <span class="social-proof__label">clientes atendidos<em>Presencia nacional</em></span>
           </div>
           <div class="social-proof__item">
             <span class="social-proof__num">14</span>
-            <span class="social-proof__label">oficinas en México<em>De Monterrey a Tijuana</em></span>
+            <span class="social-proof__label">oficinas<em>México y EE.UU.</em></span>
           </div>
           <div class="social-proof__item">
             <span class="social-proof__num">+465</span>
             <span class="social-proof__label">SKUs en catálogo<em>16 marcas líderes</em></span>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         COBERTURA NACIONAL
+    ============================================================ -->
+    <section class="section section--light coverage" id="cobertura" aria-labelledby="coverage-heading">
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="pin-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol></svg>
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <div class="section-head__meta">
+            <span class="eyebrow">
+              <span class="eyebrow__dot eyebrow__dot--green" aria-hidden="true"></span>
+              Cobertura
+            </span>
+          </div>
+          <h2 id="coverage-heading" class="section-head__title">Presencia en México y Estados Unidos</h2>
+          <p class="section-head__sub">14 oficinas para acompañar a su planta donde opere — refacciones, servicio y asesoría técnica cerca de usted.</p>
+        </header>
+
+        <ul class="coverage__grid" data-reveal aria-label="Oficinas de SEMSA">
+          <li class="coverage__item coverage__item--hq"><svg class="coverage__pin" aria-hidden="true"><use href="#pin-ico"/></svg>Monterrey<span class="coverage__tag">Matriz</span></li>
+          <li class="coverage__item"><svg class="coverage__pin" aria-hidden="true"><use href="#pin-ico"/></svg>Saltillo</li>
+          <li class="coverage__item"><svg class="coverage__pin" aria-hidden="true"><use href="#pin-ico"/></svg>CDMX</li>
+          <li class="coverage__item"><svg class="coverage__pin" aria-hidden="true"><use href="#pin-ico"/></svg>Guadalajara</li>
+          <li class="coverage__item"><svg class="coverage__pin" aria-hidden="true"><use href="#pin-ico"/></svg>Querétaro</li>
+          <li class="coverage__item"><svg class="coverage__pin" aria-hidden="true"><use href="#pin-ico"/></svg>San Luis Potosí</li>
+          <li class="coverage__item"><svg class="coverage__pin" aria-hidden="true"><use href="#pin-ico"/></svg>Ciudad Juárez</li>
+          <li class="coverage__item"><svg class="coverage__pin" aria-hidden="true"><use href="#pin-ico"/></svg>Toluca</li>
+          <li class="coverage__item"><svg class="coverage__pin" aria-hidden="true"><use href="#pin-ico"/></svg>Puebla</li>
+          <li class="coverage__item"><svg class="coverage__pin" aria-hidden="true"><use href="#pin-ico"/></svg>Hermosillo</li>
+          <li class="coverage__item"><svg class="coverage__pin" aria-hidden="true"><use href="#pin-ico"/></svg>Tijuana</li>
+          <li class="coverage__item"><svg class="coverage__pin" aria-hidden="true"><use href="#pin-ico"/></svg>Estado de México</li>
+          <li class="coverage__item coverage__item--us"><svg class="coverage__pin" aria-hidden="true"><use href="#pin-ico"/></svg>Texas<span class="coverage__tag coverage__tag--us">EE.UU.</span></li>
+          <li class="coverage__item coverage__item--us"><svg class="coverage__pin" aria-hidden="true"><use href="#pin-ico"/></svg>California<span class="coverage__tag coverage__tag--us">EE.UU.</span></li>
+        </ul>
+
+        <div class="coverage__stats" data-reveal data-reveal-delay="1">
+          <span><strong>14</strong> oficinas</span>
+          <span><strong>2</strong> países</span>
+          <span><strong>+9,000</strong> clientes atendidos</span>
         </div>
       </div>
     </section>
@@ -705,7 +749,7 @@
             </div>
             <h2 id="about-heading" class="about__heading">40 años al servicio de la industria</h2>
             <p class="about__desc">
-              Fundados en Monterrey el 26 de diciembre de 1986, comenzamos dando servicio a equipo neumático. En 1993 nos convertimos en Centro de Servicio Autorizado de Ingersoll Rand y ARO para México, y en 2001 sumamos la distribución Graco. Con departamento propio de proyectos e instalaciones, almacén y laboratorio de servicio en Monterrey, hoy acompañamos a la industria del noreste y de todo el país.
+              Fundados en Monterrey el 26 de diciembre de 1986, comenzamos dando servicio a equipo neumático. En 1993 nos convertimos en Centro de Servicio Autorizado de Ingersoll Rand y ARO para México, y en 2001 sumamos la distribución Graco. Con departamento propio de proyectos e instalaciones, almacén y laboratorio de servicio en Monterrey, hoy acompañamos a la industria de todo el país con 14 oficinas en México y EE.UU.
             </p>
             <p class="about__desc about__mission">
               <strong>Misión —</strong> <em>“Mejorar los procesos de nuestros clientes suministrando equipos con tecnología y calidad, a través de asesoría especializada.”</em><br>
@@ -925,7 +969,7 @@
                 </svg>
               </span>
               <!-- Dirección oficial según semsamty.com/contacto (CP 64720; LinkedIn dice 64270 — confirmar con SEMSA) -->
-              <span>Moctezuma 1117, Col. Independencia, C.P. 64720, Monterrey, N.L.<span class="contact__item-note">14 oficinas: Monterrey · Saltillo · CDMX · Edo. de México · Toluca · Querétaro · Guadalajara · San Luis Potosí · Puebla · Veracruz · Cd. Juárez · Hermosillo · Tijuana · Laredo TX · California</span></span>
+              <span>Moctezuma 1117, Col. Independencia, C.P. 64720, Monterrey, N.L.<span class="contact__item-note">14 oficinas en México y EE.UU.: Monterrey · Saltillo · CDMX · Guadalajara · Querétaro · San Luis Potosí · Ciudad Juárez · Toluca · Puebla · Hermosillo · Tijuana · Estado de México · Texas · California</span></span>
             </li>
             <li class="contact__item">
               <span class="contact__ico" aria-hidden="true">
@@ -1003,6 +1047,7 @@
             <li><a href="#productos">Manejo de Fluidos</a></li>
             <li><a href="#productos">Pintura y Recubrimiento</a></li>
             <li><a href="#productos">Sistemas de Sellado</a></li>
+            <li><a href="catalogo.html">Ver catálogo completo →</a></li>
           </ul>
         </div>
         <div class="footer__col">
@@ -1020,6 +1065,7 @@
           <ul class="footer__links">
             <li><a href="#servicio-autorizado">Servicio Autorizado</a></li>
             <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#cobertura">Cobertura nacional</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="reclutamiento.html">Bolsa de trabajo</a></li>
             <li><a href="#contacto">Contacto</a></li>
@@ -1049,6 +1095,6 @@
     </svg>
   </a>
 
-  <script src="script.js?v=20260616300000"></script>
+  <script src="script.js?v=20260617090000"></script>
 </body>
 </html>

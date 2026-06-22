@@ -329,3 +329,48 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     if (r.bottom > 0 && r.top < (window.innerHeight || 0)) tryPlay();
   });
 })();
+
+// ── CATÁLOGO: filtro por categoría (solo en catalogo.html) ────
+(function initCatalogFilter() {
+  const filters = document.querySelector('[data-catalog-filters]');
+  const grid = document.querySelector('[data-catalog-grid]');
+  if (!filters || !grid) return;
+  const cards = Array.prototype.slice.call(grid.querySelectorAll('.product-card'));
+  filters.addEventListener('click', function (e) {
+    const btn = e.target.closest('.catalog__filter');
+    if (!btn) return;
+    const cat = btn.getAttribute('data-filter');
+    filters.querySelectorAll('.catalog__filter').forEach(function (b) {
+      b.classList.toggle('is-active', b === btn);
+    });
+    cards.forEach(function (card) {
+      const show = cat === 'all' || card.getAttribute('data-cat') === cat;
+      card.classList.toggle('is-hidden', !show);
+    });
+  });
+})();
+
+// ── CATÁLOGO: lista de cotización (stub de mockup; cableado real en Fase 5) ──
+(function initQuoteList() {
+  const bar = document.querySelector('[data-quote-bar]');
+  if (!bar) return;
+  const countEl = bar.querySelector('[data-quote-count]');
+  const added = new Set();
+  document.querySelectorAll('[data-add-quote]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const id = btn.getAttribute('data-product') || String(added.size);
+      if (added.has(id)) {
+        added.delete(id);
+        btn.classList.remove('is-added');
+        btn.textContent = '+ Agregar a cotización';
+      } else {
+        added.add(id);
+        btn.classList.add('is-added');
+        btn.textContent = '✓ Agregado';
+      }
+      const n = added.size;
+      if (countEl) countEl.textContent = String(n);
+      bar.hidden = n === 0;
+    });
+  });
+})();
