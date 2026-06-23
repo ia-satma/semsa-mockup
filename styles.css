@@ -3213,3 +3213,53 @@ a:hover > .photo-frame .photo-frame__img,
               rgba(0,21,40,.93) 100%);
 }
 .stats-bleed .social-proof { border-color: var(--hair-strong); }
+
+/* ============================================================
+   FASE 2 — MITAD INFERIOR: NOSOTROS BLEED + PRUEBA SOCIAL
+   Reusa .section--bleed (Fase 1). Solo clases nuevas.
+============================================================ */
+
+/* === FASE 2: NOSOTROS BLEED === */
+.about--bleed { color: var(--ink); }
+/* Panel "glass" para el texto: garantiza contraste AA sobre la foto */
+.about__panel {
+  background: rgba(0,21,40,.55);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--hair);
+  border-radius: var(--r-md);
+  padding: clamp(24px, 4vw, 48px);
+  box-shadow: var(--sh-ambient), var(--bezel-hi);
+}
+/* El aside de valores deja de ser tarjeta blanca: card oscuro translúcido (acento verde) */
+.about--bleed .about__aside {
+  background: rgba(255,255,255,.05);
+  border-color: var(--hair);
+  border-top-color: var(--semsa-green);
+  box-shadow: none;
+}
+.about--bleed .about__values-label { color: var(--ink); }
+/* El timeline respira sobre el fondo oscuro, con panel sutil para contraste */
+.about--bleed .about__timeline-wrap {
+  background: rgba(0,21,40,.45);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-color: var(--hair);
+  margin-top: 28px;
+}
+
+/* === FASE 2: RESEÑAS -> BANDA DE PRUEBA SOCIAL (sin placeholders) === */
+.social-band { text-align: center; }
+.social-band .section-head { margin-left: auto; margin-right: auto; }
+.reviews__actions {
+  display: flex; flex-wrap: wrap; gap: 14px;
+  justify-content: center; margin-top: 28px;
+}
+
+/* === FASE 2: enlace "ver ubicaciones" en Contacto === */
+.contact__see-all {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-h); font-weight: 600; font-size: .9rem;
+  color: var(--green); margin-top: 2px;
+}
+.contact__see-all:hover { text-decoration: underline; }

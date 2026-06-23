@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260623120000">
+  <link rel="stylesheet" href="styles.css?v=20260623180000">
   <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
 </head>
 <body>
@@ -369,8 +369,8 @@
         </div>
 
         <div class="categories__cta-row" data-reveal>
-          <a href="#cotizar" class="btn btn--secondary btn--icon btn--lg">
-            <span>Solicitar cotización de productos</span>
+          <a href="catalogo.html" class="btn btn--secondary btn--icon btn--lg">
+            <span>Ver catálogo</span>
             <span class="btn__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </span>
@@ -482,7 +482,7 @@
           </ul>
           <div class="brand-wall__foot">
             <span class="mono-tag" title="Convención del mockup: los logotipos oficiales de las marcas restantes se insertan en producción.">Wordmarks · logotipos oficiales en producción</span>
-            <a href="#cotizar" class="brand-wall__link">
+            <a href="catalogo.html" class="brand-wall__link">
               Ver catálogo por marca
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
@@ -624,17 +624,6 @@
               <span class="svc-label">Ver catálogo completo de servicios</span>
             </li>
           </ul>
-          <div class="auth__ctas">
-            <a href="#cotizar" class="btn btn--primary btn--icon">
-              <span>Solicitar servicio técnico</span>
-              <span class="btn__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </span>
-            </a>
-            <a href="#servicio-autorizado" class="btn btn--ghost">Conocer más
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
         </div>
       </div>
     </section>
@@ -820,10 +809,12 @@
     <!-- ============================================================
          NOSOTROS (resumen)
     ============================================================ -->
-    <section class="section section--light about" id="nosotros" aria-labelledby="about-heading">
+    <section class="section about about--bleed section--bleed" id="nosotros" aria-labelledby="about-heading">
+      <img class="section-bleed__img" src="assets/img/bg-nosotros.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
       <div class="container">
+        <div class="about__panel" data-reveal>
         <div class="about__inner">
-          <div class="about__text" data-reveal="left">
+          <div class="about__text">
             <div class="section-head__meta">
               <span class="eyebrow eyebrow--on-dark">
                 <span class="eyebrow__dot" aria-hidden="true"></span>
@@ -838,14 +829,8 @@
               <strong>Misión —</strong> <em>“Mejorar los procesos de nuestros clientes suministrando equipos con tecnología y calidad, a través de asesoría especializada.”</em><br>
               <strong>Visión —</strong> <em>“Ser líder nacional en las marcas que distribuimos.”</em>
             </p>
-            <a href="#nosotros" class="btn btn--outline btn--icon">
-              <span>Conocer nuestra historia</span>
-              <span class="btn__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </span>
-            </a>
           </div>
-          <aside class="about__aside" data-reveal="right" data-reveal-delay="1">
+          <aside class="about__aside">
             <div class="about__values-block">
               <span class="about__values-label">Nuestros valores</span>
               <ul class="about__values" aria-label="Valores de SEMSA">
@@ -856,24 +841,11 @@
                 <li>Responsabilidad</li>
               </ul>
             </div>
-            <ul class="about__facilities" aria-label="Capacidades de SEMSA">
-              <li class="about__facility">
-                <img src="assets/img/semsa-optimizacion-experiencia-almacenes.png" alt="" aria-hidden="true" class="about__facility-ico" width="44" height="44" loading="lazy">
-                <span class="about__facility-text"><strong>Almacén propio</strong>Disponibilidad e inventario</span>
-              </li>
-              <li class="about__facility">
-                <img src="assets/img/semsa-optimizacion-experiencia-oficinas.png" alt="" aria-hidden="true" class="about__facility-ico" width="44" height="44" loading="lazy">
-                <span class="about__facility-text"><strong>Equipo técnico</strong>Asesoría e ingeniería de aplicación</span>
-              </li>
-              <li class="about__facility">
-                <img src="assets/img/semsa-optimizacion-experiencia-clientes.png" alt="" aria-hidden="true" class="about__facility-ico" width="44" height="44" loading="lazy">
-                <span class="about__facility-text"><strong>+9,000 clientes</strong>Atendidos en la industria nacional</span>
-              </li>
-            </ul>
           </aside>
         </div>
+        </div><!-- /about__panel -->
 
-        <!-- Línea de tiempo HORIZONTAL (riel full-width, desplazable en móvil) -->
+        <!-- Línea de tiempo HORIZONTAL — ancla visual sobre el fondo oscuro -->
         <div class="about__timeline-wrap" data-reveal="fade" data-reveal-delay="1">
           <div class="about__timeline-head">
             <span class="about__timeline-label">Trayectoria</span>
@@ -928,69 +900,33 @@
     <!-- ============================================================
          RESEÑAS
     ============================================================ -->
-    <section class="section section--light reviews" id="resenas" aria-labelledby="reviews-heading">
+    <section class="section section--light reviews social-band" id="resenas" aria-labelledby="reviews-heading">
       <div class="container">
         <header class="section-head" data-reveal>
           <div class="section-head__meta">
             <span class="eyebrow">
               <span class="eyebrow__dot eyebrow__dot--green" aria-hidden="true"></span>
-              Reseñas
+              Prueba social
             </span>
           </div>
-          <h2 id="reviews-heading" class="section-head__title">Lo que opinan nuestros clientes</h2>
-          <p class="section-head__sub">La confianza de la industria se gana proyecto a proyecto. Esto es lo que dicen quienes ya trabajan con SEMSA.</p>
-          <span class="reviews__rating" data-reveal data-reveal-delay="1">
-            <span class="reviews__stars" aria-hidden="true">★★★★★</span>
-            <span class="reviews__rating-num">[FALTA: 4.X]</span>
-            <span class="reviews__rating-meta">[FALTA: N] reseñas · <a href="#" aria-disabled="true">Ver en Google →</a></span>
-          </span>
+          <h2 id="reviews-heading" class="section-head__title">La confianza de la industria, proyecto a proyecto</h2>
+          <p class="section-head__sub">Conoce los casos de éxito y las reseñas de las empresas que ya trabajan con SEMSA — del reto en planta al resultado medible.</p>
         </header>
 
-        <div class="reviews__grid">
-          <figure class="review-card" data-reveal>
-            <span class="review-card__stars" aria-hidden="true">★★★★★</span>
-            <blockquote class="review-card__quote">[REQUIERE COPY: reseña real autorizada de un cliente — experiencia con el servicio, tiempos de respuesta o asesoría técnica.]</blockquote>
-            <figcaption class="review-card__author">
-              <span class="review-card__avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 21a8 8 0 1 0-16 0"/><circle cx="12" cy="7" r="4"/></svg></span>
-              <span>
-                <span class="review-card__name">[REQUIERE COPY: nombre]</span>
-                <span class="review-card__company">[REQUIERE COPY: cargo · empresa]</span>
-              </span>
-            </figcaption>
-          </figure>
-          <figure class="review-card" data-reveal data-reveal-delay="1">
-            <span class="review-card__stars" aria-hidden="true">★★★★★</span>
-            <blockquote class="review-card__quote">[REQUIERE COPY: reseña real autorizada de un cliente.]</blockquote>
-            <figcaption class="review-card__author">
-              <span class="review-card__avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 21a8 8 0 1 0-16 0"/><circle cx="12" cy="7" r="4"/></svg></span>
-              <span>
-                <span class="review-card__name">[REQUIERE COPY: nombre]</span>
-                <span class="review-card__company">[REQUIERE COPY: cargo · empresa]</span>
-              </span>
-            </figcaption>
-          </figure>
-          <figure class="review-card" data-reveal data-reveal-delay="2">
-            <span class="review-card__stars" aria-hidden="true">★★★★★</span>
-            <blockquote class="review-card__quote">[REQUIERE COPY: reseña real autorizada de un cliente.]</blockquote>
-            <figcaption class="review-card__author">
-              <span class="review-card__avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 21a8 8 0 1 0-16 0"/><circle cx="12" cy="7" r="4"/></svg></span>
-              <span>
-                <span class="review-card__name">[REQUIERE COPY: nombre]</span>
-                <span class="review-card__company">[REQUIERE COPY: cargo · empresa]</span>
-              </span>
-            </figcaption>
-          </figure>
-        </div>
-
-        <div class="reviews__cta" data-reveal>
+        <div class="reviews__actions" data-reveal data-reveal-delay="1">
+          <a href="casos.html" class="btn btn--primary btn--icon">
+            <span>Ver casos de éxito</span>
+            <span class="btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </a>
           <a href="resenas.html" class="btn btn--outline btn--icon">
-            <span>Ver todas las reseñas</span>
+            <span>Ver reseñas</span>
             <span class="btn__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </span>
           </a>
         </div>
-        <p class="page-note"><span class="mono-tag">Mockup — [FALTA: reseñas reales autorizadas + calificación de Google]</span></p>
       </div>
     </section>
 
@@ -1122,7 +1058,7 @@
                 </svg>
               </span>
               <!-- Dirección oficial según semsamty.com/contacto (CP 64720; LinkedIn dice 64270 — confirmar con SEMSA) -->
-              <span>Moctezuma 1117, Col. Independencia, C.P. 64720, Monterrey, N.L.<span class="contact__item-note">Oficina matriz · 15 ubicaciones en México y EE.UU. (ver sucursales abajo)</span></span>
+              <span>Moctezuma 1117, Col. Independencia, C.P. 64720, Monterrey, N.L.<span class="contact__item-note">Oficina matriz · <a href="#cobertura" class="contact__see-all">Ver las 15 ubicaciones →</a></span></span>
             </li>
             <li class="contact__item">
               <span class="contact__ico" aria-hidden="true">
@@ -1176,32 +1112,6 @@
           </a>
         </div>
         </div><!-- /contact__inner -->
-
-        <div class="contact__branches" data-reveal>
-          <h3 class="contact__branches-title">Sucursales · México y Estados Unidos</h3>
-          <ul class="contact__branches-grid" aria-label="Sucursales de SEMSA">
-            <li class="contact__branch contact__branch--hq">
-              <span class="contact__branch-city">Monterrey <em>Matriz</em></span>
-              <a href="mailto:monterrey@semsamty.com" class="contact__branch-mail">monterrey@semsamty.com</a>
-              <a href="tel:+528183421551" class="contact__branch-tel">81 8342-1551</a>
-            </li>
-            <li class="contact__branch"><span class="contact__branch-city">Saltillo <em>Oficina</em></span><a href="mailto:saltillo@semsamty.com" class="contact__branch-mail">saltillo@semsamty.com</a></li>
-            <li class="contact__branch"><span class="contact__branch-city">CDMX <em>Oficina</em></span><a href="mailto:mexico@semsamty.com" class="contact__branch-mail">mexico@semsamty.com</a></li>
-            <li class="contact__branch"><span class="contact__branch-city">Querétaro <em>Oficina</em></span><a href="mailto:queretaro@semsamty.com" class="contact__branch-mail">queretaro@semsamty.com</a></li>
-            <li class="contact__branch"><span class="contact__branch-city">Guadalajara</span><a href="mailto:guadalajara@semsamty.com" class="contact__branch-mail">guadalajara@semsamty.com</a></li>
-            <li class="contact__branch"><span class="contact__branch-city">San Luis Potosí</span><a href="mailto:sanluis@semsamty.com" class="contact__branch-mail">sanluis@semsamty.com</a></li>
-            <li class="contact__branch"><span class="contact__branch-city">Ciudad Juárez</span><a href="mailto:cdjuarez@semsamty.com" class="contact__branch-mail">cdjuarez@semsamty.com</a></li>
-            <li class="contact__branch"><span class="contact__branch-city">Toluca</span><a href="mailto:toluca@semsamty.com" class="contact__branch-mail">toluca@semsamty.com</a></li>
-            <li class="contact__branch"><span class="contact__branch-city">Puebla</span><a href="mailto:puebla@semsamty.com" class="contact__branch-mail">puebla@semsamty.com</a></li>
-            <li class="contact__branch"><span class="contact__branch-city">Hermosillo</span><a href="mailto:hermosillo@semsamty.com" class="contact__branch-mail">hermosillo@semsamty.com</a></li>
-            <li class="contact__branch"><span class="contact__branch-city">Tijuana</span><a href="mailto:tijuana@semsamty.com" class="contact__branch-mail">tijuana@semsamty.com</a></li>
-            <li class="contact__branch"><span class="contact__branch-city">Estado de México</span><a href="mailto:edomexico@semsamty.com" class="contact__branch-mail">edomexico@semsamty.com</a></li>
-            <li class="contact__branch"><span class="contact__branch-city">Veracruz</span><a href="mailto:veracruz@semsamty.com" class="contact__branch-mail">veracruz@semsamty.com</a></li>
-            <li class="contact__branch"><span class="contact__branch-city">Texas <em>EE.UU.</em></span><a href="mailto:laredo@semsamty.com" class="contact__branch-mail">laredo@semsamty.com</a></li>
-            <li class="contact__branch"><span class="contact__branch-city">California <em>EE.UU.</em></span><a href="mailto:california@semsamty.com" class="contact__branch-mail">california@semsamty.com</a></li>
-          </ul>
-          <p class="contact__branches-note"><span class="mono-tag">Correos por oficina extraídos de semsamty.com · [FALTA: dirección y teléfono directo por sucursal]</span></p>
-        </div>
       </div>
     </section>
 
@@ -1277,6 +1187,6 @@
     </svg>
   </a>
 
-  <script src="script.js?v=20260623120000"></script>
+  <script src="script.js?v=20260623180000"></script>
 </body>
 </html>
