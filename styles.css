@@ -3070,3 +3070,146 @@ a:hover > .photo-frame .photo-frame__img,
   .section-head__title--left::after { transform: translateX(-50%) scaleX(1); transition: none; }
   .section-head__title--left::after { transform: translateX(0) scaleX(1); }
 }
+
+/* ============================================================
+   REDISEÑO HOME 2026-06 — INMERSIVO: FULL-BLEED + BENTO INDUSTRIAS
+   Extiende (NO reemplaza) .section / .photo-frame / .social-proof.
+   Paleta oficial · blanco sobre verde · contraste AA · reduced-motion.
+============================================================ */
+
+/* === PATRÓN BASE REUTILIZABLE: SECCIÓN FULL-BLEED === */
+.section--bleed {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--bg);   /* fallback navy mientras carga la foto */
+  color: var(--ink);
+}
+/* Capa 0: la fotografía a sangre (img => lazy + sin CLS) */
+.section-bleed__img {
+  position: absolute; inset: 0; z-index: -3;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(.92) contrast(1.03);
+}
+/* Capa 1: degradado navy de marca para legibilidad */
+.section--bleed::before {
+  content: ''; position: absolute; inset: 0; z-index: -2;
+  background: linear-gradient(150deg,
+              rgba(0,21,40,.80) 0%,
+              rgba(0,48,90,.56) 50%,
+              rgba(0,21,40,.90) 100%);
+}
+/* Capa 2: textura de ruido sutil (mismo SVG fractal de .card-photo) */
+.section--bleed::after {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  opacity: .20; mix-blend-mode: soft-light; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+.section--bleed .section-head__title,
+.section--bleed .section-head__sub { color: var(--ink); }
+
+/* === INDUSTRIAS — BENTO FOTOGRÁFICO ASIMÉTRICO (rediseño estrella) === */
+.industries-bento {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 214px;
+  grid-auto-flow: dense;
+  gap: 14px;
+  margin-top: 6px;
+}
+.industry-tile {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  border-radius: var(--r-md);        /* radio MENOR que --r-shell: rompe la rima */
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(255,255,255,.06);
+}
+.industry-tile--feature { grid-column: span 2; }            /* Química ATEX (ancho) */
+.industry-tile--hero    { grid-column: span 2; grid-row: span 2; } /* Automotriz (grande) */
+.industry-tile__img {
+  position: absolute; inset: 0; z-index: -2;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(.88) contrast(1.05);
+  transition: transform .6s var(--ease-out);
+}
+.industry-tile__overlay {
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(0deg,
+              rgba(0,21,40,.93) 0%,
+              rgba(0,21,40,.40) 52%,
+              rgba(0,21,40,.10) 100%);
+}
+.industry-tile__body {
+  position: relative;
+  padding: 16px 18px;
+  width: 100%;
+  display: flex; flex-direction: column; gap: 5px;
+}
+.industry-tile__idx {
+  font-family: var(--font-mono);
+  font-size: .78rem; letter-spacing: .08em;
+  color: var(--green-light);
+}
+.industry-tile__name {
+  font-family: var(--font-h); font-weight: 700;
+  font-size: 1.02rem; line-height: 1.2; color: #fff;
+  text-shadow: 0 1px 10px rgba(0,8,20,.55);
+}
+.industry-tile--hero .industry-tile__name { font-size: clamp(1.3rem, 2.2vw, 1.7rem); }
+.industry-tile--feature .industry-tile__name { font-size: 1.18rem; }
+.industry-tile__tag {
+  align-self: flex-start; margin-top: 7px;
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: .64rem; letter-spacing: .12em;
+  padding: 3px 10px; border-radius: var(--r-pill);
+  background: var(--grad-green); color: #fff;   /* regla de marca: blanco sobre verde */
+}
+.industry-tile:hover { box-shadow: var(--glow-green); }
+.industry-tile:hover .industry-tile__img { transform: scale(1.05); }
+@media (prefers-reduced-motion: reduce) {
+  .industry-tile:hover .industry-tile__img { transform: none; }
+}
+@media (max-width: 980px) {
+  .industries-bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 190px; }
+  .industry-tile--hero { grid-row: span 2; }
+}
+@media (max-width: 600px) {
+  .industries-bento { grid-template-columns: 1fr; grid-auto-rows: 168px; }
+  .industry-tile--feature, .industry-tile--hero { grid-column: auto; grid-row: auto; min-height: 200px; }
+}
+
+/* === ATEX — MOMENTO INMERSIVO FULL-BLEED (diferenciador #1) === */
+.atex--bleed { color: var(--ink); }
+.atex__inner--bleed {
+  display: grid;
+  grid-template-columns: minmax(0, 660px) 1fr;
+  gap: 48px; align-items: center;
+}
+.atex--bleed .atex__heading { color: #fff; }
+.atex--bleed .atex__desc { color: var(--ink-soft); }
+.atex--bleed .checklist li { color: var(--ink); }
+.atex__seal-wrap { position: relative; display: flex; justify-content: center; }
+.atex__seal-wrap::before {
+  content: ''; position: absolute; z-index: 0;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(86,178,0,.30), transparent 68%);
+  filter: blur(22px); pointer-events: none;
+}
+.atex__seal-wrap .atex__seal { position: relative; z-index: 1; }
+@media (max-width: 880px) {
+  .atex__inner--bleed { grid-template-columns: 1fr; gap: 34px; }
+}
+
+/* === BANDA DE ESTADÍSTICAS SOBRE FONDO INMERSIVO === */
+.stats-bleed { padding: var(--rhythm-sm) 0; }
+.stats-bleed::before {
+  background: linear-gradient(150deg,
+              rgba(0,21,40,.88) 0%,
+              rgba(0,48,90,.68) 50%,
+              rgba(0,21,40,.93) 100%);
+}
+.stats-bleed .social-proof { border-color: var(--hair-strong); }
