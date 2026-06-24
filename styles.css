@@ -3335,18 +3335,20 @@ a:hover > .photo-frame .photo-frame__img,
 .locator__band {
   position: relative; width: 100%;
   display: flex; align-items: center; justify-content: center;
-  min-height: clamp(440px, 78vh, 880px);
+  min-height: clamp(420px, 66vh, 820px);
   margin: 6px 0 clamp(22px, 3vw, 40px);
-  padding: clamp(18px, 3vw, 40px) 0;
+  padding: clamp(32px, 5vh, 60px) 0;          /* aire arriba y abajo del mapa */
   background: radial-gradient(120% 130% at 50% 0%, #023d78 0%, #002f5d 45%, #001528 100%);
-  overflow: hidden;
+  /* sin overflow:hidden — el mapa nunca se recorta; la banda crece para contenerlo */
 }
-/* Mapa interior: conserva aspect-ratio (pines % alineados); sin shell de tarjeta */
+/* Mapa interior: se dimensiona por ANCHO (su alto sale del aspect-ratio, acotado);
+   así nunca queda más alto que la banda y se ve completo, con los pines % alineados */
 .locator__map {
   position: relative;
-  height: clamp(340px, 72vh, 760px);
+  width: min(1000px, 92vw, 130vh);   /* 130vh acota el ALTO (~89vh) en pantallas bajas */
+  height: auto;
   aspect-ratio: 1000 / 684;
-  width: auto; max-width: 94vw;
+  max-width: 92vw;
   margin: 0; border: 0; border-radius: 0; box-shadow: none; background: none;
 }
 /* Tarjeta de info: flotante sobre una esquina del mapa (zona sin pines: Pacífico) */
