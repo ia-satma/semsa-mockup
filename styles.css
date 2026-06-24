@@ -3445,3 +3445,71 @@ a:hover > .photo-frame .photo-frame__img,
 .urg__title { font-family: var(--font-h); font-weight: 800; font-size: clamp(1.4rem, 3vw, 1.9rem); color: var(--blue-dark); line-height: 1.15; margin: 12px 0 10px; }
 .urg__desc { color: var(--ink-dark-soft); line-height: 1.55; margin-bottom: 20px; }
 .urg__form { gap: 14px; }
+
+/* ============================================================
+   INVESTIGACIÓN — Web consultiva (P3): selector de necesidad,
+   de producto a solución, servicio técnico, comparativa, reparar/reemplazar.
+============================================================ */
+
+/* === Selector de necesidad === */
+.needs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 18px; }
+.need-card {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 9px; width: 100%;
+  padding: clamp(20px, 2.2vw, 26px); text-align: left;
+  background: #fff; border: 1px solid var(--hair-light); border-top: 3px solid var(--semsa-green);
+  border-radius: var(--r-md); box-shadow: var(--sh-light-card);
+  text-decoration: none; cursor: pointer; font: inherit; color: inherit; appearance: none;
+  transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out);
+}
+.need-card:hover { transform: translateY(-3px); box-shadow: var(--sh-light-card), var(--glow-green); }
+.need-card:focus-visible { outline: 2px solid var(--semsa-blue); outline-offset: 3px; }
+.need-card__ico { display: grid; place-items: center; width: 46px; height: 46px; border-radius: var(--r-sm); background: rgba(86,178,0,.10); color: var(--semsa-green); margin-bottom: 4px; }
+.need-card__title { font-family: var(--font-h); font-weight: 700; font-size: 1.06rem; color: var(--semsa-blue-dark); }
+.need-card__desc { color: var(--text-main); font-size: .92rem; line-height: 1.5; flex: 1; }
+.need-card__cta { font-family: var(--font-h); font-weight: 600; font-size: .86rem; color: var(--semsa-green); margin-top: 4px; }
+@media (prefers-reduced-motion: reduce) { .need-card:hover { transform: none; } }
+
+/* === De producto a solución (pasos sobre azul) === */
+.flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.flow__step { padding: 22px; border-radius: var(--r-md); background: rgba(255,255,255,.05); border: 1px solid var(--hair); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.flow__num { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--grad-green); color: #fff; font-family: var(--font-h); font-weight: 800; font-size: 1.05rem; margin-bottom: 12px; }
+.flow__title { font-family: var(--font-h); font-weight: 700; font-size: 1.02rem; color: #fff; margin-bottom: 6px; }
+.flow__desc { color: var(--ink-soft); font-size: .9rem; line-height: 1.5; }
+@media (max-width: 860px) { .flow { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 540px) { .flow { grid-template-columns: 1fr; } }
+
+/* === Servicio técnico industrial === */
+.svc2-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.svc2-col { padding: clamp(22px, 2.4vw, 30px); background: #fff; border: 1px solid var(--hair-light); border-top: 3px solid var(--semsa-blue); border-radius: var(--r-md); box-shadow: var(--sh-light-card); }
+.svc2-col__title { font-family: var(--font-h); font-weight: 800; font-size: 1.12rem; color: var(--semsa-blue-dark); margin-bottom: 14px; }
+.svc2-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.svc2-list li { position: relative; padding-left: 24px; color: var(--text-main); font-size: .94rem; line-height: 1.45; }
+.svc2-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--semsa-green); font-weight: 800; }
+.svc2-col__note { color: var(--text-main); font-size: .94rem; line-height: 1.55; }
+.svc2-col__note strong { color: var(--semsa-blue-dark); }
+.svc2-cta { margin-top: 26px; }
+@media (max-width: 860px) { .svc2-grid { grid-template-columns: 1fr; } }
+
+/* === Comparativa: proveedor vs socio técnico === */
+.compare { border: 1px solid var(--hair-light); border-radius: var(--r-md); overflow: hidden; box-shadow: var(--sh-light-card); background: #fff; }
+.compare__head, .compare__row { display: grid; grid-template-columns: 1fr 1fr; }
+.compare__head { background: var(--semsa-blue-dark); color: #fff; font-family: var(--font-h); font-weight: 700; }
+.compare__head span { padding: 14px 18px; }
+.compare__head-semsa { background: var(--grad-green); }
+.compare__row { border-top: 1px solid var(--hair-light); }
+.compare__a, .compare__b { padding: 13px 18px; font-size: .94rem; }
+.compare__a { color: var(--ink-dark-soft); }
+.compare__b { color: var(--ink-dark); font-weight: 600; border-left: 1px solid var(--hair-light); background: rgba(86,178,0,.05); }
+.compare__close { text-align: center; margin-top: 22px; font-family: var(--font-h); font-weight: 700; font-size: clamp(1rem, 1.6vw, 1.2rem); color: var(--semsa-blue-dark); }
+@media (max-width: 560px) { .compare__a, .compare__b { font-size: .85rem; padding: 11px 13px; } }
+
+/* === ¿Reparar o reemplazar? === */
+.repvr__inner { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
+.repvr__title { font-family: var(--font-h); font-weight: 800; font-size: clamp(1.6rem, 3vw, 2.2rem); color: #fff; line-height: 1.12; margin-bottom: 16px; }
+.repvr__desc { color: var(--ink-soft); line-height: 1.65; margin-bottom: 24px; max-width: 54ch; }
+.repvr__card { background: rgba(255,255,255,.06); border: 1px solid var(--hair); border-radius: var(--r-md); padding: 24px 26px; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.repvr__card-label { display: block; font-family: var(--font-mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 12px; }
+.repvr__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.repvr__list li { position: relative; padding-left: 22px; color: var(--ink); font-size: .94rem; }
+.repvr__list li::before { content: ''; position: absolute; left: 0; top: .5em; width: 7px; height: 7px; border-radius: 50%; background: var(--green-light); }
+@media (max-width: 860px) { .repvr__inner { grid-template-columns: 1fr; } }

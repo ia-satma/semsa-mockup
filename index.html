@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260624230000">
+  <link rel="stylesheet" href="styles.css?v=20260625000000">
   <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
 </head>
 <body>
@@ -236,6 +236,59 @@
             <span class="atex__seal-badge">Especialidad</span>
             <span class="atex__seal-text">Servicio autorizado IR<br>para equipo ATEX</span>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SELECTOR DE NECESIDAD (web consultiva)
+    ============================================================ -->
+    <section class="section section--light needs" id="necesidades" aria-labelledby="needs-heading">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <div class="section-head__meta">
+            <span class="eyebrow"><span class="eyebrow__dot eyebrow__dot--green" aria-hidden="true"></span>Empecemos por su necesidad</span>
+          </div>
+          <h2 id="needs-heading" class="section-head__title">¿Qué necesita resolver su planta?</h2>
+          <p class="section-head__sub">Cuéntenos el problema y lo canalizamos con el especialista correcto — no con un formulario genérico.</p>
+        </header>
+        <div class="needs-grid" data-reveal>
+          <button class="need-card" type="button" data-urgencia>
+            <span class="need-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+            <h3 class="need-card__title">Evitar paro de línea</h3>
+            <p class="need-card__desc">Respuesta rápida, diagnóstico técnico, refacciones y servicio.</p>
+            <span class="need-card__cta">Atender urgencia →</span>
+          </button>
+          <a class="need-card" href="#cotizar" data-tipo="visita">
+            <span class="need-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+            <h3 class="need-card__title">Mejorar productividad</h3>
+            <p class="need-card__desc">Selección de herramienta, ergonomía, automatización parcial e integración.</p>
+            <span class="need-card__cta">Pedir asesoría →</span>
+          </a>
+          <a class="need-card" href="#cotizar" data-tipo="reparacion">
+            <span class="need-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M14.7 6.3a4 4 0 0 0-5.6 5.6l-6 6a2 2 0 1 0 2.8 2.8l6-6a4 4 0 0 0 5.6-5.6l-2.4 2.4-2.8-2.8z"/></svg></span>
+            <h3 class="need-card__title">Reparar equipo existente</h3>
+            <p class="need-card__desc">Mantenimiento preventivo, correctivo, refacciones y garantías.</p>
+            <span class="need-card__cta">Solicitar servicio →</span>
+          </a>
+          <a class="need-card" href="#cotizar" data-tipo="equipo-nuevo">
+            <span class="need-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></span>
+            <h3 class="need-card__title">Elegir la herramienta correcta</h3>
+            <p class="need-card__desc">Asesoría especializada para evitar compras equivocadas.</p>
+            <span class="need-card__cta">Pedir recomendación →</span>
+          </a>
+          <a class="need-card" href="#cotizar" data-tipo="capacitacion">
+            <span class="need-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+            <h3 class="need-card__title">Capacitar al personal técnico</h3>
+            <p class="need-card__desc">Cursos, demostraciones y acompañamiento postventa.</p>
+            <span class="need-card__cta">Agendar capacitación →</span>
+          </a>
+          <a class="need-card" href="#atex">
+            <span class="need-card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg></span>
+            <h3 class="need-card__title">Atender zonas clasificadas / ATEX</h3>
+            <p class="need-card__desc">Polipastos neumáticos, seguridad, refacciones y servicio autorizado.</p>
+            <span class="need-card__cta">Ver ATEX →</span>
+          </a>
         </div>
       </div>
     </section>
@@ -569,6 +622,34 @@
     </section>
 
     <!-- ============================================================
+         PROVEEDOR VS SOCIO TÉCNICO (tabla comparativa)
+    ============================================================ -->
+    <section class="section section--light compare-sec" aria-labelledby="compare-heading">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <div class="section-head__meta">
+            <span class="eyebrow"><span class="eyebrow__dot eyebrow__dot--green" aria-hidden="true"></span>La diferencia</span>
+          </div>
+          <h2 id="compare-heading" class="section-head__title">Comprar producto vs. recibir una solución</h2>
+        </header>
+        <div class="compare" data-reveal>
+          <div class="compare__head">
+            <span>Proveedor tradicional</span>
+            <span class="compare__head-semsa">SEMSA</span>
+          </div>
+          <div class="compare__row"><span class="compare__a">Vende un producto</span><span class="compare__b">Entiende el proceso</span></div>
+          <div class="compare__row"><span class="compare__a">Cotiza por modelo</span><span class="compare__b">Recomienda según la aplicación</span></div>
+          <div class="compare__row"><span class="compare__a">Entrega y termina</span><span class="compare__b">Da seguimiento postventa</span></div>
+          <div class="compare__row"><span class="compare__a">Depende de una marca</span><span class="compare__b">Integra varias opciones</span></div>
+          <div class="compare__row"><span class="compare__a">Atiende desde escritorio</span><span class="compare__b">Puede visitar la planta</span></div>
+          <div class="compare__row"><span class="compare__a">Resuelve por catálogo</span><span class="compare__b">Resuelve con especialistas</span></div>
+          <div class="compare__row"><span class="compare__a">Ofrece producto</span><span class="compare__b">Acompaña la operación</span></div>
+        </div>
+        <p class="compare__close" data-reveal>En SEMSA, las marcas son el medio. El objetivo es resolver la necesidad real de su planta.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
          SERVICIO AUTORIZADO (sección resumida)
     ============================================================ -->
     <section class="section section--light auth" id="servicio-autorizado" aria-labelledby="auth-heading">
@@ -634,6 +715,105 @@
             </li>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DE PRODUCTO A SOLUCIÓN (flujo consultivo de 6 pasos)
+    ============================================================ -->
+    <section class="section section--mid flow-sec" aria-labelledby="flow-heading">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <div class="section-head__meta">
+            <span class="eyebrow eyebrow--on-dark"><span class="eyebrow__dot eyebrow__dot--green" aria-hidden="true"></span>Cómo trabajamos</span>
+          </div>
+          <h2 id="flow-heading" class="section-head__title">No solo vendemos equipo. Resolvemos el proceso completo.</h2>
+          <p class="section-head__sub">Antes de recomendar, entendemos la aplicación, revisamos las condiciones de operación y asignamos especialistas según la necesidad del cliente.</p>
+        </header>
+        <ol class="flow" data-reveal>
+          <li class="flow__step"><span class="flow__num">1</span><h3 class="flow__title">Escuchamos la necesidad</h3><p class="flow__desc">Entendemos el proceso, la operación y el problema real.</p></li>
+          <li class="flow__step"><span class="flow__num">2</span><h3 class="flow__title">Diagnosticamos técnicamente</h3><p class="flow__desc">Revisamos aplicación, condiciones, tiempos, uso y requerimientos.</p></li>
+          <li class="flow__step"><span class="flow__num">3</span><h3 class="flow__title">Seleccionamos la solución</h3><p class="flow__desc">Integramos marcas, equipos y componentes según la necesidad.</p></li>
+          <li class="flow__step"><span class="flow__num">4</span><h3 class="flow__title">Demostramos y capacitamos</h3><p class="flow__desc">Llevamos demos, pruebas y entrenamiento para el personal técnico.</p></li>
+          <li class="flow__step"><span class="flow__num">5</span><h3 class="flow__title">Suministramos e instalamos</h3><p class="flow__desc">Acompañamos la implementación de la solución en planta.</p></li>
+          <li class="flow__step"><span class="flow__num">6</span><h3 class="flow__title">Damos seguimiento postventa</h3><p class="flow__desc">Mantenimiento, reparación, refacciones, garantías y calibración.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SERVICIO TÉCNICO INDUSTRIAL (taller · planta · calibración)
+    ============================================================ -->
+    <section class="section section--light svc2" id="servicio-tecnico" aria-labelledby="svc2-heading">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <div class="section-head__meta">
+            <span class="eyebrow"><span class="eyebrow__dot eyebrow__dot--green" aria-hidden="true"></span>Servicio técnico industrial</span>
+          </div>
+          <h2 id="svc2-heading" class="section-head__title">El respaldo no termina con la entrega</h2>
+          <p class="section-head__sub">Mantenimiento, reparación y soporte en taller y en planta para extender la vida útil de sus equipos y reducir tiempos muertos.</p>
+        </header>
+        <div class="svc2-grid" data-reveal>
+          <article class="svc2-col">
+            <h3 class="svc2-col__title">En taller</h3>
+            <ul class="svc2-list">
+              <li>Diagnóstico técnico</li>
+              <li>Mantenimiento preventivo y correctivo</li>
+              <li>Reparación y cambio de refacciones</li>
+              <li>Pruebas y validación antes de la entrega</li>
+              <li>Garantías</li>
+            </ul>
+          </article>
+          <article class="svc2-col">
+            <h3 class="svc2-col__title">En planta</h3>
+            <ul class="svc2-list">
+              <li>Técnicos asignados a planta</li>
+              <li>Pólizas de servicio</li>
+              <li>Atención programada</li>
+              <li>Atención a emergencias</li>
+              <li>Capacitación al personal interno</li>
+            </ul>
+          </article>
+          <article class="svc2-col">
+            <h3 class="svc2-col__title">Calibración y procesos controlados</h3>
+            <p class="svc2-col__note">Pruebas, calibración y validación bajo procesos controlados, en áreas técnicas dedicadas — capacidades <strong>en fortalecimiento rumbo a certificación</strong>.</p>
+          </article>
+        </div>
+        <div class="svc2-cta" data-reveal>
+          <a class="btn btn--primary btn--icon btn--lg" href="#cotizar" data-tipo="servicio-planta">
+            <span>Solicitar servicio técnico</span>
+            <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ¿REPARAR O REEMPLAZAR? (orientación)
+    ============================================================ -->
+    <section class="section section--mid repvr" aria-labelledby="repvr-heading">
+      <div class="container repvr__inner">
+        <div class="repvr__text" data-reveal="left">
+          <div class="section-head__meta">
+            <span class="eyebrow eyebrow--on-dark"><span class="eyebrow__dot eyebrow__dot--green" aria-hidden="true"></span>Antes de desechar</span>
+          </div>
+          <h2 id="repvr-heading" class="repvr__title">¿Conviene reparar o reemplazar?</h2>
+          <p class="repvr__desc">Muchas plantas desechan equipos que podrían repararse o mantenerse — solo porque no saben quién puede darles servicio. Un asesor de SEMSA le ayuda a evaluar si conviene reparar, mantener o reemplazar.</p>
+          <a class="btn btn--primary btn--icon btn--lg" href="#cotizar" data-tipo="reparacion">
+            <span>Solicitar evaluación del equipo</span>
+            <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+        <aside class="repvr__card" data-reveal="right" data-reveal-delay="1">
+          <span class="repvr__card-label">Para orientarle, comparta:</span>
+          <ul class="repvr__list">
+            <li>Tipo de equipo y marca / modelo</li>
+            <li>Descripción de la falla</li>
+            <li>Frecuencia de uso</li>
+            <li>Si el proceso está detenido</li>
+            <li>Si requiere refacción</li>
+          </ul>
+        </aside>
       </div>
     </section>
 
@@ -1406,6 +1586,6 @@
   })();
   </script>
 
-  <script src="script.js?v=20260624230000"></script>
+  <script src="script.js?v=20260625000000"></script>
 </body>
 </html>

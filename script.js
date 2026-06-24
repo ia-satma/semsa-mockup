@@ -378,7 +378,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
 /* ─── Accesos rápidos: preseleccionan el "tipo de necesidad" en el formulario ─── */
 (function initNeedChips() {
   const sel = document.getElementById('f-tipo');
-  document.querySelectorAll('.hero__chip[data-tipo]').forEach(function (chip) {
+  document.querySelectorAll('[data-tipo]').forEach(function (chip) {
     chip.addEventListener('click', function () {
       if (!sel) return;
       const v = chip.getAttribute('data-tipo');
