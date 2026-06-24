@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260625000000">
+  <link rel="stylesheet" href="styles.css?v=20260625030000">
   <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
 </head>
 <body>
@@ -28,10 +28,23 @@
         <img src="assets/logo-semsa-03.png" alt="" aria-hidden="true" class="nav__logo-img nav__logo-img--mark">
       </a>
       <nav class="nav__links" aria-label="Navegación principal">
+        <div class="nav__item nav__item--has-sub">
+          <a href="#necesidades" class="nav__link nav__link--sub" aria-haspopup="true">
+            Soluciones
+            <svg class="nav__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="12" height="12" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div class="nav__sub" aria-label="Soluciones SEMSA">
+            <a href="#necesidades" class="nav__sub-link">¿Qué necesita resolver?</a>
+            <a href="#servicio-tecnico" class="nav__sub-link">Servicio técnico</a>
+            <a href="#servicio-autorizado" class="nav__sub-link">Servicio Autorizado IR</a>
+            <a href="#atex" class="nav__sub-link">Equipo ATEX</a>
+            <a href="industria-automotriz.html" class="nav__sub-link">Industrias</a>
+            <a href="#" class="nav__sub-link" data-urgencia>Urgencia en planta</a>
+          </div>
+        </div>
         <a href="#productos" class="nav__link">Productos</a>
         <a href="catalogo.html" class="nav__link">Catálogo</a>
         <a href="#marcas" class="nav__link">Marcas</a>
-        <a href="#servicio-autorizado" class="nav__link">Servicio Autorizado</a>
         <div class="nav__item nav__item--has-sub">
           <a href="#nosotros" class="nav__link nav__link--sub" aria-haspopup="true">
             Nosotros
@@ -65,7 +78,7 @@
       <a href="#productos" class="mobile-menu__link"><span class="mobile-menu__idx">01</span>Productos</a>
       <a href="catalogo.html" class="mobile-menu__link"><span class="mobile-menu__idx">02</span>Catálogo</a>
       <a href="#marcas" class="mobile-menu__link"><span class="mobile-menu__idx">03</span>Marcas</a>
-      <a href="#servicio-autorizado" class="mobile-menu__link"><span class="mobile-menu__idx">04</span>Servicio Autorizado</a>
+      <a href="#necesidades" class="mobile-menu__link"><span class="mobile-menu__idx">04</span>Soluciones</a>
       <a href="#nosotros" class="mobile-menu__link"><span class="mobile-menu__idx">05</span>Nosotros</a>
       <a href="casos.html" class="mobile-menu__link"><span class="mobile-menu__idx">06</span>Casos de éxito</a>
       <a href="resenas.html" class="mobile-menu__link"><span class="mobile-menu__idx">07</span>Reseñas</a>
@@ -838,6 +851,7 @@
           <article class="industry-tile industry-tile--hero">
             <img class="industry-tile__img" src="assets/img/ind-automotriz.webp" alt="Línea de ensamble automotriz con brazos robóticos de soldadura" width="1200" height="800" loading="lazy" decoding="async">
             <div class="industry-tile__overlay" aria-hidden="true"></div>
+            <a class="industry-tile__link" href="industria-automotriz.html" aria-label="Ver soluciones para la industria automotriz"></a>
             <div class="industry-tile__body">
               <span class="industry-tile__idx">01</span>
               <span class="industry-tile__name">Automotriz y autopartes</span>
@@ -870,6 +884,7 @@
           <article class="industry-tile industry-tile--feature">
             <img class="industry-tile__img" src="assets/img/ind-quimica.webp" alt="Planta petroquímica con tuberías de acero y equipo a prueba de explosión" width="1200" height="600" loading="lazy" decoding="async">
             <div class="industry-tile__overlay" aria-hidden="true"></div>
+            <a class="industry-tile__link" href="industria-quimica-atex.html" aria-label="Ver soluciones para química y zonas ATEX"></a>
             <div class="industry-tile__body">
               <span class="industry-tile__idx">05</span>
               <span class="industry-tile__name">Química y petroquímica</span>
@@ -896,6 +911,7 @@
           <article class="industry-tile">
             <img class="industry-tile__img" src="assets/img/ind-manufactura.webp" alt="Piso de planta de manufactura con líneas de producción ordenadas" width="600" height="450" loading="lazy" decoding="async">
             <div class="industry-tile__overlay" aria-hidden="true"></div>
+            <a class="industry-tile__link" href="industria-manufactura.html" aria-label="Ver soluciones para manufactura general"></a>
             <div class="industry-tile__body">
               <span class="industry-tile__idx">08</span>
               <span class="industry-tile__name">Manufactura general</span>
@@ -1397,6 +1413,8 @@
           <h3 class="footer__col-title">Empresa</h3>
           <ul class="footer__links">
             <li><a href="#servicio-autorizado">Servicio Autorizado</a></li>
+            <li><a href="#servicio-tecnico">Servicio técnico</a></li>
+            <li><a href="#" data-urgencia>Urgencia en planta</a></li>
             <li><a href="#nosotros">Nosotros</a></li>
             <li><a href="#cobertura">Cobertura nacional</a></li>
             <li><a href="casos.html">Casos de éxito</a></li>
@@ -1586,6 +1604,6 @@
   })();
   </script>
 
-  <script src="script.js?v=20260625000000"></script>
+  <script src="script.js?v=20260625030000"></script>
 </body>
 </html>

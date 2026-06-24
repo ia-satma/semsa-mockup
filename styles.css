@@ -3513,3 +3513,7 @@ a:hover > .photo-frame .photo-frame__img,
 .repvr__list li { position: relative; padding-left: 22px; color: var(--ink); font-size: .94rem; }
 .repvr__list li::before { content: ''; position: absolute; left: 0; top: .5em; width: 7px; height: 7px; border-radius: 50%; background: var(--green-light); }
 @media (max-width: 860px) { .repvr__inner { grid-template-columns: 1fr; } }
+
+/* === P4: tiles de industria clicables (overlay link) === */
+.industry-tile__link { position: absolute; inset: 0; z-index: 3; border-radius: inherit; }
+.industry-tile__link:focus-visible { outline: 2px solid var(--green-light); outline-offset: -3px; }

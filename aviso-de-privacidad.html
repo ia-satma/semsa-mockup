@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260625000000">
+  <link rel="stylesheet" href="styles.css?v=20260625030000">
 </head>
 <body>
 
@@ -23,10 +23,23 @@
         <img src="assets/logo-semsa-03.png" alt="" aria-hidden="true" class="nav__logo-img nav__logo-img--mark">
       </a>
       <nav class="nav__links" aria-label="Navegación principal">
+        <div class="nav__item nav__item--has-sub">
+          <a href="index.html#necesidades" class="nav__link nav__link--sub" aria-haspopup="true">
+            Soluciones
+            <svg class="nav__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="12" height="12" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div class="nav__sub" aria-label="Soluciones SEMSA">
+            <a href="index.html#necesidades" class="nav__sub-link">¿Qué necesita resolver?</a>
+            <a href="index.html#servicio-tecnico" class="nav__sub-link">Servicio técnico</a>
+            <a href="index.html#servicio-autorizado" class="nav__sub-link">Servicio Autorizado IR</a>
+            <a href="index.html#atex" class="nav__sub-link">Equipo ATEX</a>
+            <a href="industria-automotriz.html" class="nav__sub-link">Industrias</a>
+            <a href="index.html#necesidades" class="nav__sub-link">Urgencia en planta</a>
+          </div>
+        </div>
         <a href="index.html#productos" class="nav__link">Productos</a>
         <a href="catalogo.html" class="nav__link">Catálogo</a>
         <a href="index.html#marcas" class="nav__link">Marcas</a>
-        <a href="index.html#servicio-autorizado" class="nav__link">Servicio Autorizado</a>
         <div class="nav__item nav__item--has-sub">
           <a href="index.html#nosotros" class="nav__link nav__link--sub" aria-haspopup="true">
             Nosotros
@@ -59,7 +72,7 @@
       <a href="index.html#productos" class="mobile-menu__link"><span class="mobile-menu__idx">01</span>Productos</a>
       <a href="catalogo.html" class="mobile-menu__link"><span class="mobile-menu__idx">02</span>Catálogo</a>
       <a href="index.html#marcas" class="mobile-menu__link"><span class="mobile-menu__idx">03</span>Marcas</a>
-      <a href="index.html#servicio-autorizado" class="mobile-menu__link"><span class="mobile-menu__idx">04</span>Servicio Autorizado</a>
+      <a href="index.html#necesidades" class="mobile-menu__link"><span class="mobile-menu__idx">04</span>Soluciones</a>
       <a href="index.html#nosotros" class="mobile-menu__link"><span class="mobile-menu__idx">05</span>Nosotros</a>
       <a href="casos.html" class="mobile-menu__link"><span class="mobile-menu__idx">06</span>Casos de éxito</a>
       <a href="resenas.html" class="mobile-menu__link"><span class="mobile-menu__idx">07</span>Reseñas</a>
@@ -157,6 +170,6 @@
     </svg>
   </a>
 
-  <script src="script.js?v=20260625000000"></script>
+  <script src="script.js?v=20260625030000"></script>
 </body>
 </html>
