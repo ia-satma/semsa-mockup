@@ -3380,3 +3380,68 @@ a:hover > .photo-frame .photo-frame__img,
     50%      { box-shadow: 0 0 0 11px rgba(0,122,214,.10), 0 0 32px rgba(0,122,214,.85); }
   }
 }
+
+/* ============================================================
+   INVESTIGACIÓN — Web consultiva (P2): chips del hero, formulario
+   de diagnóstico y modal de urgencia. Solo clases nuevas; reusa tokens.
+============================================================ */
+
+/* === Accesos rápidos bajo el hero === */
+.hero__quick { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.hero__chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 16px; border-radius: var(--r-pill);
+  border: 1px solid var(--hair-strong);
+  background: rgba(255,255,255,.06);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  color: var(--ink); font-family: var(--font-h); font-weight: 600; font-size: .82rem;
+  text-decoration: none; cursor: pointer;
+  transition: border-color .25s var(--ease-out), background .25s var(--ease-out), transform .25s var(--ease-out);
+}
+.hero__chip:hover { border-color: rgba(86,178,0,.6); background: rgba(86,178,0,.12); transform: translateY(-1px); }
+.hero__chip:focus-visible { outline: 2px solid var(--green-light); outline-offset: 2px; }
+.hero__chip--alert { border-color: rgba(86,178,0,.5); }
+.hero__chip--alert::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--green-light); box-shadow: 0 0 8px rgba(0,204,0,.9); }
+@media (prefers-reduced-motion: reduce) { .hero__chip:hover { transform: none; } }
+
+/* === Extras del formulario de diagnóstico (tarjeta blanca) === */
+.form__label .form__opt { color: var(--ink-dark-soft); font-weight: 400; font-size: .85em; }
+.form__hint { display: block; margin-top: 7px; font-size: .78rem; color: var(--ink-dark-soft); line-height: 1.4; }
+.form__hint a { color: var(--blue); font-weight: 600; }
+.form__file {
+  font-family: var(--font-b); font-size: .9rem; color: var(--ink-dark);
+  width: 100%; padding: 4px 0;
+}
+.form__file::file-selector-button {
+  font-family: var(--font-h); font-weight: 600; font-size: .82rem;
+  color: #fff; background: var(--semsa-blue); border: 0;
+  border-radius: var(--r-sm); padding: 9px 15px; margin-right: 12px; cursor: pointer;
+  transition: background .2s var(--ease-out);
+}
+.form__file::file-selector-button:hover { background: var(--blue-dark); }
+.form__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2px; }
+.form__actions .btn { flex: 1 1 200px; justify-content: center; }
+
+/* === Modal: urgencia en planta === */
+.urg { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.urg[hidden] { display: none; }
+.urg__backdrop { position: absolute; inset: 0; background: rgba(0,8,20,.74); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+.urg__panel {
+  position: relative; z-index: 1; width: min(560px, 100%); max-height: 90vh; overflow: auto;
+  background: linear-gradient(180deg, #fff, #f7f9fc);
+  border: 1px solid var(--hair-light); border-top: 3px solid var(--semsa-green);
+  border-radius: var(--r-shell); box-shadow: var(--sh-ambient);
+  padding: clamp(24px, 4vw, 40px);
+}
+.urg__close {
+  position: absolute; top: 14px; right: 14px; width: 38px; height: 38px;
+  display: grid; place-items: center; border-radius: var(--r-pill);
+  border: 1px solid var(--hair-light); background: #fff; color: var(--ink-dark);
+  cursor: pointer; transition: background .2s var(--ease-out), color .2s var(--ease-out);
+}
+.urg__close:hover { background: var(--bg-light); color: var(--blue-dark); }
+.urg__eyebrow { color: var(--blue-dark); }
+.urg__eyebrow .eyebrow__dot, .urg__eyebrow .eyebrow__dot::after { background: var(--green); }
+.urg__title { font-family: var(--font-h); font-weight: 800; font-size: clamp(1.4rem, 3vw, 1.9rem); color: var(--blue-dark); line-height: 1.15; margin: 12px 0 10px; }
+.urg__desc { color: var(--ink-dark-soft); line-height: 1.55; margin-bottom: 20px; }
+.urg__form { gap: 14px; }

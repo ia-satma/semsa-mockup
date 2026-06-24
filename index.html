@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260624210000">
+  <link rel="stylesheet" href="styles.css?v=20260624230000">
   <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
 </head>
 <body>
@@ -120,6 +120,15 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
               </span>
             </a>
+          </div>
+          <!-- Accesos rápidos por necesidad → preseleccionan el formulario / abren urgencia -->
+          <div class="hero__quick" data-reveal data-reveal-delay="2" aria-label="Accesos rápidos por necesidad">
+            <a class="hero__chip" href="#cotizar" data-tipo="equipo-nuevo">Necesito equipo nuevo</a>
+            <a class="hero__chip" href="#cotizar" data-tipo="mantenimiento">Reparar / mantenimiento</a>
+            <button class="hero__chip hero__chip--alert" type="button" data-urgencia>Urgencia en planta</button>
+            <a class="hero__chip" href="#atex">Equipo ATEX</a>
+            <a class="hero__chip" href="#cotizar" data-tipo="visita">Visita técnica</a>
+            <a class="hero__chip" href="#cotizar" data-tipo="llave-en-mano">Solución llave en mano</a>
           </div>
         </div>
       </div>
@@ -919,9 +928,9 @@
               Hablemos
             </span>
           </div>
-          <h2 id="cta-heading" class="cta-final__heading">¿Necesita cotización?</h2>
+          <h2 id="cta-heading" class="cta-final__heading">Solicitar diagnóstico o cotización técnica</h2>
           <p class="cta-final__desc">
-            Cuéntenos qué equipo necesita. Un asesor técnico de SEMSA le responderá en menos de 24 horas hábiles.
+            Cuéntenos qué necesita resolver en su planta — equipo nuevo, refacción, reparación o servicio. Un asesor técnico de SEMSA le responderá en menos de 24 horas hábiles.
           </p>
           <p class="cta-final__wa">
             <strong>¿Prefiere WhatsApp?</strong> Escríbanos directo —
@@ -966,24 +975,86 @@
                 <input type="email" id="f-email" name="email" class="form__input" placeholder="jgarcia@empresa.com" required autocomplete="email">
               </div>
             </div>
+            <div class="form__row form__row--2">
+              <div class="form__group">
+                <label for="f-tipo" class="form__label">Tipo de necesidad</label>
+                <div class="form__select-wrap">
+                  <select id="f-tipo" name="tipo" class="form__select">
+                    <option value="">Seleccionar...</option>
+                    <option value="equipo-nuevo">Equipo nuevo</option>
+                    <option value="refaccion">Refacción</option>
+                    <option value="mantenimiento">Mantenimiento</option>
+                    <option value="reparacion">Reparación</option>
+                    <option value="calibracion">Calibración</option>
+                    <option value="servicio-planta">Servicio en planta</option>
+                    <option value="visita">Visita técnica</option>
+                    <option value="capacitacion">Capacitación</option>
+                    <option value="urgencia">Urgencia operativa</option>
+                    <option value="llave-en-mano">Proyecto llave en mano</option>
+                  </select>
+                  <span class="form__select-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="m6 9 6 6 6-6"/></svg></span>
+                </div>
+              </div>
+              <div class="form__group">
+                <label for="f-industria" class="form__label">Industria</label>
+                <div class="form__select-wrap">
+                  <select id="f-industria" name="industria" class="form__select">
+                    <option value="">Seleccionar...</option>
+                    <option value="automotriz">Automotriz / autopartes</option>
+                    <option value="armadora">Armadora</option>
+                    <option value="metalmecanica">Metalmecánica</option>
+                    <option value="quimica">Química / petroquímica</option>
+                    <option value="pintura">Pintura y recubrimiento</option>
+                    <option value="medica">Médica / farmacéutica</option>
+                    <option value="manufactura">Manufactura general</option>
+                    <option value="mineria">Minería</option>
+                    <option value="construccion">Construcción</option>
+                    <option value="otra">Otra</option>
+                  </select>
+                  <span class="form__select-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="m6 9 6 6 6-6"/></svg></span>
+                </div>
+              </div>
+            </div>
+            <div class="form__row form__row--2">
+              <div class="form__group">
+                <label for="f-urgencia" class="form__label">Urgencia</label>
+                <div class="form__select-wrap">
+                  <select id="f-urgencia" name="urgencia" class="form__select">
+                    <option value="normal">Cotización normal</option>
+                    <option value="semana">Esta semana</option>
+                    <option value="urgente">Urgente 24-48 h</option>
+                    <option value="paro">Riesgo de paro de línea</option>
+                  </select>
+                  <span class="form__select-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="m6 9 6 6 6-6"/></svg></span>
+                </div>
+              </div>
+              <div class="form__group">
+                <label for="f-equipo" class="form__label">¿Tiene equipo existente?</label>
+                <div class="form__select-wrap">
+                  <select id="f-equipo" name="equipo_existente" class="form__select">
+                    <option value="">Seleccionar...</option>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                    <option value="no-seguro">No estoy seguro</option>
+                  </select>
+                  <span class="form__select-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="m6 9 6 6 6-6"/></svg></span>
+                </div>
+              </div>
+            </div>
+            <div class="form__row form__row--2">
+              <div class="form__group">
+                <label for="f-marca" class="form__label">Marca <span class="form__opt">(si aplica)</span></label>
+                <input type="text" id="f-marca" name="marca" class="form__input" placeholder="Ingersoll Rand, ARO…">
+              </div>
+              <div class="form__group">
+                <label for="f-modelo" class="form__label">Modelo / N° de serie <span class="form__opt">(si aplica)</span></label>
+                <input type="text" id="f-modelo" name="modelo" class="form__input" placeholder="Modelo o número de serie">
+              </div>
+            </div>
             <div class="form__row">
               <div class="form__group">
-                <label for="f-categoria" class="form__label">Categoría de interés</label>
-                <div class="form__select-wrap">
-                  <select id="f-categoria" name="categoria" class="form__select">
-                    <option value="">Seleccionar categoría...</option>
-                    <option value="manejo-materiales">Manejo de Materiales / Polipastos</option>
-                    <option value="herramientas">Herramientas Manuales</option>
-                    <option value="fluidos">Manejo de Fluidos</option>
-                    <option value="pintura">Pintura y Recubrimiento</option>
-                    <option value="sellado">Sistemas de Sellado</option>
-                    <option value="remachadoras">Remachadoras e Insertadoras</option>
-                    <option value="lubricacion">Sistemas de Lubricación</option>
-                  </select>
-                  <span class="form__select-arrow" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="m6 9 6 6 6-6"/></svg>
-                  </span>
-                </div>
+                <label for="f-ciudad" class="form__label">Ciudad / estado de la planta</label>
+                <input type="text" id="f-ciudad" name="ciudad" class="form__input" placeholder="Monterrey, N.L." autocomplete="address-level2">
               </div>
             </div>
             <div class="form__row">
@@ -998,15 +1069,30 @@
             <div class="form__row">
               <div class="form__group">
                 <label for="f-mensaje" class="form__label">Descripción de la necesidad</label>
-                <textarea id="f-mensaje" name="mensaje" class="form__textarea" rows="4" placeholder="Describa el equipo que necesita, aplicación, condiciones de operación, cantidades..."></textarea>
+                <textarea id="f-mensaje" name="mensaje" class="form__textarea" rows="4" placeholder="Describa la aplicación, condiciones de operación, la falla o lo que necesita resolver…"></textarea>
               </div>
             </div>
-            <button type="submit" class="btn btn--primary btn--icon btn--lg btn--full">
-              <span>Enviar solicitud de cotización</span>
-              <span class="btn__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </span>
-            </button>
+            <div class="form__row">
+              <div class="form__group">
+                <label for="f-archivos" class="form__label">Foto del equipo, placa o video de la falla <span class="form__opt">(opcional)</span></label>
+                <input type="file" id="f-archivos" name="archivos" class="form__file" multiple accept="image/*,video/*">
+                <span class="form__hint">Adjuntar evidencia agiliza el diagnóstico · la carga real se habilita en Fase 5.</span>
+              </div>
+            </div>
+            <div class="form__actions">
+              <button type="submit" class="btn btn--primary btn--icon btn--lg">
+                <span>Enviar solicitud técnica</span>
+                <span class="btn__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </span>
+              </button>
+              <a class="btn btn--outline btn--icon btn--lg" href="https://wa.me/5218117998535?text=Hola%20SEMSA%2C%20quiero%20solicitar%20un%20diagn%C3%B3stico%20o%20cotizaci%C3%B3n%20t%C3%A9cnica%20para%20mi%20planta." target="_blank" rel="noopener noreferrer">
+                <span>Enviar por WhatsApp</span>
+                <span class="btn__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </span>
+              </a>
+            </div>
           </form>
         </div>
       </div>
@@ -1152,6 +1238,61 @@
     </div>
   </footer>
 
+  <!-- === MODAL: URGENCIA EN PLANTA (lead de alta intención) === -->
+  <div class="urg" id="urg-modal" hidden>
+    <div class="urg__backdrop" data-urg-close></div>
+    <div class="urg__panel" role="dialog" aria-modal="true" aria-labelledby="urg-title">
+      <button class="urg__close" type="button" data-urg-close aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <span class="eyebrow urg__eyebrow"><span class="eyebrow__dot eyebrow__dot--green" aria-hidden="true"></span>Urgencia operativa</span>
+      <h2 id="urg-title" class="urg__title">¿Tiene una urgencia en planta?</h2>
+      <p class="urg__desc">Si su operación está en riesgo por una falla, falta de refacción o necesidad técnica inmediata, canalizamos su caso con un especialista de SEMSA.</p>
+      <form class="form urg__form" action="#" method="post" novalidate aria-label="Urgencia en planta">
+        <div class="form__row form__row--2">
+          <div class="form__group">
+            <label for="u-nombre" class="form__label">Nombre</label>
+            <input type="text" id="u-nombre" name="nombre" class="form__input" placeholder="Su nombre" autocomplete="name">
+          </div>
+          <div class="form__group">
+            <label for="u-empresa" class="form__label">Empresa</label>
+            <input type="text" id="u-empresa" name="empresa" class="form__input" placeholder="Planta / empresa" autocomplete="organization">
+          </div>
+        </div>
+        <div class="form__row form__row--2">
+          <div class="form__group">
+            <label for="u-ciudad" class="form__label">Ciudad</label>
+            <input type="text" id="u-ciudad" name="ciudad" class="form__input" placeholder="Ciudad / estado">
+          </div>
+          <div class="form__group">
+            <label for="u-linea" class="form__label">¿La línea está detenida?</label>
+            <div class="form__select-wrap">
+              <select id="u-linea" name="linea" class="form__select">
+                <option value="en-riesgo">En riesgo</option>
+                <option value="si">Sí, detenida</option>
+                <option value="no">No, aún operando</option>
+              </select>
+              <span class="form__select-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="m6 9 6 6 6-6"/></svg></span>
+            </div>
+          </div>
+        </div>
+        <div class="form__row">
+          <div class="form__group">
+            <label for="u-detalle" class="form__label">¿Qué está pasando?</label>
+            <textarea id="u-detalle" name="detalle" class="form__textarea" rows="3" placeholder="Equipo / aplicación y qué falla está ocurriendo…"></textarea>
+          </div>
+        </div>
+        <div class="form__actions">
+          <a class="btn btn--primary btn--icon btn--lg" href="https://wa.me/5218117998535?text=Hola%2C%20tengo%20una%20urgencia%20operativa%20en%20planta.%20Necesito%20apoyo%20con%3A%20" target="_blank" rel="noopener noreferrer">
+            <span>Enviar urgencia por WhatsApp</span>
+            <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+        <p class="form__hint">También puede llamarnos al <a href="tel:+528183421551">81 8342-1551</a>. Atendemos urgencias en horario hábil y según disponibilidad.</p>
+      </form>
+    </div>
+  </div>
+
   <!-- WhatsApp flotante -->
   <a href="https://wa.me/5218117998535?text=Hola%20SEMSA%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20y%20una%20cotizaci%C3%B3n."
      class="whatsapp-float"
@@ -1265,6 +1406,6 @@
   })();
   </script>
 
-  <script src="script.js?v=20260624210000"></script>
+  <script src="script.js?v=20260624230000"></script>
 </body>
 </html>

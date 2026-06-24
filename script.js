@@ -374,3 +374,45 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     });
   });
 })();
+
+/* ─── Accesos rápidos: preseleccionan el "tipo de necesidad" en el formulario ─── */
+(function initNeedChips() {
+  const sel = document.getElementById('f-tipo');
+  document.querySelectorAll('.hero__chip[data-tipo]').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      if (!sel) return;
+      const v = chip.getAttribute('data-tipo');
+      const ok = Array.prototype.some.call(sel.options, function (o) { return o.value === v; });
+      if (ok) sel.value = v;
+    });
+  });
+})();
+
+/* ─── Modal: urgencia en planta (foco gestionado + Esc + bloqueo de scroll) ─── */
+(function initUrgencyModal() {
+  const modal = document.getElementById('urg-modal');
+  if (!modal) return;
+  let opener = null;
+  function open(trigger) {
+    opener = trigger || null;
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    const closeBtn = modal.querySelector('.urg__close');
+    if (closeBtn) closeBtn.focus();
+  }
+  function close() {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    if (opener && typeof opener.focus === 'function') opener.focus();
+    opener = null;
+  }
+  document.querySelectorAll('[data-urgencia]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) { e.preventDefault(); open(btn); });
+  });
+  modal.querySelectorAll('[data-urg-close]').forEach(function (el) {
+    el.addEventListener('click', close);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.hidden) close();
+  });
+})();
