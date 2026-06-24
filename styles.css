@@ -3263,3 +3263,73 @@ a:hover > .photo-frame .photo-frame__img,
   color: var(--green); margin-top: 2px;
 }
 .contact__see-all:hover { text-decoration: underline; }
+
+/* ============================================================
+   FASE 3 — MAPA LOCALIZADOR (store-locator) · #cobertura
+   Reusa .coverage-map (caja con aspect-ratio + pines %).
+   Fuente única SUCURSALES (script inline) -> pines + lista + panel.
+============================================================ */
+.container--wide { max-width: min(1500px, 94vw); }
+.btn--sm { padding: 10px 18px; font-size: .85rem; }
+
+/* Layout 2 columnas (desktop) · apilado (móvil) */
+.locator { display: grid; grid-template-columns: 1fr; gap: 22px; margin: 6px auto clamp(30px,4vw,46px); }
+@media (min-width: 1024px) {
+  .locator { grid-template-columns: minmax(0,1.9fr) minmax(300px,1fr); align-items: start; gap: 30px; }
+  .locator__panel { position: sticky; top: 96px; }
+}
+
+/* Mapa protagonista (sin el cap de 860px de .coverage-map) */
+.locator__map { max-width: none; margin: 0; }
+.locator__pins { position: absolute; inset: 0; }
+
+/* Pines = <button> (reset) + área de toque ampliada + estado activo */
+.coverage-map__pin { appearance: none; -webkit-appearance: none; background: none; border: 0; padding: 0; cursor: pointer; font: inherit; }
+.coverage-map__pin::before { content: ''; position: absolute; left: 0; top: 0; width: 34px; height: 34px; transform: translate(-50%,-50%); border-radius: 50%; }
+.coverage-map__pin.is-active { z-index: 7; }
+.coverage-map__pin.is-active .coverage-map__dot { transform: translate(-50%,-50%) scale(1.55); box-shadow: 0 0 0 6px rgba(0,204,0,.30), 0 0 26px rgba(0,204,0,1); }
+.coverage-map__pin--us.is-active .coverage-map__dot { box-shadow: 0 0 0 6px rgba(0,122,214,.30), 0 0 26px rgba(0,122,214,1); }
+
+/* Lista / índice seleccionable (móvil: principal · desktop: índice compacto) */
+.locator__list { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: 8px; margin-top: 16px; }
+.locator__item {
+  display: flex; align-items: center; gap: 9px;
+  min-height: 46px; padding: 8px 13px;
+  background: #fff; border: 1px solid var(--hair-light); border-radius: var(--r-md);
+  font-family: var(--font-h); font-weight: 600; font-size: .86rem; color: var(--ink-dark);
+  text-align: left; cursor: pointer;
+  transition: border-color .25s var(--ease-out), box-shadow .25s var(--ease-out), background .25s var(--ease-out);
+}
+.locator__item:hover { border-color: rgba(86,178,0,.5); }
+.locator__item:focus-visible { outline: 2px solid var(--semsa-blue); outline-offset: 2px; }
+.locator__item.is-active { border-color: var(--semsa-green); box-shadow: 0 0 0 2px rgba(86,178,0,.25); background: rgba(86,178,0,.05); }
+.locator__item-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--semsa-green); flex-shrink: 0; }
+.locator__item--office .locator__item-dot { background: var(--semsa-blue); }
+.locator__item--us .locator__item-dot { background: var(--blue-light); }
+.locator__item-city { flex: 1; }
+.locator__item-tag { font-family: var(--font-mono); font-size: .56rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: var(--grad-green); padding: 2px 7px; border-radius: var(--r-pill); }
+.locator__item-tag[data-tipo="Oficina"] { background: var(--semsa-blue); }
+.locator__item-tag[data-tipo="US"] { background: var(--semsa-blue-dark); }
+
+/* Panel de info (tarjeta clara con realce de marca) */
+.locator__panel { background: #fff; border: 1px solid var(--hair-light); border-top: 3px solid var(--semsa-green); border-radius: var(--r-shell); box-shadow: var(--sh-light-card), var(--bezel-hi-light); padding: clamp(22px,2.4vw,32px); }
+.locator__type { display: inline-block; font-family: var(--font-mono); font-size: .6rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--grad-green); padding: 3px 11px; border-radius: var(--r-pill); margin-bottom: 12px; }
+.locator__type[data-tipo="Oficina"] { background: var(--semsa-blue); }
+.locator__type[data-tipo="US"] { background: var(--semsa-blue-dark); }
+.locator__type[data-tipo="Representante"] { background: var(--ink-dark-soft); }
+.locator__city { font-family: var(--font-h); font-weight: 800; font-size: 1.5rem; color: var(--semsa-blue-dark); line-height: 1.15; margin-bottom: 18px; }
+.locator__fields { display: flex; flex-direction: column; gap: 13px; margin-bottom: 22px; }
+.locator__field { display: flex; align-items: flex-start; gap: 11px; font-size: .92rem; line-height: 1.45; color: var(--text-main); }
+.locator__field svg { color: var(--semsa-green); flex-shrink: 0; margin-top: 2px; }
+.locator__field a { color: var(--semsa-blue); font-weight: 600; word-break: break-word; }
+.locator__field a:hover { text-decoration: underline; }
+.locator__actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.locator__maps { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-family: var(--font-h); font-weight: 600; font-size: .85rem; color: var(--semsa-blue-dark); }
+.locator__maps:hover { text-decoration: underline; }
+
+@media (max-width: 1023px) {
+  .coverage-map__pin::before { width: 40px; height: 40px; }  /* mayor área de toque; la lista es el control primario en móvil */
+}
+@media (prefers-reduced-motion: reduce) {
+  .coverage-map__pin .coverage-map__dot, .locator__item { transition: none; }
+}
