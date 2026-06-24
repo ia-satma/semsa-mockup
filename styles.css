@@ -3272,15 +3272,7 @@ a:hover > .photo-frame .photo-frame__img,
 .container--wide { max-width: min(1500px, 94vw); }
 .btn--sm { padding: 10px 18px; font-size: .85rem; }
 
-/* Layout 2 columnas (desktop) · apilado (móvil) */
-.locator { display: grid; grid-template-columns: 1fr; gap: 22px; margin: 6px auto clamp(30px,4vw,46px); }
-@media (min-width: 1024px) {
-  .locator { grid-template-columns: minmax(0,1.9fr) minmax(300px,1fr); align-items: start; gap: 30px; }
-  .locator__panel { position: sticky; top: 96px; }
-}
-
-/* Mapa protagonista (sin el cap de 860px de .coverage-map) */
-.locator__map { max-width: none; margin: 0; }
+/* (El layout 2-col/sticky de Fase 3 fue sustituido por la banda full-bleed de Fase 3.1) */
 .locator__pins { position: absolute; inset: 0; }
 
 /* Pines = <button> (reset) + área de toque ampliada + estado activo */
@@ -3291,10 +3283,10 @@ a:hover > .photo-frame .photo-frame__img,
 .coverage-map__pin--us.is-active .coverage-map__dot { box-shadow: 0 0 0 6px rgba(0,122,214,.30), 0 0 26px rgba(0,122,214,1); }
 
 /* Lista / índice seleccionable (móvil: principal · desktop: índice compacto) */
-.locator__list { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: 8px; margin-top: 16px; }
+.locator__list { display: grid; grid-template-columns: repeat(auto-fit, minmax(184px,1fr)); gap: 12px; align-items: stretch; margin-top: 16px; }
 .locator__item {
   display: flex; align-items: center; gap: 9px;
-  min-height: 46px; padding: 8px 13px;
+  min-height: 46px; padding: 8px 13px; min-width: 0; white-space: nowrap;
   background: #fff; border: 1px solid var(--hair-light); border-radius: var(--r-md);
   font-family: var(--font-h); font-weight: 600; font-size: .86rem; color: var(--ink-dark);
   text-align: left; cursor: pointer;
@@ -3306,13 +3298,13 @@ a:hover > .photo-frame .photo-frame__img,
 .locator__item-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--semsa-green); flex-shrink: 0; }
 .locator__item--office .locator__item-dot { background: var(--semsa-blue); }
 .locator__item--us .locator__item-dot { background: var(--blue-light); }
-.locator__item-city { flex: 1; }
+.locator__item-city { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .locator__item-tag { font-family: var(--font-mono); font-size: .56rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: var(--grad-green); padding: 2px 7px; border-radius: var(--r-pill); }
 .locator__item-tag[data-tipo="Oficina"] { background: var(--semsa-blue); }
 .locator__item-tag[data-tipo="US"] { background: var(--semsa-blue-dark); }
 
 /* Panel de info (tarjeta clara con realce de marca) */
-.locator__panel { background: #fff; border: 1px solid var(--hair-light); border-top: 3px solid var(--semsa-green); border-radius: var(--r-shell); box-shadow: var(--sh-light-card), var(--bezel-hi-light); padding: clamp(22px,2.4vw,32px); }
+.locator__panel { background: #fff; border: 1px solid var(--hair-light); border-top: 3px solid var(--semsa-green); border-radius: var(--r-md); box-shadow: var(--sh-light-card), var(--bezel-hi-light); padding: clamp(18px,2vw,24px); }
 .locator__type { display: inline-block; font-family: var(--font-mono); font-size: .6rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--grad-green); padding: 3px 11px; border-radius: var(--r-pill); margin-bottom: 12px; }
 .locator__type[data-tipo="Oficina"] { background: var(--semsa-blue); }
 .locator__type[data-tipo="US"] { background: var(--semsa-blue-dark); }
@@ -3358,19 +3350,18 @@ a:hover > .photo-frame .photo-frame__img,
   margin: 0; border: 0; border-radius: 0; box-shadow: none; background: none;
 }
 /* Tarjeta de info: flotante sobre una esquina del mapa (zona sin pines: Pacífico) */
-.locator__panel { position: static; }                  /* base = móvil */
+/* Tarjeta COMPACTA: ancho fijo y alto = contenido (sin espacio vacío) */
+.locator__panel { position: static; width: min(320px, 86vw); height: auto; min-height: 0; max-height: none; }
 @media (min-width: 1024px) {
   .locator__panel {
     position: absolute; z-index: 8;
-    left: clamp(14px, 3vw, 52px); bottom: clamp(14px, 3vw, 48px);
-    width: min(340px, 30vw);
-    max-height: calc(100% - 30px); overflow: auto;
+    top: auto;                                   /* anula el top:96px heredado del layout sticky de Fase 3 */
+    left: clamp(14px, 3vw, 44px); bottom: clamp(14px, 3vw, 44px);
   }
 }
 @media (max-width: 1023px) {
   .locator__band { flex-direction: column; min-height: 0; gap: 16px; }
   .locator__map { height: auto; width: 100%; max-width: 100%; }   /* aspect-ratio fija la altura */
-  .locator__panel { width: min(460px, 92%); }
 }
 /* El pin activo muestra SOLO su nombre, de forma persistente */
 .coverage-map__pin.is-active .coverage-map__tip { opacity: 1; transform: translateX(-50%) translateY(0); }
