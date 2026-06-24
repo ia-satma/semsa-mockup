@@ -3333,3 +3333,57 @@ a:hover > .photo-frame .photo-frame__img,
 @media (prefers-reduced-motion: reduce) {
   .coverage-map__pin .coverage-map__dot, .locator__item { transition: none; }
 }
+
+/* ============================================================
+   FASE 3.1 — Mapa FULL-BLEED (borde a borde) + tarjeta flotante
+   Chips = control principal; el mapa solo muestra el nombre activo.
+   Sustituye el layout 2-col/sticky de FASE 3 (clases nuevas, base intacta).
+============================================================ */
+/* Banda navy de borde a borde — el mapa deja de ser tarjeta */
+.locator__band {
+  position: relative; width: 100%;
+  display: flex; align-items: center; justify-content: center;
+  min-height: clamp(440px, 78vh, 880px);
+  margin: 6px 0 clamp(22px, 3vw, 40px);
+  padding: clamp(18px, 3vw, 40px) 0;
+  background: radial-gradient(120% 130% at 50% 0%, #023d78 0%, #002f5d 45%, #001528 100%);
+  overflow: hidden;
+}
+/* Mapa interior: conserva aspect-ratio (pines % alineados); sin shell de tarjeta */
+.locator__map {
+  position: relative;
+  height: clamp(340px, 72vh, 760px);
+  aspect-ratio: 1000 / 684;
+  width: auto; max-width: 94vw;
+  margin: 0; border: 0; border-radius: 0; box-shadow: none; background: none;
+}
+/* Tarjeta de info: flotante sobre una esquina del mapa (zona sin pines: Pacífico) */
+.locator__panel { position: static; }                  /* base = móvil */
+@media (min-width: 1024px) {
+  .locator__panel {
+    position: absolute; z-index: 8;
+    left: clamp(14px, 3vw, 52px); bottom: clamp(14px, 3vw, 48px);
+    width: min(340px, 30vw);
+    max-height: calc(100% - 30px); overflow: auto;
+  }
+}
+@media (max-width: 1023px) {
+  .locator__band { flex-direction: column; min-height: 0; gap: 16px; }
+  .locator__map { height: auto; width: 100%; max-width: 100%; }   /* aspect-ratio fija la altura */
+  .locator__panel { width: min(460px, 92%); }
+}
+/* El pin activo muestra SOLO su nombre, de forma persistente */
+.coverage-map__pin.is-active .coverage-map__tip { opacity: 1; transform: translateX(-50%) translateY(0); }
+/* Pulso sutil del pin activo (respeta reduced-motion) */
+@media (prefers-reduced-motion: no-preference) {
+  .coverage-map__pin.is-active .coverage-map__dot { animation: pinPulse 2.1s ease-in-out infinite; }
+  @keyframes pinPulse {
+    0%, 100% { box-shadow: 0 0 0 6px rgba(0,204,0,.30), 0 0 26px rgba(0,204,0,1); }
+    50%      { box-shadow: 0 0 0 11px rgba(0,204,0,.10), 0 0 32px rgba(0,204,0,.85); }
+  }
+  .coverage-map__pin--us.is-active .coverage-map__dot { animation: pinPulseUs 2.1s ease-in-out infinite; }
+  @keyframes pinPulseUs {
+    0%, 100% { box-shadow: 0 0 0 6px rgba(0,122,214,.30), 0 0 26px rgba(0,122,214,1); }
+    50%      { box-shadow: 0 0 0 11px rgba(0,122,214,.10), 0 0 32px rgba(0,122,214,.85); }
+  }
+}

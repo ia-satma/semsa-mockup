@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260623210000">
+  <link rel="stylesheet" href="styles.css?v=20260624120000">
   <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
 </head>
 <body>
@@ -748,7 +748,7 @@
          COBERTURA NACIONAL
     ============================================================ -->
     <section class="section section--light coverage" id="cobertura" aria-labelledby="coverage-heading">
-      <div class="container container--wide">
+      <div class="container">
         <header class="section-head" data-reveal>
           <div class="section-head__meta">
             <span class="eyebrow">
@@ -759,19 +759,21 @@
           <h2 id="coverage-heading" class="section-head__title">Presencia en México y Estados Unidos</h2>
           <p class="section-head__sub">Matriz en Monterrey, oficinas corporativas en Saltillo, CDMX y Querétaro, y representantes en 11 ciudades más — 15 ubicaciones en México y EE.UU. para acompañar a su planta donde opere.</p>
         </header>
+      </div>
 
-        <!-- === MAPA LOCALIZADOR (store-locator data-driven; pines + lista + panel desde SUCURSALES) === -->
-        <div class="locator" data-reveal>
-          <div class="locator__map-col">
-            <div class="coverage-map locator__map">
-              <img class="coverage-map__svg" src="assets/img/coverage-map.svg" alt="Mapa de cobertura de SEMSA en México y EE.UU." loading="lazy" width="1000" height="674">
-              <div class="locator__pins" id="locator-pins"></div>
-            </div>
-            <div class="locator__list" id="locator-list" role="group" aria-label="Ubicaciones de SEMSA — selecciona una para ver su contacto"></div>
-          </div>
-          <aside class="locator__panel" id="locator-panel" aria-live="polite" aria-label="Información de la sucursal seleccionada"></aside>
+      <!-- === MAPA LOCALIZADOR — banda full-bleed (mapa de borde a borde) + tarjeta flotante === -->
+      <div class="locator__band" data-reveal>
+        <div class="coverage-map locator__map">
+          <img class="coverage-map__svg" src="assets/img/coverage-map.svg" alt="Mapa de cobertura de SEMSA en México y EE.UU." loading="lazy" width="1000" height="674">
+          <div class="locator__pins" id="locator-pins"></div>
         </div>
-        <!-- [FALTA: dirección y teléfono directo de las 14 sucursales fuera de Monterrey — SEMSA debe proveerlos. El panel los renderiza automáticamente al agregar dir/tel/telLabel a cada objeto del arreglo SUCURSALES (script abajo). Hoy solo Monterrey (matriz) los tiene.] -->
+        <aside class="locator__panel" id="locator-panel" aria-live="polite" aria-label="Información de la sucursal seleccionada"></aside>
+      </div>
+
+      <div class="container">
+        <!-- Chips = control principal (misma fuente SUCURSALES que pines + tarjeta) -->
+        <div class="locator__list" id="locator-list" role="group" aria-label="Ubicaciones de SEMSA — selecciona una para ver su contacto en el mapa"></div>
+        <!-- [FALTA: dirección y teléfono directo de las 14 sucursales fuera de Monterrey — SEMSA debe proveerlos. El panel los renderiza al agregar dir/tel/telLabel a cada objeto de SUCURSALES (script abajo). Hoy solo Monterrey los tiene.] -->
 
         <div class="coverage__stats" data-reveal data-reveal-delay="1">
           <span><strong>4</strong> oficinas</span>
@@ -1263,6 +1265,6 @@
   })();
   </script>
 
-  <script src="script.js?v=20260623210000"></script>
+  <script src="script.js?v=20260624120000"></script>
 </body>
 </html>
