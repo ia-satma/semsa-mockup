@@ -3535,7 +3535,7 @@ a:hover > .photo-frame .photo-frame__img,
 .hp__media { position: absolute; inset: 0; z-index: -3; width: 100%; height: 100%; object-fit: cover; transition: transform .9s cubic-bezier(.22,1,.36,1); }
 .hp__shade { position: absolute; inset: 0; z-index: -1; transition: opacity .5s; background: linear-gradient(0deg, rgba(0,11,20,.92), rgba(0,11,20,.30) 48%, rgba(0,11,20,.10)); }
 .hp__idx { position: absolute; top: clamp(82px, 10vh, 104px); left: 22px; z-index: 1; font-family: var(--font-mono); font-size: .8rem; color: var(--green-light); }
-.hp__vname { position: absolute; left: 50%; top: 52%; transform: translate(-50%,-50%); z-index: 1; writing-mode: vertical-rl; white-space: nowrap; font-family: var(--font-h); font-weight: 700; font-size: 21px; color: #fff; text-shadow: 0 2px 14px rgba(0,0,0,.55); transition: opacity .35s; }
+.hp__vname { position: absolute; left: 50%; bottom: 30px; top: auto; transform: translateX(-50%) rotate(180deg); transform-origin: center; z-index: 1; writing-mode: vertical-rl; white-space: nowrap; font-family: var(--font-h); font-weight: 700; font-size: 18px; letter-spacing: .02em; color: #fff; text-shadow: 0 2px 16px rgba(0,4,12,.85); transition: opacity .35s; }
 .hp__content { position: absolute; inset-inline: 0; bottom: 0; z-index: 1; padding: 26px 26px 32px; opacity: 0; transition: opacity .45s; display: flex; flex-direction: column; align-items: flex-start; gap: 9px; }
 .hp__tag { font-family: var(--font-mono); font-size: .6rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--grad-green); padding: 3px 10px; border-radius: var(--r-pill); }
 .hp__name { font-family: var(--font-h); font-size: clamp(20px, 2vw, 26px); font-weight: 800; line-height: 1.08; color: #fff; }
