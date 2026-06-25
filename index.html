@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260625070000">
+  <link rel="stylesheet" href="styles.css?v=20260625130000">
   <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
 </head>
 <body>
@@ -101,13 +101,26 @@
     ============================================================ -->
     <!-- === HERO PANELES — 4 columnas interactivas a sangre completa === -->
     <section class="hero-panels-sec" id="hero" aria-labelledby="hero-heading">
+
+      <!-- Titular protagonista (banda, sin overlay sobre las columnas) -->
+      <div class="hero-intro-band">
+        <div class="container">
+          <span class="eyebrow eyebrow--on-dark"><span class="eyebrow__dot" aria-hidden="true"></span>Presencia nacional · Desde 1986</span>
+          <h1 id="hero-heading" class="hero-panels__title"><span class="hero__heading-accent">40 años</span> equipando a la industria de México</h1>
+          <p class="hero-panels__support">Centro de Servicio Autorizado Ingersoll Rand · soluciones, servicio y refacciones para que su operación no se detenga.</p>
+          <a href="#cotizar" class="btn btn--primary btn--icon btn--lg hero-panels__cta">
+            <span>Solicitar cotización</span>
+            <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+      </div>
+
       <div class="hero-panels" data-hero-panels>
 
         <a class="hp hp--default is-active" href="#atex" aria-label="Polipastos y elevación, equipo ATEX — ver soluciones">
           <img class="hp__media" src="assets/img/hero-col-polipastos.webp" alt="Polipasto neumático elevando carga en planta industrial" loading="eager" decoding="async">
           <span class="hp__shade" aria-hidden="true"></span>
           <span class="hp__idx" aria-hidden="true">01</span>
-          <span class="hp__vname" aria-hidden="true">Polipastos y elevación</span>
           <span class="hp__content">
             <span class="hp__tag">ATEX</span>
             <span class="hp__name">Polipastos y elevación</span>
@@ -120,7 +133,6 @@
           <img class="hp__media" src="assets/img/hero-col-herramientas.webp" alt="Herramienta de torque en línea de producción" loading="eager" decoding="async">
           <span class="hp__shade" aria-hidden="true"></span>
           <span class="hp__idx" aria-hidden="true">02</span>
-          <span class="hp__vname" aria-hidden="true">Herramientas industriales</span>
           <span class="hp__content">
             <span class="hp__name">Herramientas industriales</span>
             <span class="hp__desc">Neumáticas, eléctricas y a batería — ensamble, torque y acabado de precisión.</span>
@@ -132,7 +144,6 @@
           <img class="hp__media" src="assets/img/hero-col-fluidos.webp" alt="Bomba industrial y tubería de transferencia de fluidos" loading="eager" decoding="async">
           <span class="hp__shade" aria-hidden="true"></span>
           <span class="hp__idx" aria-hidden="true">03</span>
-          <span class="hp__vname" aria-hidden="true">Manejo de fluidos</span>
           <span class="hp__content">
             <span class="hp__name">Manejo de fluidos</span>
             <span class="hp__desc">Bombas de diafragma y de pistón, dosificación y transferencia. Distribuidor ARO.</span>
@@ -144,24 +155,12 @@
           <img class="hp__media" src="assets/img/hero-col-pintura.webp" alt="Cabina automatizada de pintura y recubrimiento" loading="eager" decoding="async">
           <span class="hp__shade" aria-hidden="true"></span>
           <span class="hp__idx" aria-hidden="true">04</span>
-          <span class="hp__vname" aria-hidden="true">Pintura y recubrimiento</span>
           <span class="hp__content">
             <span class="hp__name">Pintura y recubrimiento</span>
             <span class="hp__desc">Sistemas de pintura y recubrimiento de alta precisión. Distribuidor Graco y Carlisle.</span>
             <span class="hp__cta">Ver soluciones →</span>
           </span>
         </a>
-
-        <!-- Titular protagonista (overlay) -->
-        <div class="hero-panels__intro">
-          <span class="eyebrow eyebrow--on-dark"><span class="eyebrow__dot" aria-hidden="true"></span>Presencia nacional · Desde 1986</span>
-          <h1 id="hero-heading" class="hero-panels__title"><span class="hero__heading-accent">40 años</span> equipando a la industria de México</h1>
-          <p class="hero-panels__support">Centro de Servicio Autorizado Ingersoll Rand · soluciones, servicio y refacciones para que su operación no se detenga.</p>
-          <a href="#cotizar" class="btn btn--primary btn--icon btn--lg hero-panels__cta">
-            <span>Solicitar cotización</span>
-            <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </a>
-        </div>
 
         <!-- Indicador de scroll -->
         <div class="hero-panels__scroll" aria-hidden="true">
@@ -1613,6 +1612,6 @@
   })();
   </script>
 
-  <script src="script.js?v=20260625070000"></script>
+  <script src="script.js?v=20260625130000"></script>
 </body>
 </html>
