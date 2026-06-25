@@ -3566,7 +3566,11 @@ a:hover > .photo-frame .photo-frame__img,
 .panels:hover .hp { flex: 1 1 0; }
 .panels:hover .hp:hover { flex: 2.2 1 0; }
 .hp.on { flex: 2.2 1 0; }
-.hp:hover .hp__media, .hp.on .hp__media { transform: scale(1.07); }
+@keyframes kenburns {
+  from { transform: scale(1.05) translate(0, 0); }
+  to   { transform: scale(1.16) translate(-2.5%, -1.5%); }
+}
+.hp:hover .hp__media, .hp.on .hp__media { animation: kenburns 16s ease-in-out infinite alternate; }
 .hp:hover .hp__shade, .hp.on .hp__shade { opacity: .9; }
 .hp:hover .hp__name, .hp.on .hp__name { font-size: 23px; }
 .hp:hover .hp__desc, .hp.on .hp__desc { max-height: 90px; opacity: 1; margin-top: 8px; }
@@ -3581,7 +3585,7 @@ a:hover > .photo-frame .photo-frame__img,
   .sol-label { position: relative; top: auto; left: auto; grid-column: 1 / -1; padding: 4px 4px 2px; }
   .hp { min-height: clamp(150px, 30vw, 210px); }
   .hp.on { flex: none; }
-  .hp__media { transform: none !important; background-position: center 30%; }
+  .hp__media { transform: none !important; animation: none !important; background-position: center 30%; }
   .hp__shade { background: linear-gradient(0deg, rgba(0,11,20,.92) 0%, rgba(0,11,20,.18) 58%, rgba(0,11,20,0) 100%); }
   .hp__idx { top: 12px; right: 14px; }
   .hp__content { padding: 14px 16px 16px; }
@@ -3593,4 +3597,5 @@ a:hover > .photo-frame .photo-frame__img,
 
 @media (prefers-reduced-motion: reduce) {
   .hp, .hp__media, .hp__name { transition: none; }
+  .hp__media { animation: none; }
 }
