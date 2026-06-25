@@ -417,29 +417,16 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   });
 })();
 
-/* ─── Hero de paneles: columna activa (hover/focus), video on/off, ATEX por defecto ─── */
-(function initHeroPanels() {
-  const wrap = document.querySelector('[data-hero-panels]');
-  if (!wrap) return;
-  const panels = Array.prototype.slice.call(wrap.querySelectorAll('.hp'));
+/* ─── Hero Soluciones (Opción B): expansión hover/focus, columna 01 activa por defecto ─── */
+(function initHeroSol() {
+  const group = document.querySelector('.hero-sol .panels');
+  if (!group) return;
+  const panels = Array.prototype.slice.call(group.querySelectorAll('.hp'));
   if (!panels.length) return;
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const def = wrap.querySelector('.hp--default') || panels[0];
-  function activate(panel) {
-    panels.forEach(function (p) {
-      const on = p === panel;
-      p.classList.toggle('is-active', on);
-      const v = p.querySelector('video');
-      if (v) {
-        if (on && !reduce) { v.play().catch(function () {}); }
-        else { v.pause(); }
-      }
-    });
-  }
+  function clearOn() { panels.forEach(function (x) { x.classList.remove('on'); }); }
   panels.forEach(function (p) {
-    p.addEventListener('mouseenter', function () { activate(p); });
-    p.addEventListener('focusin', function () { activate(p); });
+    p.addEventListener('mouseenter', clearOn);
+    p.addEventListener('focus', function () { clearOn(); p.classList.add('on'); });
   });
-  wrap.addEventListener('mouseleave', function () { activate(def); });
-  activate(def);
+  group.addEventListener('mouseleave', function () { clearOn(); panels[0].classList.add('on'); });
 })();
