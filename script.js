@@ -416,3 +416,30 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     if (e.key === 'Escape' && !modal.hidden) close();
   });
 })();
+
+/* ─── Hero de paneles: columna activa (hover/focus), video on/off, ATEX por defecto ─── */
+(function initHeroPanels() {
+  const wrap = document.querySelector('[data-hero-panels]');
+  if (!wrap) return;
+  const panels = Array.prototype.slice.call(wrap.querySelectorAll('.hp'));
+  if (!panels.length) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const def = wrap.querySelector('.hp--default') || panels[0];
+  function activate(panel) {
+    panels.forEach(function (p) {
+      const on = p === panel;
+      p.classList.toggle('is-active', on);
+      const v = p.querySelector('video');
+      if (v) {
+        if (on && !reduce) { v.play().catch(function () {}); }
+        else { v.pause(); }
+      }
+    });
+  }
+  panels.forEach(function (p) {
+    p.addEventListener('mouseenter', function () { activate(p); });
+    p.addEventListener('focusin', function () { activate(p); });
+  });
+  wrap.addEventListener('mouseleave', function () { activate(def); });
+  activate(def);
+})();
