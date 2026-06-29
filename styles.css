@@ -3640,8 +3640,8 @@ a:hover > .photo-frame .photo-frame__img,
 .hero--center .hero__text { max-width: 880px; align-self: center; }
 /* Isotipo SEMSA (solo emblema, sin texto) en versión clara + glow verde tenue */
 .hero--center .hero__emblem {
-  display: block; width: clamp(84px, 13vw, 112px); height: auto; margin: 0 auto 22px;
-  filter: drop-shadow(0 0 22px rgba(86,178,0,.45));
+  display: block; width: clamp(112px, 16vw, 152px); height: auto; margin: 0 auto 24px;
+  filter: drop-shadow(0 0 26px rgba(86,178,0,.45));
 }
 .hero--center .hero__subheading { max-width: 640px; margin-left: auto; margin-right: auto; color: #eaf1f8; }
 .hero--center .hero__ctas { justify-content: center; }
