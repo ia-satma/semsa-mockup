@@ -3641,7 +3641,7 @@ a:hover > .photo-frame .photo-frame__img,
 /* Isotipo SEMSA (solo emblema, sin texto) en versión clara + glow verde tenue */
 .hero--center .hero__emblem {
   display: block; width: clamp(60px, 9vw, 72px); height: auto; margin: 0 auto 20px;
-  filter: brightness(0) invert(1) drop-shadow(0 0 16px rgba(86,178,0,.5));
+  filter: drop-shadow(0 0 16px rgba(86,178,0,.45));
 }
 .hero--center .hero__subheading { max-width: 640px; margin-left: auto; margin-right: auto; color: #eaf1f8; }
 .hero--center .hero__ctas { justify-content: center; }
