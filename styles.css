@@ -1562,32 +1562,28 @@ a:hover > .photo-frame .photo-frame__img,
   background: var(--hair);
 }
 .brand-wall__grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 3.5rem;
-  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(22px, 2.6vw, 38px) clamp(24px, 3vw, 40px);
 }
-/* Logo-wall SIN tarjetas: logos/wordmarks sueltos sobre el fondo */
+/* Logo-wall: logos a COLOR oficial, tamaño uniforme, filas centradas */
 .brand-wall__grid .brand-chip {
   background: none;
   border: none;
   box-shadow: none;
-  padding: 10px;
-  min-height: 78px;
+  flex: 0 0 auto;
+  width: 142px;
+  min-height: 62px;
+  padding: 6px;
   overflow: visible;
   transition: transform .3s ease;
 }
-.brand-wall__grid .brand-chip:hover { transform: scale(1.04); box-shadow: none; }
+.brand-wall__grid .brand-chip:hover { transform: scale(1.06); box-shadow: none; }
 .brand-wall__grid .brand-chip__img {
-  max-height: 42px; max-width: 124px; width: auto; height: auto; object-fit: contain;
-  opacity: 0.6; filter: grayscale(1);          /* muro monocromo premium */
-  transition: opacity .3s ease, filter .3s ease;
+  max-height: 48px; max-width: 128px; width: auto; height: auto; object-fit: contain;
 }
-.brand-wall__grid .brand-chip--wm .wm { opacity: 0.65; transition: opacity .3s ease; }
-.brand-wall__grid .brand-chip:hover .brand-chip__img { opacity: 1; filter: grayscale(0); }  /* color en hover */
-.brand-wall__grid .brand-chip:hover .wm { opacity: 1; }
-.brand-wall__grid .brand-chip--wm .wm { color: #5a6675; }
-.brand-wall__grid .brand-chip__caption { color: #8a93a0; }
 .brand-wall__foot {
   display: flex;
   align-items: center;
