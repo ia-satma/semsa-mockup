@@ -3599,3 +3599,27 @@ a:hover > .photo-frame .photo-frame__img,
   .hp, .hp__media, .hp__name { transition: none; }
   .hp__media { animation: none; }
 }
+
+/* ============================================================
+   HERO VIDEO con titular centrado + MENÚ de 4 columnas debajo
+============================================================ */
+.hero--center .hero__content { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+.hero--center .hero__text { max-width: 880px; align-self: center; }
+.hero--center .hero__subheading { max-width: 640px; margin-left: auto; margin-right: auto; color: #eaf1f8; }
+.hero--center .hero__ctas { justify-content: center; }
+.hero--center .eyebrow { justify-content: center; }
+/* Scrim centrado (el overlay base pesa a la izquierda) para que el titular centrado sea legible sobre el video */
+.hero--center .hero__overlay {
+  background:
+    radial-gradient(ellipse 74% 64% at 50% 46%, rgba(0,21,40,.62), transparent 78%),
+    linear-gradient(180deg, rgba(0,21,40,.72) 0%, rgba(0,21,40,.5) 45%, rgba(0,21,40,.84) 100%);
+}
+.hero--center .hero__heading { text-shadow: 0 2px 22px rgba(0,8,20,.62); }
+/* Acento "40 años" en verde sólido (el gradient-clip con relleno transparente se vuelve invisible en algunos renders) */
+.hero--center .hero__heading-accent { background: none; -webkit-text-fill-color: var(--green-light); color: var(--green-light); }
+
+/* Menú animado (las 4 columnas) como banda propia bajo el video hero */
+.hero-menu { position: relative; width: 100vw; margin-inline: calc(50% - 50vw); height: clamp(380px, 54vh, 580px); background: var(--bg); }
+@media (max-width: 820px) {
+  .hero-menu { height: auto; }
+}

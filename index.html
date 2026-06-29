@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260625160000">
+  <link rel="stylesheet" href="styles.css?v=20260625190000">
   <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
 </head>
 <body>
@@ -105,21 +105,63 @@
     <!-- ============================================================
          HERO
     ============================================================ -->
-    <!-- === HERO SOLUCIONES (Opción B): franja izquierda + 4 columnas-solución === -->
-    <section class="hero-sol" id="hero" aria-labelledby="hero-heading">
+    <!-- === HERO — VIDEO con titular centrado === -->
+    <section class="hero hero--center" id="hero" aria-labelledby="hero-heading">
+      <video class="hero__video" muted loop playsinline preload="metadata"
+             poster="assets/video/hero-loop-poster.jpg" width="1280" height="720"
+             aria-hidden="true" tabindex="-1" disablepictureinpicture disableremoteplayback data-hero-video>
+        <source src="assets/video/hero-loop.mp4" type="video/mp4">
+      </video>
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="hero__grid" aria-hidden="true"></div>
 
-      <!-- Franja izquierda angosta: value prop + CTA -->
-      <div class="htext">
-        <p class="hsol-eyebrow">Presencia nacional</p>
-        <h1 id="hero-heading"><span class="g">40 años</span> equipando a la industria de México</h1>
-        <p class="sub">Centro de Servicio Autorizado Ingersoll Rand · soluciones, servicio y refacciones para que su operación no se detenga.</p>
-        <a href="#cotizar" class="btn btn--primary btn--icon hsol-cta">
-          <span>Solicitar cotización</span>
-          <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
+      <div class="container hero__content">
+        <div class="hero__text" data-reveal>
+          <span class="eyebrow eyebrow--on-dark">
+            <span class="eyebrow__dot" aria-hidden="true"></span>
+            Presencia nacional · Desde 1986
+          </span>
+          <h1 id="hero-heading" class="hero__heading">
+            <span class="hero__heading-accent">40 años</span> equipando a la industria de México
+          </h1>
+          <p class="hero__subheading">
+            Centro de Servicio Autorizado Ingersoll Rand. Herramienta, equipo y polipastos ATEX, con servicio técnico, refacciones y soporte especializado para que su operación no se detenga.
+          </p>
+          <div class="hero__ctas">
+            <a href="#cotizar" class="btn btn--primary btn--icon btn--lg">
+              <span>Solicitar cotización</span>
+              <span class="btn__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </a>
+            <a href="#atex" class="btn btn--outline btn--icon btn--lg">
+              <span>Ver polipastos ATEX</span>
+              <span class="btn__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+              </span>
+            </a>
+          </div>
+        </div>
       </div>
 
-      <!-- 4 columnas = Soluciones (puertas de entrada por proceso) -->
+      <div class="hero__seal" aria-label="Centro de Servicio Autorizado Ingersoll Rand desde 1993">
+        <span class="hero__seal-ico" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
+        </span>
+        <span class="hero__seal-text">
+          <strong>Autorizado Ingersoll Rand</strong>
+          <span>Centro de Servicio · desde 1993</span>
+        </span>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span class="mono-tag">SCROLL</span>
+        <span class="hero__scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- === MENÚ ANIMADO — 4 columnas (soluciones por proceso) === -->
+    <section class="hero-menu" aria-label="Soluciones por proceso">
       <div class="panels" data-hero-panels>
         <p class="sol-label">Soluciones <b>· elija su proceso</b></p>
 
@@ -1094,6 +1136,6 @@
   </a>
 
 
-  <script src="script.js?v=20260625160000"></script>
+  <script src="script.js?v=20260625190000"></script>
 </body>
 </html>
