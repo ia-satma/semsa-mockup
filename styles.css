@@ -1590,7 +1590,7 @@ a:hover > .photo-frame .photo-frame__img,
 .brand-wall__grid img[src*="lubbering"]  { max-height: 24px; }
 .brand-wall__grid img[src*="hitachi"]    { max-height: 22px; }
 .brand-wall__grid img[src*="durofix"]    { max-height: 28px; }
-.brand-wall__grid img[src*="cleco"]      { max-height: 32px; }
+.brand-wall__grid img[src*="cleco"]      { max-height: 34px; max-width: 120px; }
 .brand-wall__grid img[src*="devilbiss"]  { max-height: 38px; max-width: 108px; }
 .brand-wall__grid img[src*="rivit"]      { max-height: 46px; }
 .brand-wall__grid img[src*="graco"]      { max-height: 46px; }
