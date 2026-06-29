@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260625190000">
+  <link rel="stylesheet" href="styles.css?v=20260625200000">
   <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
 </head>
 <body>
@@ -259,7 +259,25 @@
           <p class="atex__desc">
             Respaldados por el único Centro de Servicio Autorizado Ingersoll Rand en Nuevo León — técnicos certificados, refacciones originales, garantía oficial.
           </p>
-          <ul class="checklist">
+          <div class="atex__ctas">
+            <a href="#cotizar" class="btn btn--primary btn--icon btn--lg">
+              <span>Cotizar polipastos ATEX</span>
+              <span class="btn__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </a>
+            <a href="#atex" class="btn btn--ghost btn--ghost-on-dark">Ver catálogo ATEX
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <aside class="atex__card" data-reveal="right" data-reveal-delay="1" aria-label="Credenciales de servicio para equipo ATEX">
+          <div class="atex__card-head">
+            <span class="atex__card-tag">Especialidad</span>
+            <h3 class="atex__card-title">Servicio Autorizado IR para equipo ATEX</h3>
+          </div>
+          <ul class="checklist atex__card-list">
             <li>
               <span class="checklist__check" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="m5 12 5 5L20 7"/></svg>
@@ -285,25 +303,11 @@
               Asesoría técnica especializada
             </li>
           </ul>
-          <div class="atex__ctas">
-            <a href="#cotizar" class="btn btn--primary btn--icon btn--lg">
-              <span>Cotizar polipastos ATEX</span>
-              <span class="btn__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </span>
-            </a>
-            <a href="#atex" class="btn btn--ghost btn--ghost-on-dark">Ver catálogo ATEX
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
+          <div class="atex__card-foot">
+            <span class="atex__card-logo-chip"><img src="assets/img/brands/ingersoll-rand.svg" alt="Ingersoll Rand" class="atex__card-logo" width="120" height="54" loading="lazy" decoding="async"></span>
+            <span class="atex__card-note">Único centro autorizado en Nuevo León</span>
           </div>
-        </div>
-
-        <div class="atex__seal-wrap" data-reveal="right" data-reveal-delay="1">
-          <div class="atex__seal" data-magnetic>
-            <span class="atex__seal-badge">Especialidad</span>
-            <span class="atex__seal-text">Servicio autorizado IR<br>para equipo ATEX</span>
-          </div>
-        </div>
+        </aside>
       </div>
     </section>
 
@@ -1136,6 +1140,6 @@
   </a>
 
 
-  <script src="script.js?v=20260625190000"></script>
+  <script src="script.js?v=20260625200000"></script>
 </body>
 </html>

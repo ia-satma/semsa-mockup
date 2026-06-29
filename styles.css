@@ -3186,12 +3186,43 @@ a:hover > .photo-frame .photo-frame__img,
 .atex--bleed { color: var(--ink); }
 .atex__inner--bleed {
   display: grid;
-  grid-template-columns: minmax(0, 660px) 1fr;
-  gap: 48px; align-items: center;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: clamp(40px, 5vw, 64px); align-items: center;
 }
 .atex--bleed .atex__heading { color: #fff; }
 .atex--bleed .atex__desc { color: var(--ink-soft); }
 .atex--bleed .checklist li { color: var(--ink); }
+
+/* Tarjeta de credenciales ATEX (anclada y centrada, no flotante) */
+.atex__card {
+  position: relative; align-self: center;
+  background: rgba(0,17,32,.74);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 20px;
+  padding: clamp(22px, 2.4vw, 30px);
+  box-shadow: 0 24px 60px rgba(0,0,0,.42), 0 0 48px -14px rgba(86,178,0,.20);
+}
+.atex__card-tag {
+  display: inline-block; font-family: var(--font-h); font-weight: 700;
+  font-size: .6rem; letter-spacing: .12em; text-transform: uppercase;
+  color: #fff; background: var(--grad-green); padding: 4px 11px; border-radius: var(--r-pill);
+  box-shadow: var(--bezel-hi);
+}
+.atex__card-title {
+  font-family: var(--font-h); font-weight: 800; font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  color: #fff; line-height: 1.25; margin: 12px 0 0;
+}
+.atex__card-list { margin: 20px 0 0; gap: 14px; }
+.atex__card .checklist li { color: var(--ink); font-size: .92rem; align-items: flex-start; }
+.atex__card .checklist__check { width: 22px; height: 22px; margin-top: 1px; }
+.atex__card-foot {
+  margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.12);
+  display: flex; align-items: center; gap: 13px;
+}
+.atex__card-logo-chip { background: #fff; border-radius: 8px; padding: 7px 10px; display: inline-flex; flex: 0 0 auto; }
+.atex__card-logo { display: block; height: 24px; width: auto; }
+.atex__card-note { font-size: .78rem; color: var(--ink-soft); line-height: 1.35; }
 .atex__seal-wrap { position: relative; display: flex; justify-content: center; }
 .atex__seal-wrap::before {
   content: ''; position: absolute; z-index: 0;
