@@ -3591,7 +3591,7 @@ a:hover > .photo-frame .photo-frame__img,
 .hp__desc { max-height: 0; opacity: 0; overflow: hidden; color: #c2d2e2; font-size: 12.5px; line-height: 1.45; transition: max-height .45s, opacity .45s, margin .45s; }
 .hp__cta { max-height: 0; opacity: 0; overflow: hidden; color: var(--green-light); font-weight: 700; font-size: 13px; transition: max-height .45s, opacity .45s, margin .45s; }
 .hp::after { content: ''; position: absolute; left: 0; bottom: 0; height: 4px; width: 100%; z-index: 3;
-  background: linear-gradient(90deg, var(--green), var(--green-light)); transform: scaleX(0); transform-origin: left; transition: transform .5s; }
+  background: linear-gradient(90deg, var(--blue), var(--blue-light)); transform: scaleX(0); transform-origin: left; transition: transform .5s; }
 .hp:focus-visible { outline: 2px solid var(--green-light); outline-offset: -4px; }
 /* expansión en las 4 (fix de especificidad: la del cursor gana a la que encoge) */
 .panels:hover .hp { flex: 1 1 0; }
