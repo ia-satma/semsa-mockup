@@ -3634,8 +3634,15 @@ a:hover > .photo-frame .photo-frame__img,
 /* ============================================================
    HERO VIDEO con titular centrado + MENÚ de 4 columnas debajo
 ============================================================ */
+/* Sube el bloque para balancearlo a lo alto (el padding-top base de 140px lo cargaba abajo) */
+.hero--center { padding-top: clamp(72px, 7.5vh, 100px); padding-bottom: clamp(60px, 6.5vh, 84px); }
 .hero--center .hero__content { grid-template-columns: 1fr; justify-items: center; text-align: center; }
 .hero--center .hero__text { max-width: 880px; align-self: center; }
+/* Isotipo SEMSA (solo emblema, sin texto) en versión clara + glow verde tenue */
+.hero--center .hero__emblem {
+  display: block; width: clamp(60px, 9vw, 72px); height: auto; margin: 0 auto 20px;
+  filter: brightness(0) invert(1) drop-shadow(0 0 16px rgba(86,178,0,.5));
+}
 .hero--center .hero__subheading { max-width: 640px; margin-left: auto; margin-right: auto; color: #eaf1f8; }
 .hero--center .hero__ctas { justify-content: center; }
 .hero--center .eyebrow { justify-content: center; }
