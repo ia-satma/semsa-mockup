@@ -2295,6 +2295,16 @@ a:hover > .photo-frame .photo-frame__img,
 .catalog2 .product-card__title a:hover { color: var(--semsa-blue); }
 .catalog2 .product-card__spec { font-size: .8rem; }
 .catalog2 a.product-card__media { display: block; }
+/* Vitrina "Lo más solicitado" en el home (#productos) */
+.featured .catalog__grid { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1000px) { .featured .catalog__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px)  { .featured .catalog__grid { grid-template-columns: 1fr; } }
+.product-card__ribbon {
+  position: absolute; top: 12px; right: 12px;
+  font-family: var(--font-mono); font-size: .58rem; font-weight: 700; letter-spacing: .04em;
+  text-transform: uppercase; padding: 4px 10px; border-radius: var(--r-pill);
+  background: var(--semsa-green); color: #fff;
+}
 
 .catalog2__empty { text-align: center; padding: 44px 0; color: var(--ink-dark-soft); font-size: .95rem; }
 .catalog2__empty[hidden] { display: none; }
