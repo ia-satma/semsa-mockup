@@ -330,49 +330,168 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   });
 })();
 
-// ── CATÁLOGO: filtro por categoría (solo en catalogo.html) ────
-(function initCatalogFilter() {
-  const filters = document.querySelector('[data-catalog-filters]');
-  const grid = document.querySelector('[data-catalog-grid]');
-  if (!filters || !grid) return;
-  const cards = Array.prototype.slice.call(grid.querySelectorAll('.product-card'));
-  filters.addEventListener('click', function (e) {
+// ── CATÁLOGO DINÁMICO: 496 productos desde data/catalogo.json (catalogo.html) ──
+(function initCatalog() {
+  const root = document.querySelector('[data-catalog]');
+  if (!root) return;
+  const grid = root.querySelector('[data-cat-grid]');
+  const brandsBox = root.querySelector('[data-cat-brands]');
+  const catSelect = root.querySelector('[data-cat-category]');
+  const searchInput = root.querySelector('[data-cat-search]');
+  const countEl = root.querySelector('[data-cat-count]');
+  const emptyEl = root.querySelector('[data-cat-empty]');
+  const moreBtn = root.querySelector('[data-cat-more]');
+  const resetBtn = root.querySelector('[data-cat-reset]');
+  const PER = 60;
+
+  let all = [], filtered = [], shown = 0;
+  let fBrand = '', fCat = '', fQuery = '';
+  const added = new Set();   // lista de cotización (persiste entre re-renders)
+
+  const norm = function (s) {
+    return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  };
+  const esc = function (s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  };
+
+  function cardHTML(p) {
+    const isAdded = added.has(p.name);
+    const sku = p.sku ? '<p class="pcard__sku">SKU: ' + esc(p.sku) + '</p>' : '';
+    const desc = p.desc ? '<p class="product-card__spec">' + esc(p.desc) + '</p>' : '';
+    const img = p.img
+      ? '<img class="product-card__img" src="assets/img/catalogo/' + esc(p.img) + '" alt="' + esc(p.name) + '" loading="lazy" decoding="async" width="300" height="300">'
+      : '';
+    return '<article class="product-card">' +
+      '<div class="product-card__media">' + img +
+        '<span class="product-card__cat">' + esc(p.cat) + '</span>' +
+      '</div>' +
+      '<div class="product-card__body">' +
+        '<span class="pcard__brand">' + esc(p.brand) + '</span>' +
+        '<h2 class="product-card__title">' + esc(p.name) + '</h2>' +
+        sku + desc +
+        '<div class="product-card__actions">' +
+          '<button type="button" class="product-card__add' + (isAdded ? ' is-added' : '') +
+            '" data-add-quote data-product="' + esc(p.name) + '">' +
+            (isAdded ? '✓ Agregado' : '+ Agregar a cotización') + '</button>' +
+          '<a class="product-card__quote" href="index.html#cotizar">Cotizar</a>' +
+        '</div>' +
+      '</div>' +
+    '</article>';
+  }
+
+  function applyFilters() {
+    filtered = all.filter(function (p) {
+      if (fBrand && p.brand !== fBrand) return false;
+      if (fCat && p.cat !== fCat) return false;
+      if (fQuery) {
+        const hay = norm(p.name) + ' ' + norm(p.sku) + ' ' + norm(p.brand);
+        if (hay.indexOf(fQuery) === -1) return false;
+      }
+      return true;
+    });
+    shown = 0;
+    grid.innerHTML = '';
+    render();
+  }
+
+  function render() {
+    const next = filtered.slice(shown, shown + PER);
+    grid.insertAdjacentHTML('beforeend', next.map(cardHTML).join(''));
+    shown += next.length;
+    countEl.textContent = String(filtered.length);
+    if (emptyEl) emptyEl.hidden = filtered.length !== 0;
+    if (moreBtn) moreBtn.hidden = shown >= filtered.length;
+    grid.setAttribute('aria-busy', 'false');
+  }
+
+  function buildBrands() {
+    const counts = {};
+    all.forEach(function (p) { counts[p.brand] = (counts[p.brand] || 0) + 1; });
+    const brands = Object.keys(counts).sort(function (a, b) {
+      if (a === 'Otros') return 1; if (b === 'Otros') return -1;
+      return counts[b] - counts[a];
+    });
+    let html = '<button type="button" class="catalog__filter is-active" data-brand="">Todas <b>' + all.length + '</b></button>';
+    brands.forEach(function (b) {
+      html += '<button type="button" class="catalog__filter" data-brand="' + esc(b) + '">' + esc(b) + ' <b>' + counts[b] + '</b></button>';
+    });
+    brandsBox.innerHTML = html;
+  }
+
+  function buildCats() {
+    const counts = {};
+    all.forEach(function (p) { counts[p.cat] = (counts[p.cat] || 0) + 1; });
+    const cats = Object.keys(counts).sort(function (a, b) {
+      if (a === 'Otros') return 1; if (b === 'Otros') return -1;
+      return a.localeCompare(b, 'es');
+    });
+    cats.forEach(function (c) {
+      const o = document.createElement('option');
+      o.value = c; o.textContent = c + ' (' + counts[c] + ')';
+      catSelect.appendChild(o);
+    });
+  }
+
+  brandsBox.addEventListener('click', function (e) {
     const btn = e.target.closest('.catalog__filter');
     if (!btn) return;
-    const cat = btn.getAttribute('data-filter');
-    filters.querySelectorAll('.catalog__filter').forEach(function (b) {
+    fBrand = btn.getAttribute('data-brand') || '';
+    brandsBox.querySelectorAll('.catalog__filter').forEach(function (b) {
       b.classList.toggle('is-active', b === btn);
     });
-    cards.forEach(function (card) {
-      const show = cat === 'all' || card.getAttribute('data-cat') === cat;
-      card.classList.toggle('is-hidden', !show);
-    });
+    applyFilters();
   });
-})();
+  catSelect.addEventListener('change', function () { fCat = catSelect.value; applyFilters(); });
+  let tDeb;
+  searchInput.addEventListener('input', function () {
+    clearTimeout(tDeb);
+    tDeb = setTimeout(function () { fQuery = norm(searchInput.value.trim()); applyFilters(); }, 180);
+  });
+  if (moreBtn) moreBtn.addEventListener('click', render);
+  if (resetBtn) resetBtn.addEventListener('click', function () {
+    fBrand = ''; fCat = ''; fQuery = '';
+    searchInput.value = ''; catSelect.value = '';
+    brandsBox.querySelectorAll('.catalog__filter').forEach(function (b, i) { b.classList.toggle('is-active', i === 0); });
+    applyFilters();
+  });
 
-// ── CATÁLOGO: lista de cotización (stub de mockup; cableado real en Fase 5) ──
-(function initQuoteList() {
-  const bar = document.querySelector('[data-quote-bar]');
-  if (!bar) return;
-  const countEl = bar.querySelector('[data-quote-count]');
-  const added = new Set();
-  document.querySelectorAll('[data-add-quote]').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      const id = btn.getAttribute('data-product') || String(added.size);
+  // Lista de cotización (delegación, tolera cards dinámicas)
+  (function () {
+    const bar = document.querySelector('[data-quote-bar]');
+    if (!bar) return;
+    const countQ = bar.querySelector('[data-quote-count]');
+    const wordQ = bar.querySelector('[data-quote-word]');
+    grid.addEventListener('click', function (e) {
+      const btn = e.target.closest('[data-add-quote]');
+      if (!btn) return;
+      const id = btn.getAttribute('data-product') || '';
       if (added.has(id)) {
-        added.delete(id);
-        btn.classList.remove('is-added');
-        btn.textContent = '+ Agregar a cotización';
+        added.delete(id); btn.classList.remove('is-added'); btn.textContent = '+ Agregar a cotización';
       } else {
-        added.add(id);
-        btn.classList.add('is-added');
-        btn.textContent = '✓ Agregado';
+        added.add(id); btn.classList.add('is-added'); btn.textContent = '✓ Agregado';
       }
-      const n = added.size;
-      if (countEl) countEl.textContent = String(n);
-      bar.hidden = n === 0;
+      if (countQ) countQ.textContent = String(added.size);
+      if (wordQ) wordQ.textContent = added.size === 1 ? 'producto' : 'productos';
+      bar.hidden = added.size === 0;
     });
-  });
+  })();
+
+  fetch('data/catalogo.json')
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (data) {
+      all = data;
+      buildBrands();
+      buildCats();
+      applyFilters();
+    })
+    .catch(function (err) {
+      grid.setAttribute('aria-busy', 'false');
+      grid.innerHTML = '<p class="catalog__disclaimer">No se pudo cargar el catálogo (' + esc(err.message) +
+        '). La página debe servirse por HTTP (no funciona abriendo el archivo directo).</p>';
+    });
 })();
 
 /* ─── Accesos rápidos: preseleccionan el "tipo de necesidad" en el formulario ─── */
