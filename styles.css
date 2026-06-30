@@ -1581,6 +1581,7 @@ a:hover > .photo-frame .photo-frame__img,
   transition: transform .3s ease;
 }
 .brand-wall__grid .brand-chip:hover { transform: scale(1.06); box-shadow: none; }
+.brand-chip__link { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
 .brand-wall__grid .brand-chip__img {
   max-height: 32px; max-width: 100px; width: auto; height: auto; object-fit: contain;
 }
@@ -2272,7 +2273,10 @@ a:hover > .photo-frame .photo-frame__img,
 .pcard__brand { font-family: var(--font-mono); font-size: .62rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--semsa-blue); }
 .pcard__sku { font-family: var(--font-mono); font-size: .72rem; color: var(--ink-dark-soft); margin-top: -2px; }
 .catalog2 .product-card__title { font-size: .96rem; }
+.catalog2 .product-card__title a { color: inherit; text-decoration: none; }
+.catalog2 .product-card__title a:hover { color: var(--semsa-blue); }
 .catalog2 .product-card__spec { font-size: .8rem; }
+.catalog2 a.product-card__media { display: block; }
 
 .catalog2__empty { text-align: center; padding: 44px 0; color: var(--ink-dark-soft); font-size: .95rem; }
 .catalog2__empty[hidden] { display: none; }
@@ -2286,6 +2290,76 @@ a:hover > .photo-frame .photo-frame__img,
 .catalog2__reset:hover, .catalog2__more-btn:hover { border-color: var(--semsa-blue-dark); background: rgba(0,70,139,.04); }
 .catalog2__more-btn[hidden] { display: none; }
 .catalog2__more { text-align: center; margin-top: 30px; }
+
+/* ─── FICHA DE PRODUCTO (producto/<slug>.html) ─────────────────── */
+.prod-crumb { background: var(--bg-light); border-bottom: 1px solid var(--hair-light); }
+.prod-crumb .container { padding-top: 96px; padding-bottom: 13px; font-size: .82rem; color: var(--ink-dark-soft); }
+.prod-crumb a { color: var(--semsa-blue-dark); text-decoration: none; }
+.prod-crumb a:hover { text-decoration: underline; }
+.prod-crumb [aria-current] { color: var(--ink-dark); }
+
+.prod { padding: clamp(26px, 4vw, 46px) 0; }
+.prod__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(26px, 4vw, 54px); align-items: start; }
+.prod__media { background: #fff; border: 1px solid var(--hair-light); border-radius: 18px; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.prod__img { width: 100%; height: 100%; object-fit: contain; padding: 28px; }
+.prod__brand { display: inline-block; margin-bottom: 8px; }
+.prod__title { font-family: var(--font-h); font-weight: 800; font-size: clamp(1.5rem, 3vw, 2.05rem); line-height: 1.15; color: var(--semsa-blue-dark); }
+.prod__sku { font-family: var(--font-mono); font-size: .82rem; color: var(--ink-dark-soft); margin-top: 10px; }
+.prod__sku strong { color: var(--ink-dark); }
+.prod__tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+.prod__tag { font-family: var(--font-h); font-weight: 600; font-size: .76rem; text-decoration: none; padding: 6px 13px; border-radius: var(--r-pill); border: 1px solid var(--hair-light); color: var(--semsa-blue-dark); background: #fff; transition: border-color .2s var(--ease-out); }
+.prod__tag:hover { border-color: var(--semsa-blue); }
+.prod__tag--div { background: rgba(0,122,214,.07); }
+.prod__tag--app { background: rgba(86,178,0,.08); color: #3c7a00; border-color: rgba(86,178,0,.25); }
+.prod__desc { font-size: .95rem; line-height: 1.65; color: var(--ink-dark-soft); margin: 4px 0 22px; }
+.prod__cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.prod__add { flex: 0 0 auto; min-width: 210px; }
+.prod__rel { display: flex; align-items: center; gap: 8px; margin-top: 18px; font-size: .82rem; color: var(--ink-dark-soft); }
+.prod__rel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--semsa-green); flex-shrink: 0; }
+
+.rel { padding: clamp(28px, 3.5vw, 44px) 0; border-top: 1px solid var(--hair-light); }
+.rel:nth-of-type(even) { background: var(--bg-light); }
+.rel__head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.rel__title { font-family: var(--font-h); font-weight: 800; font-size: 1.2rem; color: var(--semsa-blue-dark); }
+.rel__tag { font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-dark-soft); background: var(--hair-light); padding: 3px 9px; border-radius: var(--r-pill); }
+.rel__sub { font-size: .86rem; color: var(--ink-dark-soft); margin: 4px 0 18px; }
+.rel__row { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 14px; }
+.relcard { display: flex; flex-direction: column; text-decoration: none; background: #fff; border: 1px solid var(--hair-light); border-radius: 12px; overflow: hidden; transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out); }
+.relcard:hover { transform: translateY(-4px); box-shadow: 0 12px 26px -14px rgba(0,70,139,.3); }
+.relcard__media { aspect-ratio: 1 / 1; background: #fff; border-bottom: 1px solid var(--hair-light); display: flex; align-items: center; justify-content: center; }
+.relcard__media img { width: 100%; height: 100%; object-fit: contain; padding: 12px; }
+.relcard__brand { font-family: var(--font-mono); font-size: .58rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--semsa-blue); padding: 11px 12px 0; }
+.relcard__name { font-family: var(--font-h); font-weight: 700; font-size: .82rem; line-height: 1.25; color: var(--semsa-blue-dark); padding: 3px 12px 0; }
+.relcard__sku { font-family: var(--font-mono); font-size: .68rem; color: var(--ink-dark-soft); padding: 4px 12px 12px; margin-top: auto; }
+
+@media (max-width: 760px) {
+  .prod__grid { grid-template-columns: 1fr; }
+  .prod-crumb .container { padding-top: 86px; }
+  .prod__add { min-width: 0; flex: 1 1 100%; }
+}
+
+/* ─── TARJETAS DE MARCA (marcas.html) ──────────────────────────── */
+.bcards { display: grid; gap: 18px; }
+.bcards--auth { grid-template-columns: repeat(2, 1fr); margin-bottom: 38px; }
+.bcards:not(.bcards--auth) { grid-template-columns: repeat(auto-fill, minmax(238px, 1fr)); }
+.bcards__title { font-family: var(--font-h); font-weight: 800; font-size: 1.18rem; color: var(--semsa-blue-dark); margin: 6px 0 18px; }
+.bcard { display: flex; flex-direction: column; gap: 12px; text-decoration: none; background: #fff; border: 1px solid var(--hair-light); border-radius: 16px; padding: 22px; box-shadow: 0 10px 30px rgba(0,0,0,.05); transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out), border-color .3s var(--ease-out); }
+.bcard:hover { transform: translateY(-5px); box-shadow: 0 20px 44px -18px rgba(0,70,139,.3); border-color: rgba(0,122,214,.4); }
+.bcard--auth { border-top: 3px solid var(--semsa-green); padding: 24px; }
+.bcard__badge { align-self: flex-start; font-family: var(--font-mono); font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: 4px 10px; border-radius: var(--r-pill); }
+.bcard__badge--auth { background: rgba(86,178,0,.12); color: #3c7a00; }
+.bcard__badge--dist { background: rgba(0,122,214,.1); color: var(--semsa-blue-dark); }
+.bcard__logo { height: 46px; display: flex; align-items: center; }
+.bcard__logo img { max-height: 38px; max-width: 150px; width: auto; object-fit: contain; }
+.bcard--auth .bcard__logo { height: 54px; }
+.bcard--auth .bcard__logo img { max-height: 46px; }
+.bcard__offer { font-size: .86rem; line-height: 1.55; color: var(--ink-dark-soft); flex: 1; }
+.bcard__cats { display: flex; flex-wrap: wrap; gap: 6px; }
+.bchip { font-family: var(--font-h); font-weight: 600; font-size: .68rem; padding: 4px 9px; border-radius: var(--r-pill); background: var(--bg-light); color: var(--semsa-blue-dark); border: 1px solid var(--hair-light); }
+.bcard__cta { display: flex; align-items: baseline; gap: 8px; font-family: var(--font-h); font-weight: 700; font-size: .82rem; color: var(--ink-dark); padding-top: 13px; border-top: 1px solid var(--hair-light); }
+.bcard__cta strong { color: var(--semsa-green); font-size: 1.05rem; }
+.bcard__arrow { margin-left: auto; color: var(--semsa-blue); white-space: nowrap; }
+@media (max-width: 640px) { .bcards--auth { grid-template-columns: 1fr; } }
 
 /* ─── ABOUT SECTION ───────────────────────────────────────────── */
 .about__inner {

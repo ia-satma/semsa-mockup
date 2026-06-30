@@ -1,2 +1,5 @@
+# MOCKUP / DEMO (ia-satma.github.io) — bloqueado a propósito para que Google
+# NO indexe el entorno de pruebas (evita contenido duplicado contra el sitio real).
+# La configuración de PRODUCCIÓN (dominio definitivo, Fase 5) está en robots.production.txt
 User-agent: *
 Disallow: /

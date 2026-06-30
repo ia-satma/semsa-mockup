@@ -345,11 +345,14 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   const PER = 60;
 
   let all = [], filtered = [], shown = 0;
-  let fBrand = '', fCat = '', fQuery = '';
+  let fMarca = '', fCat = '', fApp = '', fDiv = '', fQuery = '';
   const added = new Set();   // lista de cotización (persiste entre re-renders)
 
   const norm = function (s) {
     return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  };
+  const jslug = function (s) {
+    return norm(s).replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
   };
   const esc = function (s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
@@ -359,42 +362,57 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
 
   function cardHTML(p) {
     const isAdded = added.has(p.name);
+    const href = 'producto/' + esc(p.slug) + '.html';
     const sku = p.sku ? '<p class="pcard__sku">SKU: ' + esc(p.sku) + '</p>' : '';
     const desc = p.desc ? '<p class="product-card__spec">' + esc(p.desc) + '</p>' : '';
     const img = p.img
       ? '<img class="product-card__img" src="assets/img/catalogo/' + esc(p.img) + '" alt="' + esc(p.name) + '" loading="lazy" decoding="async" width="300" height="300">'
       : '';
     return '<article class="product-card">' +
-      '<div class="product-card__media">' + img +
+      '<a class="product-card__media" href="' + href + '" aria-label="Ver ' + esc(p.name) + '">' + img +
         '<span class="product-card__cat">' + esc(p.cat) + '</span>' +
-      '</div>' +
+      '</a>' +
       '<div class="product-card__body">' +
         '<span class="pcard__brand">' + esc(p.brand) + '</span>' +
-        '<h2 class="product-card__title">' + esc(p.name) + '</h2>' +
+        '<h2 class="product-card__title"><a href="' + href + '">' + esc(p.name) + '</a></h2>' +
         sku + desc +
         '<div class="product-card__actions">' +
           '<button type="button" class="product-card__add' + (isAdded ? ' is-added' : '') +
             '" data-add-quote data-product="' + esc(p.name) + '">' +
             (isAdded ? '✓ Agregado' : '+ Agregar a cotización') + '</button>' +
-          '<a class="product-card__quote" href="index.html#cotizar">Cotizar</a>' +
+          '<a class="product-card__quote" href="' + href + '">Ver ficha</a>' +
         '</div>' +
       '</div>' +
     '</article>';
   }
 
+  function matches(p) {
+    if (fMarca && p.marca_slug !== fMarca) return false;
+    if (fCat && p.cat_slug !== fCat) return false;
+    if (fApp && !(p.aplicaciones || []).some(function (a) { return jslug(a) === fApp; })) return false;
+    if (fDiv && jslug(p.division) !== fDiv) return false;
+    if (fQuery) {
+      const hay = norm(p.name) + ' ' + norm(p.sku) + ' ' + norm(p.brand);
+      if (hay.indexOf(fQuery) === -1) return false;
+    }
+    return true;
+  }
+
+  function syncURL() {
+    const q = [];
+    if (fMarca) q.push('marca=' + fMarca);
+    if (fCat) q.push('categoria=' + fCat);
+    if (fApp) q.push('aplicacion=' + fApp);
+    if (fDiv) q.push('division=' + fDiv);
+    try { history.replaceState(null, '', location.pathname + (q.length ? '?' + q.join('&') : '')); } catch (e) {}
+  }
+
   function applyFilters() {
-    filtered = all.filter(function (p) {
-      if (fBrand && p.brand !== fBrand) return false;
-      if (fCat && p.cat !== fCat) return false;
-      if (fQuery) {
-        const hay = norm(p.name) + ' ' + norm(p.sku) + ' ' + norm(p.brand);
-        if (hay.indexOf(fQuery) === -1) return false;
-      }
-      return true;
-    });
+    filtered = all.filter(matches);
     shown = 0;
     grid.innerHTML = '';
     render();
+    syncURL();
   }
 
   function render() {
@@ -408,37 +426,36 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   }
 
   function buildBrands() {
-    const counts = {};
-    all.forEach(function (p) { counts[p.brand] = (counts[p.brand] || 0) + 1; });
+    const counts = {}, slugOf = {};
+    all.forEach(function (p) { counts[p.brand] = (counts[p.brand] || 0) + 1; slugOf[p.brand] = p.marca_slug; });
     const brands = Object.keys(counts).sort(function (a, b) {
       if (a === 'Otros') return 1; if (b === 'Otros') return -1;
       return counts[b] - counts[a];
     });
-    let html = '<button type="button" class="catalog__filter is-active" data-brand="">Todas <b>' + all.length + '</b></button>';
+    let html = '<button type="button" class="catalog__filter' + (fMarca ? '' : ' is-active') + '" data-marca="">Todas <b>' + all.length + '</b></button>';
     brands.forEach(function (b) {
-      html += '<button type="button" class="catalog__filter" data-brand="' + esc(b) + '">' + esc(b) + ' <b>' + counts[b] + '</b></button>';
+      const s = slugOf[b] || jslug(b);
+      html += '<button type="button" class="catalog__filter' + (fMarca === s ? ' is-active' : '') + '" data-marca="' + esc(s) + '">' + esc(b) + ' <b>' + counts[b] + '</b></button>';
     });
     brandsBox.innerHTML = html;
   }
 
   function buildCats() {
-    const counts = {};
-    all.forEach(function (p) { counts[p.cat] = (counts[p.cat] || 0) + 1; });
-    const cats = Object.keys(counts).sort(function (a, b) {
-      if (a === 'Otros') return 1; if (b === 'Otros') return -1;
-      return a.localeCompare(b, 'es');
-    });
-    cats.forEach(function (c) {
-      const o = document.createElement('option');
-      o.value = c; o.textContent = c + ' (' + counts[c] + ')';
-      catSelect.appendChild(o);
-    });
+    const counts = {}, nameOf = {};
+    all.forEach(function (p) { counts[p.cat_slug] = (counts[p.cat_slug] || 0) + 1; nameOf[p.cat_slug] = p.cat; });
+    Object.keys(counts).sort(function (a, b) { return nameOf[a].localeCompare(nameOf[b], 'es'); })
+      .forEach(function (s) {
+        const o = document.createElement('option');
+        o.value = s; o.textContent = nameOf[s] + ' (' + counts[s] + ')';
+        if (s === fCat) o.selected = true;
+        catSelect.appendChild(o);
+      });
   }
 
   brandsBox.addEventListener('click', function (e) {
     const btn = e.target.closest('.catalog__filter');
     if (!btn) return;
-    fBrand = btn.getAttribute('data-brand') || '';
+    fMarca = btn.getAttribute('data-marca') || '';
     brandsBox.querySelectorAll('.catalog__filter').forEach(function (b) {
       b.classList.toggle('is-active', b === btn);
     });
@@ -452,7 +469,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   });
   if (moreBtn) moreBtn.addEventListener('click', render);
   if (resetBtn) resetBtn.addEventListener('click', function () {
-    fBrand = ''; fCat = ''; fQuery = '';
+    fMarca = ''; fCat = ''; fApp = ''; fDiv = ''; fQuery = '';
     searchInput.value = ''; catSelect.value = '';
     brandsBox.querySelectorAll('.catalog__filter').forEach(function (b, i) { b.classList.toggle('is-active', i === 0); });
     applyFilters();
@@ -483,6 +500,17 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(function (data) {
       all = data;
+      const vM = {}, vC = {}, vA = {}, vD = {};
+      all.forEach(function (p) {
+        vM[p.marca_slug] = 1; vC[p.cat_slug] = 1;
+        (p.aplicaciones || []).forEach(function (a) { vA[jslug(a)] = 1; });
+        if (p.division) vD[jslug(p.division)] = 1;
+      });
+      const q = new URLSearchParams(location.search);
+      fMarca = q.get('marca') || ''; if (!vM[fMarca]) fMarca = '';
+      fCat = q.get('categoria') || ''; if (!vC[fCat]) fCat = '';
+      fApp = q.get('aplicacion') || ''; if (!vA[fApp]) fApp = '';
+      fDiv = q.get('division') || ''; if (!vD[fDiv]) fDiv = '';
       buildBrands();
       buildCats();
       applyFilters();
@@ -492,6 +520,26 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
       grid.innerHTML = '<p class="catalog__disclaimer">No se pudo cargar el catálogo (' + esc(err.message) +
         '). La página debe servirse por HTTP (no funciona abriendo el archivo directo).</p>';
     });
+})();
+
+/* ─── FICHA DE PRODUCTO: lista de cotización (páginas producto/<slug>.html) ─── */
+(function initProductQuote() {
+  if (document.querySelector('[data-catalog]')) return;   // el catálogo ya gestiona su propia lista
+  const bar = document.querySelector('[data-quote-bar]');
+  if (!bar) return;
+  const countQ = bar.querySelector('[data-quote-count]');
+  const wordQ = bar.querySelector('[data-quote-word]');
+  const added = new Set();
+  document.addEventListener('click', function (ev) {
+    const btn = ev.target.closest('[data-add-quote]');
+    if (!btn) return;
+    const id = btn.getAttribute('data-product') || '';
+    if (added.has(id)) { added.delete(id); btn.classList.remove('is-added'); btn.textContent = '+ Agregar a cotización'; }
+    else { added.add(id); btn.classList.add('is-added'); btn.textContent = '✓ Agregado'; }
+    if (countQ) countQ.textContent = String(added.size);
+    if (wordQ) wordQ.textContent = added.size === 1 ? 'producto' : 'productos';
+    bar.hidden = added.size === 0;
+  });
 })();
 
 /* ─── Accesos rápidos: preseleccionan el "tipo de necesidad" en el formulario ─── */

@@ -1,0 +1,12 @@
+# PRODUCCIÓN — Fase 5. Renombrar a robots.txt al publicar en el dominio definitivo
+# y reemplazar el dominio del Sitemap por el real (semsamty.com o el que se decida).
+#
+# Nota SEO: los slugs de producto provienen de semsamty.com/producto/<slug>/ (ya
+# indexados por Google). Si producción reusa /producto/<slug>, se preserva el SEO
+# existente sin necesidad de redirects.
+
+User-agent: *
+Allow: /
+Disallow: /*?add-to-cart=
+
+Sitemap: https://semsamty.com/sitemap.xml
