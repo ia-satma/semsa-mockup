@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260625390000">
+  <link rel="stylesheet" href="styles.css?v=20260625400000">
   <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SEMSA — Servicios Especializados de Monterrey","alternateName":"SEMSA","url":"https://ia-satma.github.io/semsa-mockup/","logo":"https://ia-satma.github.io/semsa-mockup/assets/logo-semsa-02.png","description":"Distribuidor de herramienta y equipo industrial y único Centro de Servicio Autorizado Ingersoll Rand en Nuevo León. Desde 1986.","foundingDate":"1986","areaServed":"MX","contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+528117998535","areaServed":"MX","availableLanguage":"es"},"sameAs":["https://semsamty.com"]}</script>
 </head>
@@ -351,38 +351,17 @@
           <p class="section-head__sub">Más que vender equipo: seleccionamos, instalamos, damos servicio y soporte continuo a toda su planta — con las marcas más prestigiadas del rubro en un solo proveedor.</p>
         </header>
 
-        <div class="bento">
+        <div class="div-grid">
 
-          <!-- Celda destacada (doble) — Manejo de Materiales / Polipastos (cuña ATEX) -->
-          <article class="bento__cell bento__cell--feature" data-reveal="scale">
-            <a class="card-photo card-photo--row" href="catalogo.html?division=manejo-de-material" aria-label="Ver productos de Manejo de Materiales y polipastos">
-              <div class="card-photo__media card-photo__media--side">
-                <img src="assets/img/render-materiales.webp" alt="Polipastos neumáticos rojos en línea de ensamble automotriz" class="card-photo__img" width="255" height="255" loading="lazy" decoding="async">
-                <div class="card-photo__badges">
-                  <span class="badge badge--atex">ATEX</span>
-                </div>
-              </div>
-              <div class="card-photo__body">
-                <h3 class="card-photo__title card-photo__title--lg">Manejo de Materiales</h3>
-                <p class="card-photo__desc">Polipastos neumáticos y eléctricos, balancines y manipuladores. Especialidad en zonas ATEX — únicos en Nuevo León con servicio autorizado Ingersoll Rand.</p>
-                <span class="card-photo__foot">
-                  <span class="card-photo__cta">Ver productos
-                    <span class="card__cta-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-                  </span>
-                </span>
-              </div>
-            </a>
-          </article>
-
-          <!-- Herramientas Manuales -->
-          <article class="bento__cell" data-reveal="scale" data-reveal-delay="1">
-            <a class="card-photo" href="catalogo.html?division=ensamble" aria-label="Ver Herramientas Manuales">
+          <article class="bento__cell" data-reveal="scale">
+            <a class="card-photo" href="catalogo.html?division=manejo-de-material" aria-label="Ver Manejo de material">
               <div class="card-photo__media">
-                <img src="assets/img/render-herramientas.webp" alt="Llave de impacto inalámbrica Ingersoll Rand en uso" class="card-photo__img" width="255" height="255" loading="lazy" decoding="async">
+                <img src="assets/img/render-materiales.webp" alt="Polipastos neumáticos en línea de ensamble" class="card-photo__img" width="255" height="255" loading="lazy" decoding="async">
+                <div class="card-photo__badges"><span class="badge badge--atex">ATEX</span></div>
               </div>
               <div class="card-photo__body">
-                <h3 class="card-photo__title">Herramientas Manuales</h3>
-                <p class="card-photo__desc">Neumáticas, eléctricas y a batería: atornilladores angulares, esmeriladoras y dados para ensamble.</p>
+                <h3 class="card-photo__title">Manejo de material</h3>
+                <p class="card-photo__desc">Polipastos neumáticos y eléctricos, balancines y rieles. Especialidad ATEX con servicio autorizado Ingersoll Rand.</p>
                 <span class="card-photo__cta">Ver productos
                   <span class="card__cta-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                 </span>
@@ -390,15 +369,29 @@
             </a>
           </article>
 
-          <!-- Manejo de Fluidos -->
+          <article class="bento__cell" data-reveal="scale" data-reveal-delay="1">
+            <a class="card-photo" href="catalogo.html?division=ensamble" aria-label="Ver Ensamble y torque">
+              <div class="card-photo__media">
+                <img src="assets/img/render-herramientas.webp" alt="Llave de impacto inalámbrica Ingersoll Rand" class="card-photo__img" width="255" height="255" loading="lazy" decoding="async">
+              </div>
+              <div class="card-photo__body">
+                <h3 class="card-photo__title">Ensamble y torque</h3>
+                <p class="card-photo__desc">Herramienta neumática, eléctrica y a batería; remachadoras, dados y puntas para líneas de ensamble.</p>
+                <span class="card-photo__cta">Ver productos
+                  <span class="card__cta-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                </span>
+              </div>
+            </a>
+          </article>
+
           <article class="bento__cell" data-reveal="scale" data-reveal-delay="2">
-            <a class="card-photo" href="catalogo.html?division=bombeo" aria-label="Ver Manejo de Fluidos">
+            <a class="card-photo" href="catalogo.html?division=bombeo" aria-label="Ver Bombeo y fluidos">
               <div class="card-photo__media">
                 <img src="assets/img/render-fluidos.webp" alt="Bombas de diafragma ARO instaladas en planta" class="card-photo__img" width="255" height="255" loading="lazy" decoding="async">
               </div>
               <div class="card-photo__body">
-                <h3 class="card-photo__title">Manejo de Fluidos</h3>
-                <p class="card-photo__desc">Bombas de diafragma, de pistón, centrífugas, de alta presión y de lubricación. Distribuidor ARO.</p>
+                <h3 class="card-photo__title">Bombeo y fluidos</h3>
+                <p class="card-photo__desc">Bombas de diafragma, pistón y centrífugas; lubricación y manejo de fluidos. Distribuidor ARO.</p>
                 <span class="card-photo__cta">Ver productos
                   <span class="card__cta-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                 </span>
@@ -406,63 +399,14 @@
             </a>
           </article>
 
-          <!-- Pintura y Recubrimiento (celda ancha, foto a la izquierda) -->
-          <article class="bento__cell bento__cell--wide" data-reveal="scale">
-            <a class="card-photo card-photo--row" href="catalogo.html?division=pintura" aria-label="Ver Pintura y Recubrimiento">
-              <div class="card-photo__media card-photo__media--side">
-                <img src="assets/img/render-pintura.webp" alt="Pistola pulverizadora aplicando recubrimiento sobre carrocería" class="card-photo__img" width="255" height="255" loading="lazy" decoding="async">
-              </div>
-              <div class="card-photo__body">
-                <h3 class="card-photo__title">Pintura y Recubrimiento</h3>
-                <p class="card-photo__desc">Pistolas pulverizadoras y electrostáticas para acabados industriales de alta precisión. Distribuidor Graco y Carlisle.</p>
-                <span class="card-photo__cta">Ver productos
-                  <span class="card__cta-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-                </span>
-              </div>
-            </a>
-          </article>
-
-          <!-- Sistemas de Sellado -->
-          <article class="bento__cell" data-reveal="scale" data-reveal-delay="1">
-            <a class="card-photo" href="catalogo.html?division=pintura" aria-label="Ver Sistemas de Sellado">
+          <article class="bento__cell" data-reveal="scale" data-reveal-delay="3">
+            <a class="card-photo" href="catalogo.html?division=pintura" aria-label="Ver Pintura y recubrimiento">
               <div class="card-photo__media">
-                <img src="assets/img/render-sellado.webp" alt="Brazo robótico de dosificación de adhesivo industrial" class="card-photo__img" width="255" height="255" loading="lazy" decoding="async">
+                <img src="assets/img/render-pintura.webp" alt="Pistola pulverizadora aplicando recubrimiento" class="card-photo__img" width="255" height="255" loading="lazy" decoding="async">
               </div>
               <div class="card-photo__body">
-                <h3 class="card-photo__title">Sistemas de Sellado</h3>
-                <p class="card-photo__desc">Dosificadores y dispensación automatizada de adhesivos y selladores industriales.</p>
-                <span class="card-photo__cta">Ver productos
-                  <span class="card__cta-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-                </span>
-              </div>
-            </a>
-          </article>
-
-          <!-- Remachadoras -->
-          <article class="bento__cell" data-reveal="scale" data-reveal-delay="2">
-            <a class="card-photo" href="catalogo.html?division=ensamble" aria-label="Ver Remachadoras e Insertadoras">
-              <div class="card-photo__media">
-                <img src="assets/img/render-remachadoras.webp" alt="Remachadora neumática roja insertando remache en lámina" class="card-photo__img" width="255" height="255" loading="lazy" decoding="async">
-              </div>
-              <div class="card-photo__body">
-                <h3 class="card-photo__title">Remachadoras e Insertadoras</h3>
-                <p class="card-photo__desc">Herramienta especializada para unión y fijación con remaches y tuercas insertables. Distribuidor Rivit.</p>
-                <span class="card-photo__cta">Ver productos
-                  <span class="card__cta-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-                </span>
-              </div>
-            </a>
-          </article>
-
-          <!-- Lubricación -->
-          <article class="bento__cell" data-reveal="scale" data-reveal-delay="1">
-            <a class="card-photo" href="catalogo.html?division=bombeo" aria-label="Ver Sistemas de Lubricación">
-              <div class="card-photo__media">
-                <img src="assets/img/render-lubricacion.webp" alt="Cabezal de atornillado de precisión Lubbering" class="card-photo__img" width="255" height="255" loading="lazy" decoding="async">
-              </div>
-              <div class="card-photo__body">
-                <h3 class="card-photo__title">Cabezales y Lubricación</h3>
-                <p class="card-photo__desc">Cabezales de atornillado de precisión y sistemas de lubricación para maquinaria industrial. Distribuidor Lubbering.</p>
+                <h3 class="card-photo__title">Pintura y recubrimiento</h3>
+                <p class="card-photo__desc">Pistolas, equipos de recubrimiento y dosificación de adhesivos. Distribuidor Graco y Carlisle.</p>
                 <span class="card-photo__cta">Ver productos
                   <span class="card__cta-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
                 </span>
@@ -581,9 +525,8 @@
             <li class="brand-chip" data-reveal="scale" data-reveal-delay="1"><a class="brand-chip__link" href="catalogo.html?marca=apex" aria-label="Ver productos de esta marca"><img src="assets/img/brands/apex.svg?v=2" alt="Apex Tool Group" class="brand-chip__img" width="150" height="67" loading="lazy" decoding="async"></a></li>
             <li class="brand-chip" data-reveal="scale" data-reveal-delay="2"><a class="brand-chip__link" href="catalogo.html?marca=aeromotive" aria-label="Ver productos de esta marca"><img src="assets/img/brands/aeromotive.svg?v=2" alt="Aeromotive" class="brand-chip__img" width="150" height="67" loading="lazy" decoding="async"></a></li>
           </ul>
-          <div class="brand-wall__foot">
-            <span class="mono-tag" title="Convención del mockup: los logotipos oficiales de las marcas restantes se insertan en producción.">Wordmarks · logotipos oficiales en producción</span>
-            <a href="catalogo.html" class="brand-wall__link">
+          <div class="brand-wall__foot brand-wall__foot--end">
+            <a href="marcas.html" class="brand-wall__link">
               Ver catálogo por marca
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
@@ -1161,6 +1104,6 @@
   </a>
 
 
-  <script src="script.js?v=20260625390000"></script>
+  <script src="script.js?v=20260625400000"></script>
 </body>
 </html>

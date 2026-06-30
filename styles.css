@@ -380,8 +380,9 @@ body::before {
 .section--dark .section-head__sub, .section--dark .eyebrow { color: var(--ink-soft); }
 .section--dark .cta-final__heading { color: #fff; }
 .section--dark .cta-final__desc, .section--dark .cta-final__wa, .section--dark .cta-final__assurances li { color: var(--ink-soft); }
-.section--dark .cta-final__wa strong, .section--dark .cta-final__proof-text strong { color: #fff; }
-.section--dark .cta-final__proof-text span { color: var(--ink-soft); }
+.section--dark .cta-final__wa strong { color: #fff; }
+.section--dark .cta-final__proof-text strong { color: var(--ink-dark); }
+.section--dark .cta-final__proof-text span { color: var(--ink-dark-soft); }
 /* Marcas/ATEX sobre fondo claro: chips, contadores y links legibles */
 .section--light .brand-wall__count { color: var(--ink-dark-soft); }
 .section--light .brand-wall__link { color: var(--semsa-blue-dark); }
@@ -964,7 +965,7 @@ a:hover > .photo-frame .photo-frame__img,
   margin-bottom: 36px;
   max-width: 540px;
 }
-.hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero__ctas { display: flex; gap: 16px; flex-wrap: wrap; }
 .hero__specs { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 34px; }
 
 .hero__fig {
@@ -1140,6 +1141,25 @@ a:hover > .photo-frame .photo-frame__img,
   box-shadow: var(--bezel-hi);
 }
 .atex__seal-text { font-family: var(--font-h); font-weight: 700; font-size: 0.92rem; color: #fff; line-height: 1.3; }
+
+/* ─── PORTAFOLIO: 4 divisiones uniformes (div-grid) ──────────── */
+.div-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 1.8vw, 24px);
+  margin-bottom: clamp(40px, 5vw, 56px);
+  grid-auto-rows: 1fr;
+}
+.div-grid .bento__cell { display: flex; }
+.div-grid .card-photo { width: 100%; display: flex; flex-direction: column; height: 100%; }
+.div-grid .card-photo__body { flex: 1; display: flex; flex-direction: column; }
+.div-grid .card-photo__desc { flex: 1; }
+.div-grid .card-photo__cta { margin-top: 14px; }
+@media (max-width: 1000px) { .div-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px)  { .div-grid { grid-template-columns: 1fr; } }
+.brand-wall__foot--end { justify-content: flex-end; }
+.section--tight-top { padding-top: clamp(24px, 3.2vw, 44px); }
+.section-head--tight { margin-bottom: clamp(20px, 2.5vw, 30px); }
 
 /* ─── BENTO ASIMÉTRICO ───────────────────────────────────────── */
 .bento {
@@ -2148,20 +2168,18 @@ a:hover > .photo-frame .photo-frame__img,
 
 /* ─── CATÁLOGO (página catalogo.html) ────────────────────────── */
 .catalog__note {
-  display: flex; align-items: flex-start; gap: 10px;
-  margin: 0 0 28px; padding: 13px 17px;
-  background: rgba(0,122,214,.06);
-  border: 1px solid rgba(0,122,214,.22);
-  border-left: 3px solid var(--semsa-blue);
-  border-radius: var(--r-sm);
-  font-size: .85rem; color: var(--ink-dark-soft); line-height: 1.5;
+  display: flex; align-items: center; gap: 9px;
+  margin: 0 0 20px; padding: 0;
+  background: none; border: none; border-radius: 0;
+  font-size: .84rem; color: var(--ink-dark-soft); line-height: 1.5;
 }
-.catalog__note svg { flex-shrink: 0; width: 18px; height: 18px; color: var(--semsa-blue); margin-top: 1px; }
+.catalog__note svg { flex-shrink: 0; width: 17px; height: 17px; color: var(--semsa-blue); }
+.catalog__note strong { color: var(--semsa-blue-dark); }
 .catalog__bar {
   display: flex; align-items: center; justify-content: space-between;
   gap: 18px; flex-wrap: wrap; margin-bottom: 26px;
 }
-.catalog__filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.catalog__filters { display: flex; flex-wrap: wrap; gap: 10px; }
 .catalog__filter {
   font-family: var(--font-h); font-weight: 600; font-size: .82rem;
   padding: 8px 15px; border-radius: var(--r-pill);
@@ -2201,7 +2219,7 @@ a:hover > .photo-frame .photo-frame__img,
 .product-card__spec { font-size: .84rem; color: var(--ink-dark-soft); line-height: 1.5; flex: 1; }
 .product-card__price { font-family: var(--font-h); font-weight: 700; font-size: .92rem; color: var(--ink-dark); margin-top: 4px; }
 .product-card__price span { display: block; font-family: var(--font-b); font-weight: 400; font-size: .72rem; color: var(--ink-dark-soft); margin-top: 1px; }
-.product-card__actions { display: flex; gap: 8px; margin-top: 13px; }
+.product-card__actions { display: flex; gap: 12px; margin-top: 13px; }
 .product-card__add {
   flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   font-family: var(--font-h); font-weight: 600; font-size: .82rem;
@@ -3010,7 +3028,22 @@ a:hover > .photo-frame .photo-frame__img,
   background-size: 56px 56px;
   pointer-events: none;
 }
-.page-hero .container { position: relative; }
+/* Gancho visual: isotipo difuminado + halo a la derecha (mata el rectángulo vacío) */
+.page-hero::after {
+  content: '';
+  position: absolute; z-index: 0;
+  top: 50%; right: clamp(-70px, -1vw, -24px);
+  transform: translateY(-50%);
+  width: clamp(240px, 30vw, 460px);
+  height: clamp(240px, 30vw, 460px);
+  background:
+    radial-gradient(circle at 60% 50%, rgba(0,122,214,.18), transparent 62%),
+    url('assets/isotipo-semsa.svg') center/66% no-repeat;
+  opacity: .38;
+  pointer-events: none;
+}
+@media (max-width: 720px) { .page-hero::after { opacity: .22; right: -90px; } }
+.page-hero .container { position: relative; z-index: 1; }
 .page-hero__title {
   font-family: var(--font-h);
   font-weight: 800;
