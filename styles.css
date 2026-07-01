@@ -2444,6 +2444,7 @@ a:hover > .photo-frame .photo-frame__img,
 .bcard__badge--dist { background: rgba(0,122,214,.1); color: var(--semsa-blue-dark); }
 .bcard__logo { height: 46px; display: flex; align-items: center; }
 .bcard__logo img { max-height: 38px; max-width: 150px; width: auto; object-fit: contain; }
+.bcard__wordmark { font-family: var(--font-h); font-weight: 800; font-size: 1.42rem; letter-spacing: -.01em; color: var(--semsa-blue-dark); }
 .bcard--auth .bcard__logo { height: 54px; }
 .bcard--auth .bcard__logo img { max-height: 46px; }
 .bcard__offer { font-size: .86rem; line-height: 1.55; color: var(--ink-dark-soft); flex: 1; }
