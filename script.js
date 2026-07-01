@@ -659,42 +659,6 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   });
 })();
 
-/* ─── HERO VIDEO: reproduce con gates + pausa fuera de viewport ─── */
-(function initHeroVideo() {
-  const video = document.querySelector('[data-hero-video]');
-  if (!video) return;
-  const hero = video.closest('.hero');
-  const conn = navigator.connection || navigator.webkitConnection || navigator.mozConnection;
-  const saveData = !!(conn && (conn.saveData || /(^|[^a-z])2g$/.test(conn.effectiveType || '')));
-
-  if (REDUCED.matches || saveData) {
-    if (hero) hero.classList.add('hero--static');
-    return;
-  }
-  function tryPlay() {
-    const p = video.play();
-    if (p && typeof p.catch === 'function') {
-      p.catch(function () { if (hero) hero.classList.add('hero--static'); });
-    }
-  }
-  function pause() { try { video.pause(); } catch (e) {} }
-
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) tryPlay(); else pause();
-      });
-    }, { threshold: 0.2 });
-    io.observe(video);
-  } else {
-    tryPlay();
-  }
-  document.addEventListener('visibilitychange', function () {
-    if (document.hidden) { pause(); return; }
-    const r = video.getBoundingClientRect();
-    if (r.bottom > 0 && r.top < (window.innerHeight || 0)) tryPlay();
-  });
-})();
 
 /* ─── Menú animado: expansión hover/focus, columna 01 activa por defecto ─── */
 (function initHeroSol() {
