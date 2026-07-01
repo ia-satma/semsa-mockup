@@ -564,8 +564,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     var href = 'producto/' + esc(p.s) + '.html';
     return '<article class="fpanel" role="listitem">' +
       '<a class="fpanel__link" href="' + href + '" aria-label="Ver ' + esc(p.n) + '"></a>' +
-      '<span class="fpanel__media"><img src="assets/img/catalogo/' + esc(p.i) + '" alt="' + esc(p.n) + '" loading="lazy" decoding="async"></span>' +
-      '<span class="fpanel__shade" aria-hidden="true"></span>' + rib +
+      '<span class="fpanel__media"><img src="assets/img/catalogo/' + esc(p.i) + '" alt="' + esc(p.n) + '" loading="lazy" decoding="async">' + rib + '</span>' +
       '<span class="fpanel__content">' +
         '<span class="fpanel__brand">' + esc(p.b) + '</span>' +
         '<span class="fpanel__name">' + esc(p.n) + '</span>' +
