@@ -356,6 +356,7 @@ body::before {
 .section--mid    { background: var(--surface-mid); color: #fff; }
 .section--brand-blue { background: var(--semsa-blue-dark); color: #fff; padding: var(--rhythm-lg) 0; overflow: hidden; }
 .section--light  { background: var(--bg-light); color: var(--text-main); }
+.section--light.section--white { background: #fff; }  /* alterna blanco↔claro para dar ritmo entre secciones claras contiguas */
 .section--light .eyebrow { color: var(--ink-dark-soft); }
 
 /* ════════ ZEBRA STRIPING — legibilidad al alternar fondos ════════ */
@@ -2190,7 +2191,7 @@ a:hover > .photo-frame .photo-frame__img {
 .prod__rel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--semsa-green); flex-shrink: 0; }
 
 .rel { padding: clamp(28px, 3.5vw, 44px) 0; border-top: 1px solid var(--hair-light); }
-.rel:nth-of-type(even) { background: var(--bg-light); }
+.rel:nth-of-type(even) { background: #fff; }
 .rel__head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
 .rel__title { font-family: var(--font-h); font-weight: 800; font-size: 1.2rem; color: var(--semsa-blue-dark); }
 .rel__tag { font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-dark-soft); background: var(--hair-light); padding: 3px 9px; border-radius: var(--r-pill); }
