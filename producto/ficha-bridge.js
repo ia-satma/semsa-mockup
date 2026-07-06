@@ -25,6 +25,25 @@
       if (sku && p.sku) sku.textContent = p.sku;
       if (desc && p.desc) desc.textContent = p.desc;
       if (img && p.img) { img.src = '../assets/img/catalogo/' + p.img; img.alt = p.name || img.alt; }
+
+      // Ficha técnica PDF (si el admin subió una): añade/actualiza un botón de descarga
+      // dentro del bloque de acciones, sin tocar el HTML estático si no hay PDF.
+      if (p.pdf) applyDatasheet(root, p.pdf);
     })
     .catch(function () { /* fail-soft */ });
+
+  function applyDatasheet(root, pdf) {
+    var cta = root.querySelector('.prod__cta');
+    if (!cta) return;
+    var link = root.querySelector('.prod__datasheet');
+    if (!link) {
+      link = document.createElement('a');
+      link.className = 'btn btn--ghost btn--icon prod__datasheet';
+      link.setAttribute('download', '');
+      link.innerHTML = '<span>Descargar ficha técnica (PDF)</span>' +
+        '<span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg></span>';
+      cta.appendChild(link);
+    }
+    link.setAttribute('href', '../assets/docs/' + pdf);
+  }
 })();
