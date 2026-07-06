@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260706500000">
+  <link rel="stylesheet" href="styles.css?v=20260706600000">
 </head>
 <body>
 
@@ -116,7 +116,7 @@
 
     <!-- HISTORIA + MISIÓN/VISIÓN + VALORES + TIMELINE -->
     <section class="section about about--bleed section--bleed" id="nosotros" aria-labelledby="about-heading">
-      <img class="section-bleed__img" src="assets/img/bg-nosotros.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="section-bleed__img" src="assets/img/bg-nosotros.webp" data-bind-src="nosotros.aboutBg" alt="" aria-hidden="true" loading="lazy" decoding="async">
       <div class="container">
         <div class="about__panel" data-reveal>
         <div class="about__inner">
@@ -199,7 +199,7 @@
 
     <!-- SEMSA EN NÚMEROS -->
     <section class="section section--bleed stats-bleed" aria-label="SEMSA en números">
-      <img class="section-bleed__img" src="assets/img/bg-stats.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="section-bleed__img" src="assets/img/bg-stats.webp" data-bind-src="nosotros.statsBg" alt="" aria-hidden="true" loading="lazy" decoding="async">
       <div class="container">
         <div class="social-proof" data-reveal aria-label="SEMSA en números">
           <div class="social-proof__item">
@@ -307,7 +307,11 @@
     function tipoLabel(t){ return t === 'US' ? 'EE.UU.' : t; }
     function pinMod(t){ return t === 'Matriz' ? ' coverage-map__pin--matriz' : t === 'Oficina' ? ' coverage-map__pin--oficina' : t === 'US' ? ' coverage-map__pin--us' : ''; }
 
-    SUCURSALES.forEach(function (s) {
+    var DATA = SUCURSALES;
+    function buildLists() {
+      pinsEl.innerHTML = '';
+      listEl.innerHTML = '';
+      DATA.forEach(function (s) {
       var pin = document.createElement('button');
       pin.type = 'button';
       pin.className = 'coverage-map__pin' + pinMod(s.tipo);
@@ -329,7 +333,8 @@
       item.innerHTML = '<span class="locator__item-dot" aria-hidden="true"></span><span class="locator__item-city">' + s.ciudad + '</span>' + tag;
       item.addEventListener('click', function () { select(s.id, true); });
       listEl.appendChild(item);
-    });
+      });
+    }
 
     function field(svg, html){ return '<li class="locator__field">' + svg + '<span>' + html + '</span></li>'; }
     var ICO_PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="16" height="16" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
@@ -339,22 +344,22 @@
     function renderPanel(s){
       var rows = '';
       if (s.dir) rows += field(ICO_PIN, s.dir);
-      if (s.tel) rows += field(ICO_TEL, '<a href="tel:' + s.tel + '">' + (s.telLabel || s.tel) + '</a>');
-      rows += field(ICO_MAIL, '<a href="mailto:' + s.email + '">' + s.email + '</a>');
+      if (s.tel) rows += field(ICO_TEL, '<a href="tel:' + s.tel + '">' + (s.telLabel || s.tel_label || s.tel) + '</a>');
+      if (s.email) rows += field(ICO_MAIL, '<a href="mailto:' + s.email + '">' + s.email + '</a>');
       var maps = s.maps ? '<a class="locator__maps" href="' + s.maps + '" target="_blank" rel="noopener noreferrer">Ver en Google Maps <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>' : '';
       return '<div class="locator__card">' +
         '<span class="locator__type" data-tipo="' + s.tipo + '">' + tipoLabel(s.tipo) + '</span>' +
         '<h3 class="locator__city">' + s.ciudad + '</h3>' +
         '<ul class="locator__fields">' + rows + '</ul>' +
         '<div class="locator__actions">' +
-          '<a class="btn btn--primary btn--sm" href="mailto:' + s.email + '">Enviar correo</a>' +
+          (s.email ? '<a class="btn btn--primary btn--sm" href="mailto:' + s.email + '">Enviar correo</a>' : '') +
           '<a class="btn btn--outline btn--sm" href="https://wa.me/' + WHATSAPP + '?text=' + WA_TEXT + '" target="_blank" rel="noopener noreferrer">WhatsApp</a>' +
         '</div>' + maps +
       '</div>';
     }
 
     function select(id, focusPanel){
-      var s = SUCURSALES.filter(function (x){ return x.id === id; })[0];
+      var s = DATA.filter(function (x){ return x.id === id; })[0];
       if (!s) return;
       Array.prototype.forEach.call(pinsEl.children, function (p){ var on = p.dataset.id === id; p.classList.toggle('is-active', on); p.setAttribute('aria-pressed', on); });
       Array.prototype.forEach.call(listEl.children, function (p){ var on = p.dataset.id === id; p.classList.toggle('is-active', on); p.setAttribute('aria-pressed', on); });
@@ -364,11 +369,27 @@
       }
     }
 
-    select('monterrey', false);
+    function start() {
+      buildLists();
+      var first = DATA.filter(function (s) { return s.tipo === 'Matriz'; })[0] || DATA[0];
+      if (first) select(first.id, false);
+    }
+    // Alimenta el localizador desde el backend (oficinas editables); si falla, usa el array embebido.
+    if (window.fetch) {
+      fetch('/api/public/offices', { credentials: 'same-origin', cache: 'no-store' })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (list) {
+          if (Array.isArray(list) && list.length) {
+            DATA = list.map(function (o) { o.telLabel = o.tel_label; return o; });
+          }
+          start();
+        })
+        .catch(function () { start(); });
+    } else { start(); }
   })();
   </script>
 
-  <script src="public-bridge.js?v=20260706500000"></script>
-  <script src="script.js?v=20260706500000"></script>
+  <script src="public-bridge.js?v=20260706600000"></script>
+  <script src="script.js?v=20260706600000"></script>
 </body>
 </html>

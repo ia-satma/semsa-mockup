@@ -26,19 +26,41 @@
     });
   }
 
+  // Resuelve "page.campo" -> content[page][campo] (string no vacío) o null.
+  function resolve(content, key) {
+    var dot = (key || '').indexOf('.');
+    if (dot === -1) return null;
+    var page = content[key.slice(0, dot)];
+    var v = page && page[key.slice(dot + 1)];
+    return (v != null && String(v).trim() !== '') ? String(v) : null;
+  }
+
   // Genérico: cualquier [data-bind="page.campo"] -> content[page][campo] como texto.
   // (El namespace "contact" se resuelve igual, ya que content.contact también llega en el mapa.)
   function applyBinds(content) {
     if (!content) return;
     document.querySelectorAll('[data-bind]').forEach(function (el) {
-      var key = el.getAttribute('data-bind') || '';
-      var dot = key.indexOf('.');
-      if (dot === -1) return;
-      var ns = key.slice(0, dot), field = key.slice(dot + 1);
-      var page = content[ns];
-      if (page && page[field] != null && String(page[field]).trim() !== '') {
-        el.textContent = page[field];
-      }
+      var v = resolve(content, el.getAttribute('data-bind') || '');
+      if (v != null) el.textContent = v;
+    });
+  }
+
+  // Medios editables: imagen/video/fondo. Fail-soft — sin override queda el asset hardcoded.
+  function applyMedia(content) {
+    if (!content) return;
+    document.querySelectorAll('[data-bind-src]').forEach(function (el) {
+      var v = resolve(content, el.getAttribute('data-bind-src') || '');
+      if (!v) return;
+      el.setAttribute('src', v);
+      if (el.tagName === 'SOURCE') { var vid = el.closest('video'); if (vid) { try { vid.load(); } catch (e) {} } }
+    });
+    document.querySelectorAll('[data-bind-poster]').forEach(function (el) {
+      var v = resolve(content, el.getAttribute('data-bind-poster') || '');
+      if (v) el.setAttribute('poster', v);
+    });
+    document.querySelectorAll('[data-bind-bg]').forEach(function (el) {
+      var v = resolve(content, el.getAttribute('data-bind-bg') || '');
+      if (v) el.style.backgroundImage = "url('" + v + "')";
     });
   }
 
@@ -50,6 +72,7 @@
         if (!json || json.ok === false) return;
         applyContact(json.contact);
         applyBinds(json.content);
+        applyMedia(json.content);
       })
       .catch(function () { /* fail-soft: se queda el hardcoded del HTML */ });
   }

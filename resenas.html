@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260706500000">
+  <link rel="stylesheet" href="styles.css?v=20260706600000">
 </head>
 <body>
 
@@ -172,7 +172,40 @@
             </figcaption>
           </figure>
         </div>
-        <p class="page-note"><span class="mono-tag">Mockup — [FALTA: reseñas reales autorizadas + calificación de Google] · se integran en Fase 5 (colección Reviews)</span></p>
+        <section class="review-submit" aria-labelledby="deja-resena">
+          <style>
+            .review-form{max-width:640px;margin:2.5rem auto 0;display:grid;gap:.8rem}
+            .review-form h3{font-family:var(--font-sans);font-weight:800;font-size:1.4rem;color:var(--ink);margin:0}
+            .review-form .rf-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+            .review-form input,.review-form select,.review-form textarea{width:100%;padding:.72rem .9rem;border:1px solid var(--hair,#e2e8f0);border-radius:10px;font:inherit;background:#fff;color:var(--ink)}
+            .review-form textarea{min-height:120px;resize:vertical}
+            .review-form__msg{font-size:.92rem;font-weight:700}
+            @media(max-width:560px){.review-form .rf-row{grid-template-columns:1fr}}
+          </style>
+          <form class="review-form" data-review-form novalidate>
+            <h3 id="deja-resena">Deja tu reseña</h3>
+            <p style="color:var(--ink-soft);font-size:.94rem;margin:0">Cuéntanos tu experiencia con SEMSA. Tu reseña se publica tras una breve revisión.</p>
+            <div class="rf-row">
+              <input name="name" placeholder="Tu nombre*" required>
+              <input name="company" placeholder="Empresa">
+            </div>
+            <div class="rf-row">
+              <input name="role" placeholder="Cargo (opcional)">
+              <select name="rating" aria-label="Calificación">
+                <option value="5">★★★★★ (5)</option>
+                <option value="4">★★★★ (4)</option>
+                <option value="3">★★★ (3)</option>
+                <option value="2">★★ (2)</option>
+                <option value="1">★ (1)</option>
+              </select>
+            </div>
+            <textarea name="quote" placeholder="Tu reseña*" required></textarea>
+            <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+              <button type="submit" class="btn btn--primary">Enviar reseña</button>
+              <span class="review-form__msg" data-review-msg></span>
+            </div>
+          </form>
+        </section>
       </div>
     </section>
   </main>
@@ -195,7 +228,8 @@
     </svg>
   </a>
 
-  <script src="public-bridge.js?v=20260706500000"></script>
-  <script src="script.js?v=20260706500000"></script>
+  <script src="public-bridge.js?v=20260706600000"></script>
+  <script src="reviews-bridge.js?v=20260706600000"></script>
+  <script src="script.js?v=20260706600000"></script>
 </body>
 </html>
