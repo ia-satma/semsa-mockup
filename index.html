@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260706600000">
+  <link rel="stylesheet" href="styles.css?v=20260706700000">
   <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SEMSA — Servicios Especializados de Monterrey","alternateName":"SEMSA","url":"https://ia-satma.github.io/semsa-mockup/","logo":"https://ia-satma.github.io/semsa-mockup/assets/logo-semsa-02.png","description":"Distribuidor de herramienta y equipo industrial y único Centro de Servicio Autorizado Ingersoll Rand en Nuevo León. Desde 1986.","foundingDate":"1986","areaServed":"MX","contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+528117998535","areaServed":"MX","availableLanguage":"es"},"sameAs":["https://semsamty.com"]}</script>
 </head>
@@ -117,7 +117,7 @@
          HERO
     ============================================================ -->
     <!-- === HERO — VIDEO con titular centrado === -->
-    <section class="hero hero--center" id="hero" aria-labelledby="hero-heading">
+    <section class="hero hero--center" id="hero" aria-labelledby="hero-heading" data-section="home.hero">
       <video class="hero__video" muted loop playsinline preload="metadata"
              poster="assets/video/hero-loop-poster.jpg" data-bind-poster="home.heroPoster" width="1280" height="720"
              aria-hidden="true" tabindex="-1" disablepictureinpicture disableremoteplayback data-hero-video>
@@ -169,9 +169,9 @@
     </section>
 
     <!-- === MENÚ ANIMADO — 4 columnas (soluciones por proceso) === -->
-    <section class="hero-menu" aria-label="Soluciones por proceso">
+    <section class="hero-menu" aria-label="Soluciones por proceso" data-section="home.homeMenu">
       <div class="panels" data-hero-panels>
-        <p class="sol-label">Soluciones <b>· elija su proceso</b></p>
+        <p class="sol-label" data-bind="home.heroMenuLabel">Soluciones <b>· elija su proceso</b></p>
 
         <a class="hp p1 on" href="catalogo.html?division=manejo-de-material" aria-label="Elevación y manejo de materiales — ver soluciones">
           <span class="hp__media" style="background-image:url('assets/img/hero-col-polipastos.webp')" data-bind-bg="home.heroCol1"></span>
@@ -227,20 +227,20 @@
     <!-- ============================================================
          TRUST SIGNALS
     ============================================================ -->
-    <section class="trust stats-banner" aria-label="Credenciales de SEMSA">
+    <section class="trust stats-banner" aria-label="Credenciales de SEMSA" data-section="home.trust">
       <div class="container trust__inner">
-        <p class="trust__lead" data-reveal="left">El respaldo detrás<br>de cada solución</p>
+        <p class="trust__lead" data-reveal="left" data-bind="home.trustLead">El respaldo detrás<br>de cada solución</p>
         <div class="trust__stat" data-reveal="left" data-reveal-delay="2">
-          <span class="trust__num">1993</span>
-          <span class="trust__label">Centro de Servicio Autorizado Ingersoll Rand — único en Nuevo León</span>
+          <span class="trust__num" data-bind="home.trustStat1Num">1993</span>
+          <span class="trust__label" data-bind="home.trustStat1Label">Centro de Servicio Autorizado Ingersoll Rand — único en Nuevo León</span>
         </div>
         <div class="trust__stat" data-reveal="left" data-reveal-delay="3">
-          <span class="trust__num">1986</span>
-          <span class="trust__label">Fundación en Monterrey — 40 años con la industria</span>
+          <span class="trust__num" data-bind="home.trustStat2Num">1986</span>
+          <span class="trust__label" data-bind="home.trustStat2Label">Fundación en Monterrey — 40 años con la industria</span>
         </div>
         <div class="trust__stat" data-reveal="left" data-reveal-delay="4">
-          <span class="trust__num">15</span>
-          <span class="trust__label">Marcas líderes en un solo proveedor</span>
+          <span class="trust__num" data-bind="home.trustStat3Num">15</span>
+          <span class="trust__label" data-bind="home.trustStat3Label">Marcas líderes en un solo proveedor</span>
         </div>
       </div>
     </section>
@@ -248,7 +248,7 @@
     <!-- ============================================================
          CUÑA ATEX — SECCIÓN ESTRATÉGICA
     ============================================================ -->
-    <section class="section atex atex--bleed section--bleed" id="atex" aria-labelledby="atex-heading">
+    <section class="section atex atex--bleed section--bleed" id="atex" aria-labelledby="atex-heading" data-section="home.atex">
       <img class="section-bleed__img" src="assets/img/bg-atex.webp" data-bind-src="home.atexBg" alt="" aria-hidden="true" loading="lazy" decoding="async">
       <div class="container atex__inner--bleed">
         <div class="atex__text" data-reveal="left">
@@ -322,11 +322,11 @@
     <!-- ============================================================
          CATEGORÍAS DE PRODUCTOS — BENTO ASIMÉTRICO
     ============================================================ -->
-    <section class="section section--light section--white categories" id="productos" aria-labelledby="categories-heading">
+    <section class="section section--light section--white categories" id="productos" aria-labelledby="categories-heading" data-section="home.categories">
       <div class="container">
         <header class="section-head" data-reveal>
-          <h2 id="categories-heading" class="section-head__title">Lo más solicitado</h2>
-          <p class="section-head__sub">Más que vender equipo: seleccionamos, instalamos, damos servicio y soporte continuo a toda su planta — con las marcas más prestigiadas del rubro en un solo proveedor.</p>
+          <h2 id="categories-heading" class="section-head__title" data-bind="home.categoriesHeading">Lo más solicitado</h2>
+          <p class="section-head__sub" data-bind="home.categoriesSub">Más que vender equipo: seleccionamos, instalamos, damos servicio y soporte continuo a toda su planta — con las marcas más prestigiadas del rubro en un solo proveedor.</p>
         </header>
 
         <div class="fstrip-wrap" data-featured>
@@ -354,11 +354,11 @@
     <!-- ============================================================
          MARCAS
     ============================================================ -->
-    <section class="section section--light brands" id="marcas" aria-labelledby="brands-heading">
+    <section class="section section--light brands" id="marcas" aria-labelledby="brands-heading" data-section="home.brands">
       <div class="container">
         <header class="section-head" data-reveal>
-          <h2 id="brands-heading" class="section-head__title">Centro de Servicio Autorizado<br>+ portafolio multimarca</h2>
-          <p class="section-head__sub">No solo vendemos marcas líderes: somos el centro autorizado que las respalda con servicio, refacciones y garantía de fábrica — para que su operación no se detenga.</p>
+          <h2 id="brands-heading" class="section-head__title" data-bind="home.brandsHeading">Centro de Servicio Autorizado<br>+ portafolio multimarca</h2>
+          <p class="section-head__sub" data-bind="home.brandsSub">No solo vendemos marcas líderes: somos el centro autorizado que las respalda con servicio, refacciones y garantía de fábrica — para que su operación no se detenga.</p>
         </header>
 
         <!-- BLOQUE 1 · Centro de Servicio Autorizado (destacado, logos reales) -->
@@ -456,14 +456,14 @@
     <!-- ============================================================
          POR QUÉ SEMSA
     ============================================================ -->
-    <section class="section section--brand-blue why" aria-labelledby="why-heading">
+    <section class="section section--brand-blue why" aria-labelledby="why-heading" data-section="home.why">
       <div class="why__grid-bg" aria-hidden="true"></div>
       <div class="container why__container">
         <header class="section-head section-head--split" data-reveal>
           <div>
-            <h2 id="why-heading" class="section-head__title section-head__title--light">Por qué elegir SEMSA</h2>
+            <h2 id="why-heading" class="section-head__title section-head__title--light" data-bind="home.whyHeading">Por qué elegir SEMSA</h2>
           </div>
-          <p class="section-head__sub section-head__sub--light why__statement">No somos un distribuidor genérico. <strong>Somos su socio técnico integral.</strong></p>
+          <p class="section-head__sub section-head__sub--light why__statement" data-bind="home.whySub">No somos un distribuidor genérico. <strong>Somos su socio técnico integral.</strong></p>
         </header>
         <div class="why__grid">
           <div class="why__item" data-reveal data-magnetic>
@@ -523,11 +523,11 @@
     <!-- ============================================================
          CASOS DE ÉXITO / TESTIMONIALES
     ============================================================ -->
-    <section class="section section--light cases" aria-labelledby="cases-heading">
+    <section class="section section--light cases" aria-labelledby="cases-heading" data-section="home.cases">
       <div class="container">
         <header class="section-head" data-reveal>
-          <h2 id="cases-heading" class="section-head__title">Industrias que confían en SEMSA</h2>
-          <p class="section-head__sub">De la línea de ensamble automotriz a la planta química con zonas clasificadas — equipamos procesos críticos en todo México.</p>
+          <h2 id="cases-heading" class="section-head__title" data-bind="home.casesHeading">Industrias que confían en SEMSA</h2>
+          <p class="section-head__sub" data-bind="home.casesSub">De la línea de ensamble automotriz a la planta química con zonas clasificadas — equipamos procesos críticos en todo México.</p>
         </header>
 
         <!-- Bento fotográfico de industrias (Automotriz = hero · Química ATEX = feature) -->
@@ -627,11 +627,11 @@
     <!-- ============================================================
          CTA FINAL / COTIZACIÓN
     ============================================================ -->
-    <section class="section section--dark cta-final" id="cotizar" aria-labelledby="cta-heading">
+    <section class="section section--dark cta-final" id="cotizar" aria-labelledby="cta-heading" data-section="home.cta">
       <div class="container cta-final__inner">
         <div class="cta-final__text" data-reveal="left">
-          <h2 id="cta-heading" class="cta-final__heading">Solicitar diagnóstico o cotización técnica</h2>
-          <p class="cta-final__desc">
+          <h2 id="cta-heading" class="cta-final__heading" data-bind="home.ctaHeading">Solicitar diagnóstico o cotización técnica</h2>
+          <p class="cta-final__desc" data-bind="home.ctaDesc">
             Cuéntenos qué necesita resolver en su planta — equipo nuevo, refacción, reparación o servicio. Un asesor técnico de SEMSA le responderá en menos de 24 horas hábiles.
           </p>
           <p class="cta-final__wa">
@@ -803,11 +803,11 @@
     <!-- ============================================================
          CONTACTO
     ============================================================ -->
-    <section class="section section--light contact" id="contacto" aria-labelledby="contact-heading">
+    <section class="section section--light contact" id="contacto" aria-labelledby="contact-heading" data-section="home.contact">
       <div class="container">
         <div class="contact__inner">
         <div class="contact__info" data-reveal="left">
-          <h2 id="contact-heading" class="section-head__title section-head__title--left">Contacto</h2>
+          <h2 id="contact-heading" class="section-head__title section-head__title--left" data-bind="home.contactHeading">Contacto</h2>
           <ul class="contact__list">
             <li class="contact__item">
               <span class="contact__ico" aria-hidden="true">
@@ -997,7 +997,7 @@
   </a>
 
 
-  <script src="public-bridge.js?v=20260706600000"></script>
-  <script src="script.js?v=20260706600000"></script>
+  <script src="public-bridge.js?v=20260706700000"></script>
+  <script src="script.js?v=20260706700000"></script>
 </body>
 </html>

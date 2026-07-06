@@ -64,6 +64,20 @@
     });
   }
 
+  // Ocultar/mostrar secciones. content[page]._sections[key] === false -> se oculta.
+  // Ausente o true = visible (queda como está el HTML). Fail-soft.
+  function applySections(content) {
+    if (!content) return;
+    document.querySelectorAll('[data-section]').forEach(function (el) {
+      var key = el.getAttribute('data-section') || '';
+      var dot = key.indexOf('.');
+      if (dot === -1) return;
+      var page = content[key.slice(0, dot)];
+      var secs = page && page._sections;
+      if (secs && secs[key.slice(dot + 1)] === false) el.style.display = 'none';
+    });
+  }
+
   function load() {
     if (!window.fetch) return;
     fetch(API, { credentials: 'same-origin', cache: 'no-store' })
@@ -73,6 +87,7 @@
         applyContact(json.contact);
         applyBinds(json.content);
         applyMedia(json.content);
+        applySections(json.content);
       })
       .catch(function () { /* fail-soft: se queda el hardcoded del HTML */ });
   }

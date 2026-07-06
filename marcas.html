@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260706600000">
+  <link rel="stylesheet" href="styles.css?v=20260706700000">
 </head>
 <body>
 
@@ -114,11 +114,11 @@
       </div>
     </section>
 
-    <section class="section section--light brands" id="marcas" aria-labelledby="brands-heading">
+    <section class="section section--light brands" id="marcas" aria-labelledby="brands-heading" data-section="marcas.brands">
       <div class="container">
         <header class="section-head" data-reveal>
-          <h2 id="brands-heading" class="section-head__title">Centro de Servicio Autorizado<br>+ portafolio multimarca</h2>
-          <p class="section-head__sub">15 marcas líderes integradas por un solo socio técnico — con el respaldo del único Centro de Servicio Autorizado Ingersoll Rand en Nuevo León.</p>
+          <h2 id="brands-heading" class="section-head__title" data-bind="marcas.sectionHeading">Centro de Servicio Autorizado<br>+ portafolio multimarca</h2>
+          <p class="section-head__sub" data-bind="marcas.sectionSub">15 marcas líderes integradas por un solo socio técnico — con el respaldo del único Centro de Servicio Autorizado Ingersoll Rand en Nuevo León.</p>
         </header>
 
         <div class="bcards bcards--auth" data-reveal>
@@ -138,7 +138,7 @@
           </a>
         </div>
 
-        <h3 class="bcards__title">Portafolio multimarca</h3>
+        <h3 class="bcards__title" data-bind="marcas.portfolioHeading">Portafolio multimarca</h3>
         <div class="brand-dir" data-reveal data-reveal-delay="1">
           <a class="brow" href="catalogo.html?marca=graco">
             <span class="brow__logo"><img src="assets/img/brands/graco.svg?v=2" alt="Graco" loading="lazy" decoding="async"></span>
@@ -281,8 +281,8 @@
     </svg>
   </a>
 
-  <script src="public-bridge.js?v=20260706600000"></script>
-  <script src="marcas-bridge.js?v=20260706600000"></script>
-  <script src="script.js?v=20260706600000"></script>
+  <script src="public-bridge.js?v=20260706700000"></script>
+  <script src="marcas-bridge.js?v=20260706700000"></script>
+  <script src="script.js?v=20260706700000"></script>
 </body>
 </html>
