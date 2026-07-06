@@ -29,8 +29,25 @@
       // Ficha técnica PDF (si el admin subió una): añade/actualiza un botón de descarga
       // dentro del bloque de acciones, sin tocar el HTML estático si no hay PDF.
       if (p.pdf) applyDatasheet(root, p.pdf);
+
+      // SEO editable (agente SEO): actualiza title + meta description/keywords en vivo.
+      // Nota: para el crawler, lo definitivo es regenerar la ficha estática; esto mantiene
+      // el título de pestaña y previews de compartir alineados con la BD.
+      if (p.seo) applySeo(p.seo);
     })
     .catch(function () { /* fail-soft */ });
+
+  function setMeta(name, content) {
+    if (!content) return;
+    var el = document.head.querySelector('meta[name="' + name + '"]');
+    if (!el) { el = document.createElement('meta'); el.setAttribute('name', name); document.head.appendChild(el); }
+    el.setAttribute('content', content);
+  }
+  function applySeo(seo) {
+    if (seo.title) document.title = seo.title;
+    if (seo.metaDescription) setMeta('description', seo.metaDescription);
+    if (Array.isArray(seo.keywords) && seo.keywords.length) setMeta('keywords', seo.keywords.join(', '));
+  }
 
   function applyDatasheet(root, pdf) {
     var cta = root.querySelector('.prod__cta');
