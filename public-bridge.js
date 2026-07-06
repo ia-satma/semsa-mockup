@@ -14,10 +14,15 @@
     if (!contact) return;
     document.querySelectorAll('[data-bind-href]').forEach(function (el) {
       var key = el.getAttribute('data-bind-href');
-      if (key === 'contact.whatsappLink' && contact.whatsapp) {
-        var wa = String(contact.whatsapp).replace(/[^\d+]/g, '').replace(/^\+/, '');
-        var msg = encodeURIComponent(contact.whatsappMessage || '');
-        el.setAttribute('href', 'https://wa.me/' + wa + (msg ? '?text=' + msg : ''));
+      if (key === 'contact.whatsappLink' && (contact.whatsappLinkFull || contact.whatsapp)) {
+        // Si hay un link completo (opcional), gana; si no, se arma con número + mensaje.
+        if (contact.whatsappLinkFull && String(contact.whatsappLinkFull).trim()) {
+          el.setAttribute('href', String(contact.whatsappLinkFull).trim());
+        } else {
+          var wa = String(contact.whatsapp).replace(/[^\d+]/g, '').replace(/^\+/, '');
+          var msg = encodeURIComponent(contact.whatsappMessage || '');
+          el.setAttribute('href', 'https://wa.me/' + wa + (msg ? '?text=' + msg : ''));
+        }
       } else if (key === 'contact.phoneLink' && contact.phone) {
         el.setAttribute('href', 'tel:' + String(contact.phone).replace(/\s+/g, ''));
       } else if (key === 'contact.emailLink' && contact.email) {
