@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260625480000">
+  <link rel="stylesheet" href="styles.css?v=20260706500000">
   <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SEMSA — Servicios Especializados de Monterrey","alternateName":"SEMSA","url":"https://ia-satma.github.io/semsa-mockup/","logo":"https://ia-satma.github.io/semsa-mockup/assets/logo-semsa-02.png","description":"Distribuidor de herramienta y equipo industrial y único Centro de Servicio Autorizado Ingersoll Rand en Nuevo León. Desde 1986.","foundingDate":"1986","areaServed":"MX","contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+528117998535","areaServed":"MX","availableLanguage":"es"},"sameAs":["https://semsamty.com"]}</script>
 </head>
@@ -129,10 +129,10 @@
       <div class="container hero__content">
         <div class="hero__text" data-reveal>
           <img class="hero__emblem" src="assets/isotipo-semsa.svg" alt="" aria-hidden="true" width="152" height="152" loading="eager" decoding="async">
-          <h1 id="hero-heading" class="hero__heading">
+          <h1 id="hero-heading" class="hero__heading" data-bind="home.heroTitle">
             <span class="hero__heading-accent">40 años</span> equipando a la industria de México
           </h1>
-          <p class="hero__subheading">
+          <p class="hero__subheading" data-bind="home.heroSub">
             Centro de Servicio Autorizado Ingersoll Rand. Herramienta, equipo y polipastos ATEX, con servicio técnico, refacciones y soporte especializado para que su operación no se detenga.
           </p>
           <div class="hero__ctas">
@@ -254,10 +254,10 @@
         <div class="atex__text" data-reveal="left">
           <div class="section-meta">
           </div>
-          <h2 id="atex-heading" class="atex__heading">
+          <h2 id="atex-heading" class="atex__heading" data-bind="home.atexHeading">
             Polipastos neumáticos para zonas explosivas
           </h2>
-          <p class="atex__desc">
+          <p class="atex__desc" data-bind="home.atexDesc1">
             En química, petróleo-gas y petroquímica no hay margen de error. Los polipastos neumáticos ATEX de SEMSA cumplen con las normas de seguridad más exigentes para zonas clasificadas.
           </p>
           <p class="atex__desc">
@@ -985,7 +985,7 @@
   </div>
 
   <!-- WhatsApp flotante -->
-  <a href="https://wa.me/5218117998535?text=Hola%20SEMSA%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20y%20una%20cotizaci%C3%B3n."
+  <a href="https://wa.me/5218117998535?text=Hola%20SEMSA%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20y%20una%20cotizaci%C3%B3n." data-bind-href="contact.whatsappLink"
      class="whatsapp-float"
      target="_blank"
      rel="noopener noreferrer"
@@ -997,6 +997,7 @@
   </a>
 
 
-  <script src="script.js?v=20260625480000"></script>
+  <script src="public-bridge.js?v=20260706500000"></script>
+  <script src="script.js?v=20260706500000"></script>
 </body>
 </html>

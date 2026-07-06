@@ -155,32 +155,68 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
 })();
 
 // ── FORMULARIO: feedback visual (solo mockup) ─────────────────
-(function initForm() {
-  const form = document.querySelector('.form');
-  if (!form) return;
+// Envía TODOS los forms de contacto/cotización del sitio a POST /api/public/quote (real,
+// persistido en la BD, visible en admin → Clientes). Incluye los productos de la lista de
+// cotización (localStorage, compartida con initCatalog/initProductQuote). Fail-visible: si el
+// backend no responde (ej. sitio estático sin servidor), muestra error y no borra el form.
+(function initForms() {
+  var QUOTE_KEY = 'semsa_quote_items';
+  function getQuoteItems() {
+    try { return JSON.parse(localStorage.getItem(QUOTE_KEY) || '[]'); } catch (e) { return []; }
+  }
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const btn = form.querySelector('[type="submit"]');
-    if (!btn) return;
-    const label = btn.querySelector('span:first-child');
-    const original = label ? label.textContent : btn.textContent;
+  document.querySelectorAll('form.form').forEach(function (form) {
+    var origen = form.classList.contains('urg__form') ? 'urgencia'
+      : (document.querySelector('[data-catalog]') || document.querySelector('.prod')) ? 'ficha-producto'
+      : 'web-cotizar';
 
-    if (label) label.textContent = 'Enviando...';
-    btn.disabled = true;
-    btn.style.opacity = '.7';
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('[type="submit"]');
+      var label = btn ? btn.querySelector('span:first-child') : null;
+      var original = label ? label.textContent : (btn ? btn.textContent : '');
+      var fd = new FormData(form);
+      var payload = {
+        nombre: fd.get('nombre') || '',
+        empresa: fd.get('empresa') || '',
+        telefono: fd.get('telefono') || '',
+        email: fd.get('email') || '',
+        tipo: fd.get('tipo') || fd.get('linea') || '',
+        mensaje: fd.get('mensaje') || fd.get('ciudad') || '',
+        origen: origen,
+        items: getQuoteItems(),
+      };
 
-    setTimeout(function () {
-      if (label) label.textContent = 'Solicitud enviada — le contactaremos en breve';
-      btn.style.background = '#4CA000';
-      btn.style.opacity = '1';
-      setTimeout(function () {
-        if (label) label.textContent = original;
-        btn.style.background = '';
-        btn.disabled = false;
-        form.reset();
-      }, 4000);
-    }, 1100);
+      if (btn) { btn.disabled = true; btn.style.opacity = '.7'; }
+      if (label) label.textContent = 'Enviando...';
+
+      fetch('/api/public/quote', {
+        method: 'POST', credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(function () {
+          if (label) label.textContent = 'Solicitud enviada — le contactaremos en breve';
+          if (btn) { btn.style.background = '#4CA000'; btn.style.opacity = '1'; }
+          try { localStorage.removeItem(QUOTE_KEY); } catch (e) {}
+          var bar = document.querySelector('[data-quote-bar]');
+          if (bar) bar.hidden = true;
+          setTimeout(function () {
+            if (label) label.textContent = original;
+            if (btn) { btn.style.background = ''; btn.disabled = false; }
+            form.reset();
+          }, 4000);
+        })
+        .catch(function () {
+          if (label) label.textContent = 'No se pudo enviar — intente de nuevo o use WhatsApp';
+          if (btn) { btn.style.background = '#C0392B'; btn.style.opacity = '1'; }
+          setTimeout(function () {
+            if (label) label.textContent = original;
+            if (btn) { btn.style.background = ''; btn.disabled = false; }
+          }, 3500);
+        });
+    });
   });
 })();
 
@@ -475,7 +511,8 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     applyFilters();
   });
 
-  // Lista de cotización (delegación, tolera cards dinámicas)
+  // Lista de cotización (delegación, tolera cards dinámicas) — persiste en localStorage
+  // para que el form de "Solicitar cotización" (initForms) la incluya al enviar.
   (function () {
     const bar = document.querySelector('[data-quote-bar]');
     if (!bar) return;
@@ -493,11 +530,13 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
       if (countQ) countQ.textContent = String(added.size);
       if (wordQ) wordQ.textContent = added.size === 1 ? 'producto' : 'productos';
       bar.hidden = added.size === 0;
+      try { localStorage.setItem('semsa_quote_items', JSON.stringify(Array.from(added))); } catch (e) {}
     });
   })();
 
-  fetch('data/catalogo.json')
+  fetch('/api/public/catalogo')
     .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .catch(function () { return fetch('data/catalogo.json').then(function (r) { return r.json(); }); })
     .then(function (data) {
       all = data;
       const vM = {}, vC = {}, vA = {}, vD = {};
@@ -529,7 +568,16 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   if (!bar) return;
   const countQ = bar.querySelector('[data-quote-count]');
   const wordQ = bar.querySelector('[data-quote-word]');
-  const added = new Set();
+  let added = new Set();
+  try { added = new Set(JSON.parse(localStorage.getItem('semsa_quote_items') || '[]')); } catch (e) {}
+  if (added.size) {
+    document.querySelectorAll('[data-add-quote]').forEach(function (btn) {
+      if (added.has(btn.getAttribute('data-product'))) { btn.classList.add('is-added'); btn.textContent = '✓ Agregado'; }
+    });
+    if (countQ) countQ.textContent = String(added.size);
+    if (wordQ) wordQ.textContent = added.size === 1 ? 'producto' : 'productos';
+    bar.hidden = false;
+  }
   document.addEventListener('click', function (ev) {
     const btn = ev.target.closest('[data-add-quote]');
     if (!btn) return;
@@ -539,6 +587,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     if (countQ) countQ.textContent = String(added.size);
     if (wordQ) wordQ.textContent = added.size === 1 ? 'producto' : 'productos';
     bar.hidden = added.size === 0;
+    try { localStorage.setItem('semsa_quote_items', JSON.stringify(Array.from(added))); } catch (e) {}
   });
 })();
 

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260625480000">
+  <link rel="stylesheet" href="styles.css?v=20260706500000">
 </head>
 <body>
 
@@ -109,8 +109,8 @@
     <section class="page-hero" aria-labelledby="page-title">
       <div class="container">
         <p class="page-hero__crumb"><a href="index.html">← Inicio</a> <span aria-hidden="true">/</span> Industrias</p>
-        <h1 id="page-title" class="page-hero__title">Soluciones por industria</h1>
-        <p class="page-hero__sub">De la línea de ensamble automotriz a la planta química con zonas clasificadas — equipamos procesos críticos en todo México. Elija su sector para ver retos comunes y cómo los resuelve SEMSA.</p>
+        <h1 id="page-title" class="page-hero__title" data-bind="industrias.heroTitle">Soluciones por industria</h1>
+        <p class="page-hero__sub" data-bind="industrias.heroSub">De la línea de ensamble automotriz a la planta química con zonas clasificadas — equipamos procesos críticos en todo México. Elija su sector para ver retos comunes y cómo los resuelve SEMSA.</p>
       </div>
     </section>
 
@@ -118,7 +118,7 @@
     <section class="section section--light section--tight-top cases" aria-label="Sectores industriales que atiende SEMSA">
       <div class="container">
         <header class="section-head section-head--tight" data-reveal>
-          <p class="section-head__sub">Retos comunes por industria y cómo los resuelve SEMSA. Tres sectores con detalle ya disponibles (automotriz, química/ATEX y manufactura); el resto se integra en Fase 5.</p>
+          <p class="section-head__sub" data-bind="industrias.sectionNote">Retos comunes por industria y cómo los resuelve SEMSA. Tres sectores con detalle ya disponibles (automotriz, química/ATEX y manufactura); el resto se integra en Fase 5.</p>
         </header>
 
         <div class="industries-bento" data-reveal>
@@ -220,7 +220,7 @@
     </div>
   </footer>
 
-  <a href="https://wa.me/5218117998535?text=Hola%20SEMSA%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20y%20una%20cotizaci%C3%B3n."
+  <a href="https://wa.me/5218117998535?text=Hola%20SEMSA%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20y%20una%20cotizaci%C3%B3n." data-bind-href="contact.whatsappLink"
      class="whatsapp-float"
      target="_blank"
      rel="noopener noreferrer"
@@ -231,6 +231,7 @@
     </svg>
   </a>
 
-  <script src="script.js?v=20260625480000"></script>
+  <script src="public-bridge.js?v=20260706500000"></script>
+  <script src="script.js?v=20260706500000"></script>
 </body>
 </html>

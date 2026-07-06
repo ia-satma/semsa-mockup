@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260625480000">
+  <link rel="stylesheet" href="styles.css?v=20260706500000">
 </head>
 <body>
 
@@ -109,8 +109,8 @@
     <section class="page-hero" aria-labelledby="page-title">
       <div class="container">
         <p class="page-hero__crumb"><a href="index.html">← Inicio</a> <span aria-hidden="true">/</span> Reseñas</p>
-        <h1 id="page-title" class="page-hero__title">Lo que opinan nuestros clientes</h1>
-        <p class="page-hero__sub">La confianza de la industria se gana proyecto a proyecto. Reseñas verificadas de empresas que ya trabajan con SEMSA.</p>
+        <h1 id="page-title" class="page-hero__title" data-bind="resenas.heroTitle">Lo que opinan nuestros clientes</h1>
+        <p class="page-hero__sub" data-bind="resenas.heroSub">La confianza de la industria se gana proyecto a proyecto. Reseñas verificadas de empresas que ya trabajan con SEMSA.</p>
       </div>
     </section>
 
@@ -184,7 +184,7 @@
     </div>
   </footer>
 
-  <a href="https://wa.me/5218117998535?text=Hola%20SEMSA%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20y%20una%20cotizaci%C3%B3n."
+  <a href="https://wa.me/5218117998535?text=Hola%20SEMSA%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20y%20una%20cotizaci%C3%B3n." data-bind-href="contact.whatsappLink"
      class="whatsapp-float"
      target="_blank"
      rel="noopener noreferrer"
@@ -195,6 +195,7 @@
     </svg>
   </a>
 
-  <script src="script.js?v=20260625480000"></script>
+  <script src="public-bridge.js?v=20260706500000"></script>
+  <script src="script.js?v=20260706500000"></script>
 </body>
 </html>
