@@ -2413,109 +2413,104 @@ a:hover > .photo-frame .photo-frame__img {
 }
 
 /* ── LÍNEA DE TIEMPO HORIZONTAL (riel desplazable) ── */
+/* Riel VERTICAL: con 16 hitos el formato horizontal escondía 11 tras un scroll
+   lateral que nadie descubre. En vertical se leen todos con el scroll normal. */
 .timeline {
+  --tl-gap: clamp(26px, 2.6vw, 34px);      /* separación entre hitos */
   position: relative;
   display: flex;
-  align-items: flex-start;
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  padding-bottom: 6px;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,.25) transparent;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.timeline::-webkit-scrollbar { height: 6px; }
-.timeline::-webkit-scrollbar-thumb { background: rgba(255,255,255,.22); border-radius: 3px; }
 .timeline__item {
   position: relative;
   z-index: 1;
-  /* 16 hitos no caben repartidos: ancho fijo y el riel se recorre horizontalmente */
-  flex: 0 0 clamp(172px, 15vw, 210px);
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 0 8px;
-  scroll-snap-align: start;
+  display: grid;
+  grid-template-columns: 72px 34px minmax(0, 1fr);
+  grid-template-areas:
+    "year node event"
+    "year node note";
+  align-items: start;
+  padding-bottom: var(--tl-gap);
+  text-align: left;
 }
 .timeline__year {
-  height: 30px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  grid-area: year;
+  padding-right: 12px;
+  text-align: right;
   font-family: var(--font-mono);
   font-weight: 700;
-  font-size: 1.25rem;
-  line-height: 1;
+  font-size: 1.08rem;
+  line-height: 1.25;
   letter-spacing: 0.02em;
   color: var(--green-light);
 }
-/* Banda del riel + nodo */
+/* Columna del riel + nodo */
 .timeline__node {
+  grid-area: node;
   position: relative;
-  width: 100%;
-  height: 18px;
-  margin: 14px 0 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  align-self: stretch;
+  min-height: 22px;
 }
-.timeline__node::before {                 /* segmento de riel por ítem */
+.timeline__node::before {                 /* riel continuo entre hitos */
   content: '';
   position: absolute;
-  top: 50%; left: 0; right: 0;
-  height: 2px;
-  transform: translateY(-50%);
+  top: 0;
+  /* el padding del ítem queda fuera del área de grid: se cruza para no partir el riel */
+  bottom: calc(-1 * var(--tl-gap));
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
   background: rgba(255,255,255,.16);
 }
-.timeline__item:first-child .timeline__node::before { left: 50%; }
-.timeline__item:last-child .timeline__node::before { right: 50%; }
-.timeline__node::after {                  /* nodo (punto) con anillo que “corta” el riel */
+.timeline__item:first-child .timeline__node::before { top: 10px; }
+.timeline__item:last-child  .timeline__node::before { bottom: calc(100% - 10px); }
+.timeline__node::after {                  /* nodo (punto) con anillo */
   content: '';
-  position: relative;
+  position: absolute;
+  top: 3px;
+  left: 50%;
   width: 13px; height: 13px;
   border-radius: 50%;
+  transform: translateX(-50%);
   background: var(--blue-light);
   box-shadow: 0 0 0 4px var(--semsa-blue-dark), 0 0 0 6px rgba(255,255,255,.14);
   transition: box-shadow .3s var(--ease-out), background-color .3s var(--ease-out);
 }
 .timeline__event {
+  grid-area: event;
+  padding-left: 12px;
   font-family: var(--font-h);
   font-weight: 700;
-  font-size: 0.84rem;
+  font-size: 1rem;
   color: #fff;
   line-height: 1.3;
-  text-wrap: balance;
 }
 .timeline__note {
-  margin-top: 7px;
-  font-size: 0.74rem;
+  grid-area: note;
+  margin-top: 6px;
+  padding-left: 12px;
+  max-width: 68ch;
+  font-size: 0.86rem;
   color: var(--ink-soft);
-  line-height: 1.45;
+  line-height: 1.55;
 }
-/* Móvil/tablet: el riel se vuelve desplazable horizontalmente (no se rompe a vertical) */
-@media (max-width: 720px) {
-  .timeline__item { flex: 0 0 62%; }
+@media (max-width: 560px) {
+  .timeline__item { grid-template-columns: 56px 26px minmax(0, 1fr); }
+  .timeline__year { font-size: .95rem; padding-right: 8px; }
+  .timeline__event { font-size: .93rem; padding-left: 8px; }
+  .timeline__note { font-size: .8rem; padding-left: 8px; }
 }
-@media (max-width: 480px) {
-  .timeline__item { flex: 0 0 80%; }
-}
-.about__timeline-hint {
-  margin: 14px 0 0;
-  font-size: .72rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.44);
-}
-/* Hitos clave (1993, 2024, 2026): nodo verde + glow + año destacado */
-.timeline__item--key .timeline__year { font-size: 1.5rem; color: #fff; }
+/* Hitos clave (1993, 2024, 2026): nodo verde + glow */
+.timeline__item--key .timeline__year { color: #fff; }
 .timeline__item--key .timeline__node::after {
   width: 17px; height: 17px;
+  top: 1px;
   background: var(--green-light);
   box-shadow: 0 0 0 4px var(--semsa-blue-dark), 0 0 0 7px rgba(86,178,0,.40), 0 0 18px rgba(86,178,0,.5);
 }
-.timeline__item--key .timeline__event { color: #fff; }
 .timeline__item:hover .timeline__node::after {
   background: var(--green-light);
   box-shadow: 0 0 0 4px var(--semsa-blue-dark), 0 0 0 7px rgba(86,178,0,.32);
@@ -2831,12 +2826,12 @@ a:hover > .photo-frame .photo-frame__img {
 
 /* Línea de tiempo: cascada interna escalonada al revelarse el contenedor.
    Los ítems entran lateralmente uno tras otro guiando la lectura. */
+/* Solo fade: en vertical, desplazar cada ítem partiría el riel durante la animación */
 .about__timeline-wrap .timeline__item {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity .6s var(--ease-out), transform .6s var(--ease-out);
+  transition: opacity .6s var(--ease-out);
 }
-.about__timeline-wrap.is-visible .timeline__item { opacity: 1; transform: none; }
+.about__timeline-wrap.is-visible .timeline__item { opacity: 1; }
 .about__timeline-wrap.is-visible .timeline__item:nth-child(1)  { transition-delay: .05s; }
 .about__timeline-wrap.is-visible .timeline__item:nth-child(2)  { transition-delay: .10s; }
 .about__timeline-wrap.is-visible .timeline__item:nth-child(3)  { transition-delay: .15s; }
