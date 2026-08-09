@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SEMSA — Herramienta y Equipo Industrial | Centro de Servicio Autorizado Ingersoll Rand Nuevo León</title>
-  <meta name="description" content="SEMSA: el único Centro de Servicio Autorizado Ingersoll Rand en Nuevo León. Polipastos neumáticos ATEX, herramienta industrial y equipo para la industria. Desde 1986.">
+  <title>SEMSA — Herramienta y Equipo Industrial | Centro de Servicio Autorizado Ingersoll Rand en México</title>
+  <meta name="description" content="SEMSA — Servicios Especializados de Monterrey: Centro de Servicio Autorizado Ingersoll Rand. Herramienta y equipo industrial, ingeniería e integración de proyectos y red de Centros de Servicio en México. Desde 1986.">
   <meta name="theme-color" content="#001528">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260706900000">
+  <link rel="stylesheet" href="styles.css?v=20260809210000">
   <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SEMSA — Servicios Especializados de Monterrey","alternateName":"SEMSA","url":"https://ia-satma.github.io/semsa-mockup/","logo":"https://ia-satma.github.io/semsa-mockup/assets/logo-semsa-02.png","description":"Distribuidor de herramienta y equipo industrial y único Centro de Servicio Autorizado Ingersoll Rand en Nuevo León. Desde 1986.","foundingDate":"1986","areaServed":"MX","contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+528117998535","areaServed":"MX","availableLanguage":"es"},"sameAs":["https://semsamty.com"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SEMSA — Servicios Especializados de Monterrey","alternateName":"SEMSA","url":"https://ia-satma.github.io/semsa-mockup/","logo":"https://ia-satma.github.io/semsa-mockup/assets/logo-semsa-02.png","description":"Distribuidor de herramienta y equipo industrial y Centro de Servicio Autorizado Ingersoll Rand, con red de Centros de Servicio en Monterrey, Saltillo, Querétaro y Tijuana. Desde 1986.","foundingDate":"1986","areaServed":"MX","contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+528117998535","areaServed":"MX","availableLanguage":"es"},"sameAs":["https://semsamty.com"]}</script>
 </head>
 <body>
 
@@ -54,7 +54,7 @@
           <div class="nav__sub" aria-label="Soluciones SEMSA">
             <a href="soluciones.html#necesidades" class="nav__sub-link">¿Qué necesita resolver?</a>
             <a href="servicio.html" class="nav__sub-link">Servicio técnico</a>
-            <a href="#atex" class="nav__sub-link">Equipo ATEX</a>
+            <a href="industria-quimica-atex.html" class="nav__sub-link">Equipo ATEX</a>
             <a href="soluciones.html" class="nav__sub-link">¿Reparar o reemplazar?</a>
             <a href="#cotizar" class="nav__sub-link" data-urgencia>Urgencia en planta</a>
           </div>
@@ -129,23 +129,18 @@
       <div class="container hero__content">
         <div class="hero__text" data-reveal>
           <img class="hero__emblem" src="assets/isotipo-semsa.svg" alt="" aria-hidden="true" width="152" height="152" loading="eager" decoding="async">
+          <p class="hero__brandline" data-bind="home.brandLine">SEMSA · Servicios Especializados de Monterrey</p>
           <h1 id="hero-heading" class="hero__heading" data-bind="home.heroTitle">
             <span class="hero__heading-accent">40 años</span> equipando a la industria de México
           </h1>
           <p class="hero__subheading" data-bind="home.heroSub">
-            Centro de Servicio Autorizado Ingersoll Rand. Herramienta, equipo y polipastos ATEX, con servicio técnico, refacciones y soporte especializado para que su operación no se detenga.
+            Centro de Servicio Autorizado y socio técnico integral. Entendemos su proceso antes de recomendar un equipo, y lo respaldamos con servicio, refacciones y soporte para que su operación no se detenga.
           </p>
           <div class="hero__ctas">
             <a href="#cotizar" class="btn btn--primary btn--icon btn--lg">
               <span>Solicitar cotización</span>
               <span class="btn__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </span>
-            </a>
-            <a href="catalogo.html?division=manejo-de-material" class="btn btn--outline btn--icon btn--lg">
-              <span>Ver polipastos ATEX</span>
-              <span class="btn__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
               </span>
             </a>
           </div>
@@ -173,51 +168,62 @@
       <div class="panels" data-hero-panels>
         <p class="sol-label" data-bind="home.heroMenuLabel">Soluciones <b>· elija su proceso</b></p>
 
-        <a class="hp p1 on" href="catalogo.html?division=manejo-de-material" aria-label="Elevación y manejo de materiales — ver soluciones">
-          <span class="hp__media" style="background-image:url('assets/img/hero-col-polipastos.webp')" data-bind-bg="home.heroCol1"></span>
+        <a class="hp p1 on" href="catalogo.html?division=manejo-de-fluidos" aria-label="Manejo de Fluidos — ver soluciones">
+          <span class="hp__media" style="background-image:url('assets/img/hero-col-pintura.webp')" data-bind-bg="home.heroCol1"></span>
           <span class="hp__grid" aria-hidden="true"></span>
           <span class="hp__shade" aria-hidden="true"></span>
           <span class="hp__idx" aria-hidden="true">01</span>
           <span class="hp__content">
-            <span class="hp__tag">ATEX</span>
-            <span class="hp__name">Elevación y manejo de materiales</span>
-            <span class="hp__desc">Polipastos neumáticos y eléctricos · balancines · rieles</span>
+            <span class="hp__name">Manejo de Fluidos</span>
+            <span class="hp__desc">Pintura industrial · recubrimientos · dosificación de materiales</span>
             <span class="hp__cta">Ver soluciones →</span>
           </span>
         </a>
 
-        <a class="hp p2" href="catalogo.html?division=ensamble" aria-label="Ensamble y apriete — ver soluciones">
+        <a class="hp p2" href="catalogo.html?division=ensamble" aria-label="Ensamble — ver soluciones">
           <span class="hp__media" style="background-image:url('assets/img/hero-col-herramientas.webp')" data-bind-bg="home.heroCol2"></span>
           <span class="hp__grid" aria-hidden="true"></span>
           <span class="hp__shade" aria-hidden="true"></span>
           <span class="hp__idx" aria-hidden="true">02</span>
           <span class="hp__content">
-            <span class="hp__name">Ensamble y apriete</span>
-            <span class="hp__desc">Herramientas eléctricas y neumáticas · remachadoras · dados y puntas</span>
+            <span class="hp__name">Ensamble</span>
+            <span class="hp__desc">Herramienta de apriete y torque controlado · remachadoras · dados y puntas</span>
             <span class="hp__cta">Ver soluciones →</span>
           </span>
         </a>
 
-        <a class="hp p3" href="catalogo.html?division=bombeo" aria-label="Manejo de fluidos — ver soluciones">
+        <a class="hp p3" href="catalogo.html?division=equipo-de-bombeo" aria-label="Equipo de Bombeo — ver soluciones">
           <span class="hp__media" style="background-image:url('assets/img/hero-col-fluidos.webp')" data-bind-bg="home.heroCol3"></span>
           <span class="hp__grid" aria-hidden="true"></span>
           <span class="hp__shade" aria-hidden="true"></span>
           <span class="hp__idx" aria-hidden="true">03</span>
           <span class="hp__content">
-            <span class="hp__name">Manejo de fluidos</span>
+            <span class="hp__name">Equipo de Bombeo</span>
             <span class="hp__desc">Bombas de diafragma, pistón y centrífugas</span>
             <span class="hp__cta">Ver soluciones →</span>
           </span>
         </a>
 
-        <a class="hp p4" href="catalogo.html?division=pintura" aria-label="Recubrimiento y sellado — ver soluciones">
-          <span class="hp__media" style="background-image:url('assets/img/hero-col-pintura.webp')" data-bind-bg="home.heroCol4"></span>
+        <a class="hp p4" href="catalogo.html?division=manejo-de-material" aria-label="Manejo de Material — ver soluciones">
+          <span class="hp__media" style="background-image:url('assets/img/hero-col-polipastos.webp')" data-bind-bg="home.heroCol4"></span>
           <span class="hp__grid" aria-hidden="true"></span>
           <span class="hp__shade" aria-hidden="true"></span>
           <span class="hp__idx" aria-hidden="true">04</span>
           <span class="hp__content">
-            <span class="hp__name">Recubrimiento y sellado</span>
-            <span class="hp__desc">Equipos de pintura · dosificadores · sistemas de sello</span>
+            <span class="hp__name">Manejo de Material</span>
+            <span class="hp__desc">Polipastos neumáticos y eléctricos · balancines · rieles</span>
+            <span class="hp__cta">Ver soluciones →</span>
+          </span>
+        </a>
+
+        <a class="hp p5" href="servicio.html" aria-label="Servicio Especializado — ingeniería, integración y servicio técnico">
+          <span class="hp__media" style="background-image:url('assets/img/render-laboratorio.webp')" data-bind-bg="home.heroCol5"></span>
+          <span class="hp__grid" aria-hidden="true"></span>
+          <span class="hp__shade" aria-hidden="true"></span>
+          <span class="hp__idx" aria-hidden="true">05</span>
+          <span class="hp__content">
+            <span class="hp__name">Servicio Especializado</span>
+            <span class="hp__desc">Ingeniería e integración de proyectos · servicio técnico en taller y planta</span>
             <span class="hp__cta">Ver soluciones →</span>
           </span>
         </a>
@@ -232,7 +238,7 @@
         <p class="trust__lead" data-reveal="left" data-bind="home.trustLead">El respaldo detrás<br>de cada solución</p>
         <div class="trust__stat" data-reveal="left" data-reveal-delay="2">
           <span class="trust__num" data-bind="home.trustStat1Num">1993</span>
-          <span class="trust__label" data-bind="home.trustStat1Label">Centro de Servicio Autorizado Ingersoll Rand — único en Nuevo León</span>
+          <span class="trust__label" data-bind="home.trustStat1Label">Centro de Servicio Autorizado Ingersoll Rand y ARO</span>
         </div>
         <div class="trust__stat" data-reveal="left" data-reveal-delay="3">
           <span class="trust__num" data-bind="home.trustStat2Num">1986</span>
@@ -246,70 +252,69 @@
     </section>
 
     <!-- ============================================================
-         CUÑA ATEX — SECCIÓN ESTRATÉGICA
+         EL RESPALDO — RED DE CENTROS DE SERVICIO AUTORIZADOS
     ============================================================ -->
     <section class="section atex atex--bleed section--bleed" id="atex" aria-labelledby="atex-heading" data-section="home.atex">
       <img class="section-bleed__img" src="assets/img/bg-atex.webp" data-bind-src="home.atexBg" alt="" aria-hidden="true" loading="lazy" decoding="async">
       <div class="container atex__inner--bleed">
         <div class="atex__text" data-reveal="left">
-          <div class="section-meta">
-          </div>
           <h2 id="atex-heading" class="atex__heading" data-bind="home.atexHeading">
-            Polipastos neumáticos para zonas explosivas
+            El respaldo que acompaña cada proyecto
           </h2>
           <p class="atex__desc" data-bind="home.atexDesc1">
-            En química, petróleo-gas y petroquímica no hay margen de error. Los polipastos neumáticos ATEX de SEMSA cumplen con las normas de seguridad más exigentes para zonas clasificadas.
+            Para nosotros un proyecto no termina cuando el equipo entra en operación: ahí comienza el verdadero compromiso. Mantener una planta operando requiere conocimiento técnico, experiencia y capacidad de respuesta.
           </p>
           <p class="atex__desc">
-            Respaldados por el único Centro de Servicio Autorizado Ingersoll Rand en Nuevo León — técnicos certificados, refacciones originales, garantía oficial.
+            Por eso contamos con una red de Centros de Servicio Autorizados, respaldados por las marcas que representamos, donde nuestros técnicos realizan diagnóstico, mantenimiento, reparación y rehabilitación bajo los estándares de cada fabricante.
           </p>
           <div class="atex__ctas">
             <a href="#cotizar" class="btn btn--primary btn--icon btn--lg">
-              <span>Cotizar polipastos ATEX</span>
+              <span>Solicitar servicio</span>
               <span class="btn__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
               </span>
             </a>
-            <a href="catalogo.html?division=manejo-de-material" class="btn btn--ghost btn--ghost-on-dark">Ver catálogo ATEX
+            <a href="servicio.html" class="btn btn--ghost btn--ghost-on-dark">Conocer el servicio
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
+          <p class="atex__signature" data-bind="home.atexSignature">La tecnología evoluciona. La confianza permanece.</p>
         </div>
 
-        <aside class="atex__card" data-reveal="right" data-reveal-delay="1" aria-label="Credenciales de servicio para equipo ATEX">
+        <aside class="atex__card" data-reveal="right" data-reveal-delay="1" aria-label="Capacidades de la red de Centros de Servicio">
           <div class="atex__card-head">
-            <span class="atex__card-tag">Especialidad</span>
-            <h3 class="atex__card-title">Servicio Autorizado IR para equipo ATEX</h3>
+            <span class="atex__card-tag">Servicio</span>
+            <h3 class="atex__card-title">Diagnóstico, mantenimiento y reparación</h3>
           </div>
           <ul class="checklist atex__card-list">
             <li>
               <span class="checklist__check" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="m5 12 5 5L20 7"/></svg>
               </span>
-              Zonas Clasificadas ATEX / NEC / IEC Ex
+              Servicio en taller y directamente en planta
             </li>
             <li>
               <span class="checklist__check" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="m5 12 5 5L20 7"/></svg>
               </span>
-              Servicio técnico certificado post-venta
+              Refacciones originales y garantía de fábrica
             </li>
             <li>
               <span class="checklist__check" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="m5 12 5 5L20 7"/></svg>
               </span>
-              Refacciones Ingersoll Rand originales
+              Instalación, puesta en marcha y capacitación
             </li>
             <li>
               <span class="checklist__check" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="m5 12 5 5L20 7"/></svg>
               </span>
-              Asesoría técnica especializada
+              Modelos disponibles con certificación ATEX para zonas clasificadas
             </li>
           </ul>
           <div class="atex__card-foot">
             <span class="atex__card-logo-chip"><img src="assets/img/brands/ingersoll-rand.svg?v=2" alt="Ingersoll Rand" class="atex__card-logo" width="120" height="54" loading="lazy" decoding="async"></span>
-            <span class="atex__card-note">Único centro autorizado en Nuevo León</span>
+            <span class="atex__card-note">Centro de Servicio Autorizado desde 1993</span>
           </div>
         </aside>
       </div>
@@ -474,7 +479,7 @@
               </svg>
             </div>
             <h3 class="why__title">Servicio Autorizado</h3>
-            <p class="why__desc">Únicos en NL autorizados por Ingersoll Rand. Técnicos certificados, refacciones originales, garantía oficial del fabricante.</p>
+            <p class="why__desc">Red de Centros de Servicio Autorizados respaldados por las marcas que representamos. Técnicos certificados, refacciones originales y garantía oficial del fabricante.</p>
           </div>
           <div class="why__item" data-reveal data-reveal-delay="1" data-magnetic>
             <span class="why__num" aria-hidden="true">02</span>
@@ -904,7 +909,7 @@
             <li><a href="servicio.html#servicio-autorizado">Servicio Autorizado IR</a></li>
             <li><a href="servicio.html#servicio-tecnico">Servicio técnico</a></li>
             <li><a href="#cotizar" data-urgencia>Urgencia en planta</a></li>
-            <li><a href="index.html#atex">Equipo ATEX</a></li>
+            <li><a href="industria-quimica-atex.html">Equipo ATEX</a></li>
             <li><a href="nosotros.html#cobertura">Cobertura nacional</a></li>
           </ul>
         </div>
@@ -997,7 +1002,7 @@
   </a>
 
 
-  <script src="public-bridge.js?v=20260706900000"></script>
-  <script src="script.js?v=20260706900000"></script>
+  <script src="public-bridge.js?v=20260809210000"></script>
+  <script src="script.js?v=20260809210000"></script>
 </body>
 </html>
