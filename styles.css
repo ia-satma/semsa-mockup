@@ -2503,6 +2503,38 @@ a:hover > .photo-frame .photo-frame__img {
   .timeline__event { font-size: .93rem; padding-left: 8px; }
   .timeline__note { font-size: .8rem; padding-left: 8px; }
 }
+
+/* ── Zigzag: a partir de tablet ancha el riel se centra y los hitos alternan
+      lado. Abajo de 860px vuelve a la columna simple, donde el zigzag deja
+      líneas de 20 caracteres y se vuelve ilegible. ────────────────────── */
+@media (min-width: 860px) {
+  .timeline__item {
+    grid-template-columns: minmax(0, 1fr) 92px minmax(0, 1fr);
+    grid-template-areas:
+      "year  node ."
+      "event node ."
+      "note  node .";
+  }
+  .timeline__item:nth-child(even) {
+    grid-template-areas:
+      ". node year"
+      ". node event"
+      ". node note";
+  }
+  .timeline__item:nth-child(odd)  :is(.timeline__year, .timeline__event, .timeline__note) {
+    text-align: right;
+    padding: 0 28px 0 0;
+  }
+  .timeline__item:nth-child(even) :is(.timeline__year, .timeline__event, .timeline__note) {
+    text-align: left;
+    padding: 0 0 0 28px;
+  }
+  .timeline__year  { font-size: 1.22rem; margin-bottom: 3px; }
+  .timeline__event { font-size: 1.04rem; }
+  .timeline__note  { max-width: none; margin-top: 7px; }
+  .timeline__node::after { top: 5px; }
+  .timeline__item--key .timeline__node::after { top: 3px; }
+}
 /* Hitos clave (1993, 2024, 2026): nodo verde + glow */
 .timeline__item--key .timeline__year { color: #fff; }
 .timeline__item--key .timeline__node::after {
