@@ -1,17 +1,19 @@
-# SEMSA — Mockup del sitio (Etapa 1)
+# SEMSA — preview del sitio
 
-Preview navegable del nuevo sitio de **SEMSA** — Servicios Especializados de Monterrey · Centro de Servicio Autorizado Ingersoll Rand.
+Preview del frontend para revisión del cliente:
+**https://ia-satma.github.io/semsa-mockup**
 
-> ⚠️ **Borrador · Fase 4 (aprobación).** Mockup estático para revisión interna del equipo. Datos y contenido sujetos a validación con SEMSA. `robots.txt` bloquea indexación mientras es borrador.
+## ⚠️ Este repo es un artefacto, no una fuente
 
-## Ver
-- **En vivo (GitHub Pages):** se activa tras el deploy (ver pestaña *Settings → Pages*).
-- **Local:** `python3 -m http.server 8090 --directory .` → http://localhost:8090
+El proyecto vive completo en **`ia-satma/semsa-plataforma`** (privado): sitio,
+backend, panel admin y generador del catálogo, todo en un solo repositorio.
 
-## Páginas
-`index.html` (home) · `blog.html` · `reclutamiento.html` (bolsa de trabajo) · `aviso-de-privacidad.html`
+Este repo solo existe porque GitHub Pages publica desde repos públicos. Su
+contenido lo sobrescribe `deploy-preview.yml` en cada push a `main` del monorepo
+que toque `public/`.
 
-## Stack final (Fase 5)
-Next.js 16 + Payload CMS. Este mockup es HTML/CSS/JS estático, solo para aprobar diseño y contenido.
+**No edites nada aquí.** Los cambios se pierden en el siguiente despliegue.
+Edita `public/` en el monorepo.
 
-Desarrollado por **SATMA** · ia@satma.mx
+---
+Desarrollado por [SATMA](https://satma.mx).
