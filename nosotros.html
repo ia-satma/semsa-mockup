@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260812183000">
+  <link rel="stylesheet" href="styles.css?v=20260812210000">
 </head>
 <body>
 
@@ -123,7 +123,7 @@
           <div class="about__text">
             <h2 id="about-heading" class="about__heading" data-bind="nosotros.aboutHeading">40 años al servicio de la industria</h2>
             <p class="about__desc" data-bind="nosotros.aboutDesc">
-              Fundados en Monterrey el 26 de diciembre de 1986, comenzamos reparando herramientas, polipastos y bombas industriales. En 1993 obtuvimos la distribución ARO y fuimos nombrados Centro de Servicio Autorizado para sus reparaciones. De ahí en adelante crecimos junto a la industria automotriz del país: CDMX en 1998, Saltillo en 1999, Laredo en 2001 y Querétaro en 2022. En 2010 creamos el Departamento de Proyectos e Instalaciones para desarrollar soluciones llave en mano. Hoy operamos una red de Centros de Servicio Autorizados en Monterrey, Saltillo, Querétaro y Tijuana, con cobertura en 15 ubicaciones de México y EE.UU.
+              SEMSA nace en Monterrey el 26 de diciembre de 1986 con una visión clara: entender las necesidades de la industria y ofrecer soluciones especializadas que generen valor. En 1993 obtuvimos la distribución ARO y fuimos nombrados Centro de Servicio Autorizado para sus reparaciones. De ahí en adelante crecimos junto a la industria automotriz del país: CDMX en 1998, Saltillo en 1999, Laredo en 2001 y Querétaro en 2022. En 2010 creamos el Departamento de Proyectos e Instalaciones para desarrollar soluciones llave en mano. Hoy operamos una red de Centros de Servicio Autorizados en Monterrey, Saltillo, Querétaro y Tijuana, con cobertura en 15 ubicaciones de México y EE.UU.
             </p>
             <p class="about__desc about__mission">
               <strong>Misión —</strong> <em>“Mejorar los procesos de nuestros clientes suministrando equipos con tecnología y calidad, a través de asesoría especializada.”</em><br>
@@ -145,7 +145,8 @@
         </div>
         </div><!-- /about__panel -->
 
-        <!-- Línea de tiempo HORIZONTAL -->
+        <!-- Trayectoria: el <ol> es la fuente de datos y el fallback sin JS;
+             script.js monta encima el explorador interactivo (.tl) -->
         <div class="about__timeline-wrap" data-reveal="fade" data-reveal-delay="1">
           <div class="about__timeline-head">
             <span class="about__timeline-label">Trayectoria</span>
@@ -156,7 +157,7 @@
               <span class="timeline__year">1986</span>
               <span class="timeline__node" aria-hidden="true"></span>
               <span class="timeline__event">Fundación de SEMSA</span>
-              <span class="timeline__note">Inicio de operaciones ofreciendo servicios de reparación de herramientas, polipastos y bombas industriales.</span>
+              <span class="timeline__note">SEMSA nace en Monterrey como distribuidor de equipo industrial, con la visión de entender las necesidades de la industria y ofrecer soluciones especializadas que generen valor.</span>
             </li>
             <li class="timeline__item timeline__item--key">
               <span class="timeline__year">1993</span>
@@ -260,19 +261,27 @@
         <div class="social-proof" data-reveal aria-label="SEMSA en números">
           <div class="social-proof__item">
             <span class="social-proof__num">40</span>
-            <span class="social-proof__label">años de respaldo<em>Desde 1986</em></span>
+            <span class="social-proof__label">años de experiencia industrial<em>Desde 1986</em></span>
           </div>
           <div class="social-proof__item">
-            <span class="social-proof__num">+9,000</span>
-            <span class="social-proof__label">clientes atendidos<em>Presencia nacional</em></span>
+            <span class="social-proof__num">+20</span>
+            <span class="social-proof__label">marcas internacionales<em>Representadas y respaldadas por SEMSA</em></span>
+          </div>
+          <div class="social-proof__item">
+            <span class="social-proof__num">4</span>
+            <span class="social-proof__label">Centros de Servicio Autorizados<em>Monterrey · Saltillo · Querétaro · Tijuana</em></span>
           </div>
           <div class="social-proof__item">
             <span class="social-proof__num">15</span>
-            <span class="social-proof__label">ubicaciones<em>México y EE.UU.</em></span>
+            <span class="social-proof__label">ubicaciones en México y EE.UU.<em>Presencia en las principales regiones industriales</em></span>
           </div>
           <div class="social-proof__item">
             <span class="social-proof__num">+520</span>
-            <span class="social-proof__label">SKUs en catálogo<em>15 marcas líderes</em></span>
+            <span class="social-proof__label">SKUs en catálogo<em>Portafolio multimarca</em></span>
+          </div>
+          <div class="social-proof__item">
+            <span class="social-proof__num">+100</span>
+            <span class="social-proof__label">familias<em>Forman parte del equipo SEMSA</em></span>
           </div>
         </div>
       </div>
@@ -283,7 +292,7 @@
       <div class="container">
         <header class="section-head" data-reveal>
           <h2 id="coverage-heading" class="section-head__title" data-bind="nosotros.coverageHeading">Presencia en México y Estados Unidos</h2>
-          <p class="section-head__sub" data-bind="nosotros.coverageSub">Matriz en Monterrey, oficinas corporativas en Saltillo, CDMX, Querétaro y Tijuana, y representantes en 10 ciudades más — 15 ubicaciones en México y EE.UU. para acompañar a su planta donde opere.</p>
+          <p class="section-head__sub" data-bind="nosotros.coverageSub">Matriz en Monterrey, oficinas corporativas en Saltillo, CDMX, Querétaro y Tijuana, y representantes en 10 ciudades más — 15 ubicaciones en México y EE.UU., con almacenes en Monterrey, Querétaro, Tijuana, San Diego y Laredo, TX.</p>
         </header>
       </div>
 
@@ -355,12 +364,16 @@
       { id:'hermosillo', ciudad:'Hermosillo',        tipo:'Representante', x:23.17, y:24.65, email:'hermosillo@semsamty.com' },
       { id:'edomexico',  ciudad:'Estado de México',  tipo:'Representante', x:60.15, y:72.0,  email:'edomexico@semsamty.com' },
       { id:'veracruz',   ciudad:'Veracruz',          tipo:'Representante', x:68.83, y:74.15, email:'veracruz@semsamty.com' },
-      { id:'texas',      ciudad:'Texas',             tipo:'US',            x:58.43, y:32.4,  email:'laredo@semsamty.com' },
-      { id:'california', ciudad:'California',         tipo:'US',            x:4.12,  y:6.4,   email:'california@semsamty.com' }
+      { id:'texas',      ciudad:'Laredo, TX',        tipo:'US',            x:58.43, y:32.4,  email:'laredo@semsamty.com' },
+      { id:'california', ciudad:'San Diego, CA',    tipo:'US',            x:4.12,  y:6.4,   email:'california@semsamty.com' }
     ];
 
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function tipoLabel(t){ return t === 'US' ? 'EE.UU.' : t; }
+    // Las 5 sedes con almacén (dato del cliente). Es capa de presentación: el
+    // tipo de la sucursal en la BD no cambia.
+    var ALMACENES = { monterrey:1, queretaro:1, tijuana:1, texas:1, california:1 };
+    function esAlmacen(id){ return !!ALMACENES[id]; }
     function pinMod(t){ return t === 'Matriz' ? ' coverage-map__pin--matriz' : t === 'Oficina' ? ' coverage-map__pin--oficina' : t === 'US' ? ' coverage-map__pin--us' : ''; }
 
     var DATA = SUCURSALES;
@@ -386,7 +399,8 @@
       item.dataset.id = s.id;
       item.setAttribute('aria-pressed', 'false');
       var tag = (s.tipo === 'Representante') ? '' : '<span class="locator__item-tag" data-tipo="' + s.tipo + '">' + tipoLabel(s.tipo) + '</span>';
-      item.innerHTML = '<span class="locator__item-dot" aria-hidden="true"></span><span class="locator__item-city">' + s.ciudad + '</span>' + tag;
+        var alm = esAlmacen(s.id) ? '<span class="locator__item-tag locator__item-tag--almacen">Almacén</span>' : '';
+      item.innerHTML = '<span class="locator__item-dot" aria-hidden="true"></span><span class="locator__item-city">' + s.ciudad + '</span>' + tag + alm;
       item.addEventListener('click', function () { select(s.id, true); });
       listEl.appendChild(item);
       });
@@ -405,6 +419,7 @@
       var maps = s.maps ? '<a class="locator__maps" href="' + s.maps + '" target="_blank" rel="noopener noreferrer">Ver en Google Maps <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>' : '';
       return '<div class="locator__card">' +
         '<span class="locator__type" data-tipo="' + s.tipo + '">' + tipoLabel(s.tipo) + '</span>' +
+          (esAlmacen(s.id) ? '<span class="locator__type locator__type--almacen">Almacén</span>' : '') +
         '<h3 class="locator__city">' + s.ciudad + '</h3>' +
         '<ul class="locator__fields">' + rows + '</ul>' +
         '<div class="locator__actions">' +
@@ -445,7 +460,7 @@
   })();
   </script>
 
-  <script src="public-bridge.js?v=20260812183000"></script>
-  <script src="script.js?v=20260812183000"></script>
+  <script src="public-bridge.js?v=20260812210000"></script>
+  <script src="script.js?v=20260812210000"></script>
 </body>
 </html>

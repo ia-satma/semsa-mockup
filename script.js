@@ -722,3 +722,112 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   });
   group.addEventListener('mouseleave', function () { clearOn(); panels[0].classList.add('on'); });
 })();
+
+/* ─── TRAYECTORIA INTERACTIVA ─────────────────────────────────
+   Mejora progresiva sobre el <ol class="timeline"> de nosotros.html: ese
+   listado es la fuente de datos y también el fallback. Si no hay JS, la
+   trayectoria se sigue leyendo como lista vertical, igual que antes.       */
+(function initTimelineExplorer() {
+  const wrap = document.querySelector('.about__timeline-wrap');
+  if (!wrap) return;
+  const lista = wrap.querySelector('.timeline');
+  if (!lista) return;
+
+  const hitos = Array.prototype.slice.call(lista.querySelectorAll('.timeline__item')).map(function (li) {
+    return {
+      anio: (li.querySelector('.timeline__year') || {}).textContent || '',
+      titulo: (li.querySelector('.timeline__event') || {}).textContent || '',
+      nota: (li.querySelector('.timeline__note') || {}).textContent || '',
+      clave: li.classList.contains('timeline__item--key')
+    };
+  });
+  if (hitos.length < 2) return;
+
+  const explorador = document.createElement('div');
+  explorador.className = 'tl';
+  explorador.innerHTML =
+    '<div class="tl__rail" role="tablist" aria-label="Años de la trayectoria de SEMSA"></div>' +
+    '<div class="tl__panel">' +
+      '<div class="tl__panel-inner" role="tabpanel" aria-live="polite">' +
+        '<span class="tl__anio"></span>' +
+        '<h3 class="tl__titulo"></h3>' +
+        '<p class="tl__nota"></p>' +
+      '</div>' +
+      '<div class="tl__nav">' +
+        '<button type="button" class="tl__flecha" data-paso="-1" aria-label="Hito anterior">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>' +
+        '</button>' +
+        '<span class="tl__contador" aria-hidden="true"></span>' +
+        '<button type="button" class="tl__flecha" data-paso="1" aria-label="Hito siguiente">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>' +
+        '</button>' +
+      '</div>' +
+    '</div>';
+
+  const riel = explorador.querySelector('.tl__rail');
+  const elAnio = explorador.querySelector('.tl__anio');
+  const elTitulo = explorador.querySelector('.tl__titulo');
+  const elNota = explorador.querySelector('.tl__nota');
+  const elCont = explorador.querySelector('.tl__contador');
+  const panel = explorador.querySelector('.tl__panel-inner');
+
+  const botones = hitos.map(function (h, i) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'tl__anio-btn' + (h.clave ? ' tl__anio-btn--clave' : '');
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-selected', 'false');
+    b.tabIndex = -1;
+    // Hay dos hitos en 2010: el título los distingue para lectores de pantalla.
+    b.setAttribute('aria-label', h.anio + ' — ' + h.titulo);
+    b.innerHTML = '<span class="tl__anio-txt">' + h.anio + '</span><span class="tl__anio-punto" aria-hidden="true"></span>';
+    b.addEventListener('click', function () { mostrar(i, true); });
+    riel.appendChild(b);
+    return b;
+  });
+
+  let actual = -1;
+  function mostrar(i, mover) {
+    if (i < 0 || i >= hitos.length || i === actual) return;
+    actual = i;
+    const h = hitos[i];
+    elAnio.textContent = h.anio;
+    elTitulo.textContent = h.titulo;
+    elNota.textContent = h.nota;
+    elCont.textContent = (i + 1) + ' / ' + hitos.length;
+    botones.forEach(function (b, j) {
+      const on = j === i;
+      b.classList.toggle('is-activo', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      b.tabIndex = on ? 0 : -1;
+    });
+    if (!REDUCED.matches) {
+      panel.classList.remove('tl__panel-inner--entra');
+      void panel.offsetWidth;             // reinicia la animación
+      panel.classList.add('tl__panel-inner--entra');
+    }
+    if (mover && botones[i].scrollIntoView) {
+      botones[i].scrollIntoView({ inline: 'center', block: 'nearest', behavior: REDUCED.matches ? 'auto' : 'smooth' });
+    }
+  }
+
+  explorador.querySelectorAll('.tl__flecha').forEach(function (b) {
+    b.addEventListener('click', function () {
+      const paso = parseInt(b.dataset.paso, 10);
+      mostrar(Math.min(hitos.length - 1, Math.max(0, actual + paso)), true);
+    });
+  });
+
+  riel.addEventListener('keydown', function (ev) {
+    const salto = { ArrowLeft: -1, ArrowRight: 1, Home: -hitos.length, End: hitos.length }[ev.key];
+    if (!salto) return;
+    ev.preventDefault();
+    const destino = Math.min(hitos.length - 1, Math.max(0, actual + salto));
+    mostrar(destino, true);
+    botones[destino].focus();
+  });
+
+  lista.hidden = true;                     // el fallback ya no hace falta
+  wrap.appendChild(explorador);
+  mostrar(0, false);
+})();
