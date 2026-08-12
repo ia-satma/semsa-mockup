@@ -3032,8 +3032,16 @@ a:hover > .photo-frame .photo-frame__img {
 .post-card__media { position: relative; aspect-ratio: 16/10; overflow: hidden; background: #00305A; }
 .post-card__media img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.82); mix-blend-mode: luminosity; opacity: .92; }
 .post-card__media::after { content:''; position:absolute; inset:0; background: linear-gradient(160deg, rgba(0,70,139,.38), rgba(0,21,40,.18)); }
+/* Fotografía real del cliente: sin duotono. El tratamiento azul (luminosity sobre
+   fondo #00305A + degradado) unifica los renders genéricos del blog, pero sobre una
+   foto real le quita el color. */
+.post-card__media--foto { background: var(--hair-light); }
+.post-card__media--foto img { filter: none; mix-blend-mode: normal; opacity: 1; }
+.post-card__media--foto::after { display: none; }
 .post-card__body { display: flex; flex-direction: column; gap: 10px; padding: 18px 20px 20px; }
 .post-card__title { font-family: var(--font-h); font-weight: 700; font-size: 1.02rem; line-height: 1.35; color: var(--ink-dark); }
+.post-card__title a { color: inherit; }
+.post-card__title a:hover { color: var(--semsa-blue); text-decoration: underline; text-underline-offset: 3px; }
 /* wrap: las tarjetas de caso llevan dos etiquetas (cliente + área) y en móvil
    no caben en una línea */
 .post-card__meta { display: flex; gap: 8px; row-gap: 6px; flex-wrap: wrap; align-items: center; font-size: .78rem; color: var(--ink-dark-soft); }
@@ -3652,6 +3660,93 @@ a:hover > .photo-frame .photo-frame__img {
 .svc2-col__note strong { color: var(--semsa-blue-dark); }
 .svc2-cta { margin-top: 26px; }
 @media (max-width: 860px) { .svc2-grid { grid-template-columns: 1fr; } }
+
+/* === Páginas de detalle de caso de éxito === */
+.caso-hero__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.caso-hero__tags .mono-tag { color: var(--ink-soft); border-color: rgba(255,255,255,.22); }
+.mono-tag--link { transition: color .25s var(--ease-out), border-color .25s var(--ease-out); }
+.mono-tag--link:hover { color: var(--green-light); border-color: var(--green-light); }
+
+.caso-hero__media {
+  margin: 0 0 clamp(26px, 3vw, 40px);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: 1px solid var(--hair-light);
+  box-shadow: var(--sh-light-card);
+}
+/* Las fotos de origen vienen en proporciones distintas (cuadradas, verticales):
+   se normalizan a banner para que las 5 páginas se vean iguales. */
+.caso-hero__media img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+@media (max-width: 560px) { .caso-hero__media img { aspect-ratio: 4 / 3; } }
+
+.caso-grid { margin-bottom: clamp(26px, 3vw, 40px); }
+/* El resultado es la columna que importa: se marca en verde */
+.svc2-col--result { border-top-color: var(--semsa-green); }
+
+.caso-datos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1px;
+  margin: 0 0 clamp(26px, 3vw, 40px);
+  background: var(--hair-light);
+  border: 1px solid var(--hair-light);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.caso-datos__item { background: #fff; padding: 18px 20px; }
+.caso-datos dt {
+  font-family: var(--font-mono);
+  font-size: .66rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-dark-soft);
+  margin-bottom: 6px;
+}
+.caso-datos dd {
+  margin: 0;
+  font-family: var(--font-h);
+  font-weight: 700;
+  font-size: .96rem;
+  line-height: 1.35;
+  color: var(--semsa-blue-dark);
+}
+
+.caso-sec__title {
+  font-family: var(--font-h);
+  font-weight: 800;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  color: var(--semsa-blue-dark);
+  margin: clamp(30px, 3.5vw, 44px) 0 18px;
+}
+.caso-gal { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.caso-gal__item {
+  margin: 0;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: 1px solid var(--hair-light);
+  box-shadow: var(--sh-light-card);
+}
+.caso-gal__item img { display: block; width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.caso-gal__note { margin: 12px 0 0; font-size: .8rem; color: var(--ink-dark-soft); }
+
+.caso-cierre {
+  margin-top: clamp(34px, 4vw, 52px);
+  padding: clamp(24px, 3vw, 34px);
+  background: var(--semsa-blue-dark);
+  border-radius: var(--r-shell);
+  text-align: center;
+}
+.caso-cierre__text {
+  margin: 0 0 20px;
+  font-family: var(--font-h);
+  font-weight: 600;
+  font-size: clamp(1rem, 1.6vw, 1.18rem);
+  color: #fff;
+  text-wrap: balance;
+}
+.caso-cierre__ctas { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+.caso-cierre .btn--outline { color: #fff; border-color: rgba(255,255,255,.4); }
+.caso-cierre .btn--outline:hover { border-color: var(--green-light); color: var(--green-light); }
 
 /* === Comparativa: proveedor vs socio técnico === */
 .compare { border: 1px solid var(--hair-light); border-radius: var(--r-md); overflow: hidden; box-shadow: var(--sh-light-card); background: #fff; }
