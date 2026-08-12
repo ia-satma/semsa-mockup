@@ -2318,6 +2318,47 @@ a:hover > .photo-frame .photo-frame__img {
   letter-spacing: .08em; text-transform: uppercase;
   color: var(--ink-dark-soft); white-space: nowrap;
 }
+
+/* Marcador de logo pendiente — para que el cliente vea cuáles debe mandar.
+   Se retira cuando lleguen los archivos oficiales. */
+/* .brow__logo y .bcard__logo son flex: el marcador necesita ancho completo
+   para caer bajo el logo en vez de pegarse a su derecha. */
+.brow__logo, .bcard__logo { flex-wrap: wrap; }
+.logo-pend {
+  flex: 0 0 100%;
+  margin-top: 5px;
+  font-family: var(--font-mono);
+  font-size: .55rem;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: #9a6b00;
+}
+.logo-pend abbr { text-decoration: none; border-bottom: 1px dotted currentColor; cursor: help; }
+.bcard__logo { height: auto; min-height: 46px; align-items: flex-start; }
+.bcard--auth .bcard__logo { height: auto; min-height: 54px; }
+
+.logos-faltan {
+  margin-top: clamp(8px, 1.5vw, 16px);
+  padding: clamp(18px, 2.2vw, 24px);
+  border: 1px dashed var(--hair-strong);
+  border-radius: var(--r-md);
+  background: rgba(255, 246, 224, .55);
+}
+.logos-faltan__titulo {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #9a6b00;
+  margin: 0 0 10px;
+}
+.logos-faltan__texto { margin: 0; font-size: .88rem; line-height: 1.6; color: var(--ink-dark-soft); }
+.logos-faltan__texto strong { color: var(--ink-dark); }
+.logos-faltan__lista { margin: 10px 0; padding-left: 18px; font-size: .88rem; line-height: 1.6; color: var(--ink-dark-soft); }
+.logos-faltan__lista strong { color: var(--ink-dark); }
+.logos-faltan__lista + .logos-faltan__texto { margin-top: 10px; }
 .brow {
   display: grid; grid-template-columns: 168px minmax(0, 1fr) auto auto;
   align-items: center; gap: clamp(16px, 2.5vw, 36px);
