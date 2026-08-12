@@ -244,10 +244,16 @@ body::before {
   font-size: 0.84rem;
   letter-spacing: 0.04em;
   white-space: nowrap;
+  /* nowrap + etiquetas largas desbordaban la página en móvil (p. ej. "Solicitar
+     asesoría para línea de ensamble" medía 424px en un viewport de 375) */
+  max-width: 100%;
   cursor: pointer;
   transition: transform .4s var(--ease-out), background-color .25s var(--ease-out),
               box-shadow .4s var(--ease-out), color .25s var(--ease-out);
   will-change: transform;
+}
+@media (max-width: 480px) {
+  .btn { white-space: normal; text-align: left; }
 }
 .btn:active { transform: scale(.98); }
 
@@ -3028,7 +3034,13 @@ a:hover > .photo-frame .photo-frame__img {
 .post-card__media::after { content:''; position:absolute; inset:0; background: linear-gradient(160deg, rgba(0,70,139,.38), rgba(0,21,40,.18)); }
 .post-card__body { display: flex; flex-direction: column; gap: 10px; padding: 18px 20px 20px; }
 .post-card__title { font-family: var(--font-h); font-weight: 700; font-size: 1.02rem; line-height: 1.35; color: var(--ink-dark); }
-.post-card__meta { display: flex; gap: 10px; align-items: center; font-size: .78rem; color: var(--ink-dark-soft); }
+/* wrap: las tarjetas de caso llevan dos etiquetas (cliente + área) y en móvil
+   no caben en una línea */
+.post-card__meta { display: flex; gap: 8px; row-gap: 6px; flex-wrap: wrap; align-items: center; font-size: .78rem; color: var(--ink-dark-soft); }
+/* La tarjeta es de fondo claro, pero .mono-tag hereda --ink-faint, que es tinta
+   para fondos oscuros: daba 1.17:1 de contraste. Aquí llevan el nombre del
+   cliente, así que tienen que leerse. */
+.post-card__meta .mono-tag { color: var(--ink-dark-soft); border-color: rgba(26,37,48,.16); }
 .post-card__link { margin-top: auto; font-family: var(--font-h); font-weight: 700; font-size: .85rem; color: var(--semsa-blue-light); }
 .post-card__link:hover { color: var(--semsa-green); text-decoration: underline; }
 
@@ -3050,6 +3062,9 @@ a:hover > .photo-frame .photo-frame__img {
 .job-card__desc { font-size: .92rem; color: var(--ink-dark-soft); }
 .job-card__cta { align-self: flex-start; margin-top: 4px; }
 .page-note { margin-top: 26px; }
+/* Las notas de pie son frases largas dentro de un .mono-tag, que por defecto es
+   nowrap: en móvil desbordaban la página en 7 páginas. Aquí sí deben envolver. */
+.page-note .mono-tag { white-space: normal; text-align: left; }
 
 @media (max-width: 980px) { .post-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 680px) {
