@@ -786,6 +786,22 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     return b;
   });
 
+  // Centra el año en el riel.
+  //   · scrollIntoView, no: arrastra el scroll de la página, no el del riel.
+  //   · offsetLeft, no: se mide desde el ancestro posicionado y el riel no lo es.
+  //   · behavior:'smooth' ni animación por rAF, no: donde no corren los frames
+  //     (pestaña en segundo plano, motion reducido) el scroll se queda sin mover.
+  // Se asigna scrollLeft directo —siempre acierta— y el suavizado lo pone el CSS
+  // con scroll-behavior, que degrada a salto instantáneo sin romper nada.
+  function centrarEnRiel(i) {
+    const tope = riel.scrollWidth - riel.clientWidth;
+    if (tope <= 0) return;
+    const rb = botones[i].getBoundingClientRect();
+    const rr = riel.getBoundingClientRect();
+    const destino = riel.scrollLeft + (rb.left - rr.left) - (rr.width - rb.width) / 2;
+    riel.scrollLeft = Math.max(0, Math.min(tope, destino));
+  }
+
   let actual = -1;
   function mostrar(i, mover) {
     if (i < 0 || i >= hitos.length || i === actual) return;
@@ -806,9 +822,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
       void panel.offsetWidth;             // reinicia la animación
       panel.classList.add('tl__panel-inner--entra');
     }
-    if (mover && botones[i].scrollIntoView) {
-      botones[i].scrollIntoView({ inline: 'center', block: 'nearest', behavior: REDUCED.matches ? 'auto' : 'smooth' });
-    }
+    if (mover) centrarEnRiel(i);
   }
 
   explorador.querySelectorAll('.tl__flecha').forEach(function (b) {

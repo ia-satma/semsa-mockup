@@ -991,8 +991,11 @@ a:hover > .photo-frame .photo-frame__img {
   text-transform: uppercase;
   color: rgba(232,238,245,.6);
   line-height: 1.7;
-  margin: 0 0 36px;
-  max-width: 540px;
+  /* auto a los lados: el hero centra por texto, pero el bloque con max-width
+     se queda pegado a la izquierda si no se centra también la caja. */
+  margin: 0 auto 36px;
+  max-width: 680px;
+  text-wrap: balance;
 }
 .hero__ctas { display: flex; gap: 16px; flex-wrap: wrap; }
 .hero__specs { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 34px; }
@@ -1998,6 +2001,29 @@ a:hover > .photo-frame .photo-frame__img {
   text-align: center;
 }
 .coverage__stats span { font-family: var(--font-b); font-size: 0.9rem; color: var(--ink-dark-soft); }
+/* Las 5 sedes con almacén, nombradas: el badge de la lista pasaba desapercibido */
+.coverage__almacenes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0 0;
+  font-size: .92rem;
+  color: var(--ink-dark);
+  text-align: center;
+}
+.coverage__almacenes-et {
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-dark-soft);
+  border: 1px solid var(--hair-strong);
+  border-radius: var(--r-pill);
+  padding: 3px 10px;
+}
 .coverage__stats strong {
   display: block;
   font-family: var(--font-h);
@@ -2639,7 +2665,13 @@ a:hover > .photo-frame .photo-frame__img {
   display: flex;
   gap: 2px;
   overflow-x: auto;
-  padding-bottom: 4px;
+  /* `overflow-x: auto` fuerza overflow-y a auto: el eje vertical también recorta.
+     El punto activo mide 15px con anillos de 7px y glow, así que necesita aire
+     por debajo o se ve cortado. */
+  padding-bottom: 16px;
+  /* el suavizado del riel vive aquí: el JS solo fija scrollLeft, así la posición
+     es correcta aunque el navegador no anime */
+  scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: rgba(255,255,255,.22) transparent;
   -webkit-overflow-scrolling: touch;
@@ -2653,7 +2685,8 @@ a:hover > .photo-frame .photo-frame__img {
   align-items: center;
   gap: 10px;
   min-width: 64px;
-  padding: 8px 6px 0;
+  /* el padding inferior deja caber el anillo del punto activo y el borde de foco */
+  padding: 8px 6px 10px;
   background: none;
   border: 0;
   cursor: pointer;
@@ -2763,6 +2796,7 @@ a:hover > .photo-frame .photo-frame__img {
 @media (prefers-reduced-motion: reduce) {
   .tl__panel-inner--entra { animation: none; }
   .tl__anio-punto::after, .tl__anio-btn, .tl__flecha { transition: none; }
+  .tl__rail { scroll-behavior: auto; }
 }
 
 /* Hitos clave (1993, 2024, 2026): nodo verde + glow */
