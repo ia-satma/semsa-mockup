@@ -3987,7 +3987,18 @@ a:hover > .photo-frame .photo-frame__img {
   border: 1px solid var(--hair-light);
   box-shadow: var(--sh-light-card);
 }
-.caso-gal__item img { display: block; width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.caso-gal__item img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.caso-gal__pie {
+  padding: 9px 13px;
+  font-family: var(--font-mono);
+  font-size: .64rem;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink-dark-soft);
+  background: #fff;
+  border-top: 1px solid var(--hair-light);
+}
 .caso-gal__note { margin: 12px 0 0; font-size: .8rem; color: var(--ink-dark-soft); }
 
 .caso-cierre {
