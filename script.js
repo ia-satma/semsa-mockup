@@ -845,3 +845,165 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   wrap.appendChild(explorador);
   mostrar(0, false);
 })();
+
+/* ─────────────────────────────────────────────────────────────
+   VISOR DE IMAGEN de los casos de éxito.
+
+   Las miniaturas recortan a 4:3 y las fotos del cliente son
+   verticales (677×900, 723×900…): en la rejilla se pierde media
+   foto. Al abrirlas se ven completas.
+
+   Mejora progresiva: sin JS —o sin <dialog>— la galería se queda
+   como está y no aparece ningún control que no funcione.
+───────────────────────────────────────────────────────────── */
+(function initCasoLightbox() {
+  const figuras = Array.prototype.slice.call(document.querySelectorAll('.caso-gal__item'));
+  if (!figuras.length) return;
+
+  const dlg = document.createElement('dialog');
+  if (typeof dlg.showModal !== 'function') return;   // navegador viejo: sin cambios
+
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  function icono(d, tam) {
+    const s = document.createElementNS(SVG_NS, 'svg');
+    s.setAttribute('viewBox', '0 0 24 24');
+    s.setAttribute('width', tam); s.setAttribute('height', tam);
+    s.setAttribute('fill', 'none'); s.setAttribute('stroke', 'currentColor');
+    s.setAttribute('stroke-width', '2'); s.setAttribute('stroke-linecap', 'round');
+    s.setAttribute('stroke-linejoin', 'round'); s.setAttribute('aria-hidden', 'true');
+    const p = document.createElementNS(SVG_NS, 'path');
+    p.setAttribute('d', d);
+    s.appendChild(p);
+    return s;
+  }
+  const D_LUPA   = 'M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7';
+  const D_CERRAR = 'M18 6 6 18M6 6l12 12';
+  const D_PREV   = 'm15 18-6-6 6-6';
+  const D_NEXT   = 'm9 18 6-6-6-6';
+
+  // ── Inventario: cada figura aporta imagen + pie ──────────────
+  const items = [];
+  figuras.forEach(function (fig) {
+    const img = fig.querySelector('img');
+    if (!img) return;
+    const pie = fig.querySelector('.caso-gal__pie');
+    const alt = img.getAttribute('alt') || '';
+    items.push({
+      src: img.getAttribute('src'),
+      alt: alt,
+      pie: pie ? pie.textContent.trim() : alt,
+      fig: fig
+    });
+  });
+  if (!items.length) return;
+
+  // ── La miniatura se vuelve botón (el <img> se mueve dentro) ──
+  items.forEach(function (it, i) {
+    const img = it.fig.querySelector('img');
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'caso-gal__abrir';
+    btn.setAttribute('aria-label', 'Ampliar imagen' + (it.alt ? ': ' + it.alt : ''));
+    it.fig.insertBefore(btn, img);
+    btn.appendChild(img);
+
+    const lupa = document.createElement('span');
+    lupa.className = 'caso-gal__lupa';
+    lupa.appendChild(icono(D_LUPA, 15));
+    btn.appendChild(lupa);
+
+    btn.addEventListener('click', function () { abrir(i, btn); });
+    it.btn = btn;
+  });
+
+  // ── El visor ────────────────────────────────────────────────
+  dlg.className = 'lbox';
+  dlg.setAttribute('aria-label', 'Imagen del caso, ampliada');
+
+  const fig = document.createElement('figure');
+  fig.className = 'lbox__fig';
+
+  const grande = document.createElement('img');
+  grande.className = 'lbox__img';
+  grande.setAttribute('decoding', 'async');
+
+  const pieEl = document.createElement('figcaption');
+  pieEl.className = 'lbox__pie';
+  const pieTexto = document.createElement('span');
+  const pieCuenta = document.createElement('span');
+  pieCuenta.className = 'lbox__cuenta';
+  pieEl.appendChild(pieTexto);
+  pieEl.appendChild(pieCuenta);
+
+  fig.appendChild(grande);
+  fig.appendChild(pieEl);
+  dlg.appendChild(fig);
+
+  function boton(clase, etiqueta, d) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'lbox__btn ' + clase;
+    b.setAttribute('aria-label', etiqueta);
+    b.appendChild(icono(d, 20));
+    return b;
+  }
+  const bCerrar = boton('lbox__cerrar', 'Cerrar', D_CERRAR);
+  const bPrev   = boton('lbox__prev', 'Imagen anterior', D_PREV);
+  const bNext   = boton('lbox__next', 'Imagen siguiente', D_NEXT);
+
+  const navMovil = document.createElement('div');
+  navMovil.className = 'lbox__nav-movil';
+  navMovil.appendChild(bPrev);
+  navMovil.appendChild(bNext);
+
+  dlg.appendChild(bCerrar);
+  dlg.appendChild(navMovil);
+  document.body.appendChild(dlg);
+
+  // Con una sola imagen las flechas sobran.
+  const varias = items.length > 1;
+  bPrev.hidden = !varias;
+  bNext.hidden = !varias;
+
+  let actual = 0;
+  let quienAbrio = null;
+
+  function pintar(i) {
+    actual = (i + items.length) % items.length;
+    const it = items[actual];
+    grande.setAttribute('src', it.src);
+    grande.setAttribute('alt', it.alt);
+    pieTexto.textContent = it.pie;
+    pieCuenta.textContent = varias ? (actual + 1) + ' / ' + items.length : '';
+  }
+
+  function abrir(i, disparador) {
+    quienAbrio = disparador || null;
+    pintar(i);
+    dlg.showModal();
+    document.body.style.overflow = 'hidden';
+    bCerrar.focus();
+  }
+
+  bCerrar.addEventListener('click', function () { dlg.close(); });
+  bPrev.addEventListener('click', function () { pintar(actual - 1); });
+  bNext.addEventListener('click', function () { pintar(actual + 1); });
+
+  // Clic en el fondo (fuera de la figura) cierra.
+  dlg.addEventListener('click', function (e) {
+    if (e.target === dlg) dlg.close();
+  });
+
+  dlg.addEventListener('keydown', function (e) {
+    if (!varias) return;
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); pintar(actual - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); pintar(actual + 1); }
+  });
+
+  // <dialog> ya cierra con Esc por su cuenta: aquí solo se limpia.
+  dlg.addEventListener('close', function () {
+    document.body.style.overflow = '';
+    if (quienAbrio && typeof quienAbrio.focus === 'function') quienAbrio.focus();
+    quienAbrio = null;
+  });
+})();
