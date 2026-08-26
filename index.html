@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260825190000">
+  <link rel="stylesheet" href="styles.css?v=20260825200000">
   <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SEMSA — Servicios Especializados de Monterrey","alternateName":"SEMSA","url":"https://ia-satma.github.io/semsa-mockup/","logo":"https://ia-satma.github.io/semsa-mockup/assets/logo-semsa-02.png","description":"Distribuidor de herramienta y equipo industrial y Centro de Servicio Autorizado de 7 marcas —Ingersoll Rand, ARO, Cleco, Graco, Binks, Sames y Rivit—, con red de Centros de Servicio en Monterrey, Saltillo, Querétaro y Tijuana. Desde 1986.","foundingDate":"1986","areaServed":"MX","address":{"@type":"PostalAddress","streetAddress":"Moctezuma 1117, Col. Independencia","addressLocality":"Monterrey","addressRegion":"N.L.","postalCode":"64720","addressCountry":"MX"},"telephone":"+528183421551","contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+528117998535","areaServed":"MX","availableLanguage":"es"},"sameAs":["https://semsamty.com"]}</script>
 </head>
@@ -44,7 +44,7 @@
           <a href="industrias.html" class="nav__link nav__link--sub" aria-haspopup="true">Industrias <svg class="nav__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="12" height="12" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
           <div class="nav__sub" aria-label="Industrias SEMSA">
             <a href="industria-automotriz.html" class="nav__sub-link">Automotriz y autopartes</a>
-            <a href="industria-quimica-atex.html" class="nav__sub-link">Química y petroquímica · ATEX</a>
+            <a href="industria-quimica.html" class="nav__sub-link">Química y petroquímica</a>
             <a href="industria-manufactura.html" class="nav__sub-link">Manufactura general</a>
             <a href="industrias.html" class="nav__sub-link nav__sub-link--cta">Ver todas las industrias →</a>
           </div>
@@ -54,7 +54,6 @@
           <div class="nav__sub" aria-label="Soluciones SEMSA">
             <a href="soluciones.html#necesidades" class="nav__sub-link">¿Qué necesita resolver?</a>
             <a href="servicio.html" class="nav__sub-link">Servicio técnico</a>
-            <a href="industria-quimica-atex.html" class="nav__sub-link">Equipo ATEX</a>
             <a href="soluciones.html" class="nav__sub-link">¿Reparar o reemplazar?</a>
             <a href="#cotizar" class="nav__sub-link" data-urgencia>Urgencia en planta</a>
           </div>
@@ -313,9 +312,8 @@
             </li>
           </ul>
           <div class="atex__card-foot">
-            <span class="atex__card-logo-chip"><img src="assets/img/brands/ingersoll-rand.svg?v=2" alt="Ingersoll Rand" class="atex__card-logo" width="120" height="54" loading="lazy" decoding="async"></span>
-            <span class="atex__card-note">Centro de Servicio Autorizado desde 1993</span>
-          </div>
+              <span class="atex__card-note">Centro de Servicio Autorizado de 7 marcas desde 1993</span>
+            </div>
         </aside>
       </div>
     </section>
@@ -397,24 +395,28 @@
             </header>
 
             <div class="auth-brands__marks">
-              <figure class="brand-chip brand-chip--lg brand-chip--auth">
-                <img src="assets/img/brands/ingersoll-rand.svg?v=2" alt="Ingersoll Rand" class="brand-chip__img" width="170" height="76" loading="lazy" decoding="async">
-                <span class="brand-chip__role">Polipastos · herramienta neumática</span>
-                <figcaption class="brand-chip__tag brand-chip__tag--auth">
-                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>
-                  Servicio autorizado
-                </figcaption>
-              </figure>
-              <figure class="brand-chip brand-chip--lg brand-chip--auth">
-                <img src="assets/img/brands/aro.svg?v=2" alt="ARO" class="brand-chip__img" width="170" height="76" loading="lazy" decoding="async">
-                <span class="brand-chip__role">Bombas de diafragma y pistón</span>
-                <figcaption class="brand-chip__tag brand-chip__tag--auth">
-                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>
-                  Servicio autorizado
-                </figcaption>
-              </figure>
-            </div>
-            <p class="auth-brands__more">También somos Centro de Servicio Autorizado de <strong>Cleco</strong>, <strong>Graco</strong>, <strong>Binks</strong>, <strong>Sames</strong> y <strong>Rivit</strong>. <a href="marcas.html">Ver todas las marcas →</a></p>
+                <figure class="brand-chip brand-chip--csa">
+                  <img src="assets/img/brands/ingersoll-rand.svg?v=3" alt="Ingersoll Rand" class="brand-chip__img brand-logo" loading="lazy" decoding="async">
+                </figure>
+                <figure class="brand-chip brand-chip--csa">
+                  <img src="assets/img/brands/aro.svg?v=3" alt="ARO" class="brand-chip__img brand-logo" loading="lazy" decoding="async">
+                </figure>
+                <figure class="brand-chip brand-chip--csa">
+                  <img src="assets/img/brands/cleco.svg?v=3" alt="Cleco" class="brand-chip__img brand-logo" loading="lazy" decoding="async">
+                </figure>
+                <figure class="brand-chip brand-chip--csa">
+                  <img src="assets/img/brands/graco.svg?v=3" alt="Graco" class="brand-chip__img brand-logo logo--compacto" loading="lazy" decoding="async">
+                </figure>
+                <figure class="brand-chip brand-chip--csa">
+                  <img src="assets/img/brands/binks.svg?v=3" alt="Binks" class="brand-chip__img brand-logo" loading="lazy" decoding="async">
+                </figure>
+                <figure class="brand-chip brand-chip--csa">
+                  <img src="assets/img/brands/sames.svg?v=3" alt="Sames" class="brand-chip__img brand-logo logo--compacto" loading="lazy" decoding="async">
+                </figure>
+                <figure class="brand-chip brand-chip--csa">
+                  <img src="assets/img/brands/rivit.svg?v=3" alt="Rivit" class="brand-chip__img brand-logo logo--compacto" loading="lazy" decoding="async">
+                </figure>
+              </div>
           </div>
         </article>
 
@@ -577,7 +579,7 @@
           <article class="industry-tile industry-tile--feature">
             <img class="industry-tile__img" src="assets/img/ind-quimica.webp" data-bind-src="home.industria5" alt="Planta petroquímica con tuberías de acero y equipo a prueba de explosión" width="1200" height="600" loading="lazy" decoding="async">
             <div class="industry-tile__overlay" aria-hidden="true"></div>
-            <a class="industry-tile__link" href="industria-quimica-atex.html" aria-label="Ver soluciones para química y zonas ATEX"></a>
+            <a class="industry-tile__link" href="industria-quimica.html" aria-label="Ver soluciones para química y zonas ATEX"></a>
             <div class="industry-tile__body">
               <span class="industry-tile__idx">05</span>
               <span class="industry-tile__name">Química y petroquímica</span>
@@ -649,17 +651,6 @@
             <li><span class="checklist__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="m5 12 5 5L20 7"/></svg></span>Asesor técnico real</li>
             <li><span class="checklist__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="m5 12 5 5L20 7"/></svg></span>Sin compromiso</li>
           </ul>
-
-          <!-- Micro-prueba: credencial real + logo IR + desde 1986 -->
-          <div class="cta-final__proof">
-            <figure class="cta-final__proof-chip">
-              <img src="assets/img/semsa-optimizacion-marcas-logo-1.png" alt="Ingersoll Rand" width="150" height="67" loading="lazy" decoding="async">
-            </figure>
-            <div class="cta-final__proof-text">
-              <strong>Centro de Servicio Autorizado</strong>
-              <span>Ingersoll Rand · desde 1993 — atendiendo a la industria desde 1986</span>
-            </div>
-          </div>
         </div>
         <div class="cta-final__form-shell" data-reveal="right" data-reveal-delay="1">
           <form class="form" action="#" method="post" novalidate aria-label="Formulario de cotización">
@@ -910,7 +901,7 @@
             <li><a href="servicio.html#servicio-autorizado">Centros de Servicio Autorizados</a></li>
             <li><a href="servicio.html#servicio-tecnico">Servicio técnico</a></li>
             <li><a href="#cotizar" data-urgencia>Urgencia en planta</a></li>
-            <li><a href="industria-quimica-atex.html">Equipo ATEX</a></li>
+            <li><a href="industria-quimica.html">Química y petroquímica</a></li>
             <li><a href="nosotros.html#cobertura">Cobertura nacional</a></li>
           </ul>
         </div>
@@ -1003,7 +994,7 @@
   </a>
 
 
-  <script src="public-bridge.js?v=20260825190000"></script>
-  <script src="script.js?v=20260825190000"></script>
+  <script src="public-bridge.js?v=20260825200000"></script>
+  <script src="script.js?v=20260825200000"></script>
 </body>
 </html>

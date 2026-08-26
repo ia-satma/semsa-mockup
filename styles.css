@@ -1348,10 +1348,12 @@ a:hover > .photo-frame .photo-frame__img {
 }
 /* Marcas autorizadas: sello + chips de logo real prominentes */
 .auth-brands__marks {
-  display: flex;
+  /* Rejilla, no flex: con 7 logos el flex deja la última fila más ancha que
+     la primera (148px vs 190px). auto-fit reparte columnas iguales. */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
   align-items: stretch;
-  gap: clamp(14px, 2vw, 20px);
-  flex-wrap: wrap;
+  gap: clamp(12px, 1.6vw, 18px);
 }
 .auth-brands__seal {
   flex-shrink: 0;
@@ -1389,6 +1391,18 @@ a:hover > .photo-frame .photo-frame__img {
   max-height: 46px;
   object-fit: contain;
 }
+/* Los 7 chips del Centro de Servicio Autorizado, todos del mismo tamaño:
+   sin flex-basis el chip se encoge al ancho de su logo y los angostos
+   quedan como tiras vacías al lado de un wordmark ancho. */
+.brand-chip--csa {
+  min-height: 92px;
+  padding: 16px 14px;
+}
+.brand-chip--csa .brand-chip__img { max-height: 36px; max-width: 132px; }
+.brand-chip--csa .brand-chip__img.logo--compacto { max-height: 48px; max-width: 76px; }
+.brand-chip--csa .brand-chip__img.logo--ancho    { max-height: 26px; }
+@media (max-width: 560px) { .brand-chip--csa { min-height: 78px; padding: 12px 10px; } }
+
 .brand-chip--lg {
   flex: 1;
   min-width: 180px;
