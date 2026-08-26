@@ -737,8 +737,14 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   // cargada. Cada era abre en el <li> que lleva data-era y se queda con los que
   // vengan detrás hasta el siguiente. Los datos siguen viviendo en el HTML —que
   // es el respaldo sin JS—, así que agrupar no los duplica en ningún lado.
+  const items = Array.prototype.slice.call(lista.querySelectorAll('.timeline__item'));
+  // Con marcadores `data-era`, el riel agrupa; sin ellos, cada hito es su propio
+  // punto. El cliente prefirió lo segundo: quiere ver sus 10 hitos en el riel,
+  // no 6 eras. La agrupación se queda cableada por si vuelve a hacer falta —
+  // basta con volver a poner los atributos en el HTML.
+  const agrupado = items.some(function (li) { return li.hasAttribute('data-era'); });
   const eras = [];
-  Array.prototype.slice.call(lista.querySelectorAll('.timeline__item')).forEach(function (li) {
+  items.forEach(function (li) {
     const hito = {
       anio: (li.querySelector('.timeline__year') || {}).textContent || '',
       titulo: (li.querySelector('.timeline__event') || {}).textContent || '',
@@ -746,8 +752,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
       clave: li.classList.contains('timeline__item--key')
     };
     const nombre = li.getAttribute('data-era');
-    // Sin data-era en ningún <li> cae en una era por hito: se comporta como antes.
-    if (nombre || !eras.length) {
+    if (!agrupado || nombre || !eras.length) {
       eras.push({
         titulo: nombre || hito.titulo,
         rango: li.getAttribute('data-era-rango') || hito.anio,
