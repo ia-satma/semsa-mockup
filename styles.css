@@ -2304,6 +2304,18 @@ a:hover > .photo-frame .photo-frame__img {
 .bcard__badge--dist { background: rgba(0,122,214,.1); color: var(--semsa-blue-dark); }
 .bcard__logo { height: 46px; display: flex; align-items: center; }
 .bcard__logo img { max-height: 38px; max-width: 150px; width: auto; object-fit: contain; }
+/* --- Tamaño óptico por forma del logo ---------------------------------
+   Limitar todo por altura hace que un logo cuadrado se vea minúsculo al
+   lado de un wordmark que llena el ancho: a 30px, Aeromotive medía 30×30
+   y GEARWRENCH 132×12. La clase la pone el generador leyendo el viewBox
+   del propio archivo (clase_forma en build_marcas.py). */
+.brand-logo.logo--compacto { max-height: 46px; max-width: 74px; }
+.brand-logo.logo--ancho    { max-height: 24px; }
+.bcard__logo img.logo--compacto { max-height: 52px; max-width: 86px; }
+.bcard__logo img.logo--ancho    { max-height: 30px; }
+.bcard--auth .bcard__logo img.logo--compacto { max-height: 58px; max-width: 96px; }
+.bcard--auth .bcard__logo img.logo--ancho    { max-height: 34px; }
+
 .bcard__wordmark { font-family: var(--font-h); font-weight: 800; font-size: 1.42rem; letter-spacing: -.01em; color: var(--semsa-blue-dark); }
 .bcard--auth .bcard__logo { height: 54px; }
 .bcard--auth .bcard__logo img { max-height: 46px; }
