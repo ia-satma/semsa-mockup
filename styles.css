@@ -2723,7 +2723,11 @@ a:hover > .photo-frame .photo-frame__img {
   color: rgba(232,238,245,.5);
   transition: color .25s var(--ease-out);
 }
+/* El riel se recorre con el ratón, sin hacer clic: el hover se marca más
+   que antes para que se lea como "pásame por encima" y no como "clic aquí". */
 .tl__anio-btn:hover { color: var(--ink); }
+.tl__anio-btn:hover .tl__anio-punto::after { transform: scale(1.35); }
+.tl__anio-punto::after { transition: transform .25s var(--ease-out), background .25s var(--ease-out); }
 .tl__anio-btn.is-activo { color: var(--green-light); font-weight: 700; }
 /* El riel: cada botón dibuja su tramo y el punto encima */
 .tl__anio-punto {

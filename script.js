@@ -782,6 +782,12 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     b.setAttribute('aria-label', h.anio + ' — ' + h.titulo);
     b.innerHTML = '<span class="tl__anio-txt">' + h.anio + '</span><span class="tl__anio-punto" aria-hidden="true"></span>';
     b.addEventListener('click', function () { mostrar(i, true); });
+    // Basta con pasar el ratón: el cliente pidió no tener que hacer clic año
+    // por año. El clic se conserva —en táctil no hay hover— y el teclado
+    // también. El `false` de mostrar() es deliberado: al recorrer el riel con
+    // el cursor NO se autocentra, o la barra se movería debajo del puntero y
+    // el año que ibas a señalar se escaparía.
+    b.addEventListener('mouseenter', function () { previsualizar(i); });
     riel.appendChild(b);
     return b;
   });
@@ -803,7 +809,20 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   }
 
   let actual = -1;
+
+  // Al cruzar el riel de lado a lado el cursor pasa por los 16 años; sin este
+  // respiro el panel parpadearía 16 veces. 70 ms se sienten inmediatos y
+  // filtran el barrido de paso.
+  let pendiente = 0;
+  function previsualizar(i) {
+    if (i === actual) return;
+    clearTimeout(pendiente);
+    pendiente = setTimeout(function () { mostrar(i, false); }, 70);
+  }
+  riel.addEventListener('mouseleave', function () { clearTimeout(pendiente); });
+
   function mostrar(i, mover) {
+    clearTimeout(pendiente);
     if (i < 0 || i >= hitos.length || i === actual) return;
     actual = i;
     const h = hitos[i];
