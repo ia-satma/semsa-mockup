@@ -733,15 +733,34 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   const lista = wrap.querySelector('.timeline');
   if (!lista) return;
 
-  const hitos = Array.prototype.slice.call(lista.querySelectorAll('.timeline__item')).map(function (li) {
-    return {
+  // El riel muestra ERAS, no hitos sueltos: con 17 puntos la sección se veía
+  // cargada. Cada era abre en el <li> que lleva data-era y se queda con los que
+  // vengan detrás hasta el siguiente. Los datos siguen viviendo en el HTML —que
+  // es el respaldo sin JS—, así que agrupar no los duplica en ningún lado.
+  const eras = [];
+  Array.prototype.slice.call(lista.querySelectorAll('.timeline__item')).forEach(function (li) {
+    const hito = {
       anio: (li.querySelector('.timeline__year') || {}).textContent || '',
       titulo: (li.querySelector('.timeline__event') || {}).textContent || '',
       nota: (li.querySelector('.timeline__note') || {}).textContent || '',
       clave: li.classList.contains('timeline__item--key')
     };
+    const nombre = li.getAttribute('data-era');
+    // Sin data-era en ningún <li> cae en una era por hito: se comporta como antes.
+    if (nombre || !eras.length) {
+      eras.push({
+        titulo: nombre || hito.titulo,
+        rango: li.getAttribute('data-era-rango') || hito.anio,
+        resumen: li.getAttribute('data-era-resumen') || hito.nota,
+        clave: hito.clave,
+        hitos: []
+      });
+    }
+    const era = eras[eras.length - 1];
+    era.hitos.push(hito);
+    if (hito.clave) era.clave = true;
   });
-  if (hitos.length < 2) return;
+  if (eras.length < 2) return;
 
   const explorador = document.createElement('div');
   explorador.className = 'tl';
@@ -752,6 +771,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
         '<span class="tl__anio"></span>' +
         '<h3 class="tl__titulo"></h3>' +
         '<p class="tl__nota"></p>' +
+        '<ol class="tl__hitos"></ol>' +
       '</div>' +
       '<div class="tl__nav">' +
         '<button type="button" class="tl__flecha" data-paso="-1" aria-label="Hito anterior">' +
@@ -768,19 +788,20 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   const elAnio = explorador.querySelector('.tl__anio');
   const elTitulo = explorador.querySelector('.tl__titulo');
   const elNota = explorador.querySelector('.tl__nota');
+  const elHitos = explorador.querySelector('.tl__hitos');
   const elCont = explorador.querySelector('.tl__contador');
   const panel = explorador.querySelector('.tl__panel-inner');
 
-  const botones = hitos.map(function (h, i) {
+  const botones = eras.map(function (e, i) {
     const b = document.createElement('button');
     b.type = 'button';
-    b.className = 'tl__anio-btn' + (h.clave ? ' tl__anio-btn--clave' : '');
+    b.className = 'tl__anio-btn' + (e.clave ? ' tl__anio-btn--clave' : '');
     b.setAttribute('role', 'tab');
     b.setAttribute('aria-selected', 'false');
     b.tabIndex = -1;
-    // Hay dos hitos en 2010: el título los distingue para lectores de pantalla.
-    b.setAttribute('aria-label', h.anio + ' — ' + h.titulo);
-    b.innerHTML = '<span class="tl__anio-txt">' + h.anio + '</span><span class="tl__anio-punto" aria-hidden="true"></span>';
+    b.setAttribute('aria-label', e.rango + ' — ' + e.titulo +
+      (e.hitos.length > 1 ? ' (' + e.hitos.length + ' hitos)' : ''));
+    b.innerHTML = '<span class="tl__anio-txt">' + e.rango + '</span><span class="tl__anio-punto" aria-hidden="true"></span>';
     b.addEventListener('click', function () { mostrar(i, true); });
     // Basta con pasar el ratón: el cliente pidió no tener que hacer clic año
     // por año. El clic se conserva —en táctil no hay hover— y el teclado
@@ -823,13 +844,32 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
 
   function mostrar(i, mover) {
     clearTimeout(pendiente);
-    if (i < 0 || i >= hitos.length || i === actual) return;
+    if (i < 0 || i >= eras.length || i === actual) return;
     actual = i;
-    const h = hitos[i];
-    elAnio.textContent = h.anio;
-    elTitulo.textContent = h.titulo;
-    elNota.textContent = h.nota;
-    elCont.textContent = (i + 1) + ' / ' + hitos.length;
+    const e = eras[i];
+    elAnio.textContent = e.rango;
+    elTitulo.textContent = e.titulo;
+    elNota.textContent = e.resumen;
+    elCont.textContent = (i + 1) + ' / ' + eras.length;
+
+    // La lista solo aparece cuando la era agrupa varios hitos. En las de uno
+    // solo el resumen YA es su nota, y repetirla debajo sobraría.
+    elHitos.textContent = '';
+    if (e.hitos.length > 1) {
+      e.hitos.forEach(function (h) {
+        const li = document.createElement('li');
+        li.className = 'tl__hito';
+        li.innerHTML =
+          '<span class="tl__hito-anio"></span>' +
+          '<span class="tl__hito-titulo"></span>' +
+          '<span class="tl__hito-nota"></span>';
+        li.querySelector('.tl__hito-anio').textContent = h.anio;
+        li.querySelector('.tl__hito-titulo').textContent = h.titulo;
+        li.querySelector('.tl__hito-nota').textContent = h.nota;
+        elHitos.appendChild(li);
+      });
+    }
+    elHitos.hidden = e.hitos.length < 2;
     botones.forEach(function (b, j) {
       const on = j === i;
       b.classList.toggle('is-activo', on);
@@ -847,15 +887,15 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   explorador.querySelectorAll('.tl__flecha').forEach(function (b) {
     b.addEventListener('click', function () {
       const paso = parseInt(b.dataset.paso, 10);
-      mostrar(Math.min(hitos.length - 1, Math.max(0, actual + paso)), true);
+      mostrar(Math.min(eras.length - 1, Math.max(0, actual + paso)), true);
     });
   });
 
   riel.addEventListener('keydown', function (ev) {
-    const salto = { ArrowLeft: -1, ArrowRight: 1, Home: -hitos.length, End: hitos.length }[ev.key];
+    const salto = { ArrowLeft: -1, ArrowRight: 1, Home: -eras.length, End: eras.length }[ev.key];
     if (!salto) return;
     ev.preventDefault();
-    const destino = Math.min(hitos.length - 1, Math.max(0, actual + salto));
+    const destino = Math.min(eras.length - 1, Math.max(0, actual + salto));
     mostrar(destino, true);
     botones[destino].focus();
   });
