@@ -110,23 +110,6 @@ em { font-style: italic; }
   --ease-mag:   cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* ─── MOCKUP BANNER (preservado) ─────────────────────────────── */
-body::before {
-  content: "MOCKUP — Fase 4 de aprobacion | Stack destino: next-payload | Pendiente de aprobacion humana antes de codificar";
-  display: block;
-  position: relative;
-  z-index: 300;
-  background: var(--semsa-blue-dark);
-  color: var(--white);
-  font-family: var(--font-h);
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-align: center;
-  padding: 9px 16px;
-  letter-spacing: 0.04em;
-  box-shadow: var(--bezel-hi);
-}
-
 /* ─── SKIP LINK ───────────────────────────────────────────────── */
 .skip-link {
   position: absolute;

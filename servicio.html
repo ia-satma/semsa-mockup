@@ -128,12 +128,12 @@
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
                 </div>
                 <div class="photo-seal__text">
-                  <strong>Banco de pruebas propio</strong>
-                  <span>Diagnóstico y calibración</span>
+                  <strong data-bind="servicio.auth_texto1">Banco de pruebas propio</strong>
+                  <span data-bind="servicio.auth_texto2">Diagnóstico y calibración</span>
                 </div>
               </div>
             </div>
-            <figcaption class="photo-caption"><span class="photo-caption__dot" aria-hidden="true"></span>Laboratorio de servicio SEMSA · Monterrey, N.L.</figcaption>
+            <figcaption class="photo-caption" data-bind-html="servicio.auth_pie1"><span class="photo-caption__dot" aria-hidden="true"></span>Laboratorio de servicio SEMSA · Monterrey, N.L.</figcaption>
           </figure>
         </div>
         <div class="auth__text" data-reveal="right" data-reveal-delay="1">
@@ -146,27 +146,27 @@
           <ul class="auth__services">
             <li>
               <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-              <span class="svc-label">Mantenimiento preventivo y correctivo</span>
+              <span class="svc-label" data-bind="servicio.auth_etiqueta1">Mantenimiento preventivo y correctivo</span>
             </li>
             <li>
               <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-              <span class="svc-label">Diagnóstico técnico especializado</span>
+              <span class="svc-label" data-bind="servicio.auth_etiqueta2">Diagnóstico técnico especializado</span>
             </li>
             <li>
               <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/></svg>
-              <span class="svc-label">Reparación con refacciones originales</span>
+              <span class="svc-label" data-bind="servicio.auth_etiqueta3">Reparación con refacciones originales</span>
             </li>
             <li>
               <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
-              <span class="svc-label">Calibración y validación bajo procesos controlados</span>
+              <span class="svc-label" data-bind="servicio.auth_etiqueta4">Calibración y validación bajo procesos controlados</span>
             </li>
             <li>
               <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-              <span class="svc-label">Capacitación técnica al personal</span>
+              <span class="svc-label" data-bind="servicio.auth_etiqueta5">Capacitación técnica al personal</span>
             </li>
             <li class="svc--more">
               <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
-              <span class="svc-label">[FALTA: lista completa de servicios de SEMSA]</span>
+              <span class="svc-label" data-bind="servicio.auth_etiqueta6">[FALTA: lista completa de servicios de SEMSA]</span>
             </li>
           </ul>
         </div>
@@ -182,33 +182,33 @@
         </header>
         <div class="svc2-grid" data-reveal>
           <article class="svc2-col">
-            <h3 class="svc2-col__title">En taller</h3>
+            <h3 class="svc2-col__title" data-bind="servicio.svc2_subtitulo1">En taller</h3>
             <ul class="svc2-list">
-              <li>Diagnóstico técnico</li>
-              <li>Mantenimiento preventivo y correctivo</li>
-              <li>Reparación y cambio de refacciones</li>
-              <li>Pruebas y validación antes de la entrega</li>
-              <li>Garantías</li>
+              <li data-bind="servicio.svc2_punto1">Diagnóstico técnico</li>
+              <li data-bind="servicio.svc2_punto2">Mantenimiento preventivo y correctivo</li>
+              <li data-bind="servicio.svc2_punto3">Reparación y cambio de refacciones</li>
+              <li data-bind="servicio.svc2_punto4">Pruebas y validación antes de la entrega</li>
+              <li data-bind="servicio.svc2_punto5">Garantías</li>
             </ul>
           </article>
           <article class="svc2-col">
-            <h3 class="svc2-col__title">En planta</h3>
+            <h3 class="svc2-col__title" data-bind="servicio.svc2_subtitulo2">En planta</h3>
             <ul class="svc2-list">
-              <li>Técnicos asignados a planta</li>
-              <li>Pólizas de servicio</li>
-              <li>Atención programada</li>
-              <li>Atención a emergencias</li>
-              <li>Capacitación al personal interno</li>
+              <li data-bind="servicio.svc2_punto6">Técnicos asignados a planta</li>
+              <li data-bind="servicio.svc2_punto7">Pólizas de servicio</li>
+              <li data-bind="servicio.svc2_punto8">Atención programada</li>
+              <li data-bind="servicio.svc2_punto9">Atención a emergencias</li>
+              <li data-bind="servicio.svc2_punto10">Capacitación al personal interno</li>
             </ul>
           </article>
           <article class="svc2-col">
-            <h3 class="svc2-col__title">Calibración y procesos controlados</h3>
-            <p class="svc2-col__note">Pruebas, calibración y validación bajo procesos controlados, en áreas técnicas dedicadas — capacidades <strong>en fortalecimiento rumbo a certificación</strong>.</p>
+            <h3 class="svc2-col__title" data-bind="servicio.svc2_subtitulo3">Calibración y procesos controlados</h3>
+            <p class="svc2-col__note" data-bind-html="servicio.svc2_texto1">Pruebas, calibración y validación bajo procesos controlados, en áreas técnicas dedicadas — capacidades <strong>en fortalecimiento rumbo a certificación</strong>.</p>
           </article>
         </div>
         <div class="svc2-cta" data-reveal>
           <a class="btn btn--primary btn--icon btn--lg" href="index.html#cotizar" data-tipo="servicio-planta">
-            <span>Solicitar servicio técnico</span>
+            <span data-bind="servicio.svc2_boton1">Solicitar servicio técnico</span>
             <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
         </div>

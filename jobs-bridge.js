@@ -7,7 +7,10 @@
   'use strict';
   if (!window.fetch) return;
 
-  var WA = '5218117998535';           // WhatsApp SEMSA (mismo del sitio)
+  // WhatsApp configurado en el CMS: el servidor ya lo aplicó al botón flotante.
+  var waLink = document.querySelector('[data-bind-href="contact.whatsappLink"]');
+  var waMatch = waLink && /wa\.me\/(\d+)/.exec(waLink.getAttribute('href') || '');
+  var WA = waMatch ? waMatch[1] : '5218117998535';
   var ARROW = '<span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>';
 
   function esc(s) {

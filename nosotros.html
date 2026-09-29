@@ -124,20 +124,20 @@
             <p class="about__desc" data-bind="nosotros.aboutDesc">
               SEMSA nace en Monterrey el 26 de diciembre de 1986 con una visión clara: entender las necesidades de la industria y ofrecer soluciones especializadas que generen valor. En 1993 obtuvimos la distribución ARO y fuimos nombrados Centro de Servicio Autorizado para sus reparaciones. De ahí en adelante crecimos junto a la industria automotriz del país: CDMX en 1998, Saltillo en 1999, Laredo en 2001 y Querétaro en 2022. En 2010 creamos el Departamento de Proyectos e Instalaciones para desarrollar soluciones llave en mano. Hoy operamos una red de Centros de Servicio Autorizados en Monterrey, Saltillo, Querétaro y Tijuana, con cobertura en 15 ubicaciones de México y EE.UU.
             </p>
-            <p class="about__desc about__mission">
+            <p class="about__desc about__mission" data-bind-html="nosotros.about_texto1">
               <strong>Misión —</strong> <em>“Mejorar los procesos de nuestros clientes suministrando equipos con tecnología y calidad, a través de asesoría especializada.”</em><br>
               <strong>Visión —</strong> <em>“Ser líder nacional en las marcas que distribuimos.”</em>
             </p>
           </div>
           <aside class="about__aside">
             <div class="about__values-block">
-              <span class="about__values-label">Nuestros valores</span>
+              <span class="about__values-label" data-bind="nosotros.about_etiqueta1">Nuestros valores</span>
               <ul class="about__values" aria-label="Valores de SEMSA">
-                <li>Confianza</li>
-                <li>Respeto</li>
-                <li>Honestidad</li>
-                <li>Justicia</li>
-                <li>Responsabilidad</li>
+                <li data-bind="nosotros.about_punto1">Confianza</li>
+                <li data-bind="nosotros.about_punto2">Respeto</li>
+                <li data-bind="nosotros.about_punto3">Honestidad</li>
+                <li data-bind="nosotros.about_punto4">Justicia</li>
+                <li data-bind="nosotros.about_punto5">Responsabilidad</li>
               </ul>
             </div>
           </aside>
@@ -223,28 +223,28 @@
       <div class="container">
         <div class="social-proof" data-reveal aria-label="SEMSA en números">
           <div class="social-proof__item">
-            <span class="social-proof__num">40</span>
-            <span class="social-proof__label">años de experiencia industrial<em>Desde 1986</em></span>
+            <span class="social-proof__num" data-bind="nosotros.stats_cifra1">40</span>
+            <span class="social-proof__label">años de experiencia industrial<em data-bind="nosotros.stats_texto1">Desde 1986</em></span>
           </div>
           <div class="social-proof__item">
-            <span class="social-proof__num">+20</span>
-            <span class="social-proof__label">marcas internacionales<em>Representadas y respaldadas por SEMSA</em></span>
+            <span class="social-proof__num" data-bind="nosotros.stats_cifra2">+20</span>
+            <span class="social-proof__label">marcas internacionales<em data-bind="nosotros.stats_texto2">Representadas y respaldadas por SEMSA</em></span>
           </div>
           <div class="social-proof__item">
-            <span class="social-proof__num">4</span>
-            <span class="social-proof__label">Centros de Servicio Autorizados<em>Monterrey · Saltillo · Querétaro · Tijuana</em></span>
+            <span class="social-proof__num" data-bind="nosotros.stats_cifra3">4</span>
+            <span class="social-proof__label">Centros de Servicio Autorizados<em data-bind="nosotros.stats_texto3">Monterrey · Saltillo · Querétaro · Tijuana</em></span>
           </div>
           <div class="social-proof__item">
-            <span class="social-proof__num">15</span>
-            <span class="social-proof__label">ubicaciones · cobertura nacional<em>Presencia en las principales regiones industriales de México</em></span>
+            <span class="social-proof__num" data-bind="nosotros.stats_cifra4">15</span>
+            <span class="social-proof__label">ubicaciones · cobertura nacional<em data-bind="nosotros.stats_texto4">Presencia en las principales regiones industriales de México</em></span>
           </div>
           <div class="social-proof__item">
-            <span class="social-proof__num">2</span>
-            <span class="social-proof__label">países: México y Estados Unidos<em>Infraestructura estratégica para atención, servicio y suministro</em></span>
+            <span class="social-proof__num" data-bind="nosotros.stats_cifra5">2</span>
+            <span class="social-proof__label">países: México y Estados Unidos<em data-bind="nosotros.stats_texto5">Infraestructura estratégica para atención, servicio y suministro</em></span>
           </div>
           <div class="social-proof__item">
-            <span class="social-proof__num">+100</span>
-            <span class="social-proof__label">familias<em>Forman parte del equipo SEMSA</em></span>
+            <span class="social-proof__num" data-bind="nosotros.stats_cifra6">+100</span>
+            <span class="social-proof__label">familias<em data-bind="nosotros.stats_texto6">Forman parte del equipo SEMSA</em></span>
           </div>
         </div>
       </div>
@@ -262,7 +262,7 @@
       <!-- === MAPA LOCALIZADOR — banda full-bleed + tarjeta flotante === -->
       <div class="locator__band" data-reveal>
         <div class="coverage-map locator__map">
-          <img class="coverage-map__svg" src="assets/img/coverage-map.svg" alt="Mapa de cobertura de SEMSA en México y EE.UU." loading="lazy" width="1000" height="674">
+          <img class="coverage-map__svg" src="assets/img/coverage-map.svg" alt="Mapa de cobertura de SEMSA en México y EE.UU." loading="lazy" width="1000" height="674" data-bind-src="nosotros.coverage_imagen1">
           <div class="locator__pins" id="locator-pins"></div>
         </div>
         <aside class="locator__panel" id="locator-panel" aria-live="polite" aria-label="Información de la sucursal seleccionada"></aside>
@@ -273,12 +273,12 @@
         <!-- [FALTA: dirección y teléfono directo de las 14 sucursales fuera de Monterrey — SEMSA debe proveerlos.] -->
 
         <div class="coverage__stats" data-reveal data-reveal-delay="1">
-          <span><strong>4</strong> oficinas</span>
-          <span><strong>5</strong> almacenes</span>
-          <span><strong>11</strong> representantes</span>
-          <span><strong>2</strong> países</span>
+          <span><strong data-bind="nosotros.coverage_texto1">4</strong> oficinas</span>
+          <span><strong data-bind="nosotros.coverage_texto2">5</strong> almacenes</span>
+          <span><strong data-bind="nosotros.coverage_texto3">11</strong> representantes</span>
+          <span><strong data-bind="nosotros.coverage_texto4">2</strong> países</span>
         </div>
-        <p class="coverage__almacenes" data-reveal data-reveal-delay="2">
+        <p class="coverage__almacenes" data-reveal data-reveal-delay="2" data-bind-html="nosotros.coverage_texto5">
           <span class="coverage__almacenes-et">Almacenes</span>
           Monterrey · Querétaro · Tijuana · San Diego · Laredo, TX
         </p>

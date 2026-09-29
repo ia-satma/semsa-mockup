@@ -175,14 +175,31 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
       var btn = form.querySelector('[type="submit"]');
       var label = btn ? btn.querySelector('span:first-child') : null;
       var original = label ? label.textContent : (btn ? btn.textContent : '');
-      var fd = new FormData(form);
+      // Cada campo del formulario llega al CMS; de las listas se envía el
+      // texto visible ("Riesgo de paro de línea"), no el valor interno.
+      var field = function (name) {
+        var el = form.elements.namedItem(name);
+        if (!el) return '';
+        if (el.tagName === 'SELECT') return el.value && el.selectedIndex >= 0 ? el.options[el.selectedIndex].text.trim() : '';
+        if (el.type === 'checkbox') return el.checked ? 'si' : '';
+        return String(el.value || '').trim();
+      };
       var payload = {
-        nombre: fd.get('nombre') || '',
-        empresa: fd.get('empresa') || '',
-        telefono: fd.get('telefono') || '',
-        email: fd.get('email') || '',
-        tipo: fd.get('tipo') || fd.get('linea') || '',
-        mensaje: fd.get('mensaje') || fd.get('ciudad') || '',
+        nombre: field('nombre'),
+        empresa: field('empresa'),
+        telefono: field('telefono'),
+        email: field('email'),
+        ciudad: field('ciudad'),
+        tipo: field('tipo'),
+        industria: field('industria'),
+        urgencia: field('urgencia'),
+        equipoExistente: field('equipo_existente'),
+        marca: field('marca'),
+        modelo: field('modelo'),
+        zonaClasificada: field('atex'),
+        linea: field('linea'),
+        mensaje: field('mensaje'),
+        detalle: field('detalle'),
         origen: origen,
         items: getQuoteItems(),
       };
@@ -402,7 +419,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     const sku = p.sku ? '<p class="pcard__sku">SKU: ' + esc(p.sku) + '</p>' : '';
     const desc = p.desc ? '<p class="product-card__spec">' + esc(p.desc) + '</p>' : '';
     const img = p.img
-      ? '<img class="product-card__img" src="assets/img/catalogo/' + esc(p.img) + '" alt="' + esc(p.name) + '" loading="lazy" decoding="async" width="300" height="300">'
+      ? '<img class="product-card__img" src="' + (p.img.charAt(0) === '/' ? esc(p.img) : 'assets/img/catalogo/' + esc(p.img)) + '" alt="' + esc(p.name) + '" loading="lazy" decoding="async" width="300" height="300">'
       : '';
     return '<article class="product-card">' +
       '<a class="product-card__media" href="' + href + '" aria-label="Ver ' + esc(p.name) + '">' + img +
