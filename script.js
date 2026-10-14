@@ -551,9 +551,9 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     });
   })();
 
-  fetch('/api/public/catalogo')
+  fetch('data/catalogo.json?v=20261014000000')
     .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .catch(function () { return fetch('data/catalogo.json?v=20261014000000').then(function (r) { return r.json(); }); })
+    .catch(function () { return fetch('/api/public/catalogo').then(function (r) { return r.json(); }); })
     .then(function (data) {
       all = data;
       const vM = {}, vC = {}, vA = {}, vD = {};
