@@ -415,7 +415,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
 
   function cardHTML(p) {
     const isAdded = added.has(p.name);
-    const href = 'producto/' + esc(p.slug) + '.html';
+    const href = p.hasStaticPage ? ('producto/' + esc(p.slug) + '.html') : ('producto-dinamico.html?slug=' + encodeURIComponent(p.slug));
     const sku = p.sku ? '<p class="pcard__sku">SKU: ' + esc(p.sku) + '</p>' : '';
     const desc = p.desc ? '<p class="product-card__spec">' + esc(p.desc) + '</p>' : '';
     const img = p.img
