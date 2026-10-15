@@ -418,8 +418,11 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     const href = p.hasStaticPage ? ('producto/' + esc(p.slug) + '.html') : ('producto-dinamico.html?slug=' + encodeURIComponent(p.slug));
     const sku = p.sku ? '<p class="pcard__sku">SKU: ' + esc(p.sku) + '</p>' : '';
     const desc = p.desc ? '<p class="product-card__spec">' + esc(p.desc) + '</p>' : '';
-    const badge = p.featured && p.featuredLabel
-      ? '<span class="pcard__badge">' + esc(p.featuredLabel) + '</span>'
+    const badgeLabel = p.featured && (p.featuredLabel || p.featuredType)
+      ? (p.featuredLabel || 'Producto destacado')
+      : '';
+    const badge = badgeLabel
+      ? '<span class="pcard__badge">' + esc(badgeLabel) + '</span>'
       : '';
     const img = p.img
       ? '<img class="product-card__img" src="' + (p.img.charAt(0) === '/' ? esc(p.img) : 'assets/img/catalogo/' + esc(p.img)) + '" alt="' + esc(p.name) + '" loading="lazy" decoding="async" width="300" height="300">'
@@ -634,7 +637,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
       s: p.slug || p.s || '', n: p.name || p.n || 'Producto SEMSA',
       b: p.brand || p.b || 'SEMSA', d: p.division || p.d || '',
       i: p.img || p.i || '', hasStaticPage: p.hasStaticPage,
-      label: p.featuredLabel || (p.r ? 'Más solicitado' : ''),
+      label: p.featuredLabel || (p.r ? 'Más solicitado' : (p.featured ? 'Producto destacado' : '')),
       order: Number(p.featuredOrder || p.order || 0), featured: p.featured === true
     };
   }
