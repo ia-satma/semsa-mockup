@@ -6,24 +6,99 @@
   <title>Producto | SEMSA</title>
   <meta name="description" content="Ficha de producto SEMSA">
   <meta name="theme-color" content="#001528">
-  <link rel="stylesheet" href="styles.css?v=20261015240500">
+  <link rel="stylesheet" href="styles.css?v=e4951286fadb">
 </head>
 <body>
   <a href="#producto-title" class="skip-link">Saltar al contenido</a>
-  <header class="nav" role="banner">
+  <header class="nav" role="banner" data-nav>
     <div class="nav__island">
       <a href="index.html" class="nav__logo" aria-label="SEMSA — inicio">
         <img src="assets/logo-semsa-02.png" alt="SEMSA — Servicios Especializados de Monterrey" class="nav__logo-img nav__logo-img--light">
+        <img src="assets/logo-semsa-03.png" alt="" aria-hidden="true" class="nav__logo-img nav__logo-img--mark">
       </a>
       <nav class="nav__links" aria-label="Navegación principal">
-        <a href="catalogo.html" class="nav__link">Catálogo</a>
-        <a href="marcas.html" class="nav__link">Marcas</a>
-        <a href="industrias.html" class="nav__link">Industrias</a>
-        <a href="soluciones.html" class="nav__link">Soluciones</a>
-        <a href="index.html#cotizar" class="nav__link">Cotizar</a>
+        <div class="nav__item">
+          <a href="catalogo.html" class="nav__link">Catálogo</a>
+        </div>
+        <div class="nav__item nav__item--has-sub">
+          <a href="marcas.html" class="nav__link nav__link--sub" aria-haspopup="true">Marcas <svg class="nav__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="12" height="12" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="nav__sub" aria-label="Marcas SEMSA">
+            <a href="catalogo.html?marca=ingersoll-rand" class="nav__sub-link">Ingersoll Rand · polipastos</a>
+            <a href="catalogo.html?marca=aro" class="nav__sub-link">ARO · bombas</a>
+            <a href="catalogo.html?marca=graco" class="nav__sub-link">Graco · pintura</a>
+            <a href="catalogo.html?marca=apex" class="nav__sub-link">Apex · ensamble</a>
+            <a href="marcas.html" class="nav__sub-link nav__sub-link--cta">Ver todas las marcas →</a>
+          </div>
+        </div>
+        <div class="nav__item nav__item--has-sub">
+          <a href="industrias.html" class="nav__link nav__link--sub" aria-haspopup="true">Industrias <svg class="nav__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="12" height="12" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="nav__sub" aria-label="Industrias SEMSA">
+            <a href="industria-automotriz.html" class="nav__sub-link">Automotriz y autopartes</a>
+            <a href="industria-quimica.html" class="nav__sub-link">Química y petroquímica</a>
+            <a href="industria-manufactura.html" class="nav__sub-link">Manufactura general</a>
+            <a href="industrias.html" class="nav__sub-link nav__sub-link--cta">Ver todas las industrias →</a>
+          </div>
+        </div>
+        <div class="nav__item nav__item--has-sub">
+          <a href="soluciones.html" class="nav__link nav__link--sub" aria-haspopup="true">Soluciones <svg class="nav__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="12" height="12" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="nav__sub" aria-label="Soluciones SEMSA">
+            <a href="soluciones.html#necesidades" class="nav__sub-link">¿Qué necesita resolver?</a>
+            <a href="servicio.html" class="nav__sub-link">Servicio técnico</a>
+            <a href="soluciones.html" class="nav__sub-link">¿Reparar o reemplazar?</a>
+            <a href="index.html#cotizar" class="nav__sub-link">Urgencia en planta</a>
+          </div>
+        </div>
+        <div class="nav__item nav__item--has-sub">
+          <a href="recursos.html" class="nav__link nav__link--sub" aria-haspopup="true">Recursos <svg class="nav__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="12" height="12" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="nav__sub" aria-label="Recursos SEMSA">
+            <a href="casos.html" class="nav__sub-link">Casos de éxito</a>
+            <a href="resenas.html" class="nav__sub-link">Reseñas</a>
+            <a href="blog.html" class="nav__sub-link">Blog</a>
+            <a href="catalogo.html" class="nav__sub-link">Catálogo y descargas</a>
+            <a href="recursos.html" class="nav__sub-link nav__sub-link--cta">Ver todos los recursos →</a>
+          </div>
+        </div>
+        <div class="nav__item nav__item--has-sub">
+          <a href="nosotros.html" class="nav__link nav__link--sub" aria-haspopup="true">Nosotros <svg class="nav__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="12" height="12" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="nav__sub" aria-label="Más de SEMSA">
+            <a href="nosotros.html#nosotros" class="nav__sub-link">Quiénes somos</a>
+            <a href="nosotros.html#cobertura" class="nav__sub-link">Cobertura nacional</a>
+            <a href="servicio.html#servicio-autorizado" class="nav__sub-link">Centros de Servicio Autorizados</a>
+            <a href="reclutamiento.html" class="nav__sub-link">Bolsa de trabajo</a>
+            <a href="index.html#contacto" class="nav__sub-link">Contacto</a>
+          </div>
+        </div>
       </nav>
+      <a href="index.html#cotizar" class="btn btn--primary btn--icon nav__cta">
+        <span>Cotizar</span>
+        <span class="btn__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+      <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false" data-burger>
+        <span></span><span></span>
+      </button>
     </div>
   </header>
+
+  <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+    <nav class="mobile-menu__nav" aria-label="Navegación móvil">
+      <a href="catalogo.html" class="mobile-menu__link"><span class="mobile-menu__idx">01</span>Catálogo</a>
+      <a href="marcas.html" class="mobile-menu__link"><span class="mobile-menu__idx">02</span>Marcas</a>
+      <a href="industrias.html" class="mobile-menu__link"><span class="mobile-menu__idx">03</span>Industrias</a>
+      <a href="soluciones.html" class="mobile-menu__link"><span class="mobile-menu__idx">04</span>Soluciones</a>
+      <a href="recursos.html" class="mobile-menu__link"><span class="mobile-menu__idx">05</span>Recursos</a>
+      <a href="nosotros.html" class="mobile-menu__link"><span class="mobile-menu__idx">06</span>Nosotros</a>
+      <a href="index.html#contacto" class="mobile-menu__link"><span class="mobile-menu__idx">07</span>Contacto</a>
+    </nav>
+    <a href="index.html#cotizar" class="btn btn--primary btn--icon btn--lg mobile-menu__cta">
+      <span>Solicitar cotización</span>
+      <span class="btn__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+    </a>
+  </div>
+
   <main>
     <nav class="prod-crumb" aria-label="Migaja de pan"><div class="container">
       <a href="index.html">Inicio</a> <span aria-hidden="true">›</span>
@@ -84,6 +159,6 @@
     }).catch(function(){document.querySelector('[data-dynamic-title]').textContent='No se pudo cargar el catálogo';});
   })();
   </script>
-  <script src="script.js?v=20261015240500"></script>
+  <script src="script.js?v=04254c66fcbd"></script>
 </body>
 </html>

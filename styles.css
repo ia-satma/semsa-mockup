@@ -4371,3 +4371,239 @@ a:hover > .photo-frame .photo-frame__img {
   .idx-row__link { grid-template-columns: auto 1fr; gap: 14px; }
   .idx-row__arrow { display: none; }
 }
+
+/* ============================================================
+   MOBILE HARDENING · 320–767 px
+   Ajustes de lectura, toque, safe-area y rendimiento para teléfonos.
+============================================================ */
+@media (max-width: 767px) {
+  :root {
+    --pad: clamp(16px, 5vw, 24px);
+    --rhythm-sm: 52px;
+    --rhythm-md: 68px;
+    --rhythm-lg: 84px;
+  }
+
+  html {
+    scroll-padding-top: 78px;
+    overflow-x: hidden;
+  }
+
+  body {
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  main, section, footer, .container, .container > * { min-width: 0; }
+  img, video, iframe, svg, canvas { max-width: 100%; }
+
+  /* Navegación: conserva el área de toque y respeta las cámaras/notches. */
+  .nav {
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+  }
+  .nav__island {
+    min-height: 62px;
+    height: auto;
+    gap: 10px;
+  }
+  .nav__logo { min-width: 0; }
+  .nav__logo-img--light {
+    height: 28px;
+    max-width: min(182px, calc(100vw - 94px));
+  }
+  .nav__burger {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+  }
+
+  /* El overlay puede desplazarse en teléfonos bajos o con texto aumentado. */
+  .mobile-menu {
+    justify-content: flex-start;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    padding: calc(78px + env(safe-area-inset-top)) var(--pad) calc(28px + env(safe-area-inset-bottom));
+  }
+  .mobile-menu__nav { margin-top: 8px; }
+  .mobile-menu__link {
+    min-height: 50px;
+    padding: 9px 0;
+    font-size: clamp(1.25rem, 7vw, 1.7rem);
+    line-height: 1.15;
+  }
+  .mobile-menu__cta {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 18px;
+  }
+
+  /* En móviles el póster evita decodificar y animar un video grande. */
+  .hero--center {
+    min-height: max(620px, 100dvh);
+    padding-top: clamp(32px, 6vh, 52px);
+    padding-bottom: clamp(50px, 9vh, 82px);
+    background:
+      linear-gradient(180deg, rgba(0,21,40,.58), rgba(0,21,40,.88)),
+      url('assets/video/hero-loop-poster.jpg') center / cover no-repeat;
+  }
+  .hero--center .hero__video { display: none; }
+  .hero--center .hero__content { width: 100%; }
+  .hero--center .hero__emblem {
+    width: clamp(84px, 24vw, 116px);
+    margin-bottom: 18px;
+  }
+  .hero__brandline {
+    font-size: .68rem;
+    letter-spacing: .11em;
+    line-height: 1.5;
+  }
+  .hero__heading {
+    font-size: clamp(2rem, 10.5vw, 3rem);
+    line-height: 1.04;
+    margin: 16px 0;
+    overflow-wrap: anywhere;
+  }
+  .hero__subheading { font-size: 1rem; line-height: 1.5; }
+  .hero__pillars {
+    font-size: .62rem;
+    letter-spacing: .06em;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .hero__ctas .btn { width: 100%; justify-content: space-between; }
+
+  /* Mosaicos del hero: dos columnas legibles sin crecimiento horizontal. */
+  .hero-menu { width: 100%; margin-inline: 0; }
+  .panels { gap: 1px; }
+  .hp { min-height: clamp(132px, 39vw, 190px); }
+  .panels .hp.p5 { min-height: clamp(132px, 35vw, 170px); }
+  .hp__content { padding: 12px 13px 14px; }
+  .hp__name, .hp:hover .hp__name, .hp.on .hp__name {
+    font-size: clamp(15px, 4.2vw, 20px);
+    overflow-wrap: anywhere;
+  }
+
+  .section { padding: var(--rhythm-md) 0; }
+  .section-head { margin-bottom: 32px; }
+  .section-head__title {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+  }
+  .section-head__sub { font-size: .98rem; line-height: 1.55; }
+  .stats-banner { padding: 40px 0; }
+
+  /* Catálogo: controles a todo el ancho y marcas en un carril táctil. */
+  .page-hero { padding: 44px 0 38px; }
+  .page-hero__title {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    overflow-wrap: anywhere;
+  }
+  .page-hero__sub { font-size: .96rem; line-height: 1.55; }
+  .page-body { padding: 42px 0 64px; }
+  .catalog__note { align-items: flex-start; font-size: .8rem; }
+  .catalog2__controls { gap: 10px; }
+  .catalog2__search, .catalog2__selectwrap {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+  .catalog2__search input, .catalog2__selectwrap select { min-height: 48px; }
+  .catalog2__brands {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    margin-inline: calc(-1 * var(--pad));
+    padding: 0 var(--pad) 7px;
+    scrollbar-width: none;
+  }
+  .catalog2__brands::-webkit-scrollbar { display: none; }
+  .catalog__filter {
+    flex: 0 0 auto;
+    min-height: 44px;
+    padding: 10px 14px;
+  }
+  .catalog__grid { grid-template-columns: 1fr; gap: 14px; }
+  .catalog2 .product-card { border-radius: 14px; }
+  .catalog2 .product-card__media { aspect-ratio: 5 / 4; }
+  .catalog2 .product-card__body { padding: 15px; gap: 6px; }
+  .product-card__title { font-size: .98rem; overflow-wrap: anywhere; }
+  .product-card__spec {
+    font-size: .82rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+  .product-card__actions { align-items: stretch; flex-wrap: wrap; gap: 8px; }
+  .product-card__add, .product-card__quote { min-height: 46px; }
+  .quote-bar {
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    margin: 20px 0 0;
+    padding: 14px;
+    border-radius: 16px;
+    gap: 10px;
+  }
+  .quote-bar__count { flex: 1 1 100%; font-size: .82rem; }
+  .quote-bar .btn { width: 100%; justify-content: space-between; }
+
+  /* Ficha dinámica/estática: primero la imagen, luego lectura y acciones. */
+  .prod-crumb .container {
+    padding-top: 76px;
+    padding-bottom: 10px;
+    overflow-wrap: anywhere;
+  }
+  .prod { padding: 24px 0 48px; }
+  .prod__grid { gap: 22px; }
+  .prod__media { aspect-ratio: 4 / 3; border-radius: 16px; }
+  .prod__img { padding: 18px; }
+  .prod__title { font-size: clamp(1.45rem, 7vw, 2rem); overflow-wrap: anywhere; }
+  .prod__desc { font-size: .94rem; line-height: 1.6; }
+  .prod__cta { flex-direction: column; align-items: stretch; }
+  .prod__cta .btn, .prod__add { width: 100%; min-width: 0; justify-content: space-between; }
+  .prod__rel { align-items: flex-start; font-size: .78rem; }
+  .rel__row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .relcard__name { font-size: .78rem; overflow-wrap: anywhere; }
+
+  /* Formularios y enlaces de contacto: controles cómodos para el pulgar. */
+  .form__row { flex-direction: column; gap: 16px; }
+  .form__input, .form__select, .form__textarea { min-height: 48px; }
+  .form__textarea { min-height: 132px; }
+  .form__checkbox-label { align-items: flex-start; }
+  .form__actions { flex-direction: column; }
+  .form__actions .btn { flex-basis: auto; width: 100%; }
+  .contact__item, .contact__branch { overflow-wrap: anywhere; }
+
+  /* Pie compacto y botón flotante fuera del área de gestos. */
+  .footer { padding-top: 44px; }
+  .footer__inner { gap: 34px; padding-bottom: 32px; }
+  .footer__nav { gap: 24px 16px; }
+  .footer__links { gap: 12px; }
+  .footer__bottom-inner { align-items: flex-start; }
+  .whatsapp-float {
+    right: max(14px, env(safe-area-inset-right));
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    width: 54px;
+    height: 54px;
+  }
+}
+
+@media (max-width: 420px) {
+  :root { --pad: 16px; }
+  .nav__logo-img--light { max-width: 150px; }
+  .hero--center .hero__content { padding-inline: 4px; }
+  .hero__heading { font-size: 2rem; }
+  .hero__pillars { font-size: .58rem; }
+  .mobile-menu__link { min-height: 48px; font-size: 1.2rem; }
+  .product-card__actions { flex-direction: column; }
+  .product-card__quote { width: 100%; }
+}
+
+@media (hover: none) and (max-width: 767px) {
+  .product-card:hover, .fpanel:hover .fpanel__media, .relcard:hover .relcard__media,
+  .post-card:hover, .bcard:hover, .job-card:hover { transform: none; }
+  .product-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,.06); }
+  .product-card:hover .product-card__img { transform: none; }
+}

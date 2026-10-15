@@ -32,13 +32,22 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
 
   const links = menu.querySelectorAll('.mobile-menu__link');
   links.forEach(function (link, i) { link.style.setProperty('--i', i); });
+  let returnFocus = null;
 
   function setOpen(open) {
     burger.classList.toggle('is-open', open);
     menu.classList.toggle('is-open', open);
     burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
     menu.setAttribute('aria-hidden', String(!open));
     document.body.style.overflow = open ? 'hidden' : '';
+    if (open) {
+      returnFocus = document.activeElement;
+      window.setTimeout(function () { if (links[0]) links[0].focus(); }, 0);
+    } else if (returnFocus && typeof returnFocus.focus === 'function') {
+      returnFocus.focus();
+      returnFocus = null;
+    }
   }
 
   burger.addEventListener('click', function () {
@@ -54,6 +63,11 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && menu.classList.contains('is-open')) setOpen(false);
   });
+
+  // Si el teléfono rota a escritorio, libera el scroll y cierra el overlay.
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 920 && menu.classList.contains('is-open')) setOpen(false);
+  }, { passive: true });
 })();
 
 // ── SCROLL SUAVE con offset de la isla flotante ───────────────
@@ -348,9 +362,10 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   const hero = video.closest('.hero');
   const conn = navigator.connection || navigator.webkitConnection || navigator.mozConnection;
   const saveData = !!(conn && (conn.saveData || /(^|[^a-z])2g$/.test(conn.effectiveType || '')));
+  const mobile = window.matchMedia('(max-width: 767px)').matches;
 
   // Gates: reduced-motion o ahorro de datos → no se reproduce; queda el póster.
-  if (REDUCED.matches || saveData) {
+  if (REDUCED.matches || saveData || mobile) {
     if (hero) hero.classList.add('hero--static');
     return;
   }
