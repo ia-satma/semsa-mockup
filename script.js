@@ -418,9 +418,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     const href = p.hasStaticPage ? ('producto/' + esc(p.slug) + '.html') : ('producto-dinamico.html?slug=' + encodeURIComponent(p.slug));
     const sku = p.sku ? '<p class="pcard__sku">SKU: ' + esc(p.sku) + '</p>' : '';
     const desc = p.desc ? '<p class="product-card__spec">' + esc(p.desc) + '</p>' : '';
-    const badgeLabel = p.featured && (p.featuredLabel || p.featuredType)
-      ? (p.featuredLabel || 'Producto destacado')
-      : '';
+    const badgeLabel = p.featured ? (p.featuredLabel || 'Producto destacado') : '';
     const badge = badgeLabel
       ? '<span class="pcard__badge">' + esc(badgeLabel) + '</span>'
       : '';
