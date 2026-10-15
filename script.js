@@ -418,12 +418,15 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     const href = p.hasStaticPage ? ('producto/' + esc(p.slug) + '.html') : ('producto-dinamico.html?slug=' + encodeURIComponent(p.slug));
     const sku = p.sku ? '<p class="pcard__sku">SKU: ' + esc(p.sku) + '</p>' : '';
     const desc = p.desc ? '<p class="product-card__spec">' + esc(p.desc) + '</p>' : '';
+    const badge = p.featured && p.featuredLabel
+      ? '<span class="pcard__badge">' + esc(p.featuredLabel) + '</span>'
+      : '';
     const img = p.img
       ? '<img class="product-card__img" src="' + (p.img.charAt(0) === '/' ? esc(p.img) : 'assets/img/catalogo/' + esc(p.img)) + '" alt="' + esc(p.name) + '" loading="lazy" decoding="async" width="300" height="300">'
       : '';
     return '<article class="product-card">' +
       '<a class="product-card__media" href="' + href + '" aria-label="Ver ' + esc(p.name) + '">' + img +
-        '<span class="product-card__cat">' + esc(p.cat) + '</span>' +
+        '<span class="product-card__cat">' + esc(p.cat) + '</span>' + badge +
       '</a>' +
       '<div class="product-card__body">' +
         '<span class="pcard__brand">' + esc(p.brand) + '</span>' +
@@ -608,81 +611,97 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   });
 })();
 
-/* ─── HOME: "Lo más solicitado" — tira de paneles estilo Soluciones, rotación semanal ─── */
+/* ─── HOME: "Lo más solicitado" — datos editoriales del CMS ─── */
 (function initFeaturedStrip() {
   const strip = document.querySelector('[data-featured-strip]');
   if (!strip) return;
-  var POOL=[{"s":"polipasto-electrico-de-cadena-de-1-t-elk50-2nd100","n":"Polipasto Electrico de Cadena de 1 t. ELK50-2ND100 Ingersoll Rand","b":"Ingersoll Rand","d":"Manejo de Material","ds":"manejo-de-material","i":"polipasto-electrico-de-cadena-de-1-t-elk50-2nd100.webp","r":1},{"s":"bomba-de-diafragma-9","n":"Bomba neumática Aro 666100-322-C","b":"Aro","d":"Equipo de Bombeo","ds":"equipo-de-bombeo","i":"bomba-de-diafragma-9.webp"},{"s":"bomba-endura-flo","n":"Bomba Endura-Flo","b":"Graco","d":"Manejo de Fluidos","ds":"manejo-de-fluidos","i":"bomba-endura-flo.webp","r":1},{"s":"riv710-herramienta-a-bateria-para-remaches","n":"RIV710 Remachadora de Batería Rivit","b":"Rivit","d":"Ensamble","ds":"ensamble","i":"riv710-herramienta-a-bateria-para-remaches.webp"},{"s":"polipasto-neumatico-7776e-2c10-c6s","n":"Polipasto neumatico 7776E-2C10-C6S","b":"Aro","d":"Manejo de Material","ds":"manejo-de-material","i":"polipasto-neumatico-7776e-2c10-c6s.webp"},{"s":"pistola-de-impacto","n":"Pistola de impacto 2190Ti","b":"Ingersoll Rand","d":"Ensamble","ds":"ensamble","i":"pistola-de-impacto.webp","r":1},{"s":"dosificador","n":"Dosificador PR70","b":"Graco","d":"Manejo de Fluidos","ds":"manejo-de-fluidos","i":"dosificador.webp"},{"s":"bomba-de-grasa","n":"Bomba de grasa Aro LP2002-W","b":"Aro","d":"Equipo de Bombeo","ds":"equipo-de-bombeo","i":"bomba-de-grasa.webp"},{"s":"llave-de-impacto-inalambrico","n":"Llave de impacto inalambrico WT01","b":"Makita","d":"Ensamble","ds":"ensamble","i":"llave-de-impacto-inalambrico.webp"},{"s":"polipasto-electricos-de-cadena-2","n":"Polipasto eléctrico de Cadena 1-5 T. Serie S Hitachi","b":"Hitachi","d":"Manejo de Material","ds":"manejo-de-material","i":"polipasto-electricos-de-cadena-2.webp"},{"s":"binks-bombas-de-serie-maple-2","n":"Binks Bombas de Serie Maple 15/25","b":"Carlisle","d":"Manejo de Fluidos","ds":"manejo-de-fluidos","i":"binks-bombas-de-serie-maple-2.webp"},{"s":"aprietatuercas-angular","n":"Aprietatuercas angular 19RAA04AM2 Cleco","b":"Cleco","d":"Ensamble","ds":"ensamble","i":"aprietatuercas-angular.webp"},{"s":"bomba-de-aceite-af0409a13pfl1","n":"Bomba de aceite Aro AF0409A13PFL1","b":"Aro","d":"Equipo de Bombeo","ds":"equipo-de-bombeo","i":"bomba-de-aceite-af0409a13pfl1.webp"},{"s":"polipasto-electrico-de-cadena-de-2-t-elk100-2nd200","n":"Polipasto Electrico de Cadena de 2 t. ELK100-2ND200 Ingersoll Rand","b":"Ingersoll Rand","d":"Manejo de Material","ds":"manejo-de-material","i":"polipasto-electrico-de-cadena-de-2-t-elk100-2nd200.webp"},{"s":"sanispray-hp-65","n":"SaniSpray HP 65 25R792","b":"Graco","d":"Manejo de Fluidos","ds":"manejo-de-fluidos","i":"sanispray-hp-65.webp"},{"s":"cizalla-neumatica","n":"Cizalla neumatica 7802SA","b":"Ingersoll Rand","d":"Ensamble","ds":"ensamble","i":"cizalla-neumatica.webp"},{"s":"bomba-de-diafragma-27","n":"Bomba de diafragma Aro 66605J-3EB","b":"Aro","d":"Equipo de Bombeo","ds":"equipo-de-bombeo","i":"bomba-de-diafragma-27.webp"},{"s":"atornillador-de-impacto-inalambrico","n":"Atornillador de impacto inalambrico DTD154RFE","b":"Makita","d":"Ensamble","ds":"ensamble","i":"atornillador-de-impacto-inalambrico.webp"},{"s":"paquetes-de-bomba-triton","n":"Paquetes de bomba Triton","b":"Graco","d":"Manejo de Fluidos","ds":"manejo-de-fluidos","i":"paquetes-de-bomba-triton.webp"},{"s":"balancin-neumatico-bw035080","n":"Balancin neumatico BW035080","b":"Ingersoll Rand","d":"Manejo de Material","ds":"manejo-de-material","i":"balancin-neumatico-bw035080.webp"}];
-  const esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
-  function isoWeek(d) {
-    var t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-    var day = t.getUTCDay() || 7; t.setUTCDate(t.getUTCDate() + 4 - day);
-    var ys = new Date(Date.UTC(t.getUTCFullYear(), 0, 1));
-    return t.getUTCFullYear() * 53 + Math.ceil((((t - ys) / 86400000) + 1) / 7);
-  }
-  var key = 0; try { key = isoWeek(new Date()); } catch (e) { key = 0; }
-  var N = Math.min(10, POOL.length);
-  var start = (key * 3) % POOL.length; if (start < 0) start += POOL.length;
-  var picked = []; for (var i = 0; i < N; i++) picked.push(POOL[(start + i) % POOL.length]);
-
-  function panel(p) {
-    var rib = p.r ? '<span class="fpanel__ribbon">Más solicitado</span>' : '';
-    var href = 'producto/' + esc(p.s) + '.html';
-    return '<article class="fpanel" role="listitem">' +
-      '<a class="fpanel__link" href="' + href + '" aria-label="Ver ' + esc(p.n) + '"></a>' +
-      '<span class="fpanel__media"><img src="assets/img/catalogo/' + esc(p.i) + '" alt="' + esc(p.n) + '" loading="lazy" decoding="async">' + rib + '</span>' +
-      '<span class="fpanel__content">' +
-        '<span class="fpanel__brand">' + esc(p.b) + '</span>' +
-        '<span class="fpanel__name">' + esc(p.n) + '</span>' +
-        '<span class="fpanel__tag">' + esc(p.d) + '</span>' +
-        '<span class="fpanel__cta">' +
-          '<button type="button" class="fpanel__add" data-add-quote data-product="' + esc(p.n) + '">Agregar a cotización</button>' +
-          '<a class="fpanel__ficha" href="' + href + '">Ver ficha →</a>' +
-        '</span>' +
-      '</span>' +
-    '</article>';
-  }
-  strip.innerHTML = picked.map(panel).join('');
-
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+  var FALLBACK = [{"s":"polipasto-electrico-de-cadena-de-1-t-elk50-2nd100","n":"Polipasto Electrico de Cadena de 1 t. ELK50-2ND100 Ingersoll Rand","b":"Ingersoll Rand","d":"Manejo de Material","ds":"manejo-de-material","i":"polipasto-electrico-de-cadena-de-1-t-elk50-2nd100.webp","r":1},{"s":"bomba-de-diafragma-9","n":"Bomba neumática Aro 666100-322-C","b":"Aro","d":"Equipo de Bombeo","ds":"equipo-de-bombeo","i":"bomba-de-diafragma-9.webp"},{"s":"bomba-endura-flo","n":"Bomba Endura-Flo","b":"Graco","d":"Manejo de Fluidos","ds":"manejo-de-fluidos","i":"bomba-endura-flo.webp","r":1},{"s":"riv710-herramienta-a-bateria-para-remaches","n":"RIV710 Remachadora de Batería Rivit","b":"Rivit","d":"Ensamble","ds":"ensamble","i":"riv710-herramienta-a-bateria-para-remaches.webp"},{"s":"polipasto-neumatico-7776e-2c10-c6s","n":"Polipasto neumatico 7776E-2C10-C6S","b":"Aro","d":"Manejo de Material","ds":"manejo-de-material","i":"polipasto-neumatico-7776e-2c10-c6s.webp"},{"s":"pistola-de-impacto","n":"Pistola de impacto 2190Ti","b":"Ingersoll Rand","d":"Ensamble","ds":"ensamble","i":"pistola-de-impacto.webp","r":1},{"s":"dosificador","n":"Dosificador PR70","b":"Graco","d":"Manejo de Fluidos","ds":"manejo-de-fluidos","i":"dosificador.webp"},{"s":"bomba-de-grasa","n":"Bomba de grasa Aro LP2002-W","b":"Aro","d":"Equipo de Bombeo","ds":"equipo-de-bombeo","i":"bomba-de-grasa.webp"},{"s":"llave-de-impacto-inalambrico","n":"Llave de impacto inalambrico WT01","b":"Makita","d":"Ensamble","ds":"ensamble","i":"llave-de-impacto-inalambrico.webp"},{"s":"polipasto-electricos-de-cadena-2","n":"Polipasto eléctrico de Cadena 1-5 T. Serie S Hitachi","b":"Hitachi","d":"Manejo de Material","ds":"manejo-de-material","i":"polipasto-electricos-de-cadena-2.webp"},{"s":"binks-bombas-de-serie-maple-2","n":"Binks Bombas de Serie Maple 15/25","b":"Carlisle","d":"Manejo de Fluidos","ds":"manejo-de-fluidos","i":"binks-bombas-de-serie-maple-2.webp"},{"s":"aprietatuercas-angular","n":"Aprietatuercas angular 19RAA04AM2 Cleco","b":"Cleco","d":"Ensamble","ds":"ensamble","i":"aprietatuercas-angular.webp"},{"s":"bomba-de-aceite-af0409a13pfl1","n":"Bomba de aceite Aro AF0409A13PFL1","b":"Aro","d":"Equipo de Bombeo","ds":"equipo-de-bombeo","i":"bomba-de-aceite-af0409a13pfl1.webp"},{"s":"polipasto-electrico-de-cadena-de-2-t-elk100-2nd200","n":"Polipasto Electrico de Cadena de 2 t. ELK100-2ND200 Ingersoll Rand","b":"Ingersoll Rand","d":"Manejo de Material","ds":"manejo-de-material","i":"polipasto-electrico-de-cadena-de-2-t-elk100-2nd200.webp"},{"s":"sanispray-hp-65","n":"SaniSpray HP 65 25R792","b":"Graco","d":"Manejo de Fluidos","ds":"manejo-de-fluidos","i":"sanispray-hp-65.webp"},{"s":"cizalla-neumatica","n":"Cizalla neumatica 7802SA","b":"Ingersoll Rand","d":"Ensamble","ds":"ensamble","i":"cizalla-neumatica.webp"},{"s":"bomba-de-diafragma-27","n":"Bomba de diafragma Aro 66605J-3EB","b":"Aro","d":"Equipo de Bombeo","ds":"equipo-de-bombeo","i":"bomba-de-diafragma-27.webp"},{"s":"atornillador-de-impacto-inalambrico","n":"Atornillador de impacto inalambrico DTD154RFE","b":"Makita","d":"Ensamble","ds":"ensamble","i":"atornillador-de-impacto-inalambrico.webp"},{"s":"paquetes-de-bomba-triton","n":"Paquetes de bomba Triton","b":"Graco","d":"Manejo de Fluidos","ds":"manejo-de-fluidos","i":"paquetes-de-bomba-triton.webp"},{"s":"balancin-neumatico-bw035080","n":"Balancin neumatico BW035080","b":"Ingersoll Rand","d":"Manejo de Material","ds":"manejo-de-material","i":"balancin-neumatico-bw035080.webp"}];
   var wrap = strip.closest('[data-featured]');
   var prev = wrap ? wrap.querySelector('[data-fprev]') : null;
   var next = wrap ? wrap.querySelector('[data-fnext]') : null;
+  var timer = null, dir = 1, moved = false;
+
+  function isoWeek(date) {
+    var d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    var day = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - day);
+    var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+  }
+  function normalized(p) {
+    return {
+      s: p.slug || p.s || '', n: p.name || p.n || 'Producto SEMSA',
+      b: p.brand || p.b || 'SEMSA', d: p.division || p.d || '',
+      i: p.img || p.i || '', hasStaticPage: p.hasStaticPage,
+      label: p.featuredLabel || (p.r ? 'Más solicitado' : ''),
+      order: Number(p.featuredOrder || p.order || 0), featured: p.featured === true
+    };
+  }
+    function hrefFor(p) { return p.hasStaticPage ? ('producto/' + esc(p.s) + '.html') : ('producto-dinamico.html?slug=' + encodeURIComponent(p.s)); }
+  function render(rows) {
+    var source = (rows || []).filter(function (p) { return p.featured === true; }).map(normalized);
+    if (!source.length) source = FALLBACK.map(normalized);
+    source.sort(function (a, b) { return (a.order || 9999) - (b.order || 9999); });
+    var n = Math.min(10, source.length), start = source.length ? ((isoWeek(new Date()) * 3) % source.length) : 0;
+    var picked = [], i;
+    for (i = 0; i < n; i++) picked.push(source[(start + i) % source.length]);
+    strip.innerHTML = picked.map(function (p) {
+      var rib = p.label ? '<span class="fpanel__ribbon">' + esc(p.label) + '</span>' : '';
+      var image = p.i
+        ? '<img src="' + (p.i.charAt(0) === '/' ? esc(p.i) : 'assets/img/catalogo/' + esc(p.i)) + '" alt="' + esc(p.n) + '" loading="lazy" decoding="async">'
+        : '<span class="fpanel__placeholder" aria-hidden="true"></span>';
+      var href = hrefFor(p);
+      return '<article class="fpanel" role="listitem">' +
+        '<a class="fpanel__link" href="' + href + '" aria-label="Ver ' + esc(p.n) + '"></a>' +
+        '<span class="fpanel__media">' + image + rib + '</span>' +
+        '<span class="fpanel__content">' +
+          '<span class="fpanel__brand">' + esc(p.b) + '</span>' +
+          '<span class="fpanel__name">' + esc(p.n) + '</span>' +
+          '<span class="fpanel__tag">' + esc(p.d) + '</span>' +
+          '<span class="fpanel__cta">' +
+            '<button type="button" class="fpanel__add" data-add-quote data-product="' + esc(p.n) + '">Agregar a cotización</button>' +
+            '<a class="fpanel__ficha" href="' + href + '">Ver ficha →</a>' +
+          '</span>' +
+        '</span>' +
+      '</article>';
+    }).join('');
+    updateArrows();
+  }
   function stepW() { var c = strip.querySelector('.fpanel'); return c ? c.offsetWidth + 16 : 280; }
-  function go(dir) { strip.scrollBy({ left: dir * stepW(), behavior: 'smooth' }); }
-  if (prev) prev.addEventListener('click', function () { go(-1); });
-  if (next) next.addEventListener('click', function () { go(1); });
+  function go(direction) { strip.scrollBy({ left: direction * stepW(), behavior: 'smooth' }); }
   function updateArrows() {
     var max = strip.scrollWidth - strip.clientWidth - 4;
     if (prev) prev.disabled = strip.scrollLeft <= 4;
     if (next) next.disabled = strip.scrollLeft >= max;
   }
-  strip.addEventListener('scroll', updateArrows, { passive: true });
-  updateArrows();
-
-  var dir = 1, timer = null;
   function tick() {
     var max = strip.scrollWidth - strip.clientWidth - 4;
     if (max <= 0) return;
     if (strip.scrollLeft >= max) dir = -1; else if (strip.scrollLeft <= 4) dir = 1;
     go(dir);
   }
-  function startAuto() { if (REDUCED.matches) return; stopAuto(); timer = setInterval(tick, 3600); }
   function stopAuto() { if (timer) { clearInterval(timer); timer = null; } }
+  function startAuto() { if (REDUCED.matches) return; stopAuto(); timer = setInterval(tick, 3600); }
+  if (prev) prev.addEventListener('click', function () { go(-1); });
+  if (next) next.addEventListener('click', function () { go(1); });
+  strip.addEventListener('scroll', updateArrows, { passive: true });
   strip.addEventListener('mouseenter', stopAuto);
   strip.addEventListener('mouseleave', startAuto);
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? startAuto() : stopAuto(); }); }, { threshold: 0.15 }).observe(strip);
-  } else { startAuto(); }
-
-  var down = false, moved = false, sx = 0, sl = 0;
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? startAuto() : stopAuto(); }); }, { threshold: 0.15 }).observe(strip);
+  else startAuto();
+  var down = false, sx = 0, sl = 0;
   strip.addEventListener('pointerdown', function (e) { if (e.button !== 0) return; down = true; moved = false; sx = e.clientX; sl = strip.scrollLeft; });
   strip.addEventListener('pointermove', function (e) { if (!down) return; var dx = e.clientX - sx; if (Math.abs(dx) > 6) { moved = true; stopAuto(); } strip.scrollLeft = sl - dx; });
   function endDrag() { down = false; setTimeout(function () { moved = false; }, 0); startAuto(); }
   strip.addEventListener('pointerup', endDrag);
   strip.addEventListener('pointercancel', endDrag);
   strip.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+  fetch('data/catalogo.json?v=20261015235000', { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error('catalogo ' + r.status); return r.json(); })
+    .then(render)
+    .catch(function () { render([]); });
 })();
-
 /* ─── Accesos rápidos: preseleccionan el "tipo de necesidad" en el formulario ─── */
 (function initNeedChips() {
   const sel = document.getElementById('f-tipo');
