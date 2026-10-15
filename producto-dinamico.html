@@ -6,7 +6,7 @@
   <title>Producto | SEMSA</title>
   <meta name="description" content="Ficha de producto SEMSA">
   <meta name="theme-color" content="#001528">
-  <link rel="stylesheet" href="styles.css?v=20261015202000">
+  <link rel="stylesheet" href="styles.css?v=20261015205500">
 </head>
 <body>
   <a href="#producto-title" class="skip-link">Saltar al contenido</a>
@@ -57,12 +57,12 @@
     <p class="footer__satma">Desarrollado por <a href="https://satma.mx" target="_blank" rel="noopener noreferrer">SATMA</a></p>
   </div></footer>
   <a href="https://wa.me/5218117998535?text=Hola%20SEMSA%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20y%20una%20cotizaci%C3%B3n." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar a SEMSA por WhatsApp +52 81 1799 8535">WhatsApp</a>
-  <script src="public-bridge.js?v=20261015202000"></script>
+  <script src="public-bridge.js?v=20261015205500"></script>
   <script>
   (function(){
     var slug=new URLSearchParams(location.search).get('slug')||'';
     var esc=function(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
-    fetch('data/catalogo.json?v=20261015202000').then(function(r){return r.json()}).then(function(rows){
+    fetch('data/catalogo.json?v=20261015205500').then(function(r){return r.json()}).then(function(rows){
       var p=rows.find(function(x){return x.slug===slug});
       if(!p){document.title='Producto no encontrado | SEMSA';document.querySelector('[data-dynamic-title]').textContent='Producto no encontrado';return;}
       var name=p.name||'Producto',brand=p.brand||'SEMSA';
