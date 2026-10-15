@@ -1193,6 +1193,12 @@ a:hover > .photo-frame .photo-frame__img {
   text-transform: uppercase; padding: 5px 11px; border-radius: var(--r-pill);
   background: var(--semsa-green); color: #fff; box-shadow: 0 4px 12px rgba(0,70,139,.18);
 }
+.fpanel__placeholder {
+  width: 100%; height: 100%; display: block;
+  background:
+    linear-gradient(135deg, rgba(0,26,53,.96), rgba(0,70,139,.78)),
+    repeating-linear-gradient(135deg, rgba(255,255,255,.08) 0 1px, transparent 1px 12px);
+}
 .fpanel__content { position: relative; z-index: 3; padding: 14px 4px 0; display: flex; flex-direction: column; align-items: flex-start; pointer-events: none; }
 .fpanel__content > * { pointer-events: auto; }
 .fpanel__brand { font-family: var(--font-mono); font-size: .6rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--semsa-blue); }
@@ -2125,6 +2131,13 @@ a:hover > .photo-frame .photo-frame__img {
   text-transform: uppercase; padding: 4px 10px; border-radius: var(--r-pill);
   background: rgba(255,255,255,.88); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
   color: var(--semsa-blue-dark);
+}
+.pcard__badge {
+  position: absolute; top: 12px; right: 12px; z-index: 2;
+  max-width: calc(100% - 24px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-family: var(--font-mono); font-size: .58rem; font-weight: 700; letter-spacing: .05em;
+  text-transform: uppercase; padding: 5px 10px; border-radius: var(--r-pill);
+  background: var(--semsa-green); color: #fff; box-shadow: 0 4px 12px rgba(0,70,139,.18);
 }
 .product-card__body { display: flex; flex-direction: column; gap: 7px; padding: 18px 18px 20px; flex: 1; }
 .product-card__title { font-family: var(--font-h); font-weight: 800; font-size: 1.02rem; color: var(--semsa-blue-dark); line-height: 1.25; }
