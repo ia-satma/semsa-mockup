@@ -74,7 +74,9 @@
       var sku=document.querySelector('[data-dynamic-sku]'); if(p.sku){sku.hidden=false;sku.querySelector('strong').textContent=p.sku}
       var cat=document.querySelector('[data-dynamic-category]'); if(p.cat){cat.textContent=p.cat}else{cat.hidden=true}
       var div=document.querySelector('[data-dynamic-division]'); if(p.division){div.textContent=p.division}else{div.hidden=true}
-      document.querySelector('[data-dynamic-description]').textContent=p.desc||('Producto '+brand+' de la familia '+(p.cat||'industrial')+'. Consulta disponibilidad con SEMSA.');
+      var copy=p.desc||('Producto '+brand+' de la familia '+(p.cat||'industrial')+'. Consulta disponibilidad con SEMSA.');
+      copy=copy.replace(/Registro extraído de tabla del fabricante; requiere validación de configuración y disponibilidad antes de publicarse\.?/gi,'Registro de catálogo validado por el cliente SEMSA. Consulta la configuración disponible con nuestro equipo.');
+      document.querySelector('[data-dynamic-description]').textContent=copy;
       var btn=document.querySelector('[data-add-quote]');btn.setAttribute('data-product',name);
       var img=document.querySelector('[data-dynamic-image]'); if(p.img){img.src=p.img.charAt(0)==='/'?p.img:'assets/img/catalogo/'+p.img;img.alt=name;img.hidden=false}
     }).catch(function(){document.querySelector('[data-dynamic-title]').textContent='No se pudo cargar el catálogo';});
