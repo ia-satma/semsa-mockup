@@ -36,6 +36,7 @@
         <div class="prod__info">
           <span class="pcard__brand prod__brand" data-dynamic-brand>SEMSA</span>
           <h1 id="producto-title" class="prod__title" data-dynamic-title>Producto</h1>
+          <span class="prod__featured" data-dynamic-featured hidden></span>
           <p class="prod__sku" data-dynamic-sku hidden>No. de parte · <strong></strong></p>
           <div class="prod__tags"><span class="prod__tag" data-dynamic-category></span><span class="prod__tag prod__tag--div" data-dynamic-division></span></div>
           <p class="prod__desc" data-dynamic-description>Consulta la información del producto y solicita una cotización.</p>
@@ -70,6 +71,7 @@
       document.querySelector('meta[name="description"]').setAttribute('content',(p.desc||name)+' | SEMSA');
       document.querySelectorAll('[data-dynamic-name]').forEach(function(e){e.textContent=name});
       document.querySelector('[data-dynamic-title]').textContent=name;
+      var featured=document.querySelector('[data-dynamic-featured]'); if (featured && p.featured && p.featuredLabel) { featured.textContent=p.featuredLabel; featured.hidden=false; }
       document.querySelectorAll('[data-dynamic-brand]').forEach(function(e){e.textContent=brand});
       var sku=document.querySelector('[data-dynamic-sku]'); if(p.sku){sku.hidden=false;sku.querySelector('strong').textContent=p.sku}
       var cat=document.querySelector('[data-dynamic-category]'); if(p.cat){cat.textContent=p.cat}else{cat.hidden=true}
