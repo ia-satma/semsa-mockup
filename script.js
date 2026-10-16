@@ -398,7 +398,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   });
 })();
 
-// ── CATÁLOGO DINÁMICO: 496 productos desde data/catalogo.json (catalogo.html) ──
+// ── CATÁLOGO DINÁMICO: 7,675 productos desde data/catalogo.json (catalogo.html) ──
 (function initCatalog() {
   const root = document.querySelector('[data-catalog]');
   if (!root) return;
@@ -572,7 +572,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
 
   fetch('/api/public/catalogo')
     .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .catch(function () { return fetch('data/catalogo.json').then(function (r) { return r.json(); }); })
+    .catch(function () { return fetch('data/catalogo.json?v=20261016122937', { cache: 'no-store' }).then(function (r) { return r.json(); }); })
     .then(function (data) {
       all = data;
       const vM = {}, vC = {}, vA = {}, vD = {};
@@ -713,7 +713,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   strip.addEventListener('pointerup', endDrag);
   strip.addEventListener('pointercancel', endDrag);
   strip.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
-  fetch('data/catalogo.json?v=20261015235000', { cache: 'no-store' })
+  fetch('data/catalogo.json?v=20261016122937', { cache: 'no-store' })
     .then(function (r) { if (!r.ok) throw new Error('catalogo ' + r.status); return r.json(); })
     .then(render)
     .catch(function () { render([]); });
