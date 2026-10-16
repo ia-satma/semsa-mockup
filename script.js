@@ -430,7 +430,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
 
   function cardHTML(p) {
     const isAdded = added.has(p.name);
-    const href = p.hasStaticPage ? ('producto/' + esc(p.slug) + '.html') : ('producto-dinamico.html?slug=' + encodeURIComponent(p.slug));
+    const href = 'producto/' + esc(p.slug) + '.html';
     const sku = p.sku ? '<p class="pcard__sku">SKU: ' + esc(p.sku) + '</p>' : '';
     const desc = p.desc ? '<p class="product-card__spec">' + esc(p.desc) + '</p>' : '';
     const badgeLabel = p.featured ? (p.featuredLabel || 'Producto destacado') : '';
@@ -570,9 +570,9 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     });
   })();
 
-  fetch('data/catalogo.json?v=20261015222000')
+  fetch('/api/public/catalogo')
     .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .catch(function () { return fetch('/api/public/catalogo').then(function (r) { return r.json(); }); })
+    .catch(function () { return fetch('data/catalogo.json').then(function (r) { return r.json(); }); })
     .then(function (data) {
       all = data;
       const vM = {}, vC = {}, vA = {}, vD = {};
@@ -654,7 +654,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
       order: Number(p.featuredOrder || p.order || 0), featured: p.featured === true
     };
   }
-    function hrefFor(p) { return p.hasStaticPage ? ('producto/' + esc(p.s) + '.html') : ('producto-dinamico.html?slug=' + encodeURIComponent(p.s)); }
+    function hrefFor(p) { return 'producto/' + esc(p.s) + '.html'; }
   function render(rows) {
     var source = (rows || []).filter(function (p) { return p.featured === true; }).map(normalized);
     if (!source.length) source = FALLBACK.map(normalized);
