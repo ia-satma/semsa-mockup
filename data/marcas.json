@@ -1,0 +1,186 @@
+[
+  {
+    "slug": "ingersoll-rand",
+    "name": "Ingersoll Rand",
+    "autorizada": true,
+    "logo": "/assets/img/brands/ingersoll-rand.svg",
+    "oferta": "Polipastos neumáticos y eléctricos · herramienta neumática de ensamble. Centro de Servicio Autorizado: refacciones originales, garantía de fábrica y servicio certificado.",
+    "count": 258
+  },
+  {
+    "slug": "aro",
+    "name": "ARO",
+    "autorizada": true,
+    "logo": "/assets/img/brands/aro.svg",
+    "oferta": "Bombas neumáticas de diafragma y pistón para manejo de fluidos. Centro de Servicio Autorizado: refacciones originales, garantía de fábrica y servicio certificado.",
+    "count": 335
+  },
+  {
+    "slug": "cleco",
+    "name": "Cleco",
+    "autorizada": true,
+    "logo": "/assets/img/brands/cleco.svg",
+    "oferta": "Herramienta de ensamble y torque controlado. Centro de Servicio Autorizado: refacciones originales, garantía de fábrica y servicio certificado.",
+    "count": 189
+  },
+  {
+    "slug": "graco",
+    "name": "Graco",
+    "autorizada": true,
+    "logo": "/assets/img/brands/graco.svg",
+    "oferta": "Equipos de pintura, recubrimiento y dosificación industrial. Centro de Servicio Autorizado: refacciones originales, garantía de fábrica y servicio certificado.",
+    "count": 108
+  },
+  {
+    "slug": "carlisle",
+    "name": "Carlisle (Binks)",
+    "autorizada": true,
+    "logo": "/assets/img/brands/binks.svg",
+    "oferta": "Pintura y recubrimiento industrial — Binks · DeVilbiss · BGK. Centro de Servicio Autorizado: refacciones originales, garantía de fábrica y servicio certificado.",
+    "count": 57
+  },
+  {
+    "slug": "sames",
+    "name": "Sames",
+    "autorizada": true,
+    "logo": "/assets/img/brands/sames.svg",
+    "oferta": "Pistolas y equipos de recubrimiento y dosificación automatizada. Centro de Servicio Autorizado: refacciones originales, garantía de fábrica y servicio certificado.",
+    "count": 20
+  },
+  {
+    "slug": "rivit",
+    "name": "Rivit",
+    "autorizada": true,
+    "logo": "/assets/img/brands/rivit.svg",
+    "oferta": "Remachadoras e insertadoras manuales, a batería e hidroneumáticas. Centro de Servicio Autorizado: refacciones originales, garantía de fábrica y servicio certificado.",
+    "count": 1594
+  },
+  {
+    "slug": "apex",
+    "name": "Apex Tool Group",
+    "autorizada": false,
+    "logo": "/assets/img/brands/apex.svg",
+    "oferta": "Herramienta de ensamble · dados, puntas y accesorios.",
+    "count": 3512
+  },
+  {
+    "slug": "desoutter",
+    "name": "Desoutter",
+    "autorizada": false,
+    "logo": null,
+    "oferta": "Herramienta de apriete controlado, nutrunners y sistemas conectados.",
+    "count": 0
+  },
+  {
+    "slug": "kolver",
+    "name": "Kolver",
+    "autorizada": false,
+    "logo": "/assets/img/brands/kolver.svg",
+    "oferta": null,
+    "count": 265
+  },
+  {
+    "slug": "gearwrench",
+    "name": "GearWrench",
+    "autorizada": false,
+    "logo": "/assets/img/brands/gearwrench.svg",
+    "oferta": null,
+    "count": 16
+  },
+  {
+    "slug": "weller",
+    "name": "Weller",
+    "autorizada": false,
+    "logo": "/assets/img/brands/weller.svg",
+    "oferta": null,
+    "count": 2
+  },
+  {
+    "slug": "crane",
+    "name": "Crane",
+    "autorizada": false,
+    "logo": "/assets/img/brands/crane.svg",
+    "oferta": null,
+    "count": 340
+  },
+  {
+    "slug": "makita",
+    "name": "Makita",
+    "autorizada": false,
+    "logo": "/assets/img/brands/makita.svg",
+    "oferta": "Herramienta eléctrica industrial.",
+    "count": 178
+  },
+  {
+    "slug": "durofix",
+    "name": "Durofix",
+    "autorizada": false,
+    "logo": "/assets/img/brands/durofix.svg",
+    "oferta": "Herramienta a batería compacta.",
+    "count": 93
+  },
+  {
+    "slug": "estic",
+    "name": "ESTIC",
+    "autorizada": false,
+    "logo": "/assets/img/brands/estic.svg",
+    "oferta": "Husillos inteligentes, servoprensa y robots de atornillado.",
+    "count": 629
+  },
+  {
+    "slug": "lubbering",
+    "name": "Lübbering",
+    "autorizada": false,
+    "logo": "/assets/img/brands/lubbering.svg",
+    "oferta": "Cabezales de atornillado de precisión.",
+    "count": 28
+  },
+  {
+    "slug": "hitachi",
+    "name": "Hitachi",
+    "autorizada": false,
+    "logo": "/assets/img/brands/hitachi.svg",
+    "oferta": "Herramienta eléctrica y elevación.",
+    "count": 7
+  },
+  {
+    "slug": "zimmerman",
+    "name": "Zimmerman",
+    "autorizada": false,
+    "logo": null,
+    "oferta": "Balancines neumáticos y sistemas de riel para manejo de materiales.",
+    "count": 105
+  },
+  {
+    "slug": "aeromotive",
+    "name": "Aeromotive",
+    "autorizada": false,
+    "logo": "/assets/img/brands/aeromotive.svg",
+    "oferta": "Sistemas de combustible de alto desempeño.",
+    "count": 4
+  },
+  {
+    "slug": "endo",
+    "name": "Endo",
+    "autorizada": false,
+    "logo": "/assets/img/brands/endo.png",
+    "oferta": "Balancines de resorte y de manguera para estaciones de trabajo.",
+    "count": 49
+  },
+  {
+    "slug": "cm",
+    "name": "CM",
+    "autorizada": false,
+    "logo": "/assets/img/brands/cm.svg",
+    "oferta": "Polipastos eléctricos, manuales y de palanca.",
+    "count": 121
+  },
+  {
+    "slug": "yale",
+    "name": "Yale",
+    "autorizada": false,
+    "logo": "/assets/img/brands/yale.svg",
+    "oferta": "Polipastos manuales y de palanca para manejo de materiales.",
+    "count": 86
+  }
+]
