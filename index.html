@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=e4951286fadb">
-  <link rel="preload" as="image" href="assets/video/hero-loop-poster.jpg" fetchpriority="high">
+  <link rel="stylesheet" href="styles.css?v=d598e85fbe51">
+  <link rel="preload" as="image" href="assets/img/editorial-20261022/taller.webp" data-bind-href="home.heroPoster" fetchpriority="high">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SEMSA — Servicios Especializados de Monterrey","alternateName":"SEMSA","url":"https://ia-satma.github.io/semsa-mockup/","logo":"https://ia-satma.github.io/semsa-mockup/assets/logo-semsa-02.png","description":"Distribuidor de herramienta y equipo industrial y Centro de Servicio Autorizado de 7 marcas —Ingersoll Rand, ARO, Cleco, Graco, Binks, Sames y Rivit—, con red de Centros de Servicio en Monterrey, Saltillo, Querétaro y Tijuana. Desde 1986.","foundingDate":"1986","areaServed":"MX","address":{"@type":"PostalAddress","streetAddress":"Moctezuma 1117, Col. Independencia","addressLocality":"Monterrey","addressRegion":"N.L.","postalCode":"64720","addressCountry":"MX"},"telephone":"+528183421551","contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+528117998535","areaServed":"MX","availableLanguage":"es"},"sameAs":["https://semsamty.com"]}</script>
 </head>
 <body>
@@ -116,11 +116,11 @@
          HERO
     ============================================================ -->
     <!-- === HERO — VIDEO con titular centrado === -->
-    <section class="hero hero--center" id="hero" aria-labelledby="hero-heading" data-section="home.hero">
+    <section class="hero hero--center" id="hero" aria-labelledby="hero-heading" data-section="home.hero" data-bind-bg="home.heroPoster" style="background-image:url('assets/img/editorial-20261022/taller.webp')">
       <video class="hero__video" muted loop playsinline preload="metadata"
-             poster="assets/video/hero-loop-poster.jpg" data-bind-poster="home.heroPoster" width="1280" height="720"
+             poster="assets/img/editorial-20261022/taller.webp" data-bind-poster="home.heroPoster" width="1280" height="720"
              aria-hidden="true" tabindex="-1" disablepictureinpicture disableremoteplayback data-hero-video>
-        <source src="assets/video/hero-loop.mp4" data-bind-src="home.heroVideo" type="video/mp4">
+        <source src="assets/video/taller-20261022.mp4" data-bind-src="home.heroVideo" type="video/mp4">
       </video>
       <div class="hero__overlay" aria-hidden="true"></div>
       <div class="hero__grid" aria-hidden="true"></div>
@@ -164,12 +164,12 @@
     </section>
 
     <!-- === MENÚ ANIMADO — 4 columnas (soluciones por proceso) === -->
-    <section class="hero-menu" aria-label="Soluciones por proceso" data-section="home.homeMenu">
+    <section class="hero-menu" id="soluciones-por-proceso" aria-label="Soluciones por proceso" data-section="home.homeMenu">
       <div class="panels" data-hero-panels>
         <p class="sol-label" data-bind="home.heroMenuLabel">Soluciones <b>· elija su proceso</b></p>
 
         <a class="hp p1 on" href="catalogo.html?division=manejo-de-fluidos" aria-label="Manejo de Fluidos — ver soluciones">
-          <span class="hp__media" style="background-image:url('assets/img/hero-col-pintura.webp')" data-bind-bg="home.heroCol1"></span>
+          <span class="hp__media" style="background-image:url('assets/img/editorial-20261022/pintura.webp')" data-bind-bg="home.heroCol1"></span>
           <span class="hp__grid" aria-hidden="true"></span>
           <span class="hp__shade" aria-hidden="true"></span>
           <span class="hp__idx" aria-hidden="true">01</span>
@@ -181,7 +181,7 @@
         </a>
 
         <a class="hp p2" href="catalogo.html?division=ensamble" aria-label="Ensamble — ver soluciones">
-          <span class="hp__media" style="background-image:url('assets/img/hero-col-herramientas.webp')" data-bind-bg="home.heroCol2"></span>
+          <span class="hp__media" style="background-image:url('assets/img/editorial-20261022/ensamble.webp')" data-bind-bg="home.heroCol2"></span>
           <span class="hp__grid" aria-hidden="true"></span>
           <span class="hp__shade" aria-hidden="true"></span>
           <span class="hp__idx" aria-hidden="true">02</span>
@@ -193,7 +193,7 @@
         </a>
 
         <a class="hp p3" href="catalogo.html?division=equipo-de-bombeo" aria-label="Equipo de Bombeo — ver soluciones">
-          <span class="hp__media" style="background-image:url('assets/img/hero-col-fluidos.webp')" data-bind-bg="home.heroCol3"></span>
+          <span class="hp__media" style="background-image:url('assets/img/editorial-20261022/bombeo.webp')" data-bind-bg="home.heroCol3"></span>
           <span class="hp__grid" aria-hidden="true"></span>
           <span class="hp__shade" aria-hidden="true"></span>
           <span class="hp__idx" aria-hidden="true">03</span>
@@ -205,7 +205,7 @@
         </a>
 
         <a class="hp p4" href="catalogo.html?division=manejo-de-material" aria-label="Manejo de Material — ver soluciones">
-          <span class="hp__media" style="background-image:url('assets/img/hero-col-polipastos.webp')" data-bind-bg="home.heroCol4"></span>
+          <span class="hp__media" style="background-image:url('assets/img/editorial-20261022/material.webp')" data-bind-bg="home.heroCol4"></span>
           <span class="hp__grid" aria-hidden="true"></span>
           <span class="hp__shade" aria-hidden="true"></span>
           <span class="hp__idx" aria-hidden="true">04</span>
@@ -217,7 +217,7 @@
         </a>
 
         <a class="hp p5" href="servicio.html" aria-label="Servicio Especializado — ingeniería, integración y servicio técnico">
-          <span class="hp__media" style="background-image:url('assets/img/render-laboratorio.webp')" data-bind-bg="home.heroCol5"></span>
+          <span class="hp__media" style="background-image:url('assets/img/editorial-20261022/servicio.webp')" data-bind-bg="home.heroCol5"></span>
           <span class="hp__grid" aria-hidden="true"></span>
           <span class="hp__shade" aria-hidden="true"></span>
           <span class="hp__idx" aria-hidden="true">05</span>
@@ -255,7 +255,7 @@
          EL RESPALDO — RED DE CENTROS DE SERVICIO AUTORIZADOS
     ============================================================ -->
     <section class="section atex atex--bleed section--bleed" id="atex" aria-labelledby="atex-heading" data-section="home.atex">
-      <img class="section-bleed__img" src="assets/img/bg-atex.webp" data-bind-src="home.atexBg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="section-bleed__img" src="assets/img/editorial-20261022/bombeo.webp" data-bind-src="home.atexBg" alt="" aria-hidden="true" loading="lazy" decoding="async">
       <div class="container atex__inner--bleed">
         <div class="atex__text" data-reveal="left">
           <h2 id="atex-heading" class="atex__heading" data-bind="home.atexHeading">
@@ -535,7 +535,7 @@
         <!-- Bento fotográfico de industrias (Automotriz = hero · Química = feature) -->
         <div class="industries-bento" data-reveal>
           <article class="industry-tile industry-tile--hero">
-            <img class="industry-tile__img" src="assets/img/ind-automotriz.webp" alt="Línea de ensamble automotriz con brazos robóticos de soldadura" width="1200" height="800" loading="lazy" decoding="async">
+            <img class="industry-tile__img" src="assets/img/editorial-20261022/ind-automotriz.webp" alt="Apriete de componentes en una estación de ensamble de autopartes" width="1200" height="800" loading="lazy" decoding="async">
             <div class="industry-tile__overlay" aria-hidden="true"></div>
             <a class="industry-tile__link" href="industria-automotriz.html" aria-label="Ver soluciones para la industria automotriz"></a>
             <div class="industry-tile__body">
@@ -544,7 +544,7 @@
             </div>
           </article>
           <article class="industry-tile">
-            <img class="industry-tile__img" src="assets/img/ind-ceramica.webp" alt="Horno industrial de cerámica con piezas en banda" width="600" height="450" loading="lazy" decoding="async">
+            <img class="industry-tile__img" src="assets/img/editorial-20261022/ind-ceramica.webp" alt="Equipo de bombeo y aplicación de esmalte en una línea de piezas cerámicas" width="600" height="450" loading="lazy" decoding="async">
             <div class="industry-tile__overlay" aria-hidden="true"></div>
             <a class="industry-tile__link" href="industrias.html" aria-label="Ver soluciones por industria"></a>
             <div class="industry-tile__body">
@@ -553,7 +553,7 @@
             </div>
           </article>
           <article class="industry-tile">
-            <img class="industry-tile__img" src="assets/img/ind-vidrio.webp" alt="Horno de fundición de vidrio en planta industrial" width="600" height="450" loading="lazy" decoding="async">
+            <img class="industry-tile__img" src="assets/img/editorial-20261022/ind-vidrio.webp" alt="Procesamiento de vidrio plano con mesas de rodillos y sistema de refrigeración" width="600" height="450" loading="lazy" decoding="async">
             <div class="industry-tile__overlay" aria-hidden="true"></div>
             <a class="industry-tile__link" href="industrias.html" aria-label="Ver soluciones por industria"></a>
             <div class="industry-tile__body">
@@ -562,7 +562,7 @@
             </div>
           </article>
           <article class="industry-tile">
-            <img class="industry-tile__img" src="assets/img/ind-madera.webp" alt="Máquina CNC cortando un panel de madera con aserrín en el aire" width="600" height="450" loading="lazy" decoding="async">
+            <img class="industry-tile__img" src="assets/img/editorial-20261022/ind-madera.webp" alt="Aplicación de acabado sobre puertas de madera en una cabina de pintura" width="600" height="450" loading="lazy" decoding="async">
             <div class="industry-tile__overlay" aria-hidden="true"></div>
             <a class="industry-tile__link" href="industrias.html" aria-label="Ver soluciones por industria"></a>
             <div class="industry-tile__body">
@@ -571,7 +571,7 @@
             </div>
           </article>
           <article class="industry-tile industry-tile--feature">
-            <img class="industry-tile__img" src="assets/img/ind-quimica.webp" alt="Planta petroquímica con tuberías de acero y equipo a prueba de explosión" width="1200" height="600" loading="lazy" decoding="async">
+            <img class="industry-tile__img" src="assets/img/editorial-20261022/ind-quimica.webp" alt="Estación de transferencia de fluidos con bomba neumática y tambores cerrados" width="1200" height="600" loading="lazy" decoding="async">
             <div class="industry-tile__overlay" aria-hidden="true"></div>
             <a class="industry-tile__link" href="industria-quimica.html" aria-label="Ver soluciones para química y petroquímica"></a>
             <div class="industry-tile__body">
@@ -580,7 +580,7 @@
             </div>
           </article>
           <article class="industry-tile">
-            <img class="industry-tile__img" src="assets/img/ind-petroleo.webp" alt="Instalación de petróleo y gas con cabezal de pozo y tuberías" width="600" height="450" loading="lazy" decoding="async">
+            <img class="industry-tile__img" src="assets/img/editorial-20261022/ind-petroleo.webp" alt="Bomba de pistón y carrete de manguera para suministro de lubricante en taller" width="600" height="450" loading="lazy" decoding="async">
             <div class="industry-tile__overlay" aria-hidden="true"></div>
             <a class="industry-tile__link" href="industrias.html" aria-label="Ver soluciones por industria"></a>
             <div class="industry-tile__body">
@@ -589,7 +589,7 @@
             </div>
           </article>
           <article class="industry-tile">
-            <img class="industry-tile__img" src="assets/img/ind-metalmecanica.webp" alt="Interior de acería con colada de metal fundido y chispas" width="600" height="450" loading="lazy" decoding="async">
+            <img class="industry-tile__img" src="assets/img/editorial-20261022/ind-metalmecanica.webp" alt="Apriete de una pieza mecanizada con herramienta neumática en banco de trabajo" width="600" height="450" loading="lazy" decoding="async">
             <div class="industry-tile__overlay" aria-hidden="true"></div>
             <a class="industry-tile__link" href="industrias.html" aria-label="Ver soluciones por industria"></a>
             <div class="industry-tile__body">
@@ -598,7 +598,7 @@
             </div>
           </article>
           <article class="industry-tile">
-            <img class="industry-tile__img" src="assets/img/ind-manufactura.webp" alt="Piso de planta de manufactura con líneas de producción ordenadas" width="600" height="450" loading="lazy" decoding="async">
+            <img class="industry-tile__img" src="assets/img/editorial-20261022/ind-manufactura.webp" alt="Estaciones de ensamble con herramientas neumáticas, balanceadores y componentes" width="600" height="450" loading="lazy" decoding="async">
             <div class="industry-tile__overlay" aria-hidden="true"></div>
             <a class="industry-tile__link" href="industria-manufactura.html" aria-label="Ver soluciones para manufactura general"></a>
             <div class="industry-tile__body">
