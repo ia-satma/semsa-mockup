@@ -443,6 +443,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     return '<article class="product-card">' +
       '<a class="product-card__media" href="' + href + '" aria-label="Ver ' + esc(p.name) + '">' + img +
         '<span class="product-card__cat">' + esc(p.cat) + '</span>' + badge +
+        (p.img ? '<small class="product-image-note product-image-note--overlay" data-product-image-note>Imagen de referencia.</small>' : '') +
       '</a>' +
       '<div class="product-card__body">' +
         '<span class="pcard__brand">' + esc(p.brand) + '</span>' +
@@ -670,7 +671,8 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
       var href = hrefFor(p);
       return '<article class="fpanel" role="listitem">' +
         '<a class="fpanel__link" href="' + href + '" aria-label="Ver ' + esc(p.n) + '"></a>' +
-        '<span class="fpanel__media">' + image + rib + '</span>' +
+        '<span class="fpanel__media">' + image + rib +
+          (p.i ? '<small class="product-image-note product-image-note--overlay" data-product-image-note>Imagen de referencia.</small>' : '') + '</span>' +
         '<span class="fpanel__content">' +
           '<span class="fpanel__brand">' + esc(p.b) + '</span>' +
           '<span class="fpanel__name">' + esc(p.n) + '</span>' +

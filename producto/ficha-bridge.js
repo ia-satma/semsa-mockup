@@ -24,7 +24,36 @@
       if (title && p.name) title.textContent = p.name;
       if (sku && p.sku) sku.textContent = p.sku;
       if (desc && p.desc) desc.textContent = p.desc;
-      if (img && p.img) { img.src = '../assets/img/catalogo/' + p.img; img.alt = p.name || img.alt; }
+      if (p.img) {
+        var media = root.querySelector('.prod__media');
+        if (media && !img) {
+          img = document.createElement('img');
+          img.className = 'prod__img';
+          img.width = img.height = 640;
+          img.decoding = 'async';
+          media.appendChild(img);
+        }
+        if (img) {
+          img.src = /^https?:\/\//i.test(p.img) || p.img.charAt(0) === '/' ? p.img : '../assets/img/catalogo/' + p.img;
+          img.alt = p.name || img.alt;
+          var placeholder = media.querySelector('.prod__noimage');
+          if (placeholder) placeholder.remove();
+          var figure = media.parentElement;
+          if (!figure.classList.contains('prod__visual')) {
+            figure = document.createElement('figure');
+            figure.className = 'prod__visual';
+            media.parentNode.insertBefore(figure, media);
+            figure.appendChild(media);
+          }
+          if (!figure.querySelector('[data-product-image-note]')) {
+            var note = document.createElement('figcaption');
+            note.className = 'product-image-note';
+            note.setAttribute('data-product-image-note', '');
+            note.textContent = 'Imagen de referencia. La configuración final puede variar según el modelo cotizado.';
+            figure.appendChild(note);
+          }
+        }
+      }
 
       // Ficha técnica PDF (si el admin subió una): añade/actualiza un botón de descarga
       // dentro del bloque de acciones, sin tocar el HTML estático si no hay PDF.
