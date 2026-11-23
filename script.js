@@ -443,7 +443,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     return '<article class="product-card">' +
       '<a class="product-card__media" href="' + href + '" aria-label="Ver ' + esc(p.name) + '">' + img +
         '<span class="product-card__cat">' + esc(p.cat) + '</span>' + badge +
-        (p.img ? '<small class="product-image-note product-image-note--overlay" data-product-image-note>Imagen de referencia.</small>' : '') +
+        (p.img ? '<small class="product-image-note product-image-note--overlay" data-product-image-note>' + (p.imageIsBrandLogo ? 'Logotipo de marca.' : 'Imagen de referencia.') + '</small>' : '') +
       '</a>' +
       '<div class="product-card__body">' +
         '<span class="pcard__brand">' + esc(p.brand) + '</span>' +
