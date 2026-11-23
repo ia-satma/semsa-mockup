@@ -438,7 +438,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
       ? '<span class="pcard__badge">' + esc(badgeLabel) + '</span>'
       : '';
     const img = p.img
-      ? '<img class="product-card__img" src="' + (p.img.charAt(0) === '/' ? esc(p.img) : 'assets/img/catalogo/' + esc(p.img)) + '" alt="' + esc(p.name) + '" loading="lazy" decoding="async" width="300" height="300">'
+      ? '<img class="product-card__img" src="' + (p.img.charAt(0) === '/' || p.img.indexOf('assets/') === 0 ? esc(p.img) : 'assets/img/catalogo/' + esc(p.img)) + '" alt="' + esc(p.name) + '" loading="lazy" decoding="async" width="300" height="300">'
       : '';
     return '<article class="product-card">' +
       '<a class="product-card__media" href="' + href + '" aria-label="Ver ' + esc(p.name) + '">' + img +
