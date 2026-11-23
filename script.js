@@ -9,6 +9,56 @@
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)');
 const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
 
+// ── POPULARIDAD: eventos anónimos y agrupados ─────────────────
+// El CMS recibe solo slugs y contadores; nunca se envía el texto de búsqueda,
+// IP, cookie ni identificador de sesión. En una instalación separada se puede
+// definir window.__SEMSA_POPULARITY_ENDPOINT con la URL del CMS.
+let pendingCatalogEvents = [];
+let catalogEventsTimer = null;
+
+function flushCatalogEvents() {
+  if (catalogEventsTimer) { clearTimeout(catalogEventsTimer); catalogEventsTimer = null; }
+  if (!pendingCatalogEvents.length) return;
+  const events = pendingCatalogEvents.splice(0, 50);
+  const endpoint = typeof window.__SEMSA_POPULARITY_ENDPOINT === 'string' && window.__SEMSA_POPULARITY_ENDPOINT.trim()
+    ? window.__SEMSA_POPULARITY_ENDPOINT.trim()
+    : '/api/public/catalog-events';
+  const body = JSON.stringify({ events: events });
+  try {
+    const blob = new Blob([body], { type: 'application/json' });
+    if (navigator.sendBeacon && navigator.sendBeacon(endpoint, blob)) return;
+  } catch (e) { /* fallback below */ }
+  try {
+    fetch(endpoint, {
+      method: 'POST', credentials: 'omit', keepalive: true,
+      headers: { 'Content-Type': 'application/json' }, body: body,
+    }).catch(function () {});
+  } catch (e) { /* El catálogo estático sigue funcionando sin el endpoint. */ }
+}
+
+function recordCatalogEvents(events) {
+  if (!Array.isArray(events) || !events.length) return;
+  pendingCatalogEvents = pendingCatalogEvents.concat(events).slice(-50);
+  if (!catalogEventsTimer) catalogEventsTimer = window.setTimeout(flushCatalogEvents, 250);
+}
+
+document.addEventListener('visibilitychange', function () { if (document.hidden) flushCatalogEvents(); });
+window.addEventListener('pagehide', flushCatalogEvents);
+
+function trackProductView() {
+  const match = window.location.pathname.match(/\/producto\/([a-z0-9-]+)(?:\.html)?\/?$/i);
+  if (!match) return;
+  const slug = match[1].toLowerCase();
+  const key = 'semsa_product_view_' + slug;
+  try {
+    if (sessionStorage.getItem(key)) return;
+    sessionStorage.setItem(key, '1');
+  } catch (e) { /* sin storage, se registra una vez por carga */ }
+  recordCatalogEvents([{ kind: 'view', productSlugs: [slug] }]);
+}
+
+trackProductView();
+
 // ── NAV ISLAND: estado al hacer scroll ────────────────────────
 (function initNavScroll() {
   const nav = document.querySelector('[data-nav]');
@@ -414,6 +464,7 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
 
   let all = [], filtered = [], shown = 0;
   let fMarca = '', fCat = '', fApp = '', fDiv = '', fQuery = '';
+  const sentSearches = Object.create(null);
   const added = new Set();   // lista de cotización (persiste entre re-renders)
 
   const norm = function (s) {
@@ -486,6 +537,17 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
     grid.innerHTML = '';
     render();
     syncURL();
+    // Registra la intención de búsqueda con los cinco primeros resultados,
+    // nunca el texto de la consulta. El dedupe por página evita inflar las
+    // métricas mientras el usuario escribe o cambia entre filtros.
+    if (fQuery.length >= 2) {
+      const slugs = filtered.slice(0, 5).map(function (p) { return p.slug; }).filter(Boolean);
+      const signature = fQuery + '|' + slugs.join(',');
+      if (slugs.length && !sentSearches[signature]) {
+        sentSearches[signature] = true;
+        recordCatalogEvents([{ kind: 'search', productSlugs: slugs }]);
+      }
+    }
   }
 
   function render() {
@@ -715,8 +777,9 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)');
   strip.addEventListener('pointerup', endDrag);
   strip.addEventListener('pointercancel', endDrag);
   strip.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
-  fetch('data/catalogo.json?v=20261022143000', { cache: 'no-store' })
+  fetch('/api/public/catalogo', { cache: 'no-store' })
     .then(function (r) { if (!r.ok) throw new Error('catalogo ' + r.status); return r.json(); })
+    .catch(function () { return fetch('data/catalogo.json?v=20261022143000', { cache: 'no-store' }).then(function (r) { return r.json(); }); })
     .then(render)
     .catch(function () { render([]); });
 })();
