@@ -29,7 +29,7 @@
     "autorizada": true,
     "logo": "/assets/img/brands/graco.svg",
     "oferta": "Equipos de pintura, recubrimiento y dosificación industrial. Centro de Servicio Autorizado: refacciones originales, garantía de fábrica y servicio certificado.",
-    "count": 108
+    "count": 111
   },
   {
     "slug": "carlisle",
@@ -37,7 +37,7 @@
     "autorizada": true,
     "logo": "/assets/img/brands/binks.svg",
     "oferta": "Pintura y recubrimiento industrial — Binks · DeVilbiss · BGK. Centro de Servicio Autorizado: refacciones originales, garantía de fábrica y servicio certificado.",
-    "count": 57
+    "count": 63
   },
   {
     "slug": "sames",
@@ -45,7 +45,7 @@
     "autorizada": true,
     "logo": "/assets/img/brands/sames.svg",
     "oferta": "Pistolas y equipos de recubrimiento y dosificación automatizada. Centro de Servicio Autorizado: refacciones originales, garantía de fábrica y servicio certificado.",
-    "count": 20
+    "count": 23
   },
   {
     "slug": "rivit",
@@ -182,5 +182,13 @@
     "logo": "/assets/img/brands/yale.svg",
     "oferta": "Polipastos manuales y de palanca para manejo de materiales.",
     "count": 86
+  },
+  {
+    "slug": "rtt",
+    "name": "RTT Finishing Solutions",
+    "autorizada": false,
+    "logo": null,
+    "oferta": "Cabinas de pintura automotriz y soluciones de acabado configurables.",
+    "count": 4
   }
 ]
