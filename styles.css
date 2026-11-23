@@ -1009,6 +1009,7 @@ a:hover > .photo-frame .photo-frame__img {
           backdrop-filter: blur(10px);
   box-shadow: 0 8px 30px rgba(0,0,0,.3);
 }
+.hero__seal[hidden] { display: none !important; }
 .hero__seal-ico { color: var(--green-light); flex-shrink: 0; display: flex; }
 .hero__seal-text { display: flex; flex-direction: column; line-height: 1.25; }
 .hero__seal-text strong { font-family: var(--font-h); font-weight: 700; font-size: 0.82rem; color: #fff; }
