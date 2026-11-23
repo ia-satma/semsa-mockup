@@ -478,6 +478,58 @@ trackProductView();
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
     });
   };
+  // Fallback visual para productos que todavía no tienen fotografía propia.
+  // El CMS normalmente ya entrega esta ruta; el mapa también protege el
+  // preview estático si se crea un producto nuevo sin imagen.
+  const BRAND_LOGOS = {
+    'ingersoll-rand': 'assets/img/brands/ingersoll-rand.svg', desoutter: 'assets/img/brands/ingersoll-rand.svg',
+    aro: 'assets/img/brands/aro.svg', cleco: 'assets/img/brands/cleco.svg', graco: 'assets/img/brands/graco.svg',
+    carlisle: 'assets/img/brands/binks.svg', sames: 'assets/img/brands/sames.svg', rivit: 'assets/img/brands/rivit.svg',
+    apex: 'assets/img/brands/apex.svg', kolver: 'assets/img/brands/kolver.svg', gearwrench: 'assets/img/brands/gearwrench.svg',
+    weller: 'assets/img/brands/weller.svg', crane: 'assets/img/brands/crane.svg', makita: 'assets/img/brands/makita.svg',
+    durofix: 'assets/img/brands/durofix.svg', estic: 'assets/img/brands/estic.svg', lubbering: 'assets/img/brands/lubbering.svg',
+    hitachi: 'assets/img/brands/hitachi.svg', aeromotive: 'assets/img/brands/aeromotive.svg', endo: 'assets/img/brands/endo.png',
+    cm: 'assets/img/brands/cm.svg', yale: 'assets/img/brands/yale.svg', 'mp-pumps': 'assets/img/brands/mp-pumps.png',
+  };
+  function brandLogoFor(p) {
+    const slug = norm(p.marca_slug || p.brand || '').replace(/\s+/g, '-');
+    return BRAND_LOGOS[slug] || '';
+  }
+  function imageUrl(src) {
+    return src.charAt(0) === '/' || src.indexOf('assets/') === 0 ? src : 'assets/img/catalogo/' + src;
+  }
+  function brandFallback(p) {
+    return '<span class="product-card__brand-fallback" role="img" aria-label="Marca ' + esc(p.brand || 'SEMSA') + '">' + esc(p.brand || 'SEMSA') + '</span>';
+  }
+  function productImageMarkup(p) {
+    const fallback = brandLogoFor(p);
+    const hasPlaceholder = /(?:^|\/)ph-[^/]+$/i.test(p.img || '');
+    const source = hasPlaceholder ? fallback : (p.img || fallback);
+    if (!source) return brandFallback(p);
+    const isLogo = Boolean(p.imageIsBrandLogo || !p.img || hasPlaceholder);
+    return '<img class="product-card__img' + (isLogo ? ' product-card__img--brand' : '') + '" src="' + esc(imageUrl(source)) + '" alt="' + esc(p.name) + '" loading="lazy" decoding="async" width="300" height="300" data-brand-fallback="' + esc(fallback) + '" data-brand-name="' + esc(p.brand || 'SEMSA') + '" data-brand-logo="' + (isLogo ? 'true' : 'false') + '">';
+  }
+  grid.addEventListener('error', function (event) {
+    const image = event.target;
+    if (!image || image.tagName !== 'IMG' || !image.classList.contains('product-card__img')) return;
+    const fallback = image.getAttribute('data-brand-fallback') || '';
+    if (fallback && image.getAttribute('data-fallback-used') !== 'true') {
+      image.setAttribute('data-fallback-used', 'true');
+      image.setAttribute('data-brand-logo', 'true');
+      image.src = fallback;
+      const note = image.closest('.product-card__media')?.querySelector('[data-product-image-note]');
+      if (note) note.textContent = 'Logotipo de marca.';
+      return;
+    }
+    const fallbackText = document.createElement('span');
+    fallbackText.className = 'product-card__brand-fallback';
+    fallbackText.setAttribute('role', 'img');
+    fallbackText.setAttribute('aria-label', 'Marca ' + (image.getAttribute('data-brand-name') || 'SEMSA'));
+    fallbackText.textContent = image.getAttribute('data-brand-name') || 'SEMSA';
+    image.replaceWith(fallbackText);
+    const note = fallbackText.closest('.product-card__media')?.querySelector('[data-product-image-note]');
+    if (note) note.textContent = 'Marca de referencia.';
+  }, true);
 
   function cardHTML(p) {
     const isAdded = added.has(p.name);
@@ -488,13 +540,12 @@ trackProductView();
     const badge = badgeLabel
       ? '<span class="pcard__badge">' + esc(badgeLabel) + '</span>'
       : '';
-    const img = p.img
-      ? '<img class="product-card__img" src="' + (p.img.charAt(0) === '/' || p.img.indexOf('assets/') === 0 ? esc(p.img) : 'assets/img/catalogo/' + esc(p.img)) + '" alt="' + esc(p.name) + '" loading="lazy" decoding="async" width="300" height="300">'
-      : '';
+    const source = /(?:^|\/)ph-[^/]+$/i.test(p.img || '') ? brandLogoFor(p) : (p.img || brandLogoFor(p));
+    const img = productImageMarkup(p);
     return '<article class="product-card">' +
       '<a class="product-card__media" href="' + href + '" aria-label="Ver ' + esc(p.name) + '">' + img +
         '<span class="product-card__cat">' + esc(p.cat) + '</span>' + badge +
-        (p.img ? '<small class="product-image-note product-image-note--overlay" data-product-image-note>' + (p.imageIsBrandLogo ? 'Logotipo de marca.' : 'Imagen de referencia.') + '</small>' : '') +
+        (source ? '<small class="product-image-note product-image-note--overlay" data-product-image-note>' + (p.imageIsBrandLogo || !p.img || /(?:^|\/)ph-[^/]+$/i.test(p.img || '') ? 'Logotipo de marca.' : 'Imagen de referencia.') + '</small>' : '') +
       '</a>' +
       '<div class="product-card__body">' +
         '<span class="pcard__brand">' + esc(p.brand) + '</span>' +
